@@ -3,8 +3,8 @@ extends Node2D
 const SYMBOLS := ["pumpkin", "ghost", "bat", "cauldron", "castle", "10", "J", "Q", "K", "A", "wild", "scatter", "bonus"]
 const COLS := 5
 const ROWS := 3
-const CELL := Vector2(150, 125)
-const ORIGIN := Vector2(265, 105)
+const CELL := Vector2(108, 112)
+var origin := Vector2.ZERO
 
 var balance := 10000
 var bet := 50
@@ -17,6 +17,7 @@ var win_label: Label
 var spin_button: Button
 
 func _ready() -> void:
+    origin = Vector2((get_viewport_rect().size.x - CELL.x * (COLS - 1)) / 2.0, 285)
     _build_background()
     _build_reels()
     _build_controls()
@@ -24,14 +25,14 @@ func _ready() -> void:
 func _build_background() -> void:
     var title := Label.new()
     title.text = "HALLOWEEN SPINS"
-    title.position = Vector2(455, 28)
-    title.add_theme_font_size_override("font_size", 34)
+    title.position = Vector2(155, 55)
+    title.add_theme_font_size_override("font_size", 30)
     title.add_theme_color_override("font_color", Color("#d8ff82"))
     add_child(title)
 
     var subtitle := Label.new()
     subtitle.text = "Godot edition"
-    subtitle.position = Vector2(565, 68)
+    subtitle.position = Vector2(295, 100)
     subtitle.add_theme_color_override("font_color", Color("#a7b0c4"))
     add_child(subtitle)
 
@@ -39,7 +40,7 @@ func _build_reels() -> void:
     for row in ROWS:
         for col in COLS:
             var sprite := Sprite2D.new()
-            sprite.position = ORIGIN + Vector2(col * CELL.x, row * CELL.y)
+            sprite.position = origin + Vector2(col * CELL.x, row * CELL.y)
             sprite.texture = _load_symbol(SYMBOLS[randi() % SYMBOLS.size()])
             sprite.scale = Vector2(0.72, 0.72)
             add_child(sprite)
@@ -51,29 +52,29 @@ func _load_symbol(symbol: String) -> Texture2D:
     return texture
 
 func _build_controls() -> void:
-    balance_label = _make_label("BALANCE  $%d" % balance, Vector2(205, 570), 22)
-    bet_label = _make_label("BET  $%d" % bet, Vector2(490, 570), 22)
-    win_label = _make_label("WIN  $0", Vector2(760, 570), 22)
+    balance_label = _make_label("BALANCE  $%d" % balance, Vector2(70, 700), 20)
+    bet_label = _make_label("BET  $%d" % bet, Vector2(70, 755), 20)
+    win_label = _make_label("WIN  $0", Vector2(390, 700), 20)
 
     spin_button = Button.new()
     spin_button.text = "SPIN"
-    spin_button.position = Vector2(535, 625)
-    spin_button.size = Vector2(210, 60)
+    spin_button.position = Vector2(230, 850)
+    spin_button.size = Vector2(260, 78)
     spin_button.add_theme_font_size_override("font_size", 25)
     spin_button.pressed.connect(spin)
     add_child(spin_button)
 
     var minus := Button.new()
     minus.text = "−"
-    minus.position = Vector2(420, 625)
-    minus.size = Vector2(70, 60)
+    minus.position = Vector2(110, 850)
+    minus.size = Vector2(85, 78)
     minus.pressed.connect(_decrease_bet)
     add_child(minus)
 
     var plus := Button.new()
     plus.text = "+"
-    plus.position = Vector2(790, 625)
-    plus.size = Vector2(70, 60)
+    plus.position = Vector2(525, 850)
+    plus.size = Vector2(85, 78)
     plus.pressed.connect(_increase_bet)
     add_child(plus)
 
@@ -116,7 +117,7 @@ func _stop_column(col: int, final_values: Array[int]) -> void:
         var index := col + row * COLS
         symbol_values[index] = final_values[index]
         symbols[index].texture = _load_symbol(SYMBOLS[final_values[index]])
-        var target := ORIGIN + Vector2(col * CELL.x, row * CELL.y)
+        var target := origin + Vector2(col * CELL.x, row * CELL.y)
         var tween := create_tween()
         symbols[index].position = target + Vector2(0, 25)
         tween.tween_property(symbols[index], "position", target, 0.22).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
