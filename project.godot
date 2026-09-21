@@ -1,0 +1,19 @@
+; Halloween Spins — Godot 4 project
+; The existing Phaser web version remains untouched.
+config_version=5
+
+[application]
+config/name="Halloween Spins"
+run/main_scene="res://godot/main.tscn"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.035, 0.043, 0.07, 1)
