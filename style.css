@@ -864,6 +864,4 @@ html,body{
 .announcement-pulse{animation:announcementPulse .8s ease-in-out infinite alternate;font-size:clamp(13px,2.5vw,25px)!important;line-height:1.05;white-space:pre-line;}
 @keyframes announcementPulse{from{opacity:.72;transform:scale(.98)}to{opacity:1;transform:scale(1.04)}}
 
-/* Cover only the printed number above BET in the artwork */
-.bet-art-mask{position:absolute;z-index:6;left:24%;top:81.3%;width:17%;height:3.1%;background:rgba(8,11,18,.94);pointer-events:none;}
-@media(max-width:700px){.bet-art-mask{left:8.5%;top:85.8%;width:29%;height:3.2%;}}
+
