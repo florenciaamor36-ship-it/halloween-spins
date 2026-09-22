@@ -732,3 +732,8 @@ html,body{
   overflow:hidden !important;
   text-overflow:clip !important;
 }
+
+/* Lower the BET number 2 mm without moving its controls. */
+.display.bet{
+  top:70.95% !important;
+}
