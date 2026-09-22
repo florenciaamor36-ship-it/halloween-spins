@@ -856,3 +856,7 @@ html,body{
 /* Widen inner announcement fill by approximately 4–5mm per side */
 .announcement-text{width:84%;}
 @media(max-width:700px){.announcement-text{width:84%;}}
+
+/* Add approximately 2mm more on each side */
+.announcement-text{width:88%;}
+@media(max-width:700px){.announcement-text{width:88%;}}
