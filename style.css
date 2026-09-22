@@ -97,3 +97,28 @@ body{overflow:hidden;background:#080b12}
 @keyframes lowWinFire{to{transform:scale(1.1) rotate(2deg);filter:drop-shadow(0 0 24px #ffd34d)}}
 @keyframes lowWinParticle{0%{left:50%;top:50%;transform:scale(.2);opacity:0}15%{opacity:1}100%{left:var(--x);top:var(--y);transform:scale(1.2) rotate(360deg);opacity:0}}
 @media(max-width:700px){.lowwin-card{width:82vw}.lowwin-amount{border-width:2px}.lowwin-title{font-size:clamp(18px,5vw,30px)}}
+
+/* Desktop control bar alignment: center the live values inside the artwork boxes
+   without changing the mobile layout. The labels are part of the frame artwork. */
+@media (min-width:701px){
+  .display{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0;
+    line-height:1;
+  }
+  .display b{
+    display:block;
+    margin:0;
+    line-height:1;
+  }
+  .bet,.win,.lines{
+    top:84.25%;
+    height:7.25%;
+  }
+  .balance{
+    top:90.35%;
+    height:7.25%;
+  }
+}
