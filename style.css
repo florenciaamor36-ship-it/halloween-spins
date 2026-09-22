@@ -227,3 +227,27 @@ body{overflow:hidden;background:#080b12}
     padding-top:6px !important;
   }
 }
+
+/* Final desktop tuning for the LINES box and value baseline. */
+@media (min-width:701px){
+  .ui .display.lines{
+    position:absolute !important;
+    overflow:hidden !important;
+    width:15% !important;
+    max-width:15% !important;
+  }
+
+  .ui .display.lines .control-box{
+    max-width:100% !important;
+    overflow:hidden !important;
+  }
+
+  .ui .display.lines .value{
+    min-width:0 !important;
+  }
+
+  .ui .control-box .value,
+  .ui b.value{
+    padding-top:8px !important;
+  }
+}
