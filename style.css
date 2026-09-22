@@ -371,3 +371,9 @@ html,body{
 .display.balance{
   top:6.5% !important;
 }
+
+/* Fine-tune the balance value: half a centimeter down and right. */
+.display.balance{
+  top:7% !important;
+  right:1.5% !important;
+}
