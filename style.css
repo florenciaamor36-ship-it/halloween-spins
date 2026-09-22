@@ -533,3 +533,17 @@ html,body{
   border-radius:0 !important;
   box-shadow:none !important;
 }
+
+/* Final cleanup: show only the balance number, without the unwanted rectangle. */
+.balance-bar{
+  display:none !important;
+}
+
+.display.balance{
+  top:7.5% !important;
+  background:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+}
