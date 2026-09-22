@@ -778,3 +778,36 @@ html,body{
 .display.bet #bet{
   transform:translateY(3mm) !important;
 }
+
+/* Use the supplied portrait frame as the paytable modal background. */
+.paytable-card{
+  width:min(92vw,430px) !important;
+  height:min(94vh,770px) !important;
+  max-height:calc(100vh - 20px) !important;
+  aspect-ratio:571 / 1024;
+  padding:13% 13% 14% !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent url('assets/paytable/frame.webp?v=1') center/100% 100% no-repeat !important;
+  box-shadow:none !important;
+  overflow:hidden !important;
+}
+
+.paytable-close{
+  top:4% !important;
+  right:8% !important;
+  z-index:6 !important;
+}
+
+.paytable-card table{
+  font-size:clamp(9px,1.5vw,13px);
+}
+
+/* Make the existing MENU control visible until its custom artwork is supplied. */
+.menu{
+  opacity:1 !important;
+  color:#d8ff82 !important;
+  border:1px solid #71849b !important;
+  background:rgba(9,14,24,.82) !important;
+  text-shadow:0 0 6px #94ff31 !important;
+}
