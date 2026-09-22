@@ -704,3 +704,8 @@ html,body{
 .display.bet{
   top:71% !important;
 }
+
+/* Align BET value baseline with the LINES value. */
+.display.bet{
+  top:70.75% !important;
+}
