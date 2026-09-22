@@ -644,3 +644,17 @@ html,body{
 
 .linedown{left:5% !important;}
 .lineup{left:23% !important;}
+
+/* Fine-tune the LINES number below the label and match the neon label style. */
+.display.lines{
+  top:70.75% !important;
+}
+
+.display.lines .value,
+.display.lines #lines{
+  font-size:clamp(17px,2.15vw,28px) !important;
+  font-weight:900 !important;
+  letter-spacing:.5px !important;
+  color:#d8ff82 !important;
+  text-shadow:0 0 6px #94ff31 !important;
+}
