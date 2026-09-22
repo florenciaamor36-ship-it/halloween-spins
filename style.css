@@ -383,3 +383,16 @@ html,body{
   top:6.75% !important;
   right:.5% !important;
 }
+
+/* Temporary LINES panel placement for the portrait lower section. */
+.lines-bar{
+  position:absolute;
+  z-index:5;
+  left:35%;
+  top:71.5%;
+  width:30%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
