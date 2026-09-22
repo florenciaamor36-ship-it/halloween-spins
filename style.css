@@ -596,3 +596,51 @@ html,body{
 .display.balance{
   top:6.9% !important;
 }
+
+/* Put the live line count inside the LINES panel. */
+.display.lines{
+  left:3% !important;
+  top:70% !important;
+  width:28% !important;
+  height:13% !important;
+  z-index:7 !important;
+  pointer-events:none !important;
+}
+
+.display.lines .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.lines .label{
+  display:none !important;
+}
+
+.display.lines .value,
+.display.lines #lines{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+  white-space:nowrap !important;
+}
+
+/* Click targets over the minus and plus artwork in the LINES panel. */
+.lineup,
+.linedown{
+  z-index:8 !important;
+  top:74% !important;
+  width:6% !important;
+  height:5% !important;
+  opacity:.01 !important;
+}
+
+.linedown{left:5% !important;}
+.lineup{left:23% !important;}
