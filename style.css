@@ -168,3 +168,31 @@ body{overflow:hidden;background:#080b12}
 @media (max-width:700px){
   .control-box{display:contents;}
 }
+
+/* Final desktop alignment for the lower control panel. */
+@media (min-width:701px){
+  .ui .control-box{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    height:100% !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  .ui .control-box .label{
+    display:inline-flex !important;
+    align-items:center !important;
+    line-height:1 !important;
+    margin:0 !important;
+  }
+
+  .ui .control-box .value{
+    display:inline-flex !important;
+    align-items:center !important;
+    line-height:1 !important;
+    margin:0 !important;
+    position:relative !important;
+    top:8px !important;
+  }
+}
