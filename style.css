@@ -46,3 +46,12 @@ body{overflow:hidden;background:#080b12}
 /* One final millimeter lower */
 .loading-ui{bottom:5.1%;}
 @media(max-width:700px){.loading-ui{bottom:5.1%;}}
+
+/* Big Win overlay */
+.bigwin-screen{position:fixed;inset:0;z-index:40;display:none;place-items:center;background:#080b12;overflow:hidden;}
+.bigwin-screen.open{display:grid;}
+.bigwin-art{position:absolute;width:100vw;height:100vh;max-width:56.25vh;object-fit:cover;object-position:center;}
+.bigwin-number-cover{position:absolute;left:17%;top:53%;width:66%;height:17%;display:grid;place-items:center;align-content:center;gap:2px;border:3px solid #4b3858;border-radius:12px;background:#10091a;box-shadow:0 0 15px #050208,inset 0 0 9px #000;text-align:center;}
+.bigwin-label{color:#fff0a8;font-size:13px;font-weight:900;letter-spacing:2px;text-shadow:0 0 6px #000;}
+.bigwin-number{color:#d8ff82;font-size:clamp(32px,8vw,64px);font-weight:900;line-height:1;text-shadow:0 0 10px #a7ff42,0 2px 3px #000;}
+@media(max-width:700px){.bigwin-number-cover{left:15%;width:70%;top:53%;height:16%;}.bigwin-label{font-size:11px}.bigwin-number{font-size:clamp(30px,9vw,52px)}}
