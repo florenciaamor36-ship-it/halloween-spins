@@ -865,3 +865,6 @@ html,body{
 @keyframes announcementPulse{from{opacity:.72;transform:scale(.98)}to{opacity:1;transform:scale(1.04)}}
 
 
+
+/* Hide the extra numeric value beside BET */
+#bet{display:none!important;}
