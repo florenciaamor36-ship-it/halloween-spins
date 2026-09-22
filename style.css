@@ -852,3 +852,7 @@ html,body{
 /* Opaque announcement fill fitted inside the decorative frame */
 .announcement-text{width:76%;height:62%;display:grid;place-items:center;padding:2px 8px;box-sizing:border-box;overflow:hidden;background:rgba(0,0,0,.68);border-radius:5px;}
 @media(max-width:700px){.announcement-text{width:76%;height:62%;padding:2px 6px;border-radius:4px;}}
+
+/* Widen inner announcement fill by approximately 4–5mm per side */
+.announcement-text{width:84%;}
+@media(max-width:700px){.announcement-text{width:84%;}}
