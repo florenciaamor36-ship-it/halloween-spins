@@ -525,3 +525,11 @@ html,body{
   border-radius:8px !important;
   box-shadow:0 0 8px rgba(0,0,0,.65), inset 0 0 8px rgba(255,255,255,.08) !important;
 }
+
+/* Restore the original transparent balance placement; the artwork supplies the frame. */
+.display.balance{
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
