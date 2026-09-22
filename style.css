@@ -222,3 +222,24 @@ html,body{
 .ui .display.win .value{
   transform:translateY(-3mm) !important;
 }
+
+/* Custom SPIN button artwork: normal and pressed states. */
+.spin{
+  opacity:1 !important;
+  overflow:visible;
+  background:transparent;
+  border:0;
+}
+
+.spin-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+.spin-art-pressed{display:none;}
+.spin:active .spin-art-normal{display:none;}
+.spin:active .spin-art-pressed{display:block;}
