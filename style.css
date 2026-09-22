@@ -248,3 +248,12 @@ html,body{
 .spin-art{
   transform:scale(1.5) !important;
 }
+
+/* Keep prize animations inside the unified portrait play area on desktop. */
+.bigwin-card{
+  width:min(94vw,56.25vh) !important;
+}
+
+.lowwin-card{
+  width:min(82vw,56.25vh) !important;
+}
