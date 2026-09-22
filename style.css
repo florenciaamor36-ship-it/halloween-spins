@@ -576,3 +576,18 @@ html,body{
 .display.balance{
   top:6.5% !important;
 }
+
+/* Move balance down 2 mm and keep any-length values centered inside its window. */
+.display.balance{
+  top:6.7% !important;
+}
+
+.display.balance .value,
+.display.balance #balance{
+  max-width:100% !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+  text-align:center !important;
+  justify-content:center !important;
+}
