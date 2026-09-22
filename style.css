@@ -196,3 +196,34 @@ body{overflow:hidden;background:#080b12}
     top:8px !important;
   }
 }
+
+/* Final desktop flex/static positioning for the lower control panel. */
+@media (min-width:701px){
+  .ui .control-box{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    height:100% !important;
+    width:100% !important;
+    padding:0 8px !important;
+    box-sizing:border-box !important;
+  }
+
+  .ui .control-box .label{
+    position:static !important;
+    line-height:1 !important;
+    margin:0 !important;
+    align-self:center !important;
+  }
+
+  .ui .control-box .value,
+  .ui b.value{
+    position:static !important;
+    transform:none !important;
+    line-height:1 !important;
+    margin:0 !important;
+    align-self:center !important;
+    padding-top:6px !important;
+  }
+}
