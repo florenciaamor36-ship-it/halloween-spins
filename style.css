@@ -313,3 +313,16 @@ html,body{
     top:2% !important;
   }
 }
+
+/* Keep PC and mobile proportional to the same 9:16 game canvas. */
+.bet-bar{
+  top:2% !important;
+}
+
+.bigwin-card{
+  width:min(94vw,52.875vh) !important;
+}
+
+.lowwin-card{
+  width:min(82vw,46.125vh) !important;
+}
