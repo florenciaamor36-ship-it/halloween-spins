@@ -257,3 +257,9 @@ html,body{
 .lowwin-card{
   width:min(82vw,56.25vh) !important;
 }
+
+/* Align the reel window with the inner frame of the new portrait artwork. */
+.reels{
+  top:24% !important;
+  height:45.2% !important;
+}
