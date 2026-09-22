@@ -743,3 +743,9 @@ html,body{
 .display.bet #bet{
   transform:translateY(2mm) !important;
 }
+
+/* Raise the BET number by 1 mm from the exact visible offset. */
+.display.bet .value,
+.display.bet #bet{
+  transform:translateY(1mm) !important;
+}
