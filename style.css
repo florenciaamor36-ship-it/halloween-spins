@@ -709,3 +709,26 @@ html,body{
 .display.bet{
   top:70.75% !important;
 }
+
+/* BET controls on the same horizontal line as LINES controls. */
+.betminus,
+.betplus{
+  z-index:8 !important;
+  top:74% !important;
+  width:6% !important;
+  height:5% !important;
+  opacity:.01 !important;
+}
+
+.betminus{left:71% !important;}
+.betplus{left:89% !important;}
+
+/* Slightly smaller BET value so three-digit bets stay inside the window. */
+.display.bet .value,
+.display.bet #bet{
+  font-size:clamp(15px,1.9vw,24px) !important;
+  max-width:82% !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+}
