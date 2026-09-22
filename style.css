@@ -360,3 +360,9 @@ html,body{
   line-height:1 !important;
   transform:none !important;
 }
+
+/* Center the balance value inside the number window of the upper-right panel. */
+.display.balance{
+  top:5.5% !important;
+  height:6% !important;
+}
