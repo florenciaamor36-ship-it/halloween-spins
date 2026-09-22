@@ -499,3 +499,12 @@ html,body{
   height:6% !important;
   z-index:7 !important;
 }
+
+/* Add a clear horizontal gap around SPIN. */
+.lines-bar,
+.bet-bar{
+  width:30% !important;
+}
+
+.lines-bar{left:4% !important;}
+.bet-bar{right:4% !important;}
