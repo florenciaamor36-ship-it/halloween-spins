@@ -377,3 +377,9 @@ html,body{
   top:7% !important;
   right:1.5% !important;
 }
+
+/* Final balance position fine-tune. */
+.display.balance{
+  top:6.75% !important;
+  right:.5% !important;
+}
