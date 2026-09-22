@@ -243,3 +243,8 @@ html,body{
 .spin-art-pressed{display:none;}
 .spin:active .spin-art-normal{display:none;}
 .spin:active .spin-art-pressed{display:block;}
+
+/* Enlarge both SPIN states to fully cover the green background circle. */
+.spin-art{
+  transform:scale(1.5) !important;
+}
