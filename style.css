@@ -281,3 +281,9 @@ html,body{
   top:32% !important;
   height:37.2% !important;
 }
+
+/* Stretch the reel window two centimeters upward and downward. */
+.reels{
+  top:30% !important;
+  height:41.2% !important;
+}
