@@ -565,3 +565,9 @@ html,body{
   border-radius:0 !important;
   box-shadow:none !important;
 }
+
+/* Move the balance number two centimeters up and two to the right. */
+.display.balance{
+  top:5.5% !important;
+  right:0 !important;
+}
