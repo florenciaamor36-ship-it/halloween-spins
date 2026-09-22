@@ -737,3 +737,9 @@ html,body{
 .display.bet{
   top:70.95% !important;
 }
+
+/* Exact visible 2 mm offset for the BET number. */
+.display.bet .value,
+.display.bet #bet{
+  transform:translateY(2mm) !important;
+}
