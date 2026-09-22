@@ -749,3 +749,21 @@ html,body{
 .display.bet #bet{
   transform:translateY(1mm) !important;
 }
+
+/* Align both lower panels and all four controls with SPIN's horizontal center. */
+.lines-bar,
+.bet-bar{
+  top:82.5% !important;
+}
+
+.display.lines,
+.display.bet{
+  top:82.5% !important;
+}
+
+.lineup,
+.linedown,
+.betminus,
+.betplus{
+  top:86.5% !important;
+}
