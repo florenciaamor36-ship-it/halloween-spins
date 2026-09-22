@@ -100,69 +100,11 @@ body{overflow:hidden;background:#080b12}
 
 /* Desktop control bar alignment: center the live values inside the artwork boxes
    without changing the mobile layout. The labels are part of the frame artwork. */
-@media (min-width:701px){
-  .display{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:0;
-    line-height:1;
-  }
-  .display b{
-    display:block;
-    margin:0;
-    line-height:1;
-  }
-  .bet,.win,.lines{
-    top:84.25%;
-    height:7.25%;
-  }
-  .balance{
-    top:90.35%;
-    height:7.25%;
-  }
-}
+
 
 /* Urgent desktop panel correction: each live value is centered by its own
    relative control box; no text element is vertically offset. */
-@media (min-width:701px){
-  .display{
-    display:block;
-    font-size:0;
-    line-height:normal;
-  }
-  .bet,.win,.lines{
-    top:85.7%;
-    height:6.5%;
-  }
-  .balance{
-    top:92.3%;
-    height:6.5%;
-  }
-  .control-box{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 10px;
-    height:100%;
-    box-sizing:border-box;
-  }
-  .control-box .label{
-    font-size:14px;
-    line-height:normal;
-    margin:0;
-    padding:0;
-    color:transparent;
-  }
-  .control-box .value{
-    font-size:clamp(12px,2vw,26px);
-    line-height:normal;
-    margin:0;
-    padding:0;
-    transform:none;
-  }
-}
+
 
 /* Preserve the existing mobile layout; the box flex structure is desktop-only. */
 @media (max-width:700px){
@@ -170,112 +112,105 @@ body{overflow:hidden;background:#080b12}
 }
 
 /* Final desktop alignment for the lower control panel. */
-@media (min-width:701px){
-  .ui .control-box{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    height:100% !important;
-    width:100% !important;
-    box-sizing:border-box !important;
-  }
 
-  .ui .control-box .label{
-    display:inline-flex !important;
-    align-items:center !important;
-    line-height:1 !important;
-    margin:0 !important;
-  }
-
-  .ui .control-box .value{
-    display:inline-flex !important;
-    align-items:center !important;
-    line-height:1 !important;
-    margin:0 !important;
-    position:relative !important;
-    top:8px !important;
-  }
-}
 
 /* Final desktop flex/static positioning for the lower control panel. */
-@media (min-width:701px){
-  .ui .control-box{
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    height:100% !important;
-    width:100% !important;
-    padding:0 8px !important;
-    box-sizing:border-box !important;
-  }
 
-  .ui .control-box .label{
-    position:static !important;
-    line-height:1 !important;
-    margin:0 !important;
-    align-self:center !important;
-  }
-
-  .ui .control-box .value,
-  .ui b.value{
-    position:static !important;
-    transform:none !important;
-    line-height:1 !important;
-    margin:0 !important;
-    align-self:center !important;
-    padding-top:6px !important;
-  }
-}
 
 /* Final desktop tuning for the LINES box and value baseline. */
-@media (min-width:701px){
-  .ui .display.lines{
-    position:absolute !important;
-    overflow:hidden !important;
-    width:15% !important;
-    max-width:15% !important;
-  }
 
-  .ui .display.lines .control-box{
-    max-width:100% !important;
-    overflow:hidden !important;
-  }
-
-  .ui .display.lines .value{
-    min-width:0 !important;
-  }
-
-  .ui .control-box .value,
-  .ui b.value{
-    padding-top:8px !important;
-  }
-}
 
 /* Definitive desktop LINES box alignment. */
-@media (min-width:701px){
-  .ui .display.lines{
-    position:relative !important;
-    right:auto !important;
-    left:auto !important;
-    width:auto !important;
-    max-width:100% !important;
-    overflow:visible !important;
-  }
 
-  .ui .display.lines .control-box{
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    padding:0 10px !important;
-    width:100% !important;
-  }
 
-  .ui .display.lines .value,
-  .ui #lines{
-    position:static !important;
-    margin:0 !important;
-    padding-top:8px !important;
-  }
+/* Unified portrait mode on every screen size. */
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background-color:#0d0614;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
+
+.game{
+  position:relative;
+  width:min(100vw,56.25vh);
+  height:min(100vh,177.78vw);
+  max-width:calc(100vh * (9 / 16));
+  aspect-ratio:9 / 16;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.frame img{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.reels{
+  left:21.5%;
+  top:22%;
+  width:57.1%;
+  height:47.2%;
+  border-width:2px;
+}
+
+.display{
+  font-size:9px;
+  line-height:normal;
+}
+
+.display b{
+  font-size:16px;
+  line-height:normal;
+}
+
+.balance{left:10%;top:94%;width:32%;}
+.bet{left:9.2%;top:89%;width:27%;}
+.win{left:76.5%;top:84.7%;width:20%;}
+.lines{left:74.5%;top:89.6%;width:24%;}
+.jackpot{left:44%;top:11.5%;width:32%;font-size:8px;}
+
+.control-box{
+  display:contents;
+}
+
+.control-box .label{
+  position:static;
+  line-height:1;
+  margin:0;
+  padding:0;
+}
+
+.control-box .value,
+.ui b.value{
+  position:static;
+  transform:none;
+  line-height:1;
+  margin:0;
+  padding-top:8px;
+}
+
+.spin{left:38%;top:84%;width:25%;height:10%;}
+.betminus,.betplus{left:29%;top:86%;width:7%;height:5%;}
+.betplus{top:92%;}
+.menu{left:79%;top:94%;width:18%;height:6%;}
+.lineup,.linedown{left:93%;top:88%;width:7%;height:5%;}
+.linedown{top:94%;}
+
+.loading-art{
+  width:100vw;
+  height:100vh;
+  max-width:56.25vh;
+  object-fit:cover;
+}
+
+.loading-ui{width:80vw;bottom:5.1%;}
+
+.lowwin-card{width:82vw;}
+.bigwin-card{width:min(94vw,560px);}
