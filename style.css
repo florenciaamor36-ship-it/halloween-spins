@@ -396,3 +396,26 @@ html,body{
   object-fit:contain;
   pointer-events:none;
 }
+
+/* Final paired layout: LINES left and BET right on the same proportional row. */
+.lines-bar{
+  left:5% !important;
+  top:71.5% !important;
+  width:36% !important;
+}
+
+.bet-bar{
+  left:auto !important;
+  right:5% !important;
+  top:71.5% !important;
+  width:36% !important;
+}
+
+/* Keep the live balance in its original lower indicator position until its own panel is provided. */
+.display.balance{
+  left:10% !important;
+  right:auto !important;
+  top:94% !important;
+  width:32% !important;
+  height:auto !important;
+}
