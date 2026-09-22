@@ -214,3 +214,11 @@ html,body{
 
 .lowwin-card{width:82vw;}
 .bigwin-card{width:min(94vw,560px);}
+
+/* Raise all bottom indicator values by approximately 3 mm. */
+.ui .display.balance .value,
+.ui .display.bet .value,
+.ui .display.lines .value,
+.ui .display.win .value{
+  transform:translateY(-3mm) !important;
+}
