@@ -466,3 +466,36 @@ html,body{
   line-height:1 !important;
   transform:none !important;
 }
+
+/* Restore the balance frame separately and clear the lower panels above SPIN. */
+.balance-bar{
+  position:absolute;
+  z-index:5;
+  top:2%;
+  right:2%;
+  width:40%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+.lines-bar,
+.bet-bar{
+  top:70% !important;
+  width:32% !important;
+  height:13% !important;
+  object-fit:fill !important;
+}
+
+.lines-bar{left:6% !important;}
+.bet-bar{left:auto !important;right:6% !important;}
+
+.display.balance{
+  left:auto !important;
+  right:2% !important;
+  top:5.5% !important;
+  width:40% !important;
+  height:6% !important;
+  z-index:7 !important;
+}
