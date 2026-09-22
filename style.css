@@ -848,3 +848,7 @@ html,body{
 .announcement-panel img{position:absolute;width:100%;height:100%;object-fit:fill;}
 .announcement-text{position:relative;z-index:2;width:78%;text-align:center;color:#d8ff82;font-weight:900;font-size:clamp(10px,1.5vw,20px);text-shadow:0 0 7px #8dff4a,0 2px 3px #000;}
 @media(max-width:700px){.announcement-panel{left:10%;top:70.3%;width:80%;height:12.5%;}.announcement-text{font-size:clamp(10px,3.2vw,18px);}}
+
+/* Opaque announcement fill fitted inside the decorative frame */
+.announcement-text{width:76%;height:62%;display:grid;place-items:center;padding:2px 8px;box-sizing:border-box;overflow:hidden;background:rgba(0,0,0,.68);border-radius:5px;}
+@media(max-width:700px){.announcement-text{width:76%;height:62%;padding:2px 6px;border-radius:4px;}}
