@@ -366,3 +366,8 @@ html,body{
   top:5.5% !important;
   height:6% !important;
 }
+
+/* Lower the balance value one centimeter inside the upper-right panel. */
+.display.balance{
+  top:6.5% !important;
+}
