@@ -658,3 +658,44 @@ html,body{
   color:#d8ff82 !important;
   text-shadow:0 0 6px #94ff31 !important;
 }
+
+/* Center the live BET value inside the opaque window of the BET panel. */
+.display.bet{
+  left:auto !important;
+  right:3% !important;
+  top:70% !important;
+  width:28% !important;
+  height:13% !important;
+  z-index:7 !important;
+  pointer-events:none !important;
+}
+
+.display.bet .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.bet .label{
+  display:none !important;
+}
+
+.display.bet .value,
+.display.bet #bet{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+  font-size:clamp(17px,2.15vw,28px) !important;
+  font-weight:900 !important;
+  letter-spacing:.5px !important;
+  color:#d8ff82 !important;
+  text-shadow:0 0 6px #94ff31 !important;
+  white-space:nowrap !important;
+}
