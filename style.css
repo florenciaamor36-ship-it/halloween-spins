@@ -547,3 +547,21 @@ html,body{
   box-shadow:none !important;
   outline:0 !important;
 }
+
+/* Restore the balance artwork; keep the live number transparent over it. */
+.balance-bar{
+  display:block !important;
+  position:absolute !important;
+  z-index:5 !important;
+  top:2% !important;
+  right:2% !important;
+  width:40% !important;
+  height:auto !important;
+}
+
+.display.balance{
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
