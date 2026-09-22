@@ -1,5 +1,6 @@
 const SYMBOL_KEYS=['pumpkin','ghost','bat','cauldron','castle','10','J','Q','K','A','wild','scatter','bonus'];
-const WIN_FRAMES=Array.from({length:12},(_,i)=>`pumpkin-win-${i}`);
+// Only use animation frames that exist in assets/animations.
+const WIN_FRAMES=[0,1,2,3,7,9,10].map(i=>`pumpkin-win-${i}`);
 const PAYLINES=[[1,1,1,1,1],[0,0,0,0,0],[2,2,2,2,2],[0,1,2,1,0],[2,1,0,1,2],[0,0,1,2,2],[2,2,1,0,0],[1,0,0,0,1],[1,2,2,2,1],[1,0,1,0,1],[1,2,1,2,1],[0,1,1,1,0],[2,1,1,1,2],[0,1,0,1,0],[2,1,2,1,2],[1,1,0,1,1],[1,1,2,1,1],[0,0,2,0,0],[2,2,0,2,0],[0,2,0,2,0]];
 const LINE_COLORS=['#eab308','#38bdf8','#f43f5e','#a855f7','#22c55e','#fb923c','#06b6d4','#ec4899','#84cc16','#f59e0b','#14b8a6','#6366f1','#d946ef','#e11d48','#10b981','#facc15','#38bdf8','#c084fc','#4ade80','#f472b6'];
 const $=id=>document.getElementById(id);let balance=10000,bet=50,jackpot=75420,lines=25,spinning=false,scene;
@@ -23,3 +24,4 @@ class SlotScene extends Phaser.Scene{
     if(stopped.every(Boolean)){this.grid=values.slice();spinning=false;const wins=evaluateWins(values),best=wins[0];if(best){balance+=best.amount;$('win').textContent=best.amount;this.showPayline(best.line);best.positions.forEach(index=>{this.symbols[index].setTint(0xc6ff50);if(values[index]===0)this.animatePumpkin(index)})}else $('win').textContent=0;setText();return}this.time.delayedCall(35,tick)};tick()}
 }
 const config={type:Phaser.AUTO,parent:'reels',backgroundColor:'rgba(0,0,0,0)',transparent:true,render:{antialias:true,powerPreference:'high-performance'},scale:{mode:Phaser.Scale.RESIZE,width:'100%',height:'100%'},scene:SlotScene};new Phaser.Game(config);$('spin').onclick=()=>scene?.spin();$('plus').onclick=()=>{bet=Math.min(500,bet+25);setText()};$('minus').onclick=()=>{bet=Math.max(25,bet-25);setText()};document.querySelector('.bet').onclick=()=>{bet=bet>=500?25:bet+25;setText()};$('lineUp').onclick=()=>{lines=Math.min(25,lines+5);setText()};$('lineDown').onclick=()=>{lines=Math.max(20,lines-5);setText()};document.querySelector('.lines').onclick=()=>{lines=lines===25?20:25;setText()};$('menu').onclick=()=>alert(`Halloween Spins\nLíneas activas: ${lines}\nApuesta: $${bet}`);setText();
+
