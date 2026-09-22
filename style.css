@@ -811,3 +811,34 @@ html,body{
   background:rgba(9,14,24,.82) !important;
   text-shadow:0 0 6px #94ff31 !important;
 }
+
+/* Themed MENU button, kept in the bottom-right corner away from SPIN. */
+.menu{
+  left:73% !important;
+  top:auto !important;
+  right:3% !important;
+  bottom:1% !important;
+  width:24% !important;
+  height:5% !important;
+  z-index:10 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  opacity:1 !important;
+  padding:0 !important;
+  border:2px solid #d8ff82 !important;
+  border-radius:10px !important;
+  background:linear-gradient(180deg,#3b2755 0%,#171126 55%,#090812 100%) !important;
+  box-shadow:0 0 0 2px #241637 inset,0 0 12px rgba(216,255,130,.42),0 3px 0 #05040b !important;
+  color:#d8ff82 !important;
+  font-size:clamp(10px,2.2vw,18px) !important;
+  font-weight:900 !important;
+  letter-spacing:1px !important;
+  line-height:1 !important;
+  text-shadow:0 0 6px #94ff31,0 2px 2px #000 !important;
+}
+
+.menu:active{
+  transform:translateY(2px) scale(.98);
+  box-shadow:0 0 0 2px #241637 inset,0 0 8px rgba(216,255,130,.35) !important;
+}
