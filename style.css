@@ -293,3 +293,16 @@ html,body{
   top:29.5% !important;
   height:41.7% !important;
 }
+
+/* BET panel artwork in the upper-right corner, kept clear of the reel window. */
+.bet-bar{
+  position:absolute;
+  z-index:5;
+  top:3%;
+  right:2%;
+  width:40%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
