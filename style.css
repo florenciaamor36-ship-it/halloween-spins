@@ -20,3 +20,15 @@ html,body{overflow:hidden;width:100%;height:100%;}
 .paytable-rules{gap:3px;margin-top:8px;font-size:10px;}
 .paytable-close{opacity:1!important;display:block!important;position:absolute;right:7px;top:7px;width:30px;height:30px;padding:0;line-height:25px;z-index:5;}
 @media(max-width:700px){.game{width:100vw;height:100vh;max-width:56.25vh;max-height:177.78vw;margin:0 auto;}.paytable-card{width:min(94vw,400px);}}
+
+/* Real asset loading screen */
+body{overflow:hidden;background:#080b12}
+.loading-screen{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#080b12;transition:opacity .45s ease,visibility .45s ease;}
+.loading-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loading-art{position:absolute;width:100vw;height:100vh;max-width:56.25vh;object-fit:cover;object-position:center;}
+.loading-ui{position:absolute;left:50%;bottom:7.1%;width:min(72vw,400px);transform:translateX(-50%);display:grid;gap:9px;text-align:center;}
+.loading-track{height:23px;padding:5px;border:2px solid #4b3858;border-radius:9px;background:#160d22;box-shadow:0 0 9px #07030c,inset 0 0 6px #000;}
+.loading-fill{height:100%;width:0%;border-radius:4px;background:linear-gradient(90deg,#5d8734,#d8ff82,#b5eb61);box-shadow:0 0 8px #d8ff82;transition:width .12s linear;}
+.loading-status{color:#e7e0bd;font-size:15px;font-weight:700;text-shadow:0 1px 3px #000;letter-spacing:.4px;}
+.loading-status b{color:#d8ff82;margin-left:4px;}
+@media(max-width:700px){.loading-ui{width:72vw;bottom:7.1%;}.loading-track{height:20px}.loading-status{font-size:13px}}
