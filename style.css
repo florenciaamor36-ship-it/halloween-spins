@@ -269,3 +269,9 @@ html,body{
   top:26% !important;
   height:43.2% !important;
 }
+
+/* Lower the reel window another two centimeters. */
+.reels{
+  top:28% !important;
+  height:41.2% !important;
+}
