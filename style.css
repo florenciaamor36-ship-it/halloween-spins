@@ -326,3 +326,37 @@ html,body{
 .lowwin-card{
   width:min(82vw,46.125vh) !important;
 }
+
+/* Put the player's live balance inside the number window of the BET panel. */
+.display.balance{
+  left:auto !important;
+  right:2% !important;
+  top:7% !important;
+  width:40% !important;
+  height:10% !important;
+  z-index:6;
+}
+
+.display.balance .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.balance .label{
+  display:none !important;
+}
+
+.display.balance .value,
+.display.balance #balance{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+}
