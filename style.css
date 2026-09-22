@@ -122,3 +122,44 @@ body{overflow:hidden;background:#080b12}
     height:7.25%;
   }
 }
+
+/* Urgent desktop panel correction: each live value is centered by its own
+   relative control box; no text element is vertically offset. */
+@media (min-width:701px){
+  .display{
+    display:block;
+    font-size:0;
+    line-height:normal;
+  }
+  .bet,.win,.lines{
+    top:85.7%;
+    height:6.5%;
+  }
+  .balance{
+    top:92.3%;
+    height:6.5%;
+  }
+  .control-box{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 10px;
+    height:100%;
+    box-sizing:border-box;
+  }
+  .control-box .label{
+    font-size:14px;
+    line-height:normal;
+    margin:0;
+    padding:0;
+    color:transparent;
+  }
+  .control-box .value{
+    font-size:clamp(12px,2vw,26px);
+    line-height:normal;
+    margin:0;
+    padding:0;
+    transform:none;
+  }
+}
