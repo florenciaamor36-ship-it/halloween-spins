@@ -419,3 +419,11 @@ html,body{
   width:32% !important;
   height:auto !important;
 }
+
+/* Match BET height to the LINES panel on the shared lower row. */
+.lines-bar,
+.bet-bar{
+  width:36% !important;
+  height:19.1% !important;
+  object-fit:fill !important;
+}
