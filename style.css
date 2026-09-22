@@ -427,3 +427,42 @@ html,body{
   height:19.1% !important;
   object-fit:fill !important;
 }
+
+/* Keep both lower panels clear of SPIN and restore the player's visible balance. */
+.lines-bar,
+.bet-bar{
+  height:18.1% !important;
+}
+
+.display.balance{
+  left:auto !important;
+  right:4% !important;
+  top:12% !important;
+  width:28% !important;
+  height:6% !important;
+  z-index:7 !important;
+}
+
+.display.balance .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.balance .label{
+  display:none !important;
+}
+
+.display.balance .value,
+.display.balance #balance{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+}
