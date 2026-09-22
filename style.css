@@ -699,3 +699,8 @@ html,body{
   text-shadow:0 0 6px #94ff31 !important;
   white-space:nowrap !important;
 }
+
+/* Lower the BET value one centimeter inside its panel. */
+.display.bet{
+  top:71% !important;
+}
