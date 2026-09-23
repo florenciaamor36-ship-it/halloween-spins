@@ -19,3 +19,20 @@
 
 /* Last prize is shown only in the announcement panel */
 .win{display:none!important;}
+
+/* Restore low-win overlay styles */
+.lowwin-screen{position:fixed;inset:0;z-index:39;display:none;place-items:center;overflow:hidden;background:radial-gradient(circle,#3b2b08 0%,#171006 38%,#05070a 85%);}
+.lowwin-screen.open{display:grid;}
+.lowwin-card{position:relative;z-index:3;width:min(80vw,430px);aspect-ratio:1;transform:scale(.2);opacity:0;}
+.lowwin-screen.open .lowwin-card{animation:lowWinZoom 1.2s cubic-bezier(.16,1.2,.3,1) forwards;}
+.lowwin-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
+.lowwin-title{position:absolute;top:8%;left:18%;width:64%;text-align:center;color:#fff0a8;font-weight:900;font-size:clamp(20px,5vw,36px);letter-spacing:2px;text-shadow:0 0 10px #ffb300,0 3px 3px #000;}
+.lowwin-amount{position:absolute;left:18%;top:72%;width:64%;height:15%;display:grid;place-items:center;background:#10091a;border:3px solid #ffd34d;border-radius:12px;box-shadow:0 0 20px #ffb300,inset 0 0 10px #000;color:#fff0a8;}
+.lowwin-amount span{font-size:clamp(28px,8vw,52px);font-weight:900;text-shadow:0 0 12px #ffd34d;}
+.lowwin-flames{position:absolute;z-index:2;font-size:clamp(30px,8vw,65px);letter-spacing:10vw;filter:drop-shadow(0 0 14px #ff7b00);animation:lowWinFire .45s ease-in-out infinite alternate;white-space:nowrap;}
+.lowwin-particles{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.lowwin-particle{position:absolute;width:8px;height:8px;border-radius:50%;background:#ffd34d;box-shadow:0 0 12px #ff9d00;animation:lowWinParticle 1.4s ease-out forwards;}
+@keyframes lowWinZoom{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes lowWinFire{to{transform:scale(1.1) rotate(2deg);filter:drop-shadow(0 0 24px #ffd34d)}}
+@keyframes lowWinParticle{0%{left:50%;top:50%;transform:scale(.2);opacity:0}15%{opacity:1}100%{left:var(--x);top:var(--y);transform:scale(1.2) rotate(360deg);opacity:0}}
+@media(max-width:700px){.lowwin-card{width:82vw}.lowwin-amount{border-width:2px}.lowwin-title{font-size:clamp(18px,5vw,30px)}}
