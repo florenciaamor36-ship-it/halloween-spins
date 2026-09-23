@@ -5,6 +5,7 @@ const SYMBOL_KEYS=GAME_CONFIG.symbols.map(symbol=>symbol.key);
 const VISUAL_CONFIG=GAME_CONFIG.visual||{};
 const SYMBOL_SCALE=VISUAL_CONFIG.symbolScale??.78;
 const SYMBOL_SCALE_Y=VISUAL_CONFIG.symbolScaleY??1;
+const WIN_EFFECTS=VISUAL_CONFIG.winEffects||{};
 const WIN_FRAMES=GAME_CONFIG.assets.winFrames.map(frame=>frame.key);
 const PAYLINES=GAME_CONFIG.rules.paylines,LINE_COLORS=GAME_CONFIG.rules.lineColors;
 const SYMBOL_WEIGHTS=GAME_CONFIG.rules.symbolWeights,WEIGHT_TOTAL=GAME_CONFIG.rules.weightTotal;
@@ -49,7 +50,58 @@ class SlotScene extends Phaser.Scene{
  makeGrid(){for(let i=0;i<COLS*ROWS;i++){const t=this.add.image(0,0,SYMBOL_KEYS[rand()]).setOrigin(.5);const glow=this.add.graphics();glow.fillStyle(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.glow).color,.42);glow.fillCircle(0,0,58);glow.setVisible(false);const overlay=this.add.image(0,0,WIN_FRAMES[0]).setOrigin(.5).setAlpha(0);this.symbols.push(t);this.fx.push(glow);this.overlays.push(overlay);this.grid.push(rand())}}
  layout(){const w=this.scale.width,h=this.scale.height;this.lastLayout={w,h};this.symbols.forEach((t,i)=>{const x=((i%COLS)+.5)*w/COLS,y=(Math.floor(i/COLS)+.5)*h/ROWS,size=Math.min(w/COLS,h/ROWS)*SYMBOL_SCALE;t.x=x;t.y=y;const symbolScale=Math.min(size/t.width,size/t.height);t.setScale(symbolScale,symbolScale*SYMBOL_SCALE_Y);this.fx[i].setPosition(x,y);const o=this.overlays[i];o.setPosition(x,y);const overlayScale=Math.min(size*1.22/o.width,size*.9/o.height);o.setScale(overlayScale,overlayScale*SYMBOL_SCALE_Y)})}
  baseY(index){return (Math.floor(index/COLS)+.5)*this.scale.height/ROWS}
- animateWinSymbol(i){const glow=this.fx[i],symbol=this.symbols[i];this.tweens.killTweensOf(glow);this.tweens.killTweensOf(symbol);glow.setVisible(true).setAlpha(.25).setScale(.6);symbol.setTint(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.accent).color);this.tweens.add({targets:glow,alpha:.95,scale:1.45,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut',onComplete:()=>{glow.setVisible(false);symbol.clearTint()}});this.tweens.add({targets:symbol,alpha:.55,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut'})}
+ animateWinSymbol(i,effect=null){
+  const glow=this.fx[i],symbol=this.symbols[i],accent=effect?.color||GAME_CONFIG.colors.accent;
+  const color=Phaser.Display.Color.HexStringToColor(accent).color;
+  this.tweens.killTweensOf(glow);this.tweens.killTweensOf(symbol);
+  glow.clear();glow.fillStyle(color,.5);glow.fillCircle(0,0,effect?.type==='gold-chest'?70:58);
+  glow.setVisible(true).setAlpha(.25).setScale(.6);symbol.setTint(color);
+  this.tweens.add({targets:glow,alpha:.95,scale:1.45,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut',onComplete:()=>{glow.setVisible(false);symbol.clearTint()}});
+  this.tweens.add({targets:symbol,alpha:.55,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut'});
+  if(effect?.type==='gold-chest')this.animateGoldChest(i,effect);
+  if(effect?.type==='blue-lotus')this.animateBlueLotus(i,effect);
+}
+animateGoldChest(i,effect){
+  const symbol=this.symbols[i],cell=Math.min(this.scale.width/COLS,this.scale.height/ROWS);
+  const gold=Phaser.Display.Color.HexStringToColor(effect.color||'#f4c96b').color;
+  const shine=Phaser.Display.Color.HexStringToColor(effect.highlight||'#fff1ad').color;
+  const g=this.add.graphics().setDepth(30),x=symbol.x,y=symbol.y;
+  g.lineStyle(3,gold,.82);g.strokeCircle(x,y,cell*.76);
+  g.lineStyle(1.6,shine,.78);g.strokeCircle(x,y,cell*1.02);
+  for(let n=0;n<16;n++){
+    const a=(Math.PI*2*n)/16,inner=cell*.48,outer=cell*(.85+.16*Math.sin(n*1.7));
+    g.lineStyle(n%2?1.8:2.8,n%2?gold:shine,n%2?.68:.92);
+    g.beginPath();g.moveTo(x+Math.cos(a)*inner,y+Math.sin(a)*inner);g.lineTo(x+Math.cos(a)*outer,y+Math.sin(a)*outer);g.strokePath();
+    if(n%2===0){g.fillStyle(shine,.95);g.fillCircle(x+Math.cos(a)*(outer+cell*.09),y+Math.sin(a)*(outer+cell*.09),cell*.075)}
+  }
+  g.fillStyle(gold,.11);g.fillRect(x-cell*.36,y-cell*.36,cell*.72,cell*.72);
+  this.tweens.add({targets:g,alpha:.18,duration:190,yoyo:true,repeat:4,ease:'Sine.easeInOut',onComplete:()=>g.destroy()});
+}
+animateBlueLotus(i,effect){
+  const symbol=this.symbols[i],cell=Math.min(this.scale.width/COLS,this.scale.height/ROWS);
+  const blue=Phaser.Display.Color.HexStringToColor(effect.color||'#38bdf8').color;
+  const ice=Phaser.Display.Color.HexStringToColor(effect.highlight||'#e0f7ff').color;
+  const g=this.add.graphics().setDepth(31),x=symbol.x,y=symbol.y;
+  g.lineStyle(3,blue,.84);g.strokeCircle(x,y,cell*.77);
+  g.lineStyle(1.4,ice,.82);g.strokeCircle(x,y,cell*1.01);
+  g.fillStyle(blue,.13);g.fillCircle(x,y,cell*.5);
+  const targets=this.symbols.map((target,index)=>({target,index,d:Math.hypot(target.x-x,target.y-y)})).filter(q=>q.index!==i).sort((a,b)=>a.d-b.d).slice(0,5);
+  const bolt=(target,width,color,alpha)=>{
+    const points=[{x,y}];
+    for(let step=1;step<5;step++){
+      const t=step/5,jitter=(Math.random()-.5)*cell*.55;
+      points.push({x:x+(target.x-x)*t+Math.cos(t*8+step)*jitter,y:y+(target.y-y)*t+Math.sin(t*7+step)*jitter});
+    }
+    points.push({x:target.x,y:target.y});
+    g.lineStyle(width,color,alpha);g.beginPath();g.moveTo(points[0].x,points[0].y);points.slice(1).forEach(p=>g.lineTo(p.x,p.y));g.strokePath();
+  };
+  targets.forEach(({target})=>{
+    bolt(target,3.2,blue,.9);bolt(target,1.25,ice,.96);
+    g.fillStyle(ice,.95);g.fillCircle(target.x,target.y,cell*.09);
+    g.lineStyle(1.8,blue,.78);g.strokeCircle(target.x,target.y,cell*.23);
+  });
+  this.tweens.add({targets:g,alpha:.12,duration:115,yoyo:true,repeat:6,ease:'Sine.easeInOut',onComplete:()=>g.destroy()});
+}
  clearPayline(){if(this.payline){this.payline.destroy();this.payline=null}}
  showPaylines(wins){this.clearPayline();if(!wins.length)return;const g=this.add.graphics();const w=this.scale.width,h=this.scale.height;wins.forEach((win,n)=>{const color=Phaser.Display.Color.HexStringToColor(LINE_COLORS[win.line%LINE_COLORS.length]).color;const p=PAYLINES[win.line],pts=p.map((r,c)=>({x:(c+.5)*w/COLS,y:(r+.5)*h/ROWS}));g.lineStyle(10,color,.48);g.beginPath();g.moveTo(pts[0].x,pts[0].y);pts.slice(1).forEach(q=>g.lineTo(q.x,q.y));g.strokePath();g.lineStyle(2.5,0xffffff,.9);g.beginPath();g.moveTo(pts[0].x,pts[0].y);pts.slice(1).forEach(q=>g.lineTo(q.x,q.y));g.strokePath();});this.payline=g;this.time.delayedCall(2600,()=>this.clearPayline())}
  spin(){
@@ -60,7 +112,13 @@ class SlotScene extends Phaser.Scene{
   this.overlays.forEach(t=>{t.setAlpha(0);t.setVisible(false)});this.fx.forEach(t=>{t.setVisible(false);t.setAlpha(0)});
   const stopColumn=col=>{if(stopped[col]||id!==this.spinId)return;stopped[col]=true;for(let r=0;r<ROWS;r++){const index=col+r*COLS;values[index]=rand();this.symbols[index].setTexture(SYMBOL_KEYS[values[index]]);this.tweens.killTweensOf(this.symbols[index]);this.symbols[index].y=this.baseY(index);this.symbols[index].alpha=1}};
   let interval=null,fallback=null;
-  const finishSpin=()=>{if(finished||id!==this.spinId)return;finished=true;if(interval)window.clearInterval(interval);if(fallback)window.clearTimeout(fallback);for(let c=0;c<COLS;c++)stopColumn(c);for(let i=0;i<COLS*ROWS;i++){this.tweens.killTweensOf(this.symbols[i]);this.symbols[i].y=this.baseY(i);this.symbols[i].alpha=1}this.grid=values.slice();spinning=false;const wins=evaluateWins(values),scatterWin=evaluateSpecial(values,SCATTER_INDEX),bonusPositions=[],bonusCount=values.reduce((n,id,index)=>{if(id===BONUS_INDEX)bonusPositions.push(index);return n+(id===BONUS_INDEX?1:0)},0),awarded=getBonusAward(bonusCount),lineTotal=wins.reduce((sum,win)=>sum+win.amount,0),specialTotal=scatterWin?scatterWin.amount:0,totalWin=lineTotal+specialTotal;if(totalWin>0)balance+=totalWin;$('win').textContent=formatNumber(totalWin);if(awarded){freeSpinsAuto=true;freeSpins+=awarded;pendingAnnouncement=gameMessage('bonusAward',{awarded,remaining:freeSpins})+(totalWin>0?`\n${gameMessage('prize',{amount:formatNumber(totalWin)})}`:'')}else if(scatterWin&&lineTotal===0)pendingAnnouncement=gameMessage('scatterAward',{amount:formatNumber(specialTotal),total:formatNumber(totalWin)});else if(totalWin>0)pendingAnnouncement=gameMessage('prize',{amount:formatNumber(totalWin)});else pendingAnnouncement='';const positions=wins.flatMap(win=>win.positions).concat(scatterWin?scatterWin.positions:[],bonusPositions).filter((index,position,array)=>array.indexOf(index)===position);positions.forEach(index=>{this.symbols[index].setTint(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.winningTint).color);if(SYMBOL_KEYS[values[index]]===ANIMATED_WIN_KEY)this.animateWinSymbol(index)});if(totalWin>0||awarded){resultLock=true;setTimeout(()=>this.showPaylines(wins),450);setTimeout(()=>{if(totalWin>=bet*GAME_CONFIG.defaults.bigWinBetMultiplier)showBigWin(totalWin);else if(totalWin>=bet*GAME_CONFIG.defaults.lowWinBetMultiplier)showLowWin(totalWin);else{resultLock=false;setAnnouncement(pendingAnnouncement);scheduleNextSpin()}},1050)}else setAnnouncement('');setText();scheduleNextSpin()};
+  const finishSpin=()=>{if(finished||id!==this.spinId)return;finished=true;if(interval)window.clearInterval(interval);if(fallback)window.clearTimeout(fallback);for(let c=0;c<COLS;c++)stopColumn(c);for(let i=0;i<COLS*ROWS;i++){this.tweens.killTweensOf(this.symbols[i]);this.symbols[i].y=this.baseY(i);this.symbols[i].alpha=1}this.grid=values.slice();spinning=false;const wins=evaluateWins(values),scatterWin=evaluateSpecial(values,SCATTER_INDEX),bonusPositions=[],bonusCount=values.reduce((n,id,index)=>{if(id===BONUS_INDEX)bonusPositions.push(index);return n+(id===BONUS_INDEX?1:0)},0),awarded=getBonusAward(bonusCount),lineTotal=wins.reduce((sum,win)=>sum+win.amount,0),specialTotal=scatterWin?scatterWin.amount:0,totalWin=lineTotal+specialTotal;if(totalWin>0)balance+=totalWin;$('win').textContent=formatNumber(totalWin);if(awarded){freeSpinsAuto=true;freeSpins+=awarded;pendingAnnouncement=gameMessage('bonusAward',{awarded,remaining:freeSpins})+(totalWin>0?`\n${gameMessage('prize',{amount:formatNumber(totalWin)})}`:'')}else if(scatterWin&&lineTotal===0)pendingAnnouncement=gameMessage('scatterAward',{amount:formatNumber(specialTotal),total:formatNumber(totalWin)});else if(totalWin>0)pendingAnnouncement=gameMessage('prize',{amount:formatNumber(totalWin)});else pendingAnnouncement='';const positions=wins.flatMap(win=>win.positions).concat(scatterWin?scatterWin.positions:[],bonusPositions).filter((index,position,array)=>array.indexOf(index)===position);positions.forEach(index=>{
+  const key=SYMBOL_KEYS[values[index]],effect=WIN_EFFECTS[key],lineWin=wins.some(win=>win.positions.includes(index));
+  const specialWin=key===SYMBOL_KEYS[BONUS_INDEX]?awarded>0&&bonusPositions.includes(index):key===SYMBOL_KEYS[SCATTER_INDEX]?Boolean(scatterWin&&scatterWin.positions.includes(index)):false;
+  const shouldAnimate=effect&&(effect.when==='bonus-awarded'?specialWin:effect.when==='line-win'?lineWin:(lineWin||specialWin));
+  this.symbols[index].setTint(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.winningTint).color);
+  if(key===ANIMATED_WIN_KEY||shouldAnimate)this.animateWinSymbol(index,shouldAnimate?effect:null);
+});if(totalWin>0||awarded){resultLock=true;setTimeout(()=>this.showPaylines(wins),450);setTimeout(()=>{if(totalWin>=bet*GAME_CONFIG.defaults.bigWinBetMultiplier)showBigWin(totalWin);else if(totalWin>=bet*GAME_CONFIG.defaults.lowWinBetMultiplier)showLowWin(totalWin);else{resultLock=false;setAnnouncement(pendingAnnouncement);scheduleNextSpin()}},1050)}else setAnnouncement('');setText();scheduleNextSpin()};
   const tick=()=>{if(id!==this.spinId||finished)return;const elapsed=performance.now()-started;for(let c=0;c<COLS;c++)if(!stopped[c]&&elapsed>=850+c*300)stopColumn(c);const cycle=Math.floor(elapsed/75);if(cycle!==lastCycle){lastCycle=cycle;for(let c=0;c<COLS;c++)if(!stopped[c])for(let r=0;r<ROWS;r++){const index=c+r*COLS;values[index]=rand();this.symbols[index].setTexture(SYMBOL_KEYS[values[index]])}}for(let c=0;c<COLS;c++)if(!stopped[c])for(let r=0;r<ROWS;r++){const index=c+r*COLS,cell=this.scale.height/ROWS,phase=(elapsed*1.35+r*cell/2)%cell;this.symbols[index].y=this.baseY(index)+phase-cell/2}if(stopped.every(Boolean))finishSpin()};
   interval=window.setInterval(tick,35);fallback=window.setTimeout(finishSpin,3400);tick();
  }
