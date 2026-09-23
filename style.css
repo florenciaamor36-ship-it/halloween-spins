@@ -925,3 +925,71 @@ html,body{
 .loading-ui{
   width:min(80vw,45vh) !important;
 }
+
+/* Proportional audit: scale in-game text from the shared 9:16 game canvas,
+   preserving the 390px-wide mobile reference and its approved positions. */
+.display{font-size:clamp(9px,2.31cqw,16px);}
+.display b{font-size:clamp(16px,4.10cqw,26px);}
+.display.jackpot{font-size:clamp(8px,2.05cqw,16px);}
+.display.lines .value,
+.display.lines #lines{font-size:clamp(17px,4.36cqw,28px)!important;}
+.display.bet .value,
+.display.bet #bet{font-size:clamp(15px,3.85cqw,24px)!important;}
+.menu{font-size:clamp(10px,2.56cqw,18px)!important;}
+.auto-spin{font-size:clamp(9px,2.31cqw,16px)!important;}
+
+/* Prize graphics stay centered as full-screen layers, but their artwork and
+   lettering follow the same portrait-canvas scale as the game. */
+.bigwin-card{container-type:inline-size;}
+.bigwin-number{font-size:clamp(24px,8.52cqw,46px)!important;}
+.lowwin-card{container-type:inline-size;}
+.lowwin-title{font-size:clamp(18px,6.10cqw,36px)!important;}
+.lowwin-amount span{font-size:clamp(28px,9.76cqw,52px)!important;}
+.lowwin-flames{font-size:clamp(30px,min(8vw,4.5vh),65px);letter-spacing:min(10vw,5.625vh);}
+.bigwin-particle{width:clamp(9px,min(2.31vw,1.30vh),12px);height:clamp(14px,min(3.59vw,2.02vh),18px);}
+.lowwin-particle{width:clamp(8px,min(2.05vw,1.15vh),10px);height:clamp(8px,min(2.05vw,1.15vh),10px);}
+
+/* Fit the loading scene to the shared canvas rather than cropping it to a
+   taller phone viewport. Keep the loading bar anchored inside that canvas. */
+.loading-art{
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(100vw,56.25vh)!important;
+  height:min(100vh,177.78vw)!important;
+  max-width:calc(100vh * (9 / 16));
+  object-fit:cover;
+}
+.loading-ui{
+  bottom:calc(max(0px,(100vh - 177.78vw)/2) + min(5.1vh,9.0667vw))!important;
+}
+.loading-status{font-size:clamp(13px,min(3.33vw,1.875vh),15px);}
+
+/* Keep the auto-stop affordance proportionate to the game canvas on PC and
+   phone while leaving its approved mobile width and top offset intact. */
+.auto-stop-overlay{
+  top:min(1.73vh,3.08vw)!important;
+  width:min(68vw,38.2vh)!important;
+  height:min(6.35vh,11.29vw)!important;
+  font-size:max(12px,min(3vw,1.69vh))!important;
+}
+
+/* Preserve the paytable frame's native 571:1024 ratio and size its interior
+   against the game canvas (percentage padding was viewport-based and squeezed
+   desktop content into a very narrow column). */
+.paytable-card{
+  width:min(94vw,52.875vh,calc((100vh - 20px)*0.5576171875))!important;
+  height:auto!important;
+  max-height:calc(100vh - 20px)!important;
+  aspect-ratio:571 / 1024!important;
+  padding:min(12.22vw,6.874vh) min(12.22vw,6.874vh) min(13.16vw,7.403vh)!important;
+}
+.paytable-brand{font-size:clamp(15px,min(3.846vw,2.17vh),20px);}
+.paytable-card h2{font-size:clamp(21px,min(5.385vw,3.04vh),28px)!important;}
+.paytable-subtitle{font-size:clamp(11px,min(2.82vw,1.59vh),16px);}
+.paytable-card table{font-size:clamp(9px,min(2.31vw,1.30vh),13px);}
+.paytable-card th{font-size:clamp(12px,min(3.08vw,1.735vh),17px);}
+.paytable-card td{font-size:clamp(14px,min(3.59vw,2.02vh),19px);}
+.paytable-card td:not(:first-child){font-size:clamp(13px,min(3.333vw,1.875vh),18px);}
+.paytable-card th,.paytable-card td{height:clamp(29px,min(7.44vw,4.19vh),35px)!important;}
+.pay-symbol{width:min(6.41vw,3.61vh);height:min(6.41vw,3.61vh);}
+.paytable-rules{font-size:clamp(10px,min(2.564vw,1.444vh),14px);}
+.paytable-close{width:min(7.69vw,4.33vh);height:min(7.69vw,4.33vh);font-size:min(5.90vw,3.32vh);line-height:1;}
