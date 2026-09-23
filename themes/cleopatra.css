@@ -18,7 +18,7 @@
   overflow: hidden !important;
   border: 0 !important;
   border-radius: 0 !important;
-  background: transparent !important;
+  background: rgba(5, 7, 12, 0.32) !important;
   box-shadow: none !important;
 }
 :root[data-skin="cleopatra"] #reels::after { display: none !important; }
