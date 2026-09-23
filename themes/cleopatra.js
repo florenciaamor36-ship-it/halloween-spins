@@ -8,7 +8,7 @@ window.SLOT_GAME_CONFIG = {
       portrait: 'assets/cleopatra/frame.webp?v=1',
       fallback: 'assets/cleopatra/frame.webp?v=1'
     },
-    loading: 'assets/cleopatra/frame.webp?v=1',
+    loading: 'assets/cleopatra/loading-screen.webp?v=1',
     spin: {
       normal: 'assets/cleopatra/spin-normal.svg?v=1',
       pressed: 'assets/cleopatra/spin-pressed.svg?v=1'
@@ -120,7 +120,7 @@ window.SLOT_GAME_CONFIG = {
     rulesTitle: 'REGLAS',
     spinLabel: 'Girar',
     menuLabel: 'PREMIOS',
-    loadingLabel: 'Cargando Cleopatra',
+    loadingLabel: 'Cargando',
     lowWinTitle: '¡PREMIO!',
     labels: { balance: 'SALDO', bet: 'APUESTA', lines: 'LÍNEAS', win: 'PREMIO', jackpot: 'TESORO' },
     messages: {

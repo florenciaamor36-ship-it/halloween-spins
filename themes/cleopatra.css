@@ -268,3 +268,32 @@
   background: #291f24 !important;
   color: #fff0bc !important;
 }
+
+
+/* Cleopatra's loading screen: 9:16 portrait art with a live, readable progress bar. */
+:root[data-skin="cleopatra"] .loading-screen { background: #09121d !important; }
+:root[data-skin="cleopatra"] .loading-art { object-fit: cover !important; object-position: center !important; }
+:root[data-skin="cleopatra"] .loading-ui {
+  z-index: 2 !important;
+  width: min(78vw, 44vh) !important;
+  gap: 7px !important;
+  bottom: calc(max(0px, calc(50vh - 88.89vw)) + min(5.1vh, 9.0667vw) + 3mm) !important;
+}
+:root[data-skin="cleopatra"] .loading-track {
+  height: clamp(25px, 4.1vh, 34px) !important;
+  border: 2px solid #e5c878 !important;
+  border-radius: 11px !important;
+  background: rgba(9, 15, 25, .92) !important;
+  box-shadow: 0 0 10px rgba(0,0,0,.8), inset 0 0 7px #000, 0 0 7px rgba(229,200,120,.3) !important;
+}
+:root[data-skin="cleopatra"] .loading-fill {
+  border-radius: 6px !important;
+  background: linear-gradient(90deg, #08717b 0%, #34c8bf 62%, #f0cf78 100%) !important;
+  box-shadow: 0 0 8px rgba(52,200,191,.72) !important;
+}
+:root[data-skin="cleopatra"] .loading-status {
+  color: #fff0bc !important;
+  font-size: clamp(13px, min(3.33vw, 1.875vh), 15px) !important;
+  text-shadow: 0 1px 4px #000, 0 0 7px rgba(0,0,0,.8) !important;
+}
+:root[data-skin="cleopatra"] .loading-status b { color: #f4d27a !important; }
