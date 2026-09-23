@@ -73,6 +73,11 @@
   top: 84.5% !important; width: 40% !important; height: 10% !important;
   object-fit: contain !important;
 }
+:root[data-skin="cleopatra"] .lines-bar {
+  left: auto !important; right: .5% !important;
+  top: 84.5% !important; width: 40% !important; height: 10% !important;
+  object-fit: contain !important;
+}
 :root[data-skin="cleopatra"] .ui { z-index: 6 !important; }
 :root[data-skin="cleopatra"] .display {
   z-index: 7 !important;
@@ -174,9 +179,20 @@
   font-size: clamp(11px, 3cqw, 16px) !important;
 }
 :root[data-skin="cleopatra"] .display.lines {
-  left: 66.3% !important; top: 87.05% !important;
-  width: 26.5% !important; height: 5.3% !important;
+  left: 71.9% !important; top: 88.47% !important;
+  width: 15.2% !important; height: 2.65% !important;
   pointer-events: auto !important; cursor: pointer !important;
+}
+:root[data-skin="cleopatra"] .display.lines .control-box {
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  width: 100% !important; height: 100% !important; padding: 0 !important;
+}
+:root[data-skin="cleopatra"] .display.lines .label { display: none !important; }
+:root[data-skin="cleopatra"] .display.lines .value,
+:root[data-skin="cleopatra"] .display.lines #lines {
+  color: #ffe7a0 !important; font-size: clamp(11px, 3cqw, 16px) !important;
+  font-weight: 900 !important; text-shadow: 0 0 5px #c58c42, 0 2px 3px #000 !important;
+  transform: none !important;
 }
 :root[data-skin="cleopatra"] .display.win {
   left: 39% !important; top: 75.2% !important;
@@ -287,6 +303,40 @@
   box-shadow: 0 0 0 2px rgba(145, 255, 173, .95), 0 0 13px 6px rgba(40, 255, 105, .85), inset 0 0 6px rgba(255,255,255,.6) !important;
 }
 :root[data-skin="cleopatra"] .betminus:active::before {
+  opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
+  background: rgba(231, 47, 45, .72) !important;
+  box-shadow: 0 0 0 2px rgba(255, 161, 128, .95), 0 0 13px 6px rgba(255, 55, 37, .85), inset 0 0 6px rgba(255,255,255,.58) !important;
+}
+
+/* The LINES artwork contains its own symbols; preserve large touch zones and
+   light the matching icon green for + and red for −. */
+:root[data-skin="cleopatra"] .lineup,
+:root[data-skin="cleopatra"] .linedown {
+  width: 9% !important; height: 8% !important;
+  padding: 0 !important; border: 0 !important; border-radius: 0 !important;
+  background: transparent !important; color: transparent !important;
+  font-size: 0 !important; line-height: 0 !important;
+  box-shadow: none !important; overflow: visible !important;
+  z-index: 10 !important;
+}
+:root[data-skin="cleopatra"] .linedown { left: 63.0% !important; top: 85.65% !important; }
+:root[data-skin="cleopatra"] .lineup { left: 87.2% !important; top: 85.65% !important; }
+:root[data-skin="cleopatra"] .lineup::before,
+:root[data-skin="cleopatra"] .linedown::before {
+  content: "" !important; position: absolute !important;
+  left: 50% !important; top: 50% !important;
+  width: 70% !important; height: 45% !important;
+  border-radius: 50% !important; opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(.82) !important;
+  transition: opacity 100ms ease, transform 100ms ease, box-shadow 100ms ease !important;
+  pointer-events: none !important;
+}
+:root[data-skin="cleopatra"] .lineup:active::before {
+  opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
+  background: rgba(38, 226, 101, .72) !important;
+  box-shadow: 0 0 0 2px rgba(145, 255, 173, .95), 0 0 13px 6px rgba(40, 255, 105, .85), inset 0 0 6px rgba(255,255,255,.6) !important;
+}
+:root[data-skin="cleopatra"] .linedown:active::before {
   opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
   background: rgba(231, 47, 45, .72) !important;
   box-shadow: 0 0 0 2px rgba(255, 161, 128, .95), 0 0 13px 6px rgba(255, 55, 37, .85), inset 0 0 6px rgba(255,255,255,.58) !important;
