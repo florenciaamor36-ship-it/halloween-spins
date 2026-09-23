@@ -1046,3 +1046,10 @@ html,body{
 .display.bet .value,.display.bet #bet{transform:translateY(-3mm)!important;}
 /* Raise only the BALANCE number by 2 mm. */
 .display.balance .value,.display.balance #balance{transform:translateY(-2mm)!important;}
+
+
+/* Lower aligned BET and LINES readouts by 2 mm. */
+.display.lines .value,.display.lines #lines{transform:translateY(-1mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(-1mm)!important;}
+/* Extend the live loading fill 1 mm upward while keeping its lower edge fixed. */
+.loading-canvas .loading-track{top:calc(86.4% - 3mm)!important;height:calc(3% + 1mm)!important;}
