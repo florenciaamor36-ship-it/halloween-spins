@@ -993,3 +993,9 @@ html,body{
 .pay-symbol{width:min(6.41vw,3.61vh);height:min(6.41vw,3.61vh);}
 .paytable-rules{font-size:clamp(10px,min(2.564vw,1.444vh),14px);}
 .paytable-close{width:min(7.69vw,4.33vh);height:min(7.69vw,4.33vh);font-size:min(5.90vw,3.32vh);line-height:1;}
+
+
+/* Raise the loading bar 3 mm within the shared portrait canvas. */
+.loading-ui{
+  bottom:calc(max(0px,calc(50vh - 88.89vw)) + min(5.1vh,9.0667vw) + 3mm) !important;
+}
