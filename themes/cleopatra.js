@@ -10,8 +10,8 @@ window.SLOT_GAME_CONFIG = {
     },
     loading: 'assets/cleopatra/loading-screen.webp?v=1',
     spin: {
-      normal: 'assets/cleopatra/spin-normal.svg?v=1',
-      pressed: 'assets/cleopatra/spin-pressed.svg?v=1'
+      normal: 'assets/cleopatra/buttons/spin-normal.webp?v=1',
+      pressed: 'assets/cleopatra/buttons/spin-pressed.webp?v=1'
     },
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=1',

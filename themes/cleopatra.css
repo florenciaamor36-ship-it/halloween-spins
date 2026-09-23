@@ -162,30 +162,35 @@
 }
 
 :root[data-skin="cleopatra"] .spin {
-  left: 43% !important; top: 85.7% !important;
-  width: 14% !important; height: 8.1% !important;
+  left: 41% !important; top: 84.8% !important;
+  width: 18% !important; height: 10.2% !important;
   z-index: 12 !important;
   display: grid !important; place-items: center !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   opacity: 1 !important;
-  border: 2px solid #efd17b !important;
-  border-radius: 50% !important;
-  background: radial-gradient(circle at 50% 35%, #735536, #251b20 68%, #0d0c11) !important;
-  box-shadow: 0 0 0 2px #37bfc1 inset, 0 0 11px #000, 0 0 14px #ba9149 !important;
-  color: #fff0bc !important;
-  text-shadow: 0 1px 3px #000 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  text-shadow: none !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
 }
-:root[data-skin="cleopatra"] .spin-art { display: none !important; }
-:root[data-skin="cleopatra"] .spin::after {
-  content: "GIRAR";
-  color: #fff0bc;
-  font-size: clamp(8px, 2.1cqw, 13px);
-  font-weight: 900;
-  letter-spacing: .08em;
+:root[data-skin="cleopatra"] .spin-art {
+  position: absolute !important; inset: 0 !important;
+  width: 100% !important; height: 100% !important;
+  display: block !important; object-fit: contain !important;
+  transform: none !important; pointer-events: none !important;
 }
+:root[data-skin="cleopatra"] .spin-art-pressed { display: none !important; }
+:root[data-skin="cleopatra"] .spin:active .spin-art-normal { display: none !important; }
+:root[data-skin="cleopatra"] .spin:active .spin-art-pressed { display: block !important; }
+:root[data-skin="cleopatra"] .spin::after { content: none !important; }
 :root[data-skin="cleopatra"] .spin:active {
-  transform: translateY(2px) scale(.97);
-  background: radial-gradient(circle at 50% 35%, #31585a, #211b20 70%, #0d0c11) !important;
+  transform: translateY(1px) scale(.98) !important;
+  background: transparent !important; box-shadow: none !important;
 }
 :root[data-skin="cleopatra"] .betminus,
 :root[data-skin="cleopatra"] .betplus,
