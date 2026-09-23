@@ -1027,5 +1027,6 @@ html,body{
 .loading-canvas .loading-status{position:absolute!important;left:0!important;right:0!important;top:90.5%!important;width:100%!important;text-align:center!important;}
 
 
-/* Raise only the live fill track by the requested 2 mm. */
-.loading-canvas .loading-track{top:calc(86.4% - 2mm)!important;}
+/* Raise only the LINES and BET values by 1.5 mm from their current positions. */
+.display.lines .value,.display.lines #lines{transform:translateY(.5mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(1.5mm)!important;}
