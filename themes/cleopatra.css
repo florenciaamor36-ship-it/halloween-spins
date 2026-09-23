@@ -277,7 +277,7 @@
   z-index: 2 !important;
   width: min(78vw, 44vh) !important;
   gap: 7px !important;
-  bottom: calc(max(0px, calc(50vh - 88.89vw)) + min(5.1vh, 9.0667vw) + 3mm) !important;
+  bottom: calc(max(0px, calc(50vh - 88.89vw)) + min(5.1vh, 9.0667vw) + min(7.8vh, 13.8667vw) + 3mm) !important;
 }
 :root[data-skin="cleopatra"] .loading-track {
   height: clamp(25px, 4.1vh, 34px) !important;
