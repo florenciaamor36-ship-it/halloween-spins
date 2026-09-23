@@ -119,23 +119,30 @@
 }
 :root[data-skin="cleopatra"] .display.balance .label { display: none !important; }
 :root[data-skin="cleopatra"] .display.balance .value {
-  color: #fff0bc !important;
-  font-size: clamp(13px, 3.6cqw, 18px) !important;
+  color: #211306 !important;
+  font-size: clamp(10px, 3cqw, 14px) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
   padding: 0 !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65) !important;
+  text-shadow: 0 1px 0 rgba(255, 235, 180, 0.72), 0 0 2px rgba(39, 22, 5, 0.35) !important;
+}
+:root[data-skin="cleopatra"] .display.balance #balance {
+  color: #211306 !important;
+  font-size: clamp(10px, 3cqw, 14px) !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 0 rgba(255, 235, 180, 0.72), 0 0 2px rgba(39, 22, 5, 0.35) !important;
+  transform: none !important;
 }
 :root[data-skin="cleopatra"] .display.balance {
-  left: 69.95% !important; right: auto !important;
-  top: 4.03% !important; width: 21.15% !important; height: 4.79% !important;
+  left: 72.63% !important; right: auto !important;
+  top: 4.99% !important; width: 15.7% !important; height: 1.9% !important;
   gap: 0 !important;
-  background: rgba(23, 75, 67, 0.86) !important;
-  border-radius: 5px !important;
-  box-shadow: inset 0 0 8px rgba(4, 36, 32, 0.32) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   pointer-events: none !important;
 }
 :root[data-skin="cleopatra"] .display.jackpot {
