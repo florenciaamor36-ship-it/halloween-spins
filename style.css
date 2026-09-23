@@ -966,7 +966,7 @@ html,body{
 /* Keep the auto-stop affordance proportionate to the game canvas on PC and
    phone while leaving its approved mobile width and top offset intact. */
 .auto-stop-overlay{
-  top:min(1.73vh,3.08vw)!important;
+  top:calc(max(0px,calc(50vh - 88.89vw)) + min(1.73vh,3.08vw))!important;
   width:min(68vw,38.2vh)!important;
   height:min(6.35vh,11.29vw)!important;
   font-size:max(12px,min(3vw,1.69vh))!important;
