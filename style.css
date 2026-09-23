@@ -890,3 +890,9 @@ html,body{
 .display.jackpot #jackpot{
   transform:translateX(1cm) !important;
 }
+
+
+/* Pull JACKPOT value half a centimeter back to the left. */
+.display.jackpot #jackpot{
+  transform:translateX(.5cm) !important;
+}
