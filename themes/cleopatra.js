@@ -46,6 +46,7 @@ window.SLOT_GAME_CONFIG = {
        preserve the Halloween view. */
     symbolScale: 0.92,
     symbolScaleY: 1,
+    symbolFit: 'cell-width',
     winEffects: {
       bonus: { type: 'gold-chest', when: 'bonus-awarded', color: '#f4c96b', highlight: '#fff1ad' },
       'blue-lotus-medallion': { type: 'blue-lotus', when: 'line-win', color: '#38bdf8', highlight: '#e0f7ff' }
