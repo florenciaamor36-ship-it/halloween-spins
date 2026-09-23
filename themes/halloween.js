@@ -118,9 +118,9 @@ window.SLOT_GAME_CONFIG = {
     lowWinTitle: 'NICE WIN',
     labels: { balance: 'BALANCE', bet: 'BET', lines: 'LINES', win: 'WIN', jackpot: 'JACKPOT' },
     messages: {
-      autoSpin: 'AUTOTIROS',
+      autoSpin: 'AUTO',
       stopAutoSpin: 'PARAR',
-      stopAutoSpinOverlay: 'PARAR AUTOTIROS',
+      stopAutoSpinOverlay: 'PARAR AUTO',
       insufficientBalance: 'SALDO INSUFICIENTE',
       bonusAward: 'BONUS +{awarded} TIROS GRATIS\nRESTANTES: {remaining}',
       scatterAward: 'SCATTER +${amount}\nPREMIO TOTAL: ${total}',
