@@ -880,3 +880,8 @@ html,body{
 
 .auto-stop-overlay{position:fixed!important;top:12px!important;left:50%!important;bottom:auto!important;transform:translateX(-50%)!important;width:min(68vw,280px)!important;height:44px!important;display:none!important;align-items:center!important;justify-content:center!important;z-index:100!important;opacity:1!important;border:2px solid #ffb464!important;border-radius:10px!important;background:linear-gradient(180deg,#582b1e,#21121a)!important;color:#fff0a8!important;font-size:clamp(12px,3vw,17px)!important;letter-spacing:.6px!important;box-shadow:0 0 14px rgba(255,156,84,.55)!important;}
 .auto-stop-overlay.is-visible{display:flex!important;}
+
+/* Lower the visible JACKPOT number by 5% of the shared portrait canvas. */
+.display.jackpot{
+  top:16.5% !important;
+}
