@@ -885,3 +885,8 @@ html,body{
 .display.jackpot{
   top:19.5% !important;
 }
+
+/* Shift only the live JACKPOT number one centimeter to the right. */
+.display.jackpot #jackpot{
+  transform:translateX(1cm) !important;
+}
