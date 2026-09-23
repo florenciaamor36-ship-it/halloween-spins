@@ -54,7 +54,7 @@ class SlotScene extends Phaser.Scene{
   const glow=this.fx[i],symbol=this.symbols[i],accent=effect?.color||GAME_CONFIG.colors.accent;
   const color=Phaser.Display.Color.HexStringToColor(accent).color;
   this.tweens.killTweensOf(glow);this.tweens.killTweensOf(symbol);
-  glow.clear();glow.fillStyle(color,.5);glow.fillCircle(0,0,effect?.type==='gold-chest'?70:58);
+  if(effect){glow.clear();glow.fillStyle(color,.5);glow.fillCircle(0,0,effect.type==='gold-chest'?70:58)}
   glow.setVisible(true).setAlpha(.25).setScale(.6);symbol.setTint(color);
   this.tweens.add({targets:glow,alpha:.95,scale:1.45,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut',onComplete:()=>{glow.setVisible(false);symbol.clearTint()}});
   this.tweens.add({targets:symbol,alpha:.55,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut'});
