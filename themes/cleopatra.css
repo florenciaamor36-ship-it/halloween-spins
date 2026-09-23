@@ -386,6 +386,27 @@
 }
 :root[data-skin="cleopatra"] .auto-spin { left: 5% !important; right: auto !important; }
 :root[data-skin="cleopatra"] .menu { left: auto !important; right: 5% !important; }
+:root[data-skin="cleopatra"] .menu {
+  left: auto !important; right: 3% !important;
+  top: auto !important; bottom: .5% !important;
+  width: 28% !important; height: 5.6% !important;
+  display: block !important; padding: 0 !important;
+  border: 0 !important; border-radius: 0 !important;
+  background: transparent !important;
+  background-image: var(--menu-art-normal, none) !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  box-shadow: none !important;
+  color: transparent !important; font-size: 0 !important;
+  line-height: 0 !important; letter-spacing: 0 !important;
+  text-shadow: none !important; overflow: visible !important;
+  z-index: 9 !important;
+}
+:root[data-skin="cleopatra"] .menu:active {
+  background-image: var(--menu-art-pressed, var(--menu-art-normal)) !important;
+  transform: translateY(1px) scale(.98) !important;
+}
 :root[data-skin="cleopatra"] .auto-spin.is-active { border-color: #42d2cf !important; color: #fff0bc !important; }
 :root[data-skin="cleopatra"] .auto-stop-overlay {
   opacity: 1 !important;
