@@ -1,0 +1,26 @@
+/* Shared theme tokens applied from window.SLOT_GAME_CONFIG.colors. */
+:root {
+  --skin-accent: #d8ff82;
+  --skin-glow: #94ff31;
+  --skin-highlight: #fff0a8;
+  --skin-panel: #171126;
+}
+
+.display b,
+.control-box .value,
+.announcement-text,
+.paytable-brand {
+  color: var(--skin-accent) !important;
+  text-shadow: 0 0 6px var(--skin-glow), 0 2px 3px #000 !important;
+}
+
+.menu,
+.auto-spin {
+  border-color: var(--skin-accent) !important;
+  color: var(--skin-accent) !important;
+  box-shadow: 0 0 0 2px var(--skin-panel) inset, 0 0 12px color-mix(in srgb, var(--skin-accent) 42%, transparent), 0 3px 0 #05040b !important;
+}
+
+.paytable-card h2 {
+  color: var(--skin-highlight) !important;
+}
