@@ -15,7 +15,7 @@ window.SLOT_GAME_CONFIG = {
     },
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=1',
-      bet: 'assets/cleopatra/indicators/bet.webp?v=1',
+      bet: 'assets/cleopatra/indicators/bet.webp?v=2',
       lines: 'assets/cleopatra/plaque.svg?v=1'
     },
     announcementFrame: 'assets/cleopatra/announcement-frame.svg?v=1',
