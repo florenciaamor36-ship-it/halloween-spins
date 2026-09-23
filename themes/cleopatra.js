@@ -42,10 +42,10 @@ window.SLOT_GAME_CONFIG = {
   ],
   visual: {
     /* The supplied frame has a taller portrait window than a conventional 5×3
-       reel bed. Keep the matrix square-ish and legible, with mild vertical
-       emphasis on this theme only; omitted values preserve the Halloween view. */
+       reel bed. Preserve each symbol's source proportions; omitted values
+       preserve the Halloween view. */
     symbolScale: 0.92,
-    symbolScaleY: 1.55,
+    symbolScaleY: 1,
     winEffects: {
       bonus: { type: 'gold-chest', when: 'bonus-awarded', color: '#f4c96b', highlight: '#fff1ad' },
       'blue-lotus-medallion': { type: 'blue-lotus', when: 'line-win', color: '#38bdf8', highlight: '#e0f7ff' }
