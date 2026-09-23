@@ -14,7 +14,7 @@ window.SLOT_GAME_CONFIG = {
       pressed: 'assets/cleopatra/spin-pressed.svg?v=1'
     },
     indicators: {
-      balance: 'assets/cleopatra/plaque.svg?v=1',
+      balance: 'assets/cleopatra/indicators/balance.webp?v=1',
       bet: 'assets/cleopatra/plaque.svg?v=1',
       lines: 'assets/cleopatra/plaque.svg?v=1'
     },
