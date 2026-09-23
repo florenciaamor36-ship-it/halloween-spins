@@ -1039,3 +1039,10 @@ html,body{
 /* Raise both values another 1 mm while keeping them horizontally centered. */
 .display.lines .value,.display.lines #lines{transform:translateY(-1mm)!important;}
 .display.bet .value,.display.bet #bet{transform:translateY(0mm)!important;}
+
+
+/* Raise LINES by 2 mm and align BET to the same value baseline. */
+.display.lines .value,.display.lines #lines{transform:translateY(-3mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(-3mm)!important;}
+/* Raise only the BALANCE number by 2 mm. */
+.display.balance .value,.display.balance #balance{transform:translateY(-2mm)!important;}
