@@ -1,0 +1,10 @@
+{
+  "name": "Halloween Spins",
+  "short_name": "Halloween",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0614",
+  "theme_color": "#0d0614"
+}

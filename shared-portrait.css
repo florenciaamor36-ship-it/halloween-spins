@@ -1,0 +1,71 @@
+/* One identical 9:16 canvas on phones, tablets, and desktop. */
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+body {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.game,
+.loading-canvas {
+  width: min(100vw, 56.25vh) !important;
+  height: min(100vh, 177.7778vw) !important;
+  width: min(100vw, 56.25dvh) !important;
+  height: min(100dvh, 177.7778vw) !important;
+  max-width: none !important;
+  max-height: none !important;
+  aspect-ratio: 9 / 16 !important;
+  margin: 0 auto !important;
+}
+
+.loading-screen {
+  display: grid !important;
+  place-items: center !important;
+}
+
+.loading-canvas {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.loading-canvas .loading-art {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  transform: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.orientation-warning {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  align-items: center;
+  justify-content: center;
+  padding: 12vw;
+  background: #0d0614;
+  color: #fff;
+  text-align: center;
+  font: 800 clamp(20px, 5vw, 30px) / 1.35 Arial, sans-serif;
+}
+
+/* Fallback for browsers that do not honor the native orientation lock. */
+@media (orientation: landscape) and (pointer: coarse) {
+  .orientation-warning {
+    display: flex !important;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Cleopatra Spins",
+  "short_name": "Cleopatra",
+  "start_url": "./cleopatra.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0614",
+  "theme_color": "#0d0614"
+}

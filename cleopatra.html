@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d0614">
   <title>Cleopatra Spins · Vista previa</title>
+  <link rel="manifest" href="cleopatra.webmanifest?v=portrait-lock-1">
+  <script src="orientation-lock.js?v=portrait-lock-1" defer></script>
   <link rel="icon" type="image/svg+xml" href="assets/cleopatra/favicon.svg?v=1">
   <link rel="apple-touch-icon" href="assets/cleopatra/favicon.svg?v=1">
   <link rel="preload" as="image" href="assets/cleopatra/loading-screen.webp?v=1" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=loading-up-3mm-1">
+  <link rel="stylesheet" href="style.css?v=single-portrait-13">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="themes/cleopatra.css?v=cleopatra-menu-artwork-fix-2">
+  <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-1">
 </head>
 <body>
+  <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
   <section id="loadingScreen" class="loading-screen" aria-live="polite">
     <img class="loading-art" src="assets/cleopatra/loading-screen.webp?v=1" alt="" fetchpriority="high" decoding="sync">
     <div class="loading-ui">
