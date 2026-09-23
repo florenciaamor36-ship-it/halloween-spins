@@ -919,3 +919,9 @@ html,body{
 .game .announcement-text.announcement-pulse{
   font-size:clamp(13px,3.6cqw,20px) !important;
 }
+
+
+/* Keep the loading progress bar proportional to the shared 9:16 game canvas. */
+.loading-ui{
+  width:min(80vw,45vh) !important;
+}
