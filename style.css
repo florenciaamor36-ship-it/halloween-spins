@@ -1032,6 +1032,10 @@ html,body{
 .display.bet .value,.display.bet #bet{transform:translateY(1.5mm)!important;}
 
 
-/* Raise both live values another 0.5 mm. */
-.display.lines .value,.display.lines #lines{transform:translateY(0mm)!important;}
-.display.bet .value,.display.bet #bet{transform:translateY(1mm)!important;}
+/* Center LINES and BET readouts over their shortened artwork panels. */
+.display.lines{left:3%!important;right:auto!important;top:82.5%!important;width:28%!important;height:10.5%!important;}
+.display.bet{left:auto!important;right:3%!important;top:82.5%!important;width:28%!important;height:10.5%!important;}
+.display.lines .control-box,.display.bet .control-box{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:100%!important;padding:0!important;}
+/* Raise both values another 1 mm while keeping them horizontally centered. */
+.display.lines .value,.display.lines #lines{transform:translateY(-1mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(0mm)!important;}
