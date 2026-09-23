@@ -1,18 +1,19 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-skin="cleopatra">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Cleopatra Spins · Vista previa</title>
   <link rel="icon" type="image/svg+xml" href="assets/cleopatra/favicon.svg?v=1">
   <link rel="apple-touch-icon" href="assets/cleopatra/favicon.svg?v=1">
+  <link rel="preload" as="image" href="assets/cleopatra/loading-screen.webp?v=1" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=loading-up-3mm-1">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="themes/cleopatra.css?v=cleopatra-loading-screen-2">
 </head>
 <body>
   <section id="loadingScreen" class="loading-screen" aria-live="polite">
-    <img class="loading-art" alt="">
+    <img class="loading-art" src="assets/cleopatra/loading-screen.webp?v=1" alt="" fetchpriority="high" decoding="sync">
     <div class="loading-ui">
       <div class="loading-track"><div id="loadingBar" class="loading-fill"></div></div>
       <div class="loading-status"><span id="loadingMessage">Cargando Cleopatra</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div>
