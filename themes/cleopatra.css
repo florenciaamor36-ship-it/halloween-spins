@@ -192,6 +192,28 @@
   transform: translateY(1px) scale(.98) !important;
   background: transparent !important; box-shadow: none !important;
 }
+/* Small golden particles burst outward on each Cleopatra Spin press. */
+:root[data-skin="cleopatra"] .spin-gold-burst {
+  position: absolute !important; inset: 0 !important;
+  z-index: 4 !important; overflow: visible !important;
+  pointer-events: none !important;
+}
+:root[data-skin="cleopatra"] .spin-gold-spark {
+  position: absolute !important; left: 50% !important; top: 50% !important;
+  width: var(--size, 4px) !important; height: var(--size, 4px) !important;
+  opacity: 0;
+  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+  background: radial-gradient(circle, #fff9d8 0 18%, #ffd45b 42%, #d98a1b 100%) !important;
+  filter: drop-shadow(0 0 3px rgba(255, 207, 72, .95)) !important;
+  transform: translate(-50%, -50%) scale(.18) rotate(0deg);
+  animation: cleopatra-gold-spark-burst 720ms cubic-bezier(.15, .72, .28, 1) var(--delay, 0ms) forwards;
+}
+@keyframes cleopatra-gold-spark-burst {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.18) rotate(0deg); }
+  16% { opacity: 1; transform: translate(-50%, -50%) scale(1.1) rotate(24deg); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.12) rotate(175deg); }
+}
+
 :root[data-skin="cleopatra"] .betminus,
 :root[data-skin="cleopatra"] .betplus,
 :root[data-skin="cleopatra"] .lineup,

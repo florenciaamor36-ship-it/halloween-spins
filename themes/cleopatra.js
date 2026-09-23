@@ -149,3 +149,41 @@ window.SLOT_GAME_CONFIG = {
     winningTint: '#fff0bc'
   }
 };
+
+// Cleopatra-only golden spark burst on a real button press/tap.
+(() => {
+  const bindGoldSparks = () => {
+    const spin = document.getElementById('spin');
+    if (!spin || spin.dataset.cleoGoldSparkBound) return;
+    spin.dataset.cleoGoldSparkBound = 'true';
+    const directions = [
+      [-10,-3],[-8,-7],[-3,-10],[3,-10],[8,-7],[10,-3],
+      [10,3],[8,7],[3,10],[-3,10],[-8,7],[-10,3]
+    ];
+    const burst = () => {
+      const layer = document.createElement('span');
+      layer.className = 'spin-gold-burst';
+      layer.setAttribute('aria-hidden', 'true');
+      directions.forEach(([dx, dy], i) => {
+        const spark = document.createElement('i');
+        spark.className = 'spin-gold-spark';
+        spark.style.setProperty('--dx', `${dx}cqw`);
+        spark.style.setProperty('--dy', `${dy}cqw`);
+        spark.style.setProperty('--delay', `${(i % 4) * 18}ms`);
+        spark.style.setProperty('--size', i % 3 === 0 ? '5px' : '4px');
+        layer.appendChild(spark);
+      });
+      spin.appendChild(layer);
+      window.setTimeout(() => layer.remove(), 900);
+    };
+    spin.addEventListener('pointerdown', event => {
+      if (event.button !== undefined && event.button !== 0) return;
+      burst();
+    }, true);
+    spin.addEventListener('keydown', event => {
+      if (!event.repeat && (event.key === 'Enter' || event.key === ' ')) burst();
+    }, true);
+  };
+  if (document.getElementById('spin')) bindGoldSparks();
+  else document.addEventListener('DOMContentLoaded', bindGoldSparks, { once: true });
+})();
