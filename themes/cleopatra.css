@@ -164,6 +164,15 @@
   color: #ffe7a0 !important; font-size: clamp(11px, 3cqw, 16px) !important;
   font-weight: 900 !important; text-shadow: 0 1px 3px #000 !important;
 }
+/* The shared stylesheet targets #bet with higher specificity and was tinting it neon green.
+   Override the number only for Cleopatra and clear its inherited downward offset so it sits
+   centered in the dark window of the supplied artwork. */
+:root[data-skin="cleopatra"] .display.bet #bet {
+  color: #ffe7a0 !important;
+  text-shadow: 0 0 5px #c58c42, 0 2px 3px #000 !important;
+  transform: none !important;
+  font-size: clamp(11px, 3cqw, 16px) !important;
+}
 :root[data-skin="cleopatra"] .display.lines {
   left: 66.3% !important; top: 87.05% !important;
   width: 26.5% !important; height: 5.3% !important;
