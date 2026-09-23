@@ -26,24 +26,24 @@ window.SLOT_GAME_CONFIG = {
     winFrames: [{ key: 'cleopatra-win-glow', src: 'assets/cleopatra/win-glow.svg?v=1' }]
   },
   symbols: [
-    { key: 'pharaoh-mask', label: 'Máscara de faraón', asset: 'assets/cleopatra/symbols/pharaoh-mask.webp?v=1' },
-    { key: 'gold-scarab', label: 'Escarabajo dorado', asset: 'assets/cleopatra/symbols/gold-scarab.webp?v=1' },
-    { key: 'eye-of-horus', label: 'Ojo de Horus', asset: 'assets/cleopatra/symbols/eye-of-horus.webp?v=1' },
-    { key: 'anubis-idol', label: 'Ídolo de Anubis', asset: 'assets/cleopatra/symbols/anubis-idol.webp?v=1' },
-    { key: 'pharaoh-scepter', label: 'Cetro de faraón', asset: 'assets/cleopatra/symbols/pharaoh-scepter.webp?v=1' },
-    { key: 'bastet-cat', label: 'Gata Bastet', asset: 'assets/cleopatra/symbols/bastet-cat.webp?v=1' },
-    { key: 'royal-cobra', label: 'Cobra real', asset: 'assets/cleopatra/symbols/royal-cobra.webp?v=1' },
-    { key: 'golden-ankh', label: 'Anj dorado', asset: 'assets/cleopatra/symbols/golden-ankh.webp?v=1' },
-    { key: 'sacred-lotus', label: 'Loto sagrado', asset: 'assets/cleopatra/symbols/sacred-lotus.webp?v=1' },
-    { key: 'blue-lotus-medallion', label: 'Medallón de loto azul', asset: 'assets/cleopatra/symbols/blue-lotus-medallion.webp?v=1' },
-    { key: 'wild', label: 'CLEOPATRA · WILD', asset: 'assets/cleopatra/symbols/cleopatra-wild.webp?v=1' },
-    { key: 'scatter', label: 'PIRÁMIDE · SCATTER', asset: 'assets/cleopatra/symbols/pyramid-scatter.webp?v=1' },
-    { key: 'bonus', label: 'TESORO · BONUS', asset: 'assets/cleopatra/symbols/treasure-bonus.webp?v=1' }
+    { key: 'pharaoh-mask', label: 'Máscara de faraón', asset: 'assets/cleopatra/symbols/fitted/pharaoh-mask.webp?v=1' },
+    { key: 'gold-scarab', label: 'Escarabajo dorado', asset: 'assets/cleopatra/symbols/fitted/gold-scarab.webp?v=1' },
+    { key: 'eye-of-horus', label: 'Ojo de Horus', asset: 'assets/cleopatra/symbols/fitted/eye-of-horus.webp?v=1' },
+    { key: 'anubis-idol', label: 'Ídolo de Anubis', asset: 'assets/cleopatra/symbols/fitted/anubis-idol.webp?v=1' },
+    { key: 'pharaoh-scepter', label: 'Cetro de faraón', asset: 'assets/cleopatra/symbols/fitted/pharaoh-scepter.webp?v=1' },
+    { key: 'bastet-cat', label: 'Gata Bastet', asset: 'assets/cleopatra/symbols/fitted/bastet-cat.webp?v=1' },
+    { key: 'royal-cobra', label: 'Cobra real', asset: 'assets/cleopatra/symbols/fitted/royal-cobra.webp?v=1' },
+    { key: 'golden-ankh', label: 'Anj dorado', asset: 'assets/cleopatra/symbols/fitted/golden-ankh.webp?v=1' },
+    { key: 'sacred-lotus', label: 'Loto sagrado', asset: 'assets/cleopatra/symbols/fitted/sacred-lotus.webp?v=1' },
+    { key: 'blue-lotus-medallion', label: 'Medallón de loto azul', asset: 'assets/cleopatra/symbols/fitted/blue-lotus-medallion.webp?v=1' },
+    { key: 'wild', label: 'CLEOPATRA · WILD', asset: 'assets/cleopatra/symbols/fitted/cleopatra-wild.webp?v=1' },
+    { key: 'scatter', label: 'PIRÁMIDE · SCATTER', asset: 'assets/cleopatra/symbols/fitted/pyramid-scatter.webp?v=1' },
+    { key: 'bonus', label: 'TESORO · BONUS', asset: 'assets/cleopatra/symbols/fitted/treasure-bonus.webp?v=1' }
   ],
   visual: {
     /* The supplied frame has a taller portrait window than a conventional 5×3
-       reel bed. Preserve each symbol's source proportions; omitted values
-       preserve the Halloween view. */
+       reel bed. The fitted symbol copies normalize transparent margins while
+       preserving each source aspect ratio; other themes keep their defaults. */
     symbolScale: 0.92,
     symbolScaleY: 1,
     symbolFit: 'cell-width',
