@@ -1030,3 +1030,8 @@ html,body{
 /* Raise only the LINES and BET values by 1.5 mm from their current positions. */
 .display.lines .value,.display.lines #lines{transform:translateY(.5mm)!important;}
 .display.bet .value,.display.bet #bet{transform:translateY(1.5mm)!important;}
+
+
+/* Raise both live values another 0.5 mm. */
+.display.lines .value,.display.lines #lines{transform:translateY(0mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(1mm)!important;}
