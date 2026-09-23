@@ -11,7 +11,7 @@ window.SLOT_GAME_CONFIG = {
       portrait: 'assets/frame-mobile.webp?v=4',
       fallback: 'assets/frame-pc.webp'
     },
-    loading: 'assets/loading-screen.jpg',
+    loading: 'assets/loading-screen.webp',
     spin: {
       normal: 'assets/buttons/spin-normal.webp?v=1',
       pressed: 'assets/buttons/spin-pressed.webp?v=1'
