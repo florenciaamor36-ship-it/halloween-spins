@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Halloween Spins</title>
+  <title>Cleopatra Spins · Vista previa</title>
   <link rel="stylesheet" href="style.css?v=loading-up-3mm-1">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
+  <link rel="stylesheet" href="themes/cleopatra.css?v=cleopatra-portrait-1">
 </head>
 <body>
   <section id="loadingScreen" class="loading-screen" aria-live="polite">
     <img class="loading-art" alt="">
     <div class="loading-ui">
       <div class="loading-track"><div id="loadingBar" class="loading-fill"></div></div>
-      <div class="loading-status"><span id="loadingMessage">Cargando</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div>
+      <div class="loading-status"><span id="loadingMessage">Cargando Cleopatra</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div>
     </div>
   </section>
   <section id="lowWinScreen" class="lowwin-screen" aria-hidden="true">
@@ -27,19 +28,19 @@
   <main id="game" class="game">
     <picture class="frame"><source media="all"><img alt=""></picture>
     <img class="bet-bar" alt=""><img class="balance-bar" alt="">
-    <section id="reels" class="reels" aria-label="Rodillos"></section>
+    <section id="reels" class="reels" aria-label="Rodillos"><!-- Phaser injects the shared engine canvas here. --></section>
     <section id="announcementPanel" class="announcement-panel" aria-label="Anuncios del juego"><img alt="Panel de anuncios"><div id="announcementText" class="announcement-text"></div></section>
     <img class="lines-bar" alt="">
     <section class="ui">
-      <div class="display balance"><div class="control-box"><span class="label">BALANCE</span><b id="balance" class="value">10000</b></div></div>
-      <div class="display bet"><div class="control-box"><span class="label">BET</span><b id="bet" class="value">50</b></div></div>
-      <div class="display lines"><div class="control-box"><span class="label">LINES</span><b id="lines" class="value">20</b></div></div>
-      <div class="display win"><div class="control-box"><span class="label">WIN</span><b id="win" class="value">0</b></div></div>
-      <div class="display jackpot"><span class="label" id="jackpotLabel">JACKPOT</span> <b id="jackpot">75420</b></div>
+      <div class="display balance"><div class="control-box"><span class="label">SALDO</span><b id="balance" class="value">10000</b></div></div>
+      <div class="display bet"><div class="control-box"><span class="label">APUESTA</span><b id="bet" class="value">50</b></div></div>
+      <div class="display lines"><div class="control-box"><span class="label">LÍNEAS</span><b id="lines" class="value">20</b></div></div>
+      <div class="display win"><div class="control-box"><span class="label">PREMIO</span><b id="win" class="value">0</b></div></div>
+      <div class="display jackpot"><span class="label" id="jackpotLabel">TESORO</span> <b id="jackpot">75420</b></div>
       <button id="spin" class="spin" type="button" aria-label="Girar"><img class="spin-art spin-art-normal" alt=""><img class="spin-art spin-art-pressed" alt=""></button>
-      <button id="minus" class="betminus">−</button><button id="plus" class="betplus">+</button>
-      <button id="lineUp" class="lineup" aria-label="Más líneas">+</button><button id="lineDown" class="linedown" aria-label="Menos líneas">−</button>
-      <button id="autoSpin" class="auto-spin" type="button" aria-pressed="false">AUTO</button><button id="menu" class="menu">MENU</button>
+      <button id="minus" class="betminus" type="button" aria-label="Bajar apuesta">−</button><button id="plus" class="betplus" type="button" aria-label="Subir apuesta">+</button>
+      <button id="lineUp" class="lineup" type="button" aria-label="Más líneas">+</button><button id="lineDown" class="linedown" type="button" aria-label="Menos líneas">−</button>
+      <button id="autoSpin" class="auto-spin" type="button" aria-pressed="false">AUTO</button><button id="menu" class="menu" type="button">PREMIOS</button>
     </section>
   </main>
   <button id="autoStopOverlay" class="auto-stop-overlay" type="button">PARAR AUTO</button>
@@ -52,7 +53,7 @@
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/halloween.js?v=auto-label-1"></script>
+  <script src="themes/cleopatra.js?v=cleopatra-theme-1"></script>
   <script src="main.js?v=cleopatra-visual-config-1"></script>
 </body>
 </html>

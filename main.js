@@ -2,6 +2,9 @@ const GAME_CONFIG=window.SLOT_GAME_CONFIG;
 if(!GAME_CONFIG)throw new Error('Slot game configuration was not loaded');
 const COLS=GAME_CONFIG.rules.cols,ROWS=GAME_CONFIG.rules.rows;
 const SYMBOL_KEYS=GAME_CONFIG.symbols.map(symbol=>symbol.key);
+const VISUAL_CONFIG=GAME_CONFIG.visual||{};
+const SYMBOL_SCALE=VISUAL_CONFIG.symbolScale??.78;
+const SYMBOL_SCALE_Y=VISUAL_CONFIG.symbolScaleY??1;
 const WIN_FRAMES=GAME_CONFIG.assets.winFrames.map(frame=>frame.key);
 const PAYLINES=GAME_CONFIG.rules.paylines,LINE_COLORS=GAME_CONFIG.rules.lineColors;
 const SYMBOL_WEIGHTS=GAME_CONFIG.rules.symbolWeights,WEIGHT_TOTAL=GAME_CONFIG.rules.weightTotal;
@@ -44,7 +47,7 @@ class SlotScene extends Phaser.Scene{
  preload(){setLoadingProgress(0);this.load.on('progress',value=>setLoadingProgress(value));this.load.once('complete',()=>setLoadingProgress(1));GAME_CONFIG.symbols.forEach(symbol=>this.load.image(symbol.key,symbol.asset));GAME_CONFIG.assets.winFrames.forEach(frame=>this.load.image(frame.key,frame.src))}
  create(){scene=this;this.makeGrid();setLoadingProgress(1);requestAnimationFrame(()=>setTimeout(finishLoading,220));this.scale.on('resize',()=>this.layout());this.layout();this.events.on('shutdown',()=>this.clearPayline())}
  makeGrid(){for(let i=0;i<COLS*ROWS;i++){const t=this.add.image(0,0,SYMBOL_KEYS[rand()]).setOrigin(.5);const glow=this.add.graphics();glow.fillStyle(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.glow).color,.42);glow.fillCircle(0,0,58);glow.setVisible(false);const overlay=this.add.image(0,0,WIN_FRAMES[0]).setOrigin(.5).setAlpha(0);this.symbols.push(t);this.fx.push(glow);this.overlays.push(overlay);this.grid.push(rand())}}
- layout(){const w=this.scale.width,h=this.scale.height;this.lastLayout={w,h};this.symbols.forEach((t,i)=>{const x=((i%COLS)+.5)*w/COLS,y=(Math.floor(i/COLS)+.5)*h/ROWS,size=Math.min(w/COLS,h/ROWS)*.78;t.x=x;t.y=y;t.setScale(Math.min(size/t.width,size/t.height));this.fx[i].setPosition(x,y);const o=this.overlays[i];o.setPosition(x,y);o.setScale(Math.min(size*1.22/o.width,size*.9/o.height))})}
+ layout(){const w=this.scale.width,h=this.scale.height;this.lastLayout={w,h};this.symbols.forEach((t,i)=>{const x=((i%COLS)+.5)*w/COLS,y=(Math.floor(i/COLS)+.5)*h/ROWS,size=Math.min(w/COLS,h/ROWS)*SYMBOL_SCALE;t.x=x;t.y=y;const symbolScale=Math.min(size/t.width,size/t.height);t.setScale(symbolScale,symbolScale*SYMBOL_SCALE_Y);this.fx[i].setPosition(x,y);const o=this.overlays[i];o.setPosition(x,y);const overlayScale=Math.min(size*1.22/o.width,size*.9/o.height);o.setScale(overlayScale,overlayScale*SYMBOL_SCALE_Y)})}
  baseY(index){return (Math.floor(index/COLS)+.5)*this.scale.height/ROWS}
  animateWinSymbol(i){const glow=this.fx[i],symbol=this.symbols[i];this.tweens.killTweensOf(glow);this.tweens.killTweensOf(symbol);glow.setVisible(true).setAlpha(.25).setScale(.6);symbol.setTint(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.accent).color);this.tweens.add({targets:glow,alpha:.95,scale:1.45,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut',onComplete:()=>{glow.setVisible(false);symbol.clearTint()}});this.tweens.add({targets:symbol,alpha:.55,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut'})}
  clearPayline(){if(this.payline){this.payline.destroy();this.payline=null}}
