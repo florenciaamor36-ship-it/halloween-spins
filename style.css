@@ -959,7 +959,7 @@ html,body{
   object-fit:cover;
 }
 .loading-ui{
-  bottom:calc(max(0px,(100vh - 177.78vw)/2) + min(5.1vh,9.0667vw))!important;
+  bottom:calc(max(0px,calc(50vh - 88.89vw)) + min(5.1vh,9.0667vw))!important;
 }
 .loading-status{font-size:clamp(13px,min(3.33vw,1.875vh),15px);}
 
