@@ -113,17 +113,20 @@
   font-size: clamp(13px, 3.6cqw, 18px) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
-  padding: 3px 9px !important;
-  background: rgba(23, 75, 67, 0.78) !important;
-  border: 1px solid rgba(235, 201, 119, 0.72) !important;
-  border-radius: 5px !important;
-  box-shadow: 0 1px 4px rgba(27, 16, 5, 0.38) !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65) !important;
 }
 :root[data-skin="cleopatra"] .display.balance {
   left: 40.05% !important; right: auto !important;
-  top: 4.25% !important; width: 19.9% !important; height: 4.35% !important;
-  gap: 0 !important; pointer-events: none !important;
+  top: 4.3% !important; width: 19.95% !important; height: 4.25% !important;
+  gap: 0 !important;
+  background: rgba(23, 75, 67, 0.86) !important;
+  border-radius: 5px !important;
+  box-shadow: inset 0 0 8px rgba(4, 36, 32, 0.32) !important;
+  pointer-events: none !important;
 }
 :root[data-skin="cleopatra"] .display.jackpot {
   left: 33% !important; top: 10.9% !important;
