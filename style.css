@@ -1053,3 +1053,7 @@ html,body{
 .display.bet .value,.display.bet #bet{transform:translateY(-1mm)!important;}
 /* Extend the live loading fill 1 mm upward while keeping its lower edge fixed. */
 .loading-canvas .loading-track{top:calc(86.4% - 3mm)!important;height:calc(3% + 1mm)!important;}
+
+
+/* Lower only the BET value 3 mm from its aligned position. */
+.display.bet .value,.display.bet #bet{transform:translateY(2mm)!important;}
