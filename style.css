@@ -1005,3 +1005,9 @@ html,body{
 .loading-canvas{position:relative;width:min(100vw,56.25vh);height:min(100vh,177.78vw);aspect-ratio:9/16;overflow:hidden;}
 .loading-canvas .loading-art{position:absolute!important;inset:0!important;left:auto!important;top:auto!important;transform:none!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;}
 .loading-canvas .loading-ui{left:50%!important;right:auto!important;bottom:5.1%!important;width:80%!important;transform:translateX(-50%)!important;}
+
+
+/* Keep the announcement inside the gap between reels and lower controls. */
+.game .announcement-panel{top:71.5%!important;height:10.5%!important;}
+/* Shorten BET/LINES art so it ends above AUTO and MENU. */
+.game .lines-bar,.game .bet-bar{top:82.5%!important;height:10.5%!important;object-fit:fill!important;}
