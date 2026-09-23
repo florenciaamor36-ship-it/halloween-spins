@@ -1025,3 +1025,7 @@ html,body{
 .loading-canvas .loading-track{position:absolute!important;left:13.6%!important;top:86.4%!important;width:72.4%!important;height:3%!important;padding:0!important;border:0!important;border-radius:3px!important;background:#180d22!important;box-shadow:none!important;overflow:hidden!important;}
 .loading-canvas .loading-fill{height:100%!important;border-radius:0!important;}
 .loading-canvas .loading-status{position:absolute!important;left:0!important;right:0!important;top:90.5%!important;width:100%!important;text-align:center!important;}
+
+
+/* Raise only the live fill track by the requested 2 mm. */
+.loading-canvas .loading-track{top:calc(86.4% - 2mm)!important;}
