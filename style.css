@@ -883,5 +883,5 @@ html,body{
 
 /* Lower the visible JACKPOT number by 5% of the shared portrait canvas. */
 .display.jackpot{
-  top:16.5% !important;
+  top:19.5% !important;
 }
