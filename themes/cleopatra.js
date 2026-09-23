@@ -14,8 +14,8 @@ window.SLOT_GAME_CONFIG = {
       pressed: 'assets/cleopatra/buttons/spin-pressed.webp?v=1'
     },
     menuButton: {
-      normal: 'assets/cleopatra/buttons/menu-normal.webp?v=1',
-      pressed: 'assets/cleopatra/buttons/menu-pressed.webp?v=1'
+      normal: 'assets/cleopatra/buttons/menu-normal.webp?v=2',
+      pressed: 'assets/cleopatra/buttons/menu-pressed.webp?v=2'
     },
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=2',
@@ -198,8 +198,12 @@ window.SLOT_GAME_CONFIG = {
     const button = document.getElementById('menu');
     const states = window.SLOT_GAME_CONFIG?.assets?.menuButton;
     if (!button || !states) return;
-    button.style.setProperty('--menu-art-normal', `url("${states.normal}")`);
-    button.style.setProperty('--menu-art-pressed', `url("${states.pressed}")`);
+    // Make relative asset paths absolute before they enter CSS custom properties.
+    // This prevents the CSS use-site (themes/cleopatra.css) from resolving them
+    // under /themes/ instead of the GitHub Pages project root.
+    const absoluteAsset = path => new URL(path, document.baseURI).href;
+    button.style.setProperty('--menu-art-normal', `url("${absoluteAsset(states.normal)}")`);
+    button.style.setProperty('--menu-art-pressed', `url("${absoluteAsset(states.pressed)}")`);
   };
   if (document.getElementById('menu')) setMenuArtwork();
   else document.addEventListener('DOMContentLoaded', setMenuArtwork, { once: true });
