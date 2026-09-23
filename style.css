@@ -999,3 +999,9 @@ html,body{
 .loading-ui{
   bottom:calc(max(0px,calc(50vh - 88.89vw)) + min(5.1vh,9.0667vw) + 3mm) !important;
 }
+
+
+/* Keep the loading artwork and progress bar inside the same 9:16 canvas as the game. */
+.loading-canvas{position:relative;width:min(100vw,56.25vh);height:min(100vh,177.78vw);aspect-ratio:9/16;overflow:hidden;}
+.loading-canvas .loading-art{position:absolute!important;inset:0!important;left:auto!important;top:auto!important;transform:none!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;}
+.loading-canvas .loading-ui{left:50%!important;right:auto!important;bottom:5.1%!important;width:80%!important;transform:translateX(-50%)!important;}
