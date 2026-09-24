@@ -12,7 +12,7 @@
   <link rel="preload" as="image" href="assets/cleopatra/loading-screen.webp?v=1" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=single-portrait-14">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
-  <link rel="stylesheet" href="themes/cleopatra.css?v=cleopatra-nice-win-spark-rain-1">
+  <link rel="stylesheet" href="themes/cleopatra.css?v=cleopatra-nice-win-combo-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
 </head>
 <body>
@@ -28,7 +28,17 @@
     <div id="lowWinParticles" class="lowwin-particles"></div>
     <div class="lowwin-flames" aria-hidden="true">🔥 🔥 🔥</div>
     <div class="lowwin-spark-rain" aria-hidden="true"></div>
-    <div class="lowwin-card"><img alt=""><div class="lowwin-title"></div><div class="lowwin-amount"><span id="lowWinNumber">0</span></div></div>
+    <div class="lowwin-card">
+      <img class="lowwin-legacy-art" alt="">
+      <div class="lowwin-title"></div>
+      <div class="nicewin-composition">
+        <img class="nicewin-word" alt="NICE WIN">
+        <div class="nicewin-panel">
+          <img class="nicewin-frame" alt="">
+          <div class="lowwin-amount"><span id="lowWinNumber">0</span></div>
+        </div>
+      </div>
+    </div>
   </section>
   <section id="bigWinScreen" class="bigwin-screen" aria-hidden="true">
     <div class="bigwin-rays"></div><div id="bigWinParticles" class="bigwin-particles"></div><div class="bigwin-lights"></div>
@@ -64,7 +74,7 @@
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/cleopatra.js?v=cleopatra-nice-win-spark-rain-1"></script>
+  <script src="themes/cleopatra.js?v=cleopatra-nice-win-combo-1"></script>
   <script src="main.js?v=cleopatra-symbol-fit-1"></script>
 </body>
 </html>

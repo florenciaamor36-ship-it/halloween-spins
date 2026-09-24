@@ -20,6 +20,8 @@ window.SLOT_GAME_CONFIG = {
     fogOverlay: 'assets/cleopatra/effects/fog.webp?v=1',
     niceWinBackground: 'assets/cleopatra/effects/nice-win-background.webp?v=1',
     niceWinSparkles: 'assets/cleopatra/effects/nice-win-sparkles.webp?v=1',
+    niceWinTitle: 'assets/cleopatra/effects/nice-win-title.webp?v=3',
+    niceWinAmountFrame: 'assets/cleopatra/effects/nice-win-amount-frame.webp?v=1',
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=2',
       bet: 'assets/cleopatra/indicators/bet.webp?v=2',
@@ -245,6 +247,28 @@ window.SLOT_GAME_CONFIG = {
       sparkTexture.src = sparkUrl;
       if (typeof sparkTexture.decode === 'function') sparkTexture.decode().catch(() => {});
       retained.push(sparkTexture);
+    }
+
+    if (assets.niceWinTitle) {
+      const titleUrl = absoluteAsset(assets.niceWinTitle);
+      const titleImage = document.querySelector('.nicewin-word');
+      if (titleImage) titleImage.src = titleUrl;
+      const titleTexture = new Image();
+      titleTexture.fetchPriority = 'high';
+      titleTexture.src = titleUrl;
+      if (typeof titleTexture.decode === 'function') titleTexture.decode().catch(() => {});
+      retained.push(titleTexture);
+    }
+
+    if (assets.niceWinAmountFrame) {
+      const frameUrl = absoluteAsset(assets.niceWinAmountFrame);
+      const frameImage = document.querySelector('.nicewin-frame');
+      if (frameImage) frameImage.src = frameUrl;
+      const frameTexture = new Image();
+      frameTexture.fetchPriority = 'high';
+      frameTexture.src = frameUrl;
+      if (typeof frameTexture.decode === 'function') frameTexture.decode().catch(() => {});
+      retained.push(frameTexture);
     }
   };
   if (document.getElementById('menu')) setThemeArtwork();

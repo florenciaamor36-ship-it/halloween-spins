@@ -769,17 +769,17 @@
   will-change: transform;
 }
 :root[data-skin="cleopatra"] .lowwin-spark-rain::before {
-  opacity: .76;
   mix-blend-mode: screen;
-  animation: cleopatra-spark-rain-a 8.5s linear infinite;
+  opacity: 0;
+  animation: none;
 }
 :root[data-skin="cleopatra"] .lowwin-spark-rain::after {
-  opacity: .34;
   mix-blend-mode: screen;
   background-size: 92% 50%;
   background-position: 68% top;
   filter: blur(.6px);
-  animation: cleopatra-spark-rain-b 12.3s linear -4.8s infinite;
+  opacity: 0;
+  animation: none;
 }
 @keyframes cleopatra-spark-rain-a {
   from { transform: translate3d(0, -50%, 0); }
@@ -792,4 +792,128 @@
 @media (prefers-reduced-motion: reduce) {
   :root[data-skin="cleopatra"] .lowwin-spark-rain::before,
   :root[data-skin="cleopatra"] .lowwin-spark-rain::after { animation: none !important; }
+}
+/* Start the rain only after the background has had a brief beat to appear. */
+:root[data-skin="cleopatra"] .lowwin-screen.open .lowwin-spark-rain::before {
+  animation: cleopatra-spark-rain-a 8.5s linear .48s infinite,
+             cleopatra-spark-rain-reveal .18s ease-out .48s both;
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .lowwin-spark-rain::after {
+  animation: cleopatra-spark-rain-b 12.3s linear .74s infinite,
+             cleopatra-spark-rain-reveal-soft .2s ease-out .74s both;
+}
+@keyframes cleopatra-spark-rain-reveal { to { opacity: .76; } }
+@keyframes cleopatra-spark-rain-reveal-soft { to { opacity: .34; } }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="cleopatra"] .lowwin-screen.open .lowwin-spark-rain::before { opacity: .76 !important; }
+  :root[data-skin="cleopatra"] .lowwin-screen.open .lowwin-spark-rain::after { opacity: .34 !important; }
+}
+
+/* NICE WIN stays above and separate from the lower amount panel. */
+:root[data-skin="cleopatra"] .lowwin-card {
+  position: absolute !important;
+  z-index: 3 !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: min(100vw, 56.25vh) !important;
+  height: min(100vh, 177.7778vw) !important;
+  width: min(100vw, 56.25dvh) !important;
+  height: min(100dvh, 177.7778vw) !important;
+  aspect-ratio: 9 / 16 !important;
+  transform: translate(-50%, -50%) !important;
+  opacity: 1 !important;
+  display: block !important;
+  overflow: visible !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  animation: none !important;
+  pointer-events: none !important;
+}
+:root[data-skin="cleopatra"] .lowwin-card > .lowwin-legacy-art,
+:root[data-skin="cleopatra"] .lowwin-card > .lowwin-title { display: none !important; }
+:root[data-skin="cleopatra"] .nicewin-composition {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  transform: scale(.58);
+  transform-origin: center center;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-composition {
+  animation: cleopatra-nicewin-composition-zoom 1.05s cubic-bezier(.16, 1.2, .35, 1) 1.55s both;
+}
+@keyframes cleopatra-nicewin-composition-zoom {
+  0% { opacity: 0; transform: scale(.58); }
+  68% { opacity: 1; transform: scale(1.07); }
+  100% { opacity: 1; transform: scale(1); }
+}
+:root[data-skin="cleopatra"] .nicewin-word {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 4%;
+  width: 82%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 10px rgba(244, 197, 70, .48));
+}
+:root[data-skin="cleopatra"] .nicewin-panel {
+  position: absolute;
+  z-index: 2;
+  left: 4%;
+  top: 71.5%;
+  width: 92%;
+  aspect-ratio: 795 / 410;
+  container-type: inline-size;
+}
+:root[data-skin="cleopatra"] .nicewin-frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: drop-shadow(0 0 10px rgba(231, 184, 67, .28));
+}
+:root[data-skin="cleopatra"] .nicewin-panel .lowwin-amount {
+  position: absolute !important;
+  left: 9% !important;
+  top: 20% !important;
+  width: 82% !important;
+  height: 64% !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+:root[data-skin="cleopatra"] .nicewin-panel .lowwin-amount span {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  font-size: clamp(28px, 13cqw, 56px) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: .01em !important;
+  color: #fff1bd !important;
+  -webkit-text-stroke: .6px #805018;
+  text-shadow: 0 1px 2px #000, 0 0 8px rgba(255, 211, 92, .95), 0 0 18px rgba(255, 196, 58, .68) !important;
+}
+/* The old center-burst is replaced by the sequenced gold rain. */
+:root[data-skin="cleopatra"] .lowwin-particles { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="cleopatra"] .nicewin-composition {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    animation: none !important;
+  }
 }
