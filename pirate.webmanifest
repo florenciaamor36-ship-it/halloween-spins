@@ -1,9 +1,9 @@
 {
-  "name": "Pirate's Treasure Spins",
-  "short_name": "Pirate Spins",
+  "name": "Máscara nueva",
+  "short_name": "Máscara",
   "start_url": "./pirate.html",
   "display": "standalone",
-  "background_color": "#15100c",
-  "theme_color": "#32251d",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "background_color": "#17110d",
+  "theme_color": "#17110d"
 }
