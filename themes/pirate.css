@@ -70,3 +70,13 @@
   :root[data-skin="pirate"] .loading-art { width:100vw!important;height:100dvh!important;max-width:100vw!important;max-height:100dvh!important; }
   :root[data-skin="pirate"] .paytable-card { width:min(94vw,400px); }
 }
+/* Pirate page overrides for layout rules that the shared Halloween stylesheet intentionally marks !important. */
+:root[data-skin="pirate"] #game .balance-bar,:root[data-skin="pirate"] #game .bet-bar,:root[data-skin="pirate"] #game .lines-bar { display:none!important; }
+:root[data-skin="pirate"] #game .display.balance { left:10%!important;right:auto!important;top:85.1%!important;width:31%!important;height:auto!important;z-index:7!important;background:transparent!important;border:0!important;box-shadow:none!important; }
+:root[data-skin="pirate"] #game .display.bet { left:10%!important;right:auto!important;top:79.8%!important;width:24%!important;height:auto!important;z-index:7!important;pointer-events:none!important;background:transparent!important;border:0!important;box-shadow:none!important; }
+:root[data-skin="pirate"] #game .display.lines { left:69%!important;right:auto!important;top:79.8%!important;width:24%!important;height:auto!important;z-index:7!important;pointer-events:none!important;background:transparent!important;border:0!important;box-shadow:none!important; }
+:root[data-skin="pirate"] #game .display.win { left:69%!important;right:auto!important;top:85.1%!important;width:25%!important;height:auto!important;z-index:7!important;background:transparent!important;border:0!important;box-shadow:none!important; }
+:root[data-skin="pirate"] #game .display .control-box { display:grid!important;align-items:center!important;justify-content:center!important;width:100%!important;height:auto!important;padding:0!important;background:transparent!important; }
+:root[data-skin="pirate"] #game .display .label { display:block!important;position:static!important;color:#e2bd72!important; }
+:root[data-skin="pirate"] #game .display .value,:root[data-skin="pirate"] #game .display #balance,:root[data-skin="pirate"] #game .display #bet,:root[data-skin="pirate"] #game .display #lines,:root[data-skin="pirate"] #game .display #win { display:block!important;position:static!important;transform:none!important;margin:0!important;padding:0!important;font-size:clamp(10px,2.8vw,20px)!important;color:#fff0bd!important;text-align:center!important;text-shadow:0 1px 4px #000,0 0 7px #d79a38!important; }
+:root[data-skin="pirate"] #game .pirate-title { top:4.5%!important; }
