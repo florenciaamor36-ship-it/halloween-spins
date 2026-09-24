@@ -1062,5 +1062,5 @@ html,body{
 /* Lower LINES by 4 mm and BET by 1 mm from the prior aligned position. */
 .display.lines .value,.display.lines #lines{transform:translateY(3mm)!important;}
 .display.bet .value,.display.bet #bet{transform:translateY(3mm)!important;}
-/* Lower the green loading track by 1 mm without changing its height. */
-.loading-canvas .loading-track{top:calc(86.4% - 2mm)!important;height:calc(3% + 1mm)!important;}
+/* Lower the green loading track another 1 mm without changing its height. */
+.loading-canvas .loading-track{top:calc(86.4% - 1mm)!important;height:calc(3% + 1mm)!important;}
