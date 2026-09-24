@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+<defs><radialGradient id="wood"><stop stop-color="#60442d"/><stop offset=".72" stop-color="#302217"/><stop offset="1" stop-color="#17110d"/></radialGradient><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b0"/><stop offset=".42" stop-color="#d9ad55"/><stop offset="1" stop-color="#70451a"/></linearGradient><filter id="shadow"><feGaussianBlur stdDeviation="6"/></filter></defs>
+<circle cx="240" cy="240" r="224" fill="#090909" opacity=".75" filter="url(#shadow)"/>
+<circle cx="240" cy="240" r="220" fill="url(#wood)" stroke="url(#gold)" stroke-width="20"/>
+<circle cx="240" cy="240" r="193" fill="none" stroke="#8e6a32" stroke-width="4"/>
+<circle cx="240" cy="240" r="178" fill="none" stroke="#dbc27d" stroke-width="2" stroke-dasharray="5 12"/>
+<path d="M240 67l12 32-12 15-12-15zm0 346l12-32-12-15-12 15zM67 240l32-12 15 12-15 12zm346 0l-32-12-15 12 15 12z" fill="url(#gold)"/>
+<text x="240" y="324" text-anchor="middle" font-family="Georgia,serif" font-size="250" font-weight="bold" fill="url(#gold)" stroke="#3a2411" stroke-width="7" paint-order="stroke" filter="url(#shadow)">Q</text>
+</svg>
