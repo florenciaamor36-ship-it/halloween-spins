@@ -670,3 +670,50 @@
   :root[data-skin="cleopatra"] body::before,
   :root[data-skin="cleopatra"] body::after { animation: none !important; }
 }
+
+/* Also show Cleopatra's mist inside the dark header on phones, behind the title. */
+:root[data-skin="cleopatra"] .cleopatra-fog {
+  position: absolute !important;
+  inset: 0 0 72% 0 !important;
+  z-index: 5 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+:root[data-skin="cleopatra"] .cleopatra-fog::before,
+:root[data-skin="cleopatra"] .cleopatra-fog::after {
+  content: "";
+  position: absolute;
+  inset: -7% -9%;
+  background-image: var(--cleo-fog-art, url("../assets/cleopatra/effects/fog.webp?v=1"));
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+:root[data-skin="cleopatra"] .cleopatra-fog::before {
+  background-position: 42% center;
+  opacity: .42;
+  filter: saturate(1.22);
+  animation: cleopatra-header-fog-a 46s ease-in-out infinite alternate;
+}
+:root[data-skin="cleopatra"] .cleopatra-fog::after {
+  background-position: 60% center;
+  opacity: .26;
+  filter: blur(8px) saturate(1.1);
+  animation: cleopatra-header-fog-b 67s ease-in-out -23s infinite alternate;
+}
+@keyframes cleopatra-header-fog-a {
+  from { transform: translate3d(-3%, 0, 0) scale(1.06); }
+  to   { transform: translate3d(3%, 0, 0) scale(1.08); }
+}
+@keyframes cleopatra-header-fog-b {
+  from { transform: translate3d(2.5%, 0, 0) scale(1.1); }
+  to   { transform: translate3d(-2.5%, 0, 0) scale(1.1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="cleopatra"] .cleopatra-fog::before,
+  :root[data-skin="cleopatra"] .cleopatra-fog::after { animation: none !important; }
+}
