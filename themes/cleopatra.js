@@ -208,3 +208,30 @@ window.SLOT_GAME_CONFIG = {
   if (document.getElementById('menu')) setMenuArtwork();
   else document.addEventListener('DOMContentLoaded', setMenuArtwork, { once: true });
 })();
+
+// Keep the pressed menu art visible briefly before the paytable covers the button.
+(() => {
+  const bindMenuFeedback = () => {
+    const button = document.getElementById('menu');
+    if (!button || button.dataset.menuFeedbackBound === 'true') return;
+    button.dataset.menuFeedbackBound = 'true';
+    let waiting = false;
+    let replaying = false;
+    button.addEventListener('click', event => {
+      if (replaying) { replaying = false; return; }
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (waiting) return;
+      waiting = true;
+      button.classList.add('is-pressed');
+      window.setTimeout(() => {
+        button.classList.remove('is-pressed');
+        replaying = true;
+        try { button.click(); }
+        finally { replaying = false; waiting = false; }
+      }, 300);
+    }, true);
+  };
+  if (document.getElementById('menu')) bindMenuFeedback();
+  else document.addEventListener('DOMContentLoaded', bindMenuFeedback, { once: true });
+})();
