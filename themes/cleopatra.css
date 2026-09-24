@@ -587,3 +587,19 @@
   background: rgba(55, 194, 186, .72);
   border-radius: 4px;
 }
+
+/* Keep Cleopatra's long special labels and free-spin awards balanced. */
+:root[data-skin="cleopatra"] .paytable-card th:first-child,
+:root[data-skin="cleopatra"] .paytable-card td:first-child { width: 52% !important; }
+:root[data-skin="cleopatra"] .paytable-card th:nth-child(n+2) { width: 16% !important; }
+:root[data-skin="cleopatra"] .paytable-card tbody tr:nth-last-child(2) td:first-child,
+:root[data-skin="cleopatra"] .paytable-card tbody tr:nth-last-child(2) td:first-child span {
+  font-size: clamp(9px, min(2.45vw, 1.38vh), 11px) !important;
+  letter-spacing: -.01em !important;
+}
+:root[data-skin="cleopatra"] .paytable-card tbody tr:last-child td:not(:first-child) {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  font-size: clamp(10px, min(2.55vw, 1.44vh), 12px) !important;
+  line-height: 1.05 !important;
+}
