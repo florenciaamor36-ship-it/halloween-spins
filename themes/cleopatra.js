@@ -18,6 +18,7 @@ window.SLOT_GAME_CONFIG = {
       pressed: 'assets/cleopatra/buttons/menu-pressed.webp?v=2'
     },
     fogOverlay: 'assets/cleopatra/effects/fog.webp?v=1',
+    niceWinBackground: 'assets/cleopatra/effects/nice-win-background.webp?v=1',
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=2',
       bet: 'assets/cleopatra/indicators/bet.webp?v=2',
@@ -224,6 +225,16 @@ window.SLOT_GAME_CONFIG = {
       fog.src = fogUrl;
       if (typeof fog.decode === 'function') fog.decode().catch(() => {});
       retained.push(fog);
+    }
+
+    if (assets.niceWinBackground) {
+      const winUrl = absoluteAsset(assets.niceWinBackground);
+      document.documentElement.style.setProperty('--cleo-nice-win-bg', `url("${winUrl}")`);
+      const winBackground = new Image();
+      winBackground.fetchPriority = 'high';
+      winBackground.src = winUrl;
+      if (typeof winBackground.decode === 'function') winBackground.decode().catch(() => {});
+      retained.push(winBackground);
     }
   };
   if (document.getElementById('menu')) setThemeArtwork();

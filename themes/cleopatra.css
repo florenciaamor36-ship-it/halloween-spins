@@ -717,3 +717,24 @@
   :root[data-skin="cleopatra"] .cleopatra-fog::before,
   :root[data-skin="cleopatra"] .cleopatra-fog::after { animation: none !important; }
 }
+
+/* Portrait temple background for Cleopatra's Nice Win / low-win overlay. */
+:root[data-skin="cleopatra"] .lowwin-screen::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  width: min(100vw, 56.25vh);
+  height: min(100vh, 177.7778vw);
+  width: min(100vw, 56.25dvh);
+  height: min(100dvh, 177.7778vw);
+  transform: translate(-50%, -50%);
+  background-image:
+    linear-gradient(rgba(4, 10, 18, .10), rgba(4, 10, 18, .10)),
+    var(--cleo-nice-win-bg, url("../assets/cleopatra/effects/nice-win-background.webp?v=1"));
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  background-size: 100% 100%, 100% 100%;
+  pointer-events: none;
+}
