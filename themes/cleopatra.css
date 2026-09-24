@@ -738,3 +738,58 @@
   background-size: 100% 100%, 100% 100%;
   pointer-events: none;
 }
+
+/* Seamless top-to-bottom sparkle rain on the Nice Win background. */
+:root[data-skin="cleopatra"] .lowwin-spark-rain {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: min(100vw, 56.25vh);
+  height: min(100vh, 177.7778vw);
+  width: min(100vw, 56.25dvh);
+  height: min(100dvh, 177.7778vw);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  pointer-events: none;
+}
+:root[data-skin="cleopatra"] .lowwin-spark-rain::before,
+:root[data-skin="cleopatra"] .lowwin-spark-rain::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 200%;
+  background-image: var(--cleo-nice-win-sparkles, url("../assets/cleopatra/effects/nice-win-sparkles.webp?v=1"));
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 100% 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+:root[data-skin="cleopatra"] .lowwin-spark-rain::before {
+  opacity: .76;
+  mix-blend-mode: screen;
+  animation: cleopatra-spark-rain-a 8.5s linear infinite;
+}
+:root[data-skin="cleopatra"] .lowwin-spark-rain::after {
+  opacity: .34;
+  mix-blend-mode: screen;
+  background-size: 92% 50%;
+  background-position: 68% top;
+  filter: blur(.6px);
+  animation: cleopatra-spark-rain-b 12.3s linear -4.8s infinite;
+}
+@keyframes cleopatra-spark-rain-a {
+  from { transform: translate3d(0, -50%, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes cleopatra-spark-rain-b {
+  from { transform: translate3d(0, -50%, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="cleopatra"] .lowwin-spark-rain::before,
+  :root[data-skin="cleopatra"] .lowwin-spark-rain::after { animation: none !important; }
+}
