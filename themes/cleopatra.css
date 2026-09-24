@@ -393,21 +393,40 @@
   display: block !important; padding: 0 !important;
   border: 0 !important; border-radius: 0 !important;
   background: transparent !important;
-  background-image: var(--menu-art-normal, url("../assets/cleopatra/buttons/menu-normal.webp?v=2")) !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
+  background-image: none !important;
   box-shadow: none !important;
   color: transparent !important; font-size: 0 !important;
   line-height: 0 !important; letter-spacing: 0 !important;
   text-shadow: none !important; overflow: visible !important;
   z-index: 9 !important;
 }
+:root[data-skin="cleopatra"] .menu::before,
+:root[data-skin="cleopatra"] .menu::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  transition: none;
+}
+:root[data-skin="cleopatra"] .menu::before {
+  background-image: var(--menu-art-normal, url("../assets/cleopatra/buttons/menu-normal.webp?v=2"));
+  opacity: 1;
+}
+:root[data-skin="cleopatra"] .menu::after {
+  background-image: var(--menu-art-pressed, url("../assets/cleopatra/buttons/menu-pressed.webp?v=2"));
+  opacity: 0;
+}
 :root[data-skin="cleopatra"] .menu:active,
 :root[data-skin="cleopatra"] .menu.is-pressed {
-  background-image: var(--menu-art-pressed, url("../assets/cleopatra/buttons/menu-pressed.webp?v=2")) !important;
   transform: translateY(1px) scale(.98) !important;
 }
+:root[data-skin="cleopatra"] .menu:active::before,
+:root[data-skin="cleopatra"] .menu.is-pressed::before { opacity: 0; }
+:root[data-skin="cleopatra"] .menu:active::after,
+:root[data-skin="cleopatra"] .menu.is-pressed::after { opacity: 1; }
 :root[data-skin="cleopatra"] .auto-spin.is-active { border-color: #42d2cf !important; color: #fff0bc !important; }
 :root[data-skin="cleopatra"] .auto-stop-overlay {
   opacity: 1 !important;

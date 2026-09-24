@@ -202,8 +202,18 @@ window.SLOT_GAME_CONFIG = {
     // This prevents the CSS use-site (themes/cleopatra.css) from resolving them
     // under /themes/ instead of the GitHub Pages project root.
     const absoluteAsset = path => new URL(path, document.baseURI).href;
-    button.style.setProperty('--menu-art-normal', `url("${absoluteAsset(states.normal)}")`);
-    button.style.setProperty('--menu-art-pressed', `url("${absoluteAsset(states.pressed)}")`);
+    const normalUrl = absoluteAsset(states.normal);
+    const pressedUrl = absoluteAsset(states.pressed);
+    button.style.setProperty('--menu-art-normal', `url("${normalUrl}")`);
+    button.style.setProperty('--menu-art-pressed', `url("${pressedUrl}")`);
+    // Decode both states while the game loads, so pressing MENU never shows a blank gap.
+    button._menuArtworkPreloads = [normalUrl, pressedUrl].map(url => {
+      const image = new Image();
+      image.fetchPriority = 'high';
+      image.src = url;
+      if (typeof image.decode === 'function') image.decode().catch(() => {});
+      return image;
+    });
   };
   if (document.getElementById('menu')) setMenuArtwork();
   else document.addEventListener('DOMContentLoaded', setMenuArtwork, { once: true });
