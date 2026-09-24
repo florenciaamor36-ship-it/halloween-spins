@@ -622,3 +622,51 @@
   font-size: clamp(10px, min(2.55vw, 1.44vh), 12px) !important;
   line-height: 1.05 !important;
 }
+
+/* Slow, subtle fog behind Cleopatra's portrait canvas; never intercepts input. */
+:root[data-skin="cleopatra"] body {
+  position: relative !important;
+  isolation: isolate !important;
+  background-color: #080b12 !important;
+}
+:root[data-skin="cleopatra"] body::before,
+:root[data-skin="cleopatra"] body::after {
+  content: "";
+  position: fixed;
+  inset: -7vh -9vw;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--cleo-fog-art, url("../assets/cleopatra/effects/fog.webp?v=1"));
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+:root[data-skin="cleopatra"] body::before {
+  background-position: 44% center;
+  opacity: .24;
+  filter: saturate(1.18);
+  animation: cleopatra-fog-drift-a 58s ease-in-out infinite alternate;
+}
+:root[data-skin="cleopatra"] body::after {
+  background-position: 58% center;
+  opacity: .13;
+  filter: blur(10px) saturate(1.1);
+  animation: cleopatra-fog-drift-b 79s ease-in-out -27s infinite alternate;
+}
+:root[data-skin="cleopatra"] .game {
+  position: relative !important;
+  z-index: 1 !important;
+}
+@keyframes cleopatra-fog-drift-a {
+  from { transform: translate3d(-2.5%, 0, 0) scale(1.06); }
+  to   { transform: translate3d(2.5%, 0, 0) scale(1.08); }
+}
+@keyframes cleopatra-fog-drift-b {
+  from { transform: translate3d(2.2%, 0, 0) scale(1.1); }
+  to   { transform: translate3d(-2.2%, 0, 0) scale(1.1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="cleopatra"] body::before,
+  :root[data-skin="cleopatra"] body::after { animation: none !important; }
+}

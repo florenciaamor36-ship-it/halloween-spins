@@ -17,6 +17,7 @@ window.SLOT_GAME_CONFIG = {
       normal: 'assets/cleopatra/buttons/menu-normal.webp?v=2',
       pressed: 'assets/cleopatra/buttons/menu-pressed.webp?v=2'
     },
+    fogOverlay: 'assets/cleopatra/effects/fog.webp?v=1',
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=2',
       bet: 'assets/cleopatra/indicators/bet.webp?v=2',
@@ -192,31 +193,41 @@ window.SLOT_GAME_CONFIG = {
   else document.addEventListener('DOMContentLoaded', bindGoldSparks, { once: true });
 })();
 
-// Provide Cleopatra's menu artwork through theme-scoped CSS variables.
+// Load Cleopatra's button and ambience images before they are needed.
 (() => {
-  const setMenuArtwork = () => {
+  const setThemeArtwork = () => {
+    const config = window.SLOT_GAME_CONFIG;
+    const assets = config?.assets;
     const button = document.getElementById('menu');
-    const states = window.SLOT_GAME_CONFIG?.assets?.menuButton;
-    if (!button || !states) return;
-    // Make relative asset paths absolute before they enter CSS custom properties.
-    // This prevents the CSS use-site (themes/cleopatra.css) from resolving them
-    // under /themes/ instead of the GitHub Pages project root.
+    if (!assets) return;
     const absoluteAsset = path => new URL(path, document.baseURI).href;
-    const normalUrl = absoluteAsset(states.normal);
-    const pressedUrl = absoluteAsset(states.pressed);
-    button.style.setProperty('--menu-art-normal', `url("${normalUrl}")`);
-    button.style.setProperty('--menu-art-pressed', `url("${pressedUrl}")`);
-    // Decode both states while the game loads, so pressing MENU never shows a blank gap.
-    button._menuArtworkPreloads = [normalUrl, pressedUrl].map(url => {
-      const image = new Image();
-      image.fetchPriority = 'high';
-      image.src = url;
-      if (typeof image.decode === 'function') image.decode().catch(() => {});
-      return image;
-    });
+    const retained = document.documentElement._cleoVisualPreloads ||= [];
+
+    if (button && assets.menuButton) {
+      const normalUrl = absoluteAsset(assets.menuButton.normal);
+      const pressedUrl = absoluteAsset(assets.menuButton.pressed);
+      button.style.setProperty('--menu-art-normal', `url("${normalUrl}")`);
+      button.style.setProperty('--menu-art-pressed', `url("${pressedUrl}")`);
+      [normalUrl, pressedUrl].forEach(url => {
+        const image = new Image();
+        image.fetchPriority = 'high';
+        image.src = url;
+        if (typeof image.decode === 'function') image.decode().catch(() => {});
+        retained.push(image);
+      });
+    }
+
+    if (assets.fogOverlay) {
+      const fogUrl = absoluteAsset(assets.fogOverlay);
+      document.documentElement.style.setProperty('--cleo-fog-art', `url("${fogUrl}")`);
+      const fog = new Image();
+      fog.src = fogUrl;
+      if (typeof fog.decode === 'function') fog.decode().catch(() => {});
+      retained.push(fog);
+    }
   };
-  if (document.getElementById('menu')) setMenuArtwork();
-  else document.addEventListener('DOMContentLoaded', setMenuArtwork, { once: true });
+  if (document.getElementById('menu')) setThemeArtwork();
+  else document.addEventListener('DOMContentLoaded', setThemeArtwork, { once: true });
 })();
 
 // Keep the pressed menu art visible briefly before the paytable covers the button.
