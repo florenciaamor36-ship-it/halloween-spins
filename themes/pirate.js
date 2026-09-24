@@ -8,28 +8,23 @@
     assets: {
       frame: { portrait: 'assets/pirate/frame.webp', fallback: 'assets/pirate/frame.webp' },
       loading: 'assets/pirate/frame.webp',
-      spin: { normal: pendingArtwork, pressed: pendingArtwork },
-      indicators: { balance: pendingArtwork, bet: pendingArtwork, lines: pendingArtwork },
       announcementFrame: pendingArtwork,
-      bigWin: pendingArtwork,
-      lowWin: pendingArtwork,
-      paytableFrame: pendingArtwork,
-      winFrames: [{ key: 'pirate-pending-win', src: pendingArtwork }]
+      winFrames: [{ key: 'pirate-pending-win', src: `${pendingArtwork}?placeholder=win` }]
     },
   symbols: [
-    { key: 'mask-symbol-1', label: 'Símbolo pendiente 1', asset: pendingArtwork },
-    { key: 'mask-symbol-2', label: 'Símbolo pendiente 2', asset: pendingArtwork },
-    { key: 'mask-symbol-3', label: 'Símbolo pendiente 3', asset: pendingArtwork },
-    { key: 'mask-symbol-4', label: 'Símbolo pendiente 4', asset: pendingArtwork },
-    { key: 'mask-symbol-5', label: 'Símbolo pendiente 5', asset: pendingArtwork },
-    { key: 'mask-10', label: '10', asset: pendingArtwork },
-    { key: 'mask-J', label: 'J', asset: pendingArtwork },
-    { key: 'mask-Q', label: 'Q', asset: pendingArtwork },
-    { key: 'mask-K', label: 'K', asset: pendingArtwork },
-    { key: 'mask-A', label: 'A', asset: pendingArtwork },
-    { key: 'wild', label: 'WILD pendiente', asset: pendingArtwork },
-    { key: 'scatter', label: 'SCATTER pendiente', asset: pendingArtwork },
-    { key: 'bonus', label: 'BONUS pendiente', asset: pendingArtwork }
+    { key: 'mask-symbol-1', label: 'Símbolo pendiente 1', asset: `${pendingArtwork}?slot=1` },
+    { key: 'mask-symbol-2', label: 'Símbolo pendiente 2', asset: `${pendingArtwork}?slot=2` },
+    { key: 'mask-symbol-3', label: 'Símbolo pendiente 3', asset: `${pendingArtwork}?slot=3` },
+    { key: 'mask-symbol-4', label: 'Símbolo pendiente 4', asset: `${pendingArtwork}?slot=4` },
+    { key: 'mask-symbol-5', label: 'Símbolo pendiente 5', asset: `${pendingArtwork}?slot=5` },
+    { key: 'mask-10', label: '10', asset: `${pendingArtwork}?slot=10` },
+    { key: 'mask-J', label: 'J', asset: `${pendingArtwork}?slot=J` },
+    { key: 'mask-Q', label: 'Q', asset: `${pendingArtwork}?slot=Q` },
+    { key: 'mask-K', label: 'K', asset: `${pendingArtwork}?slot=K` },
+    { key: 'mask-A', label: 'A', asset: `${pendingArtwork}?slot=A` },
+    { key: 'wild', label: 'WILD pendiente', asset: `${pendingArtwork}?slot=wild` },
+    { key: 'scatter', label: 'SCATTER pendiente', asset: `${pendingArtwork}?slot=scatter` },
+    { key: 'bonus', label: 'BONUS pendiente', asset: `${pendingArtwork}?slot=bonus` }
   ],
     visual: { symbolScale: 0.82, symbolScaleY: 1.15, symbolFit: 'cell-width' },
   defaults: {
