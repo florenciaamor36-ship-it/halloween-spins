@@ -1,7 +1,7 @@
 /* Máscara nueva: configuración conectada al motor compartido.
    Los símbolos quedan en blanco hasta que la usuaria agregue su arte. */
 (() => {
-  const pendingArtwork = 'data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201%201%22%3E%3C/svg%3E';
+  const pendingArtwork = 'assets/pirate/pending.webp';
   window.SLOT_GAME_CONFIG = {
     schemaVersion: 1,
     id: 'pirate',
