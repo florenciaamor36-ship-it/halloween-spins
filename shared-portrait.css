@@ -69,3 +69,46 @@ body {
     display: flex !important;
   }
 }
+
+/* Extend only the Halloween artwork behind the fixed 9:16 canvas on phones. */
+@media (max-width: 700px) and (orientation: portrait) {
+  :root:not([data-skin="cleopatra"]) body {
+    isolation: isolate;
+    background: #080b12 !important;
+  }
+
+  :root:not([data-skin="cleopatra"]) body::before {
+    content: "";
+    position: fixed;
+    inset: -10px;
+    z-index: 0;
+    pointer-events: none;
+    background: url("assets/frame-mobile.webp?v=4") center / cover no-repeat;
+    filter: blur(8px) brightness(.52);
+    transform: scale(1.04);
+  }
+
+  :root:not([data-skin="cleopatra"]) #game {
+    z-index: 1 !important;
+  }
+
+  :root:not([data-skin="cleopatra"]) #loadingScreen {
+    isolation: isolate;
+    background: transparent !important;
+  }
+
+  :root:not([data-skin="cleopatra"]) #loadingScreen::before {
+    content: "";
+    position: fixed;
+    inset: -10px;
+    z-index: 0;
+    pointer-events: none;
+    background: url("assets/loading-screen.webp") center / cover no-repeat;
+    filter: blur(8px) brightness(.52);
+    transform: scale(1.04);
+  }
+
+  :root:not([data-skin="cleopatra"]) #loadingScreen > .loading-canvas {
+    z-index: 1 !important;
+  }
+}
