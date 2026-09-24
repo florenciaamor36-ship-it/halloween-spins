@@ -501,8 +501,8 @@
 :root[data-skin="cleopatra"] .paytable-card th,
 :root[data-skin="cleopatra"] .paytable-card td {
   height: auto !important;
-  padding: 4px 3px !important;
-  line-height: 1.12 !important;
+  padding: 3px 3px !important;
+  line-height: 1.08 !important;
   vertical-align: middle !important;
   border-bottom: 1px solid rgba(124, 155, 174, .24) !important;
   white-space: normal !important;
@@ -551,8 +551,8 @@
 }
 :root[data-skin="cleopatra"] .paytable-card .pay-symbol {
   display: inline-block !important;
-  width: min(6vw, 3.2vh) !important;
-  height: min(6vw, 3.2vh) !important;
+  width: min(5.4vw, 2.9vh) !important;
+  height: min(5.4vw, 2.9vh) !important;
   margin-right: 4px !important;
   object-fit: contain !important;
   vertical-align: middle !important;
