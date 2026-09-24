@@ -8,12 +8,7 @@
     assets: {
       frame: { portrait: 'assets/pirate/frame.webp', fallback: 'assets/pirate/frame.webp' },
       loading: 'assets/pirate/frame.webp',
-      spin: { normal: pendingArtwork, pressed: pendingArtwork },
-      indicators: { balance: pendingArtwork, bet: pendingArtwork, lines: pendingArtwork },
       announcementFrame: pendingArtwork,
-      bigWin: pendingArtwork,
-      lowWin: pendingArtwork,
-      paytableFrame: pendingArtwork,
       winFrames: [{ key: 'pirate-pending-win', src: `${pendingArtwork}?placeholder=win` }]
     },
   symbols: [
