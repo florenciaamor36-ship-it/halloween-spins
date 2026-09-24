@@ -70,53 +70,41 @@ body {
   }
 }
 
-/* Full-viewport Halloween background layers; the sharp game canvas stays 9:16. */
-.mobile-bleed-background,
-.mobile-loading-background {
-  display: none;
-}
-
+/* Halloween mobile: stretch the actual art to the full visible phone screen. */
 @media (max-width: 700px) and (orientation: portrait) {
-  body > .mobile-bleed-background {
-    display: block !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
+  html,
+  body {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+  }
+
+  body {
+    align-items: stretch !important;
+    justify-content: stretch !important;
+  }
+
+  :root:not([data-skin="cleopatra"]) #game,
+  :root:not([data-skin="cleopatra"]) #loadingScreen > .loading-canvas {
     width: 100vw !important;
     height: 100vh !important;
     height: 100dvh !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    pointer-events: none !important;
-    filter: blur(6px) brightness(.62);
-    transform: scale(1.03);
+    max-width: 100vw !important;
+    max-height: 100dvh !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
   }
 
-  body > #game {
-    z-index: 1 !important;
+  :root:not([data-skin="cleopatra"]) #game .frame,
+  :root:not([data-skin="cleopatra"]) #game .frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
   }
 
-  #loadingScreen {
-    isolation: isolate;
-    background: transparent !important;
-  }
-
-  #loadingScreen > .mobile-loading-background {
-    display: block !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    pointer-events: none !important;
-    filter: blur(6px) brightness(.62);
-    transform: scale(1.03);
-  }
-
-  #loadingScreen > .loading-canvas {
-    z-index: 1 !important;
+  :root:not([data-skin="cleopatra"]) #loadingScreen > .loading-canvas .loading-art {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
   }
 }
