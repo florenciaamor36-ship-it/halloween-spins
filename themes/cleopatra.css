@@ -1008,14 +1008,14 @@
 }
 :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-rain::before {
   opacity: .78;
-  animation: cleopatra-bigwin-gold-rain 8.5s linear infinite;
+  animation: cleopatra-bigwin-gold-rain 8s linear infinite;
 }
 :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-rain::after {
   background-size: 92% 50%;
   background-position: 68% top;
   filter: blur(.6px);
   opacity: .34;
-  animation: cleopatra-bigwin-gold-rain 12s linear -4s infinite;
+  animation: cleopatra-bigwin-gold-rain 10.8s linear -5.4s infinite;
 }
 @keyframes cleopatra-bigwin-gold-rain {
   from { transform: translate3d(0, -50%, 0); }
@@ -1148,14 +1148,14 @@
 }
 :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-coin-rain::before {
   opacity: .68;
-  animation: cleopatra-bigwin-coin-fall 9s linear infinite;
+  animation: cleopatra-bigwin-coin-fall 14s linear infinite;
 }
 :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-coin-rain::after {
   background-size: 88% 50%;
   background-position: 34% top;
   filter: blur(.35px);
   opacity: .32;
-  animation: cleopatra-bigwin-coin-fall 12s linear -5s infinite;
+  animation: cleopatra-bigwin-coin-fall 18s linear -9s infinite;
 }
 @keyframes cleopatra-bigwin-coin-fall {
   from { transform: translate3d(0, -50%, 0); }
