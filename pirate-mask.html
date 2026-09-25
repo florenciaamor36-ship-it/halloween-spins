@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#15100c">
-  <title>Pirate's Treasure Spins</title>
-  <link rel="manifest" href="pirate.webmanifest?v=1">
+  <title>Máscara pirata · En preparación</title>
+  <link rel="manifest" href="pirate-mask.webmanifest?v=mask-base-1">
   <script src="orientation-lock.js?v=portrait-lock-1" defer></script>
-  <link rel="preload" as="image" href="assets/pirate/frame.webp?v=1" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/pirate-mask/frame.webp?v=1" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=single-portrait-14">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
-  <link rel="stylesheet" href="themes/pirate.css?v=2">
+  <link rel="stylesheet" href="themes/pirate-mask.css?v=mask-base-1">
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
   <section id="loadingScreen" class="loading-screen" aria-live="polite">
-    <img class="loading-art" src="assets/pirate/frame.webp?v=1" alt="" fetchpriority="high" decoding="sync">
+    <img class="loading-art" src="assets/pirate-mask/frame.webp?v=1" alt="" fetchpriority="high" decoding="sync">
     <div class="loading-ui"><div class="loading-track"><div id="loadingBar" class="loading-fill"></div></div>
-      <div class="loading-status"><span id="loadingMessage">Cargando Pirate's Treasure</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div>
+      <div class="loading-status"><span id="loadingMessage">Cargando máscara</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div>
     </div>
   </section>
   <section id="lowWinScreen" class="lowwin-screen" aria-hidden="true">
-    <div id="lowWinParticles" class="lowwin-particles"></div><div class="lowwin-flames" aria-hidden="true">✨ ✨ ✨</div>
+    <div id="lowWinParticles" class="lowwin-particles"></div>
     <div class="lowwin-card"><img alt=""><div class="lowwin-title"></div><div class="lowwin-amount"><span id="lowWinNumber">0</span></div></div>
   </section>
   <section id="bigWinScreen" class="bigwin-screen" aria-hidden="true">
@@ -31,24 +31,23 @@
   </section>
   <main id="game" class="game">
     <picture class="frame"><source media="all"><img alt=""></picture>
-    <div class="pirate-title" aria-hidden="true">PIRATE’S TREASURE</div>
     <img class="bet-bar" alt=""><img class="balance-bar" alt="">
-    <section id="reels" class="reels" aria-label="Rodillos"><!-- Shared Phaser slot engine canvas. --></section>
-    <section id="announcementPanel" class="announcement-panel" aria-label="Anuncios del juego"><img alt="Panel de anuncios"><div id="announcementText" class="announcement-text"></div></section>
+    <section id="reels" class="reels" aria-label="Rodillos"></section>
+    <section id="announcementPanel" class="announcement-panel" aria-label="Estado de la máscara"><img alt=""><div id="announcementText" class="announcement-text">Máscara pirata conectada al motor común · faltan tus símbolos</div></section>
     <img class="lines-bar" alt="">
     <section class="ui">
       <div class="display balance"><div class="control-box"><span class="label">SALDO</span><b id="balance" class="value">10000</b></div></div>
-      <div class="display bet"><div class="control-box"><span class="label">BET</span><b id="bet" class="value">50</b></div></div>
+      <div class="display bet"><div class="control-box"><span class="label">APUESTA</span><b id="bet" class="value">50</b></div></div>
       <div class="display lines"><div class="control-box"><span class="label">LÍNEAS</span><b id="lines" class="value">20</b></div></div>
       <div class="display win"><div class="control-box"><span class="label">PREMIO</span><b id="win" class="value">0</b></div></div>
-      <div class="display jackpot"><span class="label" id="jackpotLabel">JACKPOT</span> <b id="jackpot">75420</b></div>
-      <button id="spin" class="spin" type="button" aria-label="Girar"><img class="spin-art spin-art-normal" alt=""><img class="spin-art spin-art-pressed" alt=""></button>
-      <button id="minus" class="betminus" type="button" aria-label="Bajar apuesta">−</button><button id="plus" class="betplus" type="button" aria-label="Subir apuesta">+</button>
-      <button id="lineUp" class="lineup" type="button" aria-label="Más líneas">+</button><button id="lineDown" class="linedown" type="button" aria-label="Menos líneas">−</button>
-      <button id="autoSpin" class="auto-spin" type="button" aria-pressed="false">AUTO</button><button id="menu" class="menu" type="button">BOTÍN</button>
+      <div class="display jackpot"><span class="label" id="jackpotLabel">TESORO</span> <b id="jackpot">75420</b></div>
+      <button id="spin" class="spin" type="button" aria-label="Girar" disabled><span>GIRAR</span></button>
+      <button id="minus" class="betminus" type="button" aria-label="Bajar apuesta" disabled>−</button><button id="plus" class="betplus" type="button" aria-label="Subir apuesta" disabled>+</button>
+      <button id="lineUp" class="lineup" type="button" aria-label="Más líneas" disabled>+</button><button id="lineDown" class="linedown" type="button" aria-label="Menos líneas" disabled>−</button>
+      <button id="autoSpin" class="auto-spin" type="button" aria-pressed="false" disabled>AUTO</button><button id="menu" class="menu" type="button" disabled>PREMIOS</button>
     </section>
   </main>
-  <button id="autoStopOverlay" class="auto-stop-overlay" type="button">PARAR AUTO</button>
+  <button id="autoStopOverlay" class="auto-stop-overlay" type="button" disabled>PARAR AUTO</button>
   <div id="paytableModal" class="paytable-modal" aria-hidden="true">
     <div class="paytable-card"><button id="closePaytable" class="paytable-close" aria-label="Cerrar">×</button>
       <div class="paytable-brand"></div><h2></h2><p class="paytable-subtitle"></p>
@@ -56,7 +55,7 @@
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/pirate.js?v=2"></script>
+  <script src="themes/pirate-mask.js?v=mask-base-1"></script>
   <script src="main.js?v=cleopatra-symbol-fit-1"></script>
 </body>
 </html>

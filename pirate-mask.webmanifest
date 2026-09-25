@@ -1,0 +1,10 @@
+{
+  "name": "Máscara pirata · En preparación",
+  "short_name": "Pirata",
+  "start_url": "./pirate-mask.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090807",
+  "theme_color": "#15100c"
+}
