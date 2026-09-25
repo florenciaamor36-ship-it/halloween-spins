@@ -837,18 +837,37 @@
   z-index: 1;
   inset: 0;
   opacity: 0;
-  transform: scale(.58);
+  transform: scale(.82);
   transform-origin: center center;
   pointer-events: none;
   will-change: transform, opacity;
 }
 :root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-composition {
-  animation: cleopatra-nicewin-composition-zoom 1.05s cubic-bezier(.16, 1.2, .35, 1) 1.55s both;
+  animation: cleopatra-nicewin-composition-zoom .9s cubic-bezier(.22, 1, .36, 1) .42s both;
 }
 @keyframes cleopatra-nicewin-composition-zoom {
-  0% { opacity: 0; transform: scale(.58); }
-  68% { opacity: 1; transform: scale(1.07); }
+  0% { opacity: 0; transform: scale(.82); }
+  72% { opacity: 1; transform: scale(1.035); }
   100% { opacity: 1; transform: scale(1); }
+}
+:root[data-skin="cleopatra"] .nicewin-composition::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 12% 8% 16%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 38%, rgba(255, 231, 158, .48) 0%, rgba(255, 184, 59, .2) 34%, transparent 72%);
+  opacity: 0;
+  transform: scale(.86);
+  pointer-events: none;
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-composition::before {
+  animation: cleopatra-nicewin-flash 1s ease-out .42s both;
+}
+@keyframes cleopatra-nicewin-flash {
+  0% { opacity: 0; transform: scale(.86); }
+  28% { opacity: .9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.16); }
 }
 :root[data-skin="cleopatra"] .nicewin-word {
   position: absolute;
@@ -880,6 +899,14 @@
   height: 100%;
   object-fit: fill;
   filter: drop-shadow(0 0 10px rgba(231, 184, 67, .28));
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-frame {
+  animation: cleopatra-nicewin-frame-glint .9s ease-out .48s both;
+}
+@keyframes cleopatra-nicewin-frame-glint {
+  0% { filter: brightness(.9) drop-shadow(0 0 8px rgba(231, 184, 67, .24)); }
+  38% { filter: brightness(1.24) drop-shadow(0 0 22px rgba(255, 219, 125, .72)); }
+  100% { filter: brightness(1) drop-shadow(0 0 10px rgba(231, 184, 67, .28)); }
 }
 :root[data-skin="cleopatra"] .nicewin-panel .lowwin-amount {
   position: absolute !important;
@@ -914,6 +941,10 @@
   :root[data-skin="cleopatra"] .nicewin-composition {
     opacity: 1 !important;
     transform: scale(1) !important;
+    animation: none !important;
+  }
+  :root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-composition::before,
+  :root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-frame {
     animation: none !important;
   }
 }
