@@ -1206,3 +1206,25 @@
   animation: cleopatra-spark-rain-b 12.3s linear .2s infinite,
              cleopatra-spark-rain-reveal-soft .2s ease-out .2s both;
 }
+
+/* Direct, larger glow on LINES so its short taps are easy to see. */
+:root[data-skin="cleopatra"] .lineup,
+:root[data-skin="cleopatra"] .linedown {
+  transition: background 120ms ease, box-shadow 120ms ease, transform 120ms ease !important;
+}
+:root[data-skin="cleopatra"] .lineup:active,
+:root[data-skin="cleopatra"] .lineup.is-pressed {
+  background: rgba(38, 226, 101, .48) !important;
+  border: 2px solid rgba(145, 255, 173, .95) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 2px rgba(145, 255, 173, .95), 0 0 18px 8px rgba(40, 255, 105, .9), inset 0 0 7px rgba(255,255,255,.72) !important;
+  transform: scale(1.08) !important;
+}
+:root[data-skin="cleopatra"] .linedown:active,
+:root[data-skin="cleopatra"] .linedown.is-pressed {
+  background: rgba(231, 47, 45, .5) !important;
+  border: 2px solid rgba(255, 161, 128, .95) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 2px rgba(255, 161, 128, .95), 0 0 18px 8px rgba(255, 55, 37, .9), inset 0 0 7px rgba(255,255,255,.68) !important;
+  transform: scale(1.08) !important;
+}

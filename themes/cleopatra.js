@@ -288,7 +288,7 @@ window.SLOT_GAME_CONFIG = {
       };
       const release = () => {
         window.clearTimeout(releaseTimer);
-        releaseTimer = window.setTimeout(() => button.classList.remove('is-pressed'), 220);
+        releaseTimer = window.setTimeout(() => button.classList.remove('is-pressed'), 480);
       };
       button.addEventListener('pointerdown', press, { passive: true });
       button.addEventListener('pointerup', release, { passive: true });
@@ -300,6 +300,10 @@ window.SLOT_GAME_CONFIG = {
       });
       button.addEventListener('keyup', event => {
         if (event.key === 'Enter' || event.key === ' ') release();
+      });
+      button.addEventListener('click', () => {
+        press();
+        release();
       });
     });
   };
