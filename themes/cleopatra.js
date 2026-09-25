@@ -20,7 +20,7 @@ window.SLOT_GAME_CONFIG = {
     fogOverlay: 'assets/cleopatra/effects/fog.webp?v=1',
     niceWinBackground: 'assets/cleopatra/effects/nice-win-background.webp?v=1',
     niceWinSparkles: 'assets/cleopatra/effects/nice-win-sparkles.webp?v=1',
-    niceWinTitle: 'assets/cleopatra/effects/nice-win-title.webp?v=3',
+    niceWinTitle: 'assets/cleopatra/effects/nice-win-title.webp?v=nicewin-whitebg-20260925-1517',
     niceWinAmountFrame: 'assets/cleopatra/effects/nice-win-amount-frame.webp?v=1',
     indicators: {
       balance: 'assets/cleopatra/indicators/balance.webp?v=2',
