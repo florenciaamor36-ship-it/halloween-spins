@@ -86,7 +86,11 @@ class SlotScene extends Phaser.Scene{
   }
  }
  previewWinFx(){
-  [COLS+1,COLS+2,COLS+3].filter(index=>index<COLS*ROWS).forEach((index,order)=>this.time.delayedCall(900+order*180,()=>this.animateWinSymbol(index,null)));
+  const samples=[COLS+1,COLS+2,COLS+3].filter(index=>index<COLS*ROWS);
+  if(!samples.length)return;
+  const play=()=>samples.forEach((index,order)=>this.time.delayedCall(order*170,()=>this.animateWinSymbol(index,null)));
+  this.time.delayedCall(180,play);
+  this.time.addEvent({delay:1050,loop:true,callback:play});
  }
 animateGoldChest(i,effect){
   const symbol=this.symbols[i],cell=Math.min(this.scale.width/COLS,this.scale.height/ROWS);
