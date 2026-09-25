@@ -301,3 +301,47 @@ window.SLOT_GAME_CONFIG = {
   if (document.getElementById('menu')) bindMenuFeedback();
   else document.addEventListener('DOMContentLoaded', bindMenuFeedback, { once: true });
 })();
+
+// Keep Cleopatra's live balance readable on small screens without altering its art.
+(() => {
+  const bindMobileBalanceFit = () => {
+    const value = document.getElementById('balance');
+    const display = value && value.closest('.display.balance');
+    if (!value || !display || value.dataset.mobileBalanceFit === 'true') return;
+    value.dataset.mobileBalanceFit = 'true';
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const isMobile = () => window.matchMedia('(max-width: 700px)').matches;
+    const fitBalance = () => {
+      if (!isMobile()) {
+        value.style.removeProperty('font-size');
+        return;
+      }
+      const preferred = Math.min(16, Math.max(12, window.innerWidth * 0.04));
+      const available = Math.max(12, display.getBoundingClientRect().width - 4);
+      const text = (value.textContent || '').trim() || '0';
+      let textWidth = text.length * preferred * .62;
+      if (context) {
+        const computed = getComputedStyle(value);
+        context.font = `${computed.fontWeight} ${preferred}px ${computed.fontFamily}`;
+        textWidth = context.measureText(text).width;
+        const letterSpacing = parseFloat(computed.letterSpacing);
+        if (Number.isFinite(letterSpacing) && letterSpacing > 0) {
+          textWidth += letterSpacing * Math.max(0, text.length - 1);
+        }
+      }
+      const fitted = Math.max(10, Math.min(preferred, preferred * available / Math.max(1, textWidth)));
+      value.style.setProperty('font-size', `${fitted}px`, 'important');
+    };
+    const observer = new MutationObserver(() => requestAnimationFrame(fitBalance));
+    observer.observe(value, { childList: true, characterData: true, subtree: true });
+    window.addEventListener('resize', fitBalance, { passive: true });
+    window.addEventListener('orientationchange', fitBalance, { passive: true });
+    requestAnimationFrame(fitBalance);
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindMobileBalanceFit, { once: true });
+  } else {
+    bindMobileBalanceFit();
+  }
+})();

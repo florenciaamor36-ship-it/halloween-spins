@@ -948,3 +948,19 @@
     animation: none !important;
   }
 }
+
+/* Mobile readability: enlarge only the live balance digits, not the artwork. */
+@media (max-width: 700px) {
+  :root[data-skin="cleopatra"] .display.balance .value,
+  :root[data-skin="cleopatra"] .display.balance #balance {
+    font-size: clamp(12px, 4vw, 16px) !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+    letter-spacing: -.02em !important;
+    text-align: center !important;
+    -webkit-text-stroke: .18px rgba(45, 26, 7, .72);
+    text-shadow: 0 1px 0 rgba(255, 235, 180, .82), 0 0 3px rgba(39, 22, 5, .46) !important;
+  }
+  :root[data-skin="cleopatra"] .display.balance .control-box {
+    justify-content: center !important;
+  }
+}
