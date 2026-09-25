@@ -28,7 +28,7 @@ window.SLOT_GAME_CONFIG = {
       lines: 'assets/cleopatra/indicators/lines.webp?v=1'
     },
     announcementFrame: 'assets/cleopatra/announcement-frame.svg?v=1',
-    bigWin: 'assets/cleopatra/big-win.svg?v=1',
+    bigWin: 'assets/cleopatra/effects/big-win-title.webp?v=bigwin-transparent-20260925-1548',
     lowWin: 'assets/cleopatra/low-win.svg?v=1',
     paytableFrame: 'assets/cleopatra/paytable-frame.svg?v=1',
     symbols: 'assets/cleopatra/symbols',

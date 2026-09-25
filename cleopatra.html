@@ -10,9 +10,10 @@
   <link rel="icon" type="image/svg+xml" href="assets/cleopatra/favicon.svg?v=1">
   <link rel="apple-touch-icon" href="assets/cleopatra/favicon.svg?v=1">
   <link rel="preload" as="image" href="assets/cleopatra/loading-screen.webp?v=1" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/cleopatra/effects/big-win-title.webp?v=bigwin-transparent-20260925-1548" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
-  <link rel="stylesheet" href="themes/cleopatra.css?v=balance-mobile-20260925-1438">
+  <link rel="stylesheet" href="themes/cleopatra.css?v=bigwin-center-20260925-1548">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
 </head>
 <body>
@@ -41,8 +42,14 @@
     </div>
   </section>
   <section id="bigWinScreen" class="bigwin-screen" aria-hidden="true">
-    <div class="bigwin-rays"></div><div id="bigWinParticles" class="bigwin-particles"></div><div class="bigwin-lights"></div>
-    <div class="bigwin-card"><img class="bigwin-art" alt=""><div class="bigwin-number-cover"><div id="bigWinNumber" class="bigwin-number">0</div></div></div>
+    <div class="bigwin-rain" aria-hidden="true"></div>
+    <div class="bigwin-card">
+      <img class="bigwin-art" alt="">
+      <div class="bigwin-number-cover">
+        <img class="bigwin-amount-frame" src="assets/cleopatra/effects/nice-win-amount-frame.webp?v=1" alt="">
+        <div id="bigWinNumber" class="bigwin-number">0</div>
+      </div>
+    </div>
   </section>
   <main id="game" class="game">
     <picture class="frame"><source media="all"><img alt=""></picture>
@@ -74,7 +81,7 @@
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/cleopatra.js?v=cleopatra-all-low-nicewin-20260925-1524"></script>
+  <script src="themes/cleopatra.js?v=cleopatra-bigwin-center-20260925-1548"></script>
   <script src="main.js?v=cleopatra-symbol-fit-1"></script>
 </body>
 </html>

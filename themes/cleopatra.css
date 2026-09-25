@@ -964,3 +964,153 @@
     justify-content: center !important;
   }
 }
+
+/* Cleopatra Big Win: transparent center reveal with gold rain behind it. */
+:root[data-skin="cleopatra"] .bigwin-screen,
+:root[data-skin="cleopatra"] .bigwin-screen.open {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+:root[data-skin="cleopatra"] .bigwin-rays,
+:root[data-skin="cleopatra"] .bigwin-lights,
+:root[data-skin="cleopatra"] .bigwin-particles {
+  display: none !important;
+}
+:root[data-skin="cleopatra"] .bigwin-rain {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: min(100vw, 56.25vh);
+  height: min(100vh, 177.7778vw);
+  width: min(100vw, 56.25dvh);
+  height: min(100dvh, 177.7778vw);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  pointer-events: none;
+}
+:root[data-skin="cleopatra"] .bigwin-rain::before,
+:root[data-skin="cleopatra"] .bigwin-rain::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 200%;
+  background-image: var(--cleo-nice-win-sparkles, url("../assets/cleopatra/effects/nice-win-sparkles.webp?v=1"));
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 100% 50%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+:root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-rain::before {
+  opacity: .78;
+  animation: cleopatra-bigwin-gold-rain 8.5s linear infinite;
+}
+:root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-rain::after {
+  background-size: 92% 50%;
+  background-position: 68% top;
+  filter: blur(.6px);
+  opacity: .34;
+  animation: cleopatra-bigwin-gold-rain 12s linear -4s infinite;
+}
+@keyframes cleopatra-bigwin-gold-rain {
+  from { transform: translate3d(0, -50%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+:root[data-skin="cleopatra"] .bigwin-card {
+  position: relative !important;
+  z-index: 3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  width: min(92vw, 56.25dvh) !important;
+  height: auto !important;
+  max-height: 88dvh !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  transform-origin: center center !important;
+}
+:root[data-skin="cleopatra"] .bigwin-art {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  width: 72% !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: 60dvh !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  margin: 0 auto !important;
+  filter: drop-shadow(0 0 12px rgba(255, 207, 93, .42));
+}
+:root[data-skin="cleopatra"] .bigwin-number-cover {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 94% !important;
+  height: auto !important;
+  aspect-ratio: 795 / 410 !important;
+  container-type: inline-size;
+  margin-top: .25vh !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+:root[data-skin="cleopatra"] .bigwin-amount-frame {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(231, 184, 67, .3));
+}
+:root[data-skin="cleopatra"] .bigwin-number {
+  position: relative !important;
+  z-index: 1;
+  width: 82%;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff1bd !important;
+  font-size: clamp(26px, 10cqw, 58px) !important;
+  line-height: 1 !important;
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-text-stroke: .6px #805018;
+  text-shadow: 0 1px 2px #000, 0 0 8px rgba(255, 211, 92, .95), 0 0 18px rgba(255, 196, 58, .68) !important;
+}
+:root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-card {
+  animation: cleopatra-bigwin-center-pop 1.05s cubic-bezier(.16, 1.12, .34, 1) both !important;
+}
+@keyframes cleopatra-bigwin-center-pop {
+  0% { opacity: 0; transform: scale(.08); }
+  72% { opacity: 1; transform: scale(1.045); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-rain::before,
+  :root[data-skin="cleopatra"] .bigwin-screen.open .bigwin-rain::after {
+    animation: none !important;
+    opacity: .55 !important;
+  }
+}
