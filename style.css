@@ -1064,3 +1064,16 @@ html,body{
 .display.bet .value,.display.bet #bet{transform:translateY(3mm)!important;}
 /* Lower the green loading track another 1 mm without changing its height. */
 .loading-canvas .loading-track{top:calc(86.4% - 1mm)!important;height:calc(3% + 1mm)!important;}
+
+/* Remove mobile's blue tap flash while preserving a visible keyboard focus. */
+button, [role="button"], .display.bet, .display.lines {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus, [role="button"]:focus, .display.bet:focus, .display.lines:focus {
+  outline: none !important;
+}
+button:focus-visible, [role="button"]:focus-visible,
+.display.bet:focus-visible, .display.lines:focus-visible {
+  outline: 2px solid var(--skin-accent, #e7c47a) !important;
+  outline-offset: 2px !important;
+}
