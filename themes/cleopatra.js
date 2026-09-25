@@ -288,7 +288,7 @@ window.SLOT_GAME_CONFIG = {
       };
       const release = () => {
         window.clearTimeout(releaseTimer);
-        releaseTimer = window.setTimeout(() => button.classList.remove('is-pressed'), 480);
+        releaseTimer = window.setTimeout(() => button.classList.remove('is-pressed'), 220);
       };
       button.addEventListener('pointerdown', press, { passive: true });
       button.addEventListener('pointerup', release, { passive: true });
