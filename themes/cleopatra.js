@@ -29,6 +29,7 @@ window.SLOT_GAME_CONFIG = {
     },
     announcementFrame: 'assets/cleopatra/announcement-frame.svg?v=1',
     bigWin: 'assets/cleopatra/effects/big-win-title.webp?v=bigwin-transparent-20260925-1548',
+    bigWinCoinRain: 'assets/cleopatra/effects/big-win-coin-rain.webp?v=coin-rain-20260925-1602',
     lowWin: 'assets/cleopatra/low-win.svg?v=1',
     paytableFrame: 'assets/cleopatra/paytable-frame.svg?v=1',
     symbols: 'assets/cleopatra/symbols',
@@ -249,6 +250,16 @@ window.SLOT_GAME_CONFIG = {
       retained.push(sparkTexture);
     }
 
+    if (assets.bigWinCoinRain) {
+      const coinRainUrl = absoluteAsset(assets.bigWinCoinRain);
+      document.documentElement.style.setProperty('--cleo-bigwin-coin-rain', `url("${coinRainUrl}")`);
+      const coinRainTexture = new Image();
+      coinRainTexture.fetchPriority = 'high';
+      coinRainTexture.src = coinRainUrl;
+      if (typeof coinRainTexture.decode === 'function') coinRainTexture.decode().catch(() => {});
+      retained.push(coinRainTexture);
+    }
+
     if (assets.niceWinTitle) {
       const titleUrl = absoluteAsset(assets.niceWinTitle);
       const titleImage = document.querySelector('.nicewin-word');
@@ -344,4 +355,18 @@ window.SLOT_GAME_CONFIG = {
   } else {
     bindMobileBalanceFit();
   }
+})();
+
+// Optional visual-only Big Win preview, enabled only by ?bigwin-preview=1.
+(() => {
+  if (!new URLSearchParams(window.location.search).has('bigwin-preview')) return;
+  const showPreview = () => {
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (typeof window.showBigWin !== 'function' || (loadingScreen && !loadingScreen.classList.contains('is-hidden'))) {
+      window.setTimeout(showPreview, 250);
+      return;
+    }
+    window.showBigWin(5000);
+  };
+  window.addEventListener('load', () => window.setTimeout(showPreview, 600), { once: true });
 })();

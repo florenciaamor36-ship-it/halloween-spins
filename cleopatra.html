@@ -11,9 +11,10 @@
   <link rel="apple-touch-icon" href="assets/cleopatra/favicon.svg?v=1">
   <link rel="preload" as="image" href="assets/cleopatra/loading-screen.webp?v=1" fetchpriority="high">
   <link rel="preload" as="image" href="assets/cleopatra/effects/big-win-title.webp?v=bigwin-transparent-20260925-1548" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/cleopatra/effects/big-win-coin-rain.webp?v=coin-rain-20260925-1602" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
-  <link rel="stylesheet" href="themes/cleopatra.css?v=bigwin-center-20260925-1548">
+  <link rel="stylesheet" href="themes/cleopatra.css?v=bigwin-coins-20260925-1602">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
 </head>
 <body>
@@ -43,6 +44,7 @@
   </section>
   <section id="bigWinScreen" class="bigwin-screen" aria-hidden="true">
     <div class="bigwin-rain" aria-hidden="true"></div>
+    <div class="bigwin-coin-rain" aria-hidden="true"></div>
     <div class="bigwin-card">
       <img class="bigwin-art" alt="">
       <div class="bigwin-number-cover">
@@ -81,7 +83,7 @@
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/cleopatra.js?v=cleopatra-bigwin-center-20260925-1548"></script>
+  <script src="themes/cleopatra.js?v=cleopatra-bigwin-coins-20260925-1602"></script>
   <script src="main.js?v=cleopatra-symbol-fit-1"></script>
 </body>
 </html>
