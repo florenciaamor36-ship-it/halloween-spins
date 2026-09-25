@@ -1168,3 +1168,37 @@
     opacity: .55 !important;
   }
 }
+
+/* Hide the jackpot label and value in Cleopatra's regular HUD. */
+:root[data-skin="cleopatra"] .display.jackpot {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* NICE WIN now overlays the live app, with the composition zooming from center. */
+:root[data-skin="cleopatra"] .lowwin-screen,
+:root[data-skin="cleopatra"] .lowwin-screen.open {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+:root[data-skin="cleopatra"] .lowwin-screen::before {
+  display: none !important;
+  content: none !important;
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .nicewin-composition {
+  animation: cleopatra-nicewin-center-pop 1.05s cubic-bezier(.16, 1.12, .34, 1) 0s both !important;
+  transform-origin: center center !important;
+}
+@keyframes cleopatra-nicewin-center-pop {
+  0% { opacity: 0; transform: scale(.08); }
+  72% { opacity: 1; transform: scale(1.045); }
+  100% { opacity: 1; transform: scale(1); }
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .lowwin-spark-rain::before {
+  animation: cleopatra-spark-rain-a 8.5s linear 0s infinite,
+             cleopatra-spark-rain-reveal .18s ease-out 0s both;
+}
+:root[data-skin="cleopatra"] .lowwin-screen.open .lowwin-spark-rain::after {
+  animation: cleopatra-spark-rain-b 12.3s linear .2s infinite,
+             cleopatra-spark-rain-reveal-soft .2s ease-out .2s both;
+}

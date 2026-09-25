@@ -18,7 +18,6 @@ window.SLOT_GAME_CONFIG = {
       pressed: 'assets/cleopatra/buttons/menu-pressed.webp?v=2'
     },
     fogOverlay: 'assets/cleopatra/effects/fog.webp?v=1',
-    niceWinBackground: 'assets/cleopatra/effects/nice-win-background.webp?v=1',
     niceWinSparkles: 'assets/cleopatra/effects/nice-win-sparkles.webp?v=1',
     niceWinTitle: 'assets/cleopatra/effects/nice-win-title.webp?v=nicewin-whitebg-20260925-1517',
     niceWinAmountFrame: 'assets/cleopatra/effects/nice-win-amount-frame.webp?v=1',
@@ -231,16 +230,6 @@ window.SLOT_GAME_CONFIG = {
       retained.push(fog);
     }
 
-    if (assets.niceWinBackground) {
-      const winUrl = absoluteAsset(assets.niceWinBackground);
-      document.documentElement.style.setProperty('--cleo-nice-win-bg', `url("${winUrl}")`);
-      const winBackground = new Image();
-      winBackground.fetchPriority = 'high';
-      winBackground.src = winUrl;
-      if (typeof winBackground.decode === 'function') winBackground.decode().catch(() => {});
-      retained.push(winBackground);
-    }
-
     if (assets.niceWinSparkles) {
       const sparkUrl = absoluteAsset(assets.niceWinSparkles);
       document.documentElement.style.setProperty('--cleo-nice-win-sparkles', `url("${sparkUrl}")`);
@@ -357,16 +346,19 @@ window.SLOT_GAME_CONFIG = {
   }
 })();
 
-// Optional visual-only Big Win preview, enabled only by ?bigwin-preview=1.
+// Visual-only award previews: ?bigwin-preview=1 or ?nicewin-preview=1.
 (() => {
-  if (!new URLSearchParams(window.location.search).has('bigwin-preview')) return;
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.has('bigwin-preview') ? 'bigwin' : params.has('nicewin-preview') ? 'nicewin' : null;
+  if (!mode) return;
   const showPreview = () => {
     const loadingScreen = document.getElementById('loadingScreen');
-    if (typeof window.showBigWin !== 'function' || (loadingScreen && !loadingScreen.classList.contains('is-hidden'))) {
+    const showAward = mode === 'bigwin' ? window.showBigWin : window.showLowWin;
+    if (typeof showAward !== 'function' || (loadingScreen && !loadingScreen.classList.contains('is-hidden'))) {
       window.setTimeout(showPreview, 250);
       return;
     }
-    window.showBigWin(5000);
+    showAward(mode === 'bigwin' ? 5000 : 450);
   };
   window.addEventListener('load', () => window.setTimeout(showPreview, 600), { once: true });
 })();
