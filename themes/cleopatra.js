@@ -275,6 +275,41 @@ window.SLOT_GAME_CONFIG = {
   else document.addEventListener('DOMContentLoaded', setThemeArtwork, { once: true });
 })();
 
+// Keep BET and LINES press glows visible on touch as well as mouse.
+(() => {
+  const bindPressedGlows = () => {
+    document.querySelectorAll('.betminus, .betplus, .lineup, .linedown').forEach(button => {
+      if (button.dataset.pressGlowBound === 'true') return;
+      button.dataset.pressGlowBound = 'true';
+      let releaseTimer = 0;
+      const press = () => {
+        window.clearTimeout(releaseTimer);
+        button.classList.add('is-pressed');
+      };
+      const release = () => {
+        window.clearTimeout(releaseTimer);
+        releaseTimer = window.setTimeout(() => button.classList.remove('is-pressed'), 220);
+      };
+      button.addEventListener('pointerdown', press, { passive: true });
+      button.addEventListener('pointerup', release, { passive: true });
+      button.addEventListener('pointercancel', release, { passive: true });
+      button.addEventListener('pointerleave', release, { passive: true });
+      button.addEventListener('blur', release);
+      button.addEventListener('keydown', event => {
+        if (!event.repeat && (event.key === 'Enter' || event.key === ' ')) press();
+      });
+      button.addEventListener('keyup', event => {
+        if (event.key === 'Enter' || event.key === ' ') release();
+      });
+    });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindPressedGlows, { once: true });
+  } else {
+    bindPressedGlows();
+  }
+})();
+
 // Keep the pressed menu art visible briefly before the paytable covers the button.
 (() => {
   const bindMenuFeedback = () => {

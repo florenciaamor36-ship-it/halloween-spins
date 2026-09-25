@@ -304,12 +304,14 @@
   transition: opacity 100ms ease, transform 100ms ease, box-shadow 100ms ease !important;
   pointer-events: none !important;
 }
-:root[data-skin="cleopatra"] .betplus:active::before {
+:root[data-skin="cleopatra"] .betplus:active::before,
+:root[data-skin="cleopatra"] .betplus.is-pressed::before {
   opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
   background: rgba(38, 226, 101, .72) !important;
   box-shadow: 0 0 0 2px rgba(145, 255, 173, .95), 0 0 13px 6px rgba(40, 255, 105, .85), inset 0 0 6px rgba(255,255,255,.6) !important;
 }
-:root[data-skin="cleopatra"] .betminus:active::before {
+:root[data-skin="cleopatra"] .betminus:active::before,
+:root[data-skin="cleopatra"] .betminus.is-pressed::before {
   opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
   background: rgba(231, 47, 45, .72) !important;
   box-shadow: 0 0 0 2px rgba(255, 161, 128, .95), 0 0 13px 6px rgba(255, 55, 37, .85), inset 0 0 6px rgba(255,255,255,.58) !important;
@@ -338,12 +340,14 @@
   transition: opacity 100ms ease, transform 100ms ease, box-shadow 100ms ease !important;
   pointer-events: none !important;
 }
-:root[data-skin="cleopatra"] .lineup:active::before {
+:root[data-skin="cleopatra"] .lineup:active::before,
+:root[data-skin="cleopatra"] .lineup.is-pressed::before {
   opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
   background: rgba(38, 226, 101, .72) !important;
   box-shadow: 0 0 0 2px rgba(145, 255, 173, .95), 0 0 13px 6px rgba(40, 255, 105, .85), inset 0 0 6px rgba(255,255,255,.6) !important;
 }
-:root[data-skin="cleopatra"] .linedown:active::before {
+:root[data-skin="cleopatra"] .linedown:active::before,
+:root[data-skin="cleopatra"] .linedown.is-pressed::before {
   opacity: 1 !important; transform: translate(-50%, -50%) scale(1.08) !important;
   background: rgba(231, 47, 45, .72) !important;
   box-shadow: 0 0 0 2px rgba(255, 161, 128, .95), 0 0 13px 6px rgba(255, 55, 37, .85), inset 0 0 6px rgba(255,255,255,.58) !important;
