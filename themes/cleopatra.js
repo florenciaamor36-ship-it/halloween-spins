@@ -75,7 +75,7 @@ window.SLOT_GAME_CONFIG = {
     jackpotContributionRate: 0.1,
     minimumJackpotContribution: 1,
     bigWinBetMultiplier: 10,
-    lowWinBetMultiplier: 3,
+    lowWinBetMultiplier: 0.000001, // Cualquier premio positivo menor al Big Win usa NICE WIN.
     freeSpins: 0
   },
   specialSymbols: {
