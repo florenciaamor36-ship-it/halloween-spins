@@ -47,21 +47,47 @@ function evaluateSpecial(values,symbol){const positions=[];values.forEach((id,in
 class SlotScene extends Phaser.Scene{
  constructor(){super('SlotScene');this.symbols=[];this.overlays=[];this.fx=[];this.grid=[];this.payline=null;this.spinId=0;this.lastLayout={w:0,h:0}}
  preload(){setLoadingProgress(0);this.load.on('progress',value=>setLoadingProgress(value));this.load.once('complete',()=>setLoadingProgress(1));GAME_CONFIG.symbols.forEach(symbol=>this.load.image(symbol.key,symbol.asset));GAME_CONFIG.assets.winFrames.forEach(frame=>this.load.image(frame.key,frame.src))}
- create(){scene=this;this.makeGrid();setLoadingProgress(1);requestAnimationFrame(()=>setTimeout(finishLoading,220));this.scale.on('resize',()=>this.layout());this.layout();this.events.on('shutdown',()=>this.clearPayline())}
- makeGrid(){for(let i=0;i<COLS*ROWS;i++){const t=this.add.image(0,0,SYMBOL_KEYS[rand()]).setOrigin(.5);const glow=this.add.graphics();glow.fillStyle(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.glow).color,.42);glow.fillCircle(0,0,58);glow.setVisible(false);const overlay=this.add.image(0,0,WIN_FRAMES[0]).setOrigin(.5).setAlpha(0);this.symbols.push(t);this.fx.push(glow);this.overlays.push(overlay);this.grid.push(rand())}}
+ create(){scene=this;this.makeGrid();setLoadingProgress(1);requestAnimationFrame(()=>setTimeout(finishLoading,220));this.scale.on('resize',()=>this.layout());this.layout();if(new URLSearchParams(window.location.search).has('win-fx-preview'))this.previewWinFx();this.events.on('shutdown',()=>this.clearPayline())}
+ makeGrid(){for(let i=0;i<COLS*ROWS;i++){const t=this.add.image(0,0,SYMBOL_KEYS[rand()]).setOrigin(.5);const glow=this.add.graphics().setDepth(20);glow.setVisible(false).setAlpha(0);const overlay=this.add.image(0,0,WIN_FRAMES[0]).setOrigin(.5).setAlpha(0);this.symbols.push(t);this.fx.push(glow);this.overlays.push(overlay);this.grid.push(rand())}}
  layout(){const w=this.scale.width,h=this.scale.height;this.lastLayout={w,h};this.symbols.forEach((t,i)=>{const cellW=w/COLS,cellH=h/ROWS,x=((i%COLS)+.5)*cellW,y=(Math.floor(i/COLS)+.5)*cellH,size=Math.min(cellW,cellH)*SYMBOL_SCALE;t.x=x;t.y=y;const symbolScale=SYMBOL_FIT==='cell-width'?Math.min(cellW*SYMBOL_SCALE/t.width,cellH*SYMBOL_SCALE/t.height):Math.min(size/t.width,size/t.height);t.setScale(symbolScale,symbolScale*SYMBOL_SCALE_Y);this.fx[i].setPosition(x,y);const o=this.overlays[i];o.setPosition(x,y);const overlayScale=Math.min(size*1.22/o.width,size*.9/o.height);o.setScale(overlayScale,overlayScale*SYMBOL_SCALE_Y)})}
  baseY(index){return (Math.floor(index/COLS)+.5)*this.scale.height/ROWS}
  animateWinSymbol(i,effect=null){
-  const glow=this.fx[i],symbol=this.symbols[i],accent=effect?.color||GAME_CONFIG.colors.accent;
+  const glow=this.fx[i],symbol=this.symbols[i];
+  const accent=effect?.color||GAME_CONFIG.colors.accent||'#ffffff';
+  const highlight=effect?.highlight||GAME_CONFIG.colors.highlight||'#ffffff';
   const color=Phaser.Display.Color.HexStringToColor(accent).color;
+  const shine=Phaser.Display.Color.HexStringToColor(highlight).color;
+  const cell=Math.min(this.scale.width/COLS,this.scale.height/ROWS);
   this.tweens.killTweensOf(glow);this.tweens.killTweensOf(symbol);
-  if(effect){glow.clear();glow.fillStyle(color,.5);glow.fillCircle(0,0,effect.type==='gold-chest'?70:58)}
-  glow.setVisible(true).setAlpha(.25).setScale(.6);symbol.setTint(color);
-  this.tweens.add({targets:glow,alpha:.95,scale:1.45,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut',onComplete:()=>{glow.setVisible(false);symbol.clearTint()}});
-  this.tweens.add({targets:symbol,alpha:.55,duration:260,yoyo:true,repeat:3,ease:'Sine.easeInOut'});
+  symbol.clearTint();symbol.setAlpha(1);
+  glow.clear();
+  glow.lineStyle(Math.max(1.25,cell*.022),color,.84);
+  glow.strokeCircle(0,0,cell*.35);
+  glow.lineStyle(Math.max(1,cell*.012),shine,.9);
+  glow.strokeCircle(0,0,cell*.45);
+  glow.setVisible(true).setAlpha(0).setScale(.78);
+  this.tweens.add({targets:glow,alpha:.92,scale:1.12,duration:260,yoyo:true,ease:'Sine.easeOut',onComplete:()=>{glow.setVisible(false);glow.setAlpha(0)}});
+  this.animateWinSparkles(symbol.x,symbol.y,cell,effect);
   if(effect?.type==='gold-chest')this.animateGoldChest(i,effect);
   if(effect?.type==='blue-lotus')this.animateBlueLotus(i,effect);
-}
+ }
+ animateWinSparkles(x,y,cell,effect=null){
+  const palette=[effect?.color,effect?.highlight,...(GAME_CONFIG.colors.particlePalette||[])].filter(Boolean);
+  if(!palette.length)palette.push(GAME_CONFIG.colors.accent||'#ffd866','#ffffff');
+  const colors=palette.map(hex=>Phaser.Display.Color.HexStringToColor(hex).color);
+  const count=8,start=Math.random()*Math.PI*2;
+  for(let n=0;n<count;n++){
+   const angle=start+(Math.PI*2*n/count)+(Math.random()-.5)*.16;
+   const startRadius=cell*.24,endRadius=cell*(.42+Math.random()*.12);
+   const outer=Math.max(2.5,cell*.075),color=colors[(n+Math.floor(Math.random()*colors.length))%colors.length];
+   const star=this.add.star(x+Math.cos(angle)*startRadius,y+Math.sin(angle)*startRadius,4,Math.max(1,outer*.24),outer,color,.96).setDepth(35);
+   star.setRotation(angle);
+   this.tweens.add({targets:star,x:x+Math.cos(angle)*endRadius,y:y+Math.sin(angle)*endRadius,alpha:0,scale:.18,rotation:angle+(n%2?1:-1)*Math.PI/2,duration:460+Math.random()*150,delay:(n%4)*42,ease:'Cubic.easeOut',onComplete:()=>star.destroy()});
+  }
+ }
+ previewWinFx(){
+  [COLS+1,COLS+2,COLS+3].filter(index=>index<COLS*ROWS).forEach((index,order)=>this.time.delayedCall(900+order*180,()=>this.animateWinSymbol(index,null)));
+ }
 animateGoldChest(i,effect){
   const symbol=this.symbols[i],cell=Math.min(this.scale.width/COLS,this.scale.height/ROWS);
   const gold=Phaser.Display.Color.HexStringToColor(effect.color||'#f4c96b').color;
@@ -117,8 +143,7 @@ animateBlueLotus(i,effect){
   const key=SYMBOL_KEYS[values[index]],effect=WIN_EFFECTS[key],lineWin=wins.some(win=>win.positions.includes(index));
   const specialWin=key===SYMBOL_KEYS[BONUS_INDEX]?awarded>0&&bonusPositions.includes(index):key===SYMBOL_KEYS[SCATTER_INDEX]?Boolean(scatterWin&&scatterWin.positions.includes(index)):false;
   const shouldAnimate=effect&&(effect.when==='bonus-awarded'?specialWin:effect.when==='line-win'?lineWin:(lineWin||specialWin));
-  this.symbols[index].setTint(Phaser.Display.Color.HexStringToColor(GAME_CONFIG.colors.winningTint).color);
-  if(key===ANIMATED_WIN_KEY||shouldAnimate)this.animateWinSymbol(index,shouldAnimate?effect:null);
+  if(lineWin||specialWin||key===ANIMATED_WIN_KEY)this.animateWinSymbol(index,shouldAnimate?effect:null);
 });if(totalWin>0||awarded){resultLock=true;setTimeout(()=>this.showPaylines(wins),450);setTimeout(()=>{if(totalWin>=bet*GAME_CONFIG.defaults.bigWinBetMultiplier)showBigWin(totalWin);else if(totalWin>=bet*GAME_CONFIG.defaults.lowWinBetMultiplier)showLowWin(totalWin);else{resultLock=false;setAnnouncement(pendingAnnouncement);scheduleNextSpin()}},1050)}else setAnnouncement('');setText();scheduleNextSpin()};
   const tick=()=>{if(id!==this.spinId||finished)return;const elapsed=performance.now()-started;for(let c=0;c<COLS;c++)if(!stopped[c]&&elapsed>=850+c*300)stopColumn(c);const cycle=Math.floor(elapsed/75);if(cycle!==lastCycle){lastCycle=cycle;for(let c=0;c<COLS;c++)if(!stopped[c])for(let r=0;r<ROWS;r++){const index=c+r*COLS;values[index]=rand();this.symbols[index].setTexture(SYMBOL_KEYS[values[index]])}}for(let c=0;c<COLS;c++)if(!stopped[c])for(let r=0;r<ROWS;r++){const index=c+r*COLS,cell=this.scale.height/ROWS,phase=(elapsed*1.35+r*cell/2)%cell;this.symbols[index].y=this.baseY(index)+phase-cell/2}if(stopped.every(Boolean))finishSpin()};
   interval=window.setInterval(tick,35);fallback=window.setTimeout(finishSpin,3400);tick();
