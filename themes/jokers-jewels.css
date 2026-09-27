@@ -45,7 +45,20 @@
     min-height:100vh!important; min-height:100dvh!important;
     max-width:none!important; max-height:none!important;
     margin:0!important; aspect-ratio:auto!important; transform:none!important;
+    background-size:100% 122.05%!important;
+    background-position:center 56.5%!important;
   }
+  :root[data-skin="jokers-jewels"] #game .reels { top:29.92%!important; height:27.89%!important; }
+  :root[data-skin="jokers-jewels"] .announcement-panel { top:57.93%!important; height:7.2%!important; }
+  :root[data-skin="jokers-jewels"] .display.balance,
+  :root[data-skin="jokers-jewels"] .display.bet,
+  :root[data-skin="jokers-jewels"] .display.lines,
+  :root[data-skin="jokers-jewels"] .display.win { top:65.72%!important; }
+  :root[data-skin="jokers-jewels"] .spin { top:70.24%!important; height:11.35%!important; }
+  :root[data-skin="jokers-jewels"] .betminus,
+  :root[data-skin="jokers-jewels"] .betplus { top:73.29%!important; height:6.35%!important; }
+  :root[data-skin="jokers-jewels"] .auto-spin,
+  :root[data-skin="jokers-jewels"] .menu { top:90.62%!important; height:6.71%!important; }
   :root[data-skin="jokers-jewels"] #game .frame {
     position:absolute!important; inset:0!important;
     width:100%!important; height:100%!important;
