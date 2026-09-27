@@ -501,3 +501,40 @@ window.SLOT_GAME_CONFIG = {
   });
   window.addEventListener('pagehide', stopBigWinSounds, { once: true });
 })();
+
+// Play the two assigned cues together only while NICE WIN is visible.
+(() => {
+  const screen = document.getElementById('lowWinScreen');
+  if (!screen) return;
+  const symbolWin = new Audio('assets/cleopatra/audio/win_symbol_02.99861d0be6787ce80b2ded9b5d9aad74.mp3?v=cleo-nicewin-symbol-20260927');
+  const money = new Audio('assets/cleopatra/audio/money.f733bac8e9c46045c0bef5b78d1e1804.mp3?v=cleo-nicewin-money-20260927');
+  symbolWin.preload = 'auto';
+  symbolWin.loop = false;
+  symbolWin.volume = 0.55;
+  money.preload = 'auto';
+  money.loop = false;
+  money.volume = 0.45;
+  const playTrack = track => {
+    if (!track.paused) return;
+    try { track.currentTime = 0; } catch {}
+    try {
+      const attempt = track.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    } catch {}
+  };
+  const stopTrack = track => {
+    track.pause();
+    try { track.currentTime = 0; } catch {}
+  };
+  const playNiceWinSounds = () => { playTrack(symbolWin); playTrack(money); };
+  const stopNiceWinSounds = () => { stopTrack(symbolWin); stopTrack(money); };
+  const syncSounds = () => screen.classList.contains('open') ? playNiceWinSounds() : stopNiceWinSounds();
+  const observer = new MutationObserver(syncSounds);
+  observer.observe(screen, { attributes: true, attributeFilter: ['class'] });
+  syncSounds();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopNiceWinSounds();
+    else syncSounds();
+  });
+  window.addEventListener('pagehide', stopNiceWinSounds, { once: true });
+})();
