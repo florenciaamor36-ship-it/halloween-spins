@@ -35,25 +35,25 @@ window.SLOT_GAME_CONFIG = {
     winFrames: [{ key: 'cleopatra-win-glow', src: 'assets/cleopatra/win-glow.svg?v=1' }]
   },
   symbols: [
-    { key: 'h1', label: 'Cleopatra', asset: 'assets/cleopatra/symbols/imported/h1.webp?v=book-symbols-20260927' },
-    { key: 'h2', label: 'Ojo de Horus', asset: 'assets/cleopatra/symbols/imported/h2.webp?v=book-symbols-20260927' },
-    { key: 'h3', label: 'Anillo esmeralda', asset: 'assets/cleopatra/symbols/imported/h3.webp?v=book-symbols-20260927' },
-    { key: 'h4', label: 'Ankh azul', asset: 'assets/cleopatra/symbols/imported/h4.webp?v=book-symbols-20260927' },
-    { key: 'blue-book', label: 'Libro azul', asset: 'assets/cleopatra/symbols/imported/bluebook.webp?v=book-symbols-20260927' },
-    { key: 'r1', label: 'A', asset: 'assets/cleopatra/symbols/imported/r1.webp?v=book-symbols-20260927' },
-    { key: 'r2', label: 'K', asset: 'assets/cleopatra/symbols/imported/r2.webp?v=book-symbols-20260927' },
-    { key: 'r3', label: 'Q', asset: 'assets/cleopatra/symbols/imported/r3.webp?v=book-symbols-20260927' },
-    { key: 'r4', label: 'J', asset: 'assets/cleopatra/symbols/imported/r4.webp?v=book-symbols-20260927' },
-    { key: 'r5', label: '10', asset: 'assets/cleopatra/symbols/imported/r5.webp?v=book-symbols-20260927' },
-    { key: 'wild', label: 'Libro dorado · WILD', asset: 'assets/cleopatra/symbols/imported/goldbook-wild.webp?v=book-symbols-20260927' },
+    { key: 'h1', label: 'Cleopatra', asset: 'assets/cleopatra/symbols/fitted-imported/h1.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'h2', label: 'Ojo de Horus', asset: 'assets/cleopatra/symbols/fitted-imported/h2.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'h3', label: 'Anillo esmeralda', asset: 'assets/cleopatra/symbols/fitted-imported/h3.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'h4', label: 'Ankh azul', asset: 'assets/cleopatra/symbols/fitted-imported/h4.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'blue-book', label: 'Libro azul', asset: 'assets/cleopatra/symbols/fitted-imported/bluebook.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'r1', label: 'A', asset: 'assets/cleopatra/symbols/fitted-imported/r1.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'r2', label: 'K', asset: 'assets/cleopatra/symbols/fitted-imported/r2.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'r3', label: 'Q', asset: 'assets/cleopatra/symbols/fitted-imported/r3.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'r4', label: 'J', asset: 'assets/cleopatra/symbols/fitted-imported/r4.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'r5', label: '10', asset: 'assets/cleopatra/symbols/fitted-imported/r5.webp?v=book-symbols-fitted-20260927-0252' },
+    { key: 'wild', label: 'Libro dorado · WILD', asset: 'assets/cleopatra/symbols/fitted-imported/goldbook-wild.webp?v=book-symbols-fitted-20260927-0252' },
     { key: 'scatter', label: 'PIRÁMIDE · SCATTER', asset: 'assets/cleopatra/symbols/fitted/pyramid-scatter.webp?v=1' },
-    { key: 'bonus', label: 'Moneda · BONUS', asset: 'assets/cleopatra/symbols/imported/bonus.webp?v=book-symbols-20260927' }
+    { key: 'bonus', label: 'Moneda · BONUS', asset: 'assets/cleopatra/symbols/fitted-imported/bonus.webp?v=book-symbols-fitted-20260927-0252' }
   ],
   visual: {
     /* The supplied frame has a taller portrait window than a conventional 5×3
        reel bed. The fitted symbol copies normalize transparent margins while
        preserving each source aspect ratio; other themes keep their defaults. */
-    symbolScale: 0.92,
+    symbolScale: 0.84,
     symbolScaleY: 1,
     symbolFit: 'cell-width',
     winEffects: {

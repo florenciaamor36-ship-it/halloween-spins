@@ -22,9 +22,10 @@
 }
 :root[data-skin="cleopatra"] #reels {
   z-index: 5 !important;
-  left: calc(20% - 3cm) !important;
+  left: 50% !important;
   top: 28.3% !important;
-  width: calc(60% + 6cm) !important;
+  width: min(calc(60% + 6cm), 90%) !important;
+  transform: translateX(-50%) !important;
   height: 44.5% !important;
   overflow: visible !important;
   border: 0 !important;
