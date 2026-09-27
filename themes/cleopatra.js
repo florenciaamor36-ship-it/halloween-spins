@@ -464,3 +464,34 @@ window.SLOT_GAME_CONFIG = {
     else if (detail.isFreeSpin && Number(detail.freeSpinsRemaining) === 0) setMusicMode('normal');
   });
 })();
+
+// Play the supplied coin loop only while Cleopatra's Big Win screen is open.
+(() => {
+  const screen = document.getElementById('bigWinScreen');
+  if (!screen) return;
+  const coins = new Audio('assets/cleopatra/audio/coins_loop.ffb413f2ddb645844bc71c773791531b.mp3?v=cleo-bigwin-coins-20260927');
+  coins.preload = 'auto';
+  coins.loop = true;
+  coins.volume = 0.55;
+  const playCoins = () => {
+    if (!coins.paused) return;
+    try { coins.currentTime = 0; } catch {}
+    try {
+      const attempt = coins.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    } catch {}
+  };
+  const stopCoins = () => {
+    coins.pause();
+    try { coins.currentTime = 0; } catch {}
+  };
+  const syncCoins = () => screen.classList.contains('open') ? playCoins() : stopCoins();
+  const observer = new MutationObserver(syncCoins);
+  observer.observe(screen, { attributes: true, attributeFilter: ['class'] });
+  syncCoins();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopCoins();
+    else syncCoins();
+  });
+  window.addEventListener('pagehide', stopCoins, { once: true });
+})();
