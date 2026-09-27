@@ -553,6 +553,28 @@ window.SLOT_GAME_CONFIG = {
   window.addEventListener('pagehide', stopAll, { once: true });
 })();
 
+// The user-assigned hold_reel_stop cue plays only on a manual Spin button press.
+(() => {
+  const button = document.getElementById('spin');
+  if (!button) return;
+  const sound = new Audio('assets/cleopatra/audio/hold_reel_stop.b3d22c9127881cfbfe6df1989b20ee04.mp3?v=cleo-spin-button-20260927');
+  sound.preload = 'auto';
+  sound.volume = 0.34;
+  const stop = () => {
+    sound.pause();
+    try { sound.currentTime = 0; } catch {}
+  };
+  button.addEventListener('click', () => {
+    stop();
+    try {
+      const attempt = sound.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    } catch {}
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  window.addEventListener('pagehide', stop, { once: true });
+})();
+
 // Play the two assigned cues together only while NICE WIN is visible.
 (() => {
   const screen = document.getElementById('lowWinScreen');
