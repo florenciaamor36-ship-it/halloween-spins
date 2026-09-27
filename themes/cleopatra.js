@@ -603,3 +603,37 @@ window.SLOT_GAME_CONFIG = {
   });
   window.addEventListener('pagehide', stopNiceWinSounds, { once: true });
 })();
+
+// Play the assigned boost-win cue only when the blue-book symbol triggers its ray effect.
+(() => {
+  const symbolIndex = window.SLOT_GAME_CONFIG?.symbols.findIndex(symbol => symbol.key === 'blue-book') ?? -1;
+  if (symbolIndex < 0) return;
+  const sound = new Audio('assets/cleopatra/audio/boost_win.46cf420e7b360bb5e35577076bb33248.mp3?v=cleo-bluebook-rays-20260927');
+  sound.preload = 'none';
+  sound.volume = 0.34;
+  let unlocked = false;
+  const unlock = () => {
+    if (unlocked) return;
+    unlocked = true;
+    sound.preload = 'auto';
+    sound.load();
+  };
+  document.addEventListener('pointerdown', unlock, { once: true, passive: true });
+  document.addEventListener('keydown', unlock, { once: true });
+  const stop = () => {
+    sound.pause();
+    try { sound.currentTime = 0; } catch {}
+  };
+  window.addEventListener('slot:spin-result', event => {
+    const { values = [], wins = [] } = event.detail || {};
+    const blueBookWon = wins.some(win => win.positions?.some(index => values[index] === symbolIndex));
+    if (!unlocked || !blueBookWon) return;
+    stop();
+    try {
+      const attempt = sound.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    } catch {}
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  window.addEventListener('pagehide', stop, { once: true });
+})();
