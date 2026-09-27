@@ -172,17 +172,26 @@
     "wins_wild"
   ];
   const tracks=Object.fromEntries(trackNames.map(name=>[name,new Audio(`${base}${name}.mp3`)]));
-  Object.values(tracks).forEach(audio=>{audio.preload='auto';audio.volume=.62;});
-  ['ambient_loop','ambient_free_loop','ambient_hold_loop','coins_loop'].forEach(name=>{if(tracks[name])tracks[name].volume=.22;});
-  let audioReady=false;
+  const loopNames=new Set(['ambient_loop','ambient_free_loop','ambient_hold_loop','coins_loop']);
+  Object.entries(tracks).forEach(([name,audio])=>{audio.preload='auto';audio.volume=loopNames.has(name) ? .18 : .54;});
+  let activeLoop=null,activeSfx=null,audioReady=false,bgTimer=null,bgGeneration=0;
+  const stopTrack=audio=>{if(!audio)return;audio.pause();try{audio.currentTime=0}catch{}};
   const play=(name,loop=false)=>{
     const audio=tracks[name];if(!audio)return;
-    try{audio.pause();audio.currentTime=0;audio.loop=loop;audio.play().catch(()=>{})}catch{}
+    const isLoop=loop||loopNames.has(name);
+    if(isLoop){if(activeLoop&&activeLoop!==audio)stopTrack(activeLoop);activeLoop=audio;audio.loop=true;audio.volume=.18;}
+    else{if(activeSfx&&activeSfx!==audio)stopTrack(activeSfx);activeSfx=audio;audio.loop=false;audio.volume=.54;}
+    try{audio.pause();audio.currentTime=0;audio.play().catch(()=>{})}catch{}
   };
-  const pause=name=>{const audio=tracks[name];if(audio){audio.pause();audio.currentTime=0;}};
+  const pause=name=>{const audio=tracks[name];if(!audio)return;stopTrack(audio);if(activeLoop===audio)activeLoop=null;if(activeSfx===audio)activeSfx=null;};
+  const switchBackground=(name,delay=0)=>{
+    if(bgTimer)clearTimeout(bgTimer);const generation=++bgGeneration;
+    if(activeLoop){stopTrack(activeLoop);activeLoop=null;}
+    if(!name)return;
+    bgTimer=window.setTimeout(()=>{if(generation===bgGeneration)play(name,true)},delay);
+  };
   const randomPlay=names=>play(names[Math.floor(Math.random()*names.length)]);
-  const playAfter=(name,delay,loop=false)=>window.setTimeout(()=>play(name,loop),delay);
-  const unlock=()=>{if(audioReady)return;audioReady=true;play('game_intro');playAfter('ambient_loop',3200);};
+  const unlock=()=>{if(audioReady)return;audioReady=true;switchBackground('ambient_loop',1100);};
   document.addEventListener('pointerdown',unlock,{once:true,passive:true});
   document.addEventListener('keydown',unlock,{once:true});
   document.querySelector('.cleo-title')?.addEventListener('click',()=>{unlock();randomPlay(['character_click_1','character_click_2','character_click_3','character_click_4']);});
@@ -190,49 +199,37 @@
   document.getElementById('autoSpin')?.addEventListener('click',()=>{unlock();play('button_auto')});
   document.getElementById('menu')?.addEventListener('click',()=>{unlock();play('pop_up_symb')});
   const symbolKey=index=>window.SLOT_GAME_CONFIG?.symbols?.[index]?.key;
-  window.addEventListener('slot:spin-start',()=>{unlock();play('button_spin');});
+  window.addEventListener('slot:spin-start',()=>{unlock();play('button_spin')});
   window.addEventListener('slot:reel-stop',event=>{
     const d=event.detail||{},keys=d.keys||[];
-    if(keys.includes('scatter')){play('reel_stop_scatter');play('mystery_stop');}
-    else if(keys.includes('bonus')){play('reel_stop_bonus');}
+    if(keys.includes('scatter'))play('reel_stop_scatter');
+    else if(keys.includes('bonus'))play('reel_stop_bonus');
+    else if(keys.includes('wild'))play('wild_appear');
+    else if(keys.includes('blue-book'))play('blue_book_2');
     else play(d.column>0?'reel_more':'reel_stop1');
-    if(keys.includes('wild')){play('wild_appear');play('golden_symbol_stop');play('golden_symbol_2');play('book');}
-    if(keys.includes('blue-book'))play('blue_book_2');
   });
   window.addEventListener('slot:spin-result',event=>{
     const d=event.detail||{},keys=(d.values||[]).map(symbolKey),winning=(d.wins||[]).map(win=>symbolKey(win.symbol)),maxCount=Math.max(0,...(d.wins||[]).map(win=>win.count));
-    if(d.totalWin>0){
-      play('win_2');if(d.wins?.length)play('wins_lines01');
-      if(d.wildCount>0)play('wins_wild');
-      if(d.wildCount>0)play('golden_symbol_win');
-      if(winning.includes('blue-book'))play('blue_book_win');
-      if(d.scatterCount>=3){play('mystery_win');play('sun');}
-      if(d.wins?.length)play(`win_symbol_0${Math.min(5,Math.max(1,maxCount-2))}`);
-      if(d.totalWin>=Number(d.bet||50)*10){
-        play('money');play('firework');play('coins_loop',true);
-        playAfter('win_coins',1800);window.setTimeout(()=>{pause('coins_loop');play('coins_end')},2600);
-      }
+    if(Number(d.awarded)>0){play(keys.includes('blue-book')?'blue_book_active':'boost_win');switchBackground('ambient_free_loop',900);}
+    else if(Number(d.bonusCount)>=6){play('dynamite');}
+    else if(Number(d.totalWin)>0){
+      let cue='win_2';
+      if(Number(d.totalWin)>=Number(d.bet||50)*10)cue='win_coins';
+      else if(Number(d.scatterCount)>=3)cue='mystery_win';
+      else if(Number(d.wildCount)>0)cue='wins_wild';
+      else if(winning.includes('blue-book'))cue='blue_book_win';
+      else if(d.wins?.length)cue=`win_symbol_0${Math.min(5,Math.max(1,maxCount-2))}`;
+      play(cue);
     }
-    if(d.bonusCount>=6)play('dynamite');
-    if(d.awarded>0){
-      pause('ambient_loop');pause('ambient_free_loop');play('boost');play('boost_win');
-      if(keys.includes('blue-book'))play('blue_book_active');
-      play('ambient_free_start');playAfter('ambient_free_loop',900,true);
-    }else if(d.isFreeSpin&&d.freeSpinsRemaining===0){
-      pause('ambient_free_loop');play('ambient_free_end');playAfter('ambient_loop',2600,true);
-    }
+    if(d.isFreeSpin&&Number(d.freeSpinsRemaining)===0){if(!Number(d.awarded)&&!Number(d.totalWin))play('ambient_free_end');switchBackground('ambient_loop',1800);}
   });
-  window.addEventListener('slot:feature-start',()=>{
-    pause('ambient_loop');pause('ambient_free_loop');play('book_2');play('ambient_hold_start');play('ambient_hold_loop',true);play('hold_2');play('dynamite');
-  });
+  window.addEventListener('slot:feature-start',()=>{switchBackground('ambient_hold_loop',700);play('book_2');});
   window.addEventListener('slot:feature-end',event=>{
-    const d=event.detail||{};pause('ambient_hold_loop');play('ambient_hold_cash');play('hold_cash_2');play('ambient_hold_end');
-    if(d.failed){if(d.freeSpinsRemaining>0)play('ambient_free_loop',true);else play('ambient_loop',true);return;}
-    if(d.jackpot){play('jackpot');play('firework');}else{play('coin_3');play('coins_loop',true);playAfter('win_coins',800);window.setTimeout(()=>{pause('coins_loop');play('coins_end')},1800);}
-    if(d.freeSpinsRemaining>0){pause('ambient_loop');play('ambient_free_loop',true);}else play('ambient_loop',true);
+    const d=event.detail||{};play(d.jackpot?'jackpot':'coins_end');
+    switchBackground(Number(d.freeSpinsRemaining)>0?'ambient_free_loop':'ambient_loop',900);
   });
-  window.addEventListener('slot:hold-respin',()=>{play('hold_reel_stop');play('hold_2');});
-  window.addEventListener('slot:hold-hit',()=>{play('hold_3');play('coin_3');});
+  window.addEventListener('slot:hold-respin',()=>play('hold_reel_stop'));
+  window.addEventListener('slot:hold-hit',()=>play('hold_3'));
   const randomIndex=n=>{const limit=Math.floor(0x100000000/n)*n,a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=limit);return a[0]%n;};
   const values=[1,2,3,4,5,8,10,15,20,25,50];
   const drawValue=()=>{
