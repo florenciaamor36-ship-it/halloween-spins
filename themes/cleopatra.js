@@ -465,33 +465,39 @@ window.SLOT_GAME_CONFIG = {
   });
 })();
 
-// Play the supplied coin loop only while Cleopatra's Big Win screen is open.
+// Layer the supplied coin loop and money cue while Cleopatra's Big Win is open.
 (() => {
   const screen = document.getElementById('bigWinScreen');
   if (!screen) return;
   const coins = new Audio('assets/cleopatra/audio/coins_loop.ffb413f2ddb645844bc71c773791531b.mp3?v=cleo-bigwin-coins-20260927');
+  const money = new Audio('assets/cleopatra/audio/money.f733bac8e9c46045c0bef5b78d1e1804.mp3?v=cleo-bigwin-money-20260927');
   coins.preload = 'auto';
   coins.loop = true;
   coins.volume = 0.55;
-  const playCoins = () => {
-    if (!coins.paused) return;
-    try { coins.currentTime = 0; } catch {}
+  money.preload = 'auto';
+  money.loop = false;
+  money.volume = 0.45;
+  const playTrack = track => {
+    if (!track.paused) return;
+    try { track.currentTime = 0; } catch {}
     try {
-      const attempt = coins.play();
+      const attempt = track.play();
       if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
     } catch {}
   };
-  const stopCoins = () => {
-    coins.pause();
-    try { coins.currentTime = 0; } catch {}
+  const stopTrack = track => {
+    track.pause();
+    try { track.currentTime = 0; } catch {}
   };
-  const syncCoins = () => screen.classList.contains('open') ? playCoins() : stopCoins();
-  const observer = new MutationObserver(syncCoins);
+  const playBigWinSounds = () => { playTrack(coins); playTrack(money); };
+  const stopBigWinSounds = () => { stopTrack(coins); stopTrack(money); };
+  const syncSounds = () => screen.classList.contains('open') ? playBigWinSounds() : stopBigWinSounds();
+  const observer = new MutationObserver(syncSounds);
   observer.observe(screen, { attributes: true, attributeFilter: ['class'] });
-  syncCoins();
+  syncSounds();
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopCoins();
-    else syncCoins();
+    if (document.hidden) stopBigWinSounds();
+    else syncSounds();
   });
-  window.addEventListener('pagehide', stopCoins, { once: true });
+  window.addEventListener('pagehide', stopBigWinSounds, { once: true });
 })();
