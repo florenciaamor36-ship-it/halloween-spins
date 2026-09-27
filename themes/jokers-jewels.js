@@ -36,13 +36,13 @@
       balance: 10000,
       bet: 50,
       jackpot: 0,
-      lines: 20,
+      lines: 5,
       minBet: 25,
       maxBet: 500,
       betStep: 25,
       minLines: 5,
-      maxLines: 20,
-      lineStep: 5,
+      maxLines: 5,
+      lineStep: 1,
       jackpotContributionRate: 0,
       minimumJackpotContribution: 0,
       bigWinBetMultiplier: 10,
@@ -51,42 +51,44 @@
     },
     specialSymbols: {
       wild: 'inactive-wild',
-      scatter: 'inactive-scatter',
-      bonus: 'bonus',
+      scatter: 'bonus',
+      bonus: 'inactive-symbol-8',
       animatedWin: 'joker'
     },
     rules: {
       cols: 5,
       rows: 3,
       paylines: [
-        [1,1,1,1,1], [0,0,0,0,0], [2,2,2,2,2], [0,1,2,1,0],
-        [2,1,0,1,2], [0,0,1,2,2], [2,2,1,0,0], [1,0,0,0,1],
-        [1,2,2,2,1], [1,0,1,0,1], [1,2,1,2,1], [0,1,1,1,0],
-        [2,1,1,1,2], [0,1,0,1,0], [2,1,2,1,2], [1,1,0,1,1],
-        [1,1,2,1,1], [0,0,2,0,0], [2,2,0,2,0], [0,2,0,2,0]
+        [1,1,1,1,1], [0,0,0,0,0], [2,2,2,2,2], [0,1,2,1,0], [2,1,0,1,2]
       ],
-      lineColors: ['#ff4fc8','#43e6ff','#f54466','#c77dff','#ffd54a','#68efac','#fd8a47','#69a7ff','#f66bd8','#a4f04b','#42d9c6','#ffc05c','#a898ff','#ff7895','#60f0c6','#e8d94b','#64cfff','#dc9cff','#6be07c','#ff85cf'],
+      lineColors: ['#ff4fc8','#43e6ff','#f54466','#c77dff','#ffd54a'],
       symbolWeights: [139,139,139,139,139,140,140,0,0,0,0,0,25],
       weightTotal: 1000,
-      paytableCounts: [3,4,5],
-      minimumMatch: 3,
+      paytableCounts: [2,3,4,5],
+      minimumMatch: 2,
       specialMinimumMatch: 3,
       paytable: {
-        0: {3:93.97,4:170.79,5:300},
-        1: {3:37.59,4:93.97,5:187.95},
-        2: {3:37.59,4:93.97,5:187.95},
-        3: {3:18.79,4:37.59,5:93.97},
-        4: {3:18.79,4:37.59,5:93.97},
-        5: {3:18.79,4:37.59,5:93.97},
-        6: {3:18.79,4:37.59,5:93.97},
+        0: {3:84.44,4:153.48,5:269.59},
+        1: {3:33.78,4:84.44,5:168.90},
+        2: {3:33.78,4:84.44,5:168.90},
+        3: {3:16.89,4:33.78,5:84.44},
+        4: {3:16.89,4:33.78,5:84.44},
+        5: {3:16.89,4:33.78,5:84.44},
+        6: {2:0.90,3:16.89,4:33.78,5:84.44},
         7: {3:0,4:0,5:0}, 8: {3:0,4:0,5:0}, 9: {3:0,4:0,5:0},
         10: {3:0,4:0,5:0}, 11: {3:0,4:0,5:0},
-        12: {3:0,4:0,5:0}
+        12: {3:10,4:50,5:250}
       },
-      bonusFreeSpins: {3:3,4:5,5:8},
+      bonusFreeSpins: {},
       paytableOrder: [0,1,2,3,4,5,6,12]
     },
-    features: { allowFreeSpinRetrigger: false },
+    features: {
+      allowFreeSpinRetrigger: false,
+      turboSpin: { multiplier: 2.2 },
+      keyboardControls: true,
+      preventKeyboardWhenModal: true,
+      autoSpinLimitOptions: [10,25,50]
+    },
     ui: {
       name: "Joker's Jewels",
       numberLocale: 'es-AR',
@@ -99,7 +101,7 @@
       lowWinAlt: 'Joker',
       paytableBrand: "JOKER'S JEWELS",
       paytableTitle: 'Premios en fichas',
-      paytableSubtitle: 'Multiplicador por línea · BONUS paga en cualquier posición',
+      paytableSubtitle: 'Premios por línea · BONUS paga sobre la apuesta total',
       paytableSymbolHeader: 'Símbolo',
       rulesTitle: 'REGLAS',
       spinLabel: 'Girar',
@@ -111,14 +113,14 @@
         autoSpin: 'AUTO', stopAutoSpin: 'PARAR', stopAutoSpinOverlay: 'PARAR AUTO',
         insufficientBalance: 'SALDO INSUFICIENTE',
         bonusAward: 'BONUS +{awarded} GIROS GRATIS\nRESTANTES: {remaining}',
-        scatterAward: 'SCATTER +${amount}\nPREMIO TOTAL: ${total}',
-        prize: 'PREMIO: ${amount}'
+        scatterAward: 'PREMIO BONUS: {amount} fichas\nPREMIO TOTAL: {total} fichas',
+        prize: 'PREMIO: {amount} fichas'
       },
       paytableRules: [
-        '• Los símbolos comunes pagan de izquierda a derecha.',
-        '• El BONUS puede aparecer en cualquier posición.',
-        '• 3, 4 o 5 BONUS otorgan 3, 5 u 8 giros gratis.',
-        '• El panel de importes impreso en la máscara es decorativo; esta tabla muestra los premios del juego en fichas.'
+        '• Los símbolos comunes pagan de izquierda a derecha en 5 líneas fijas.',
+        '• BONUS paga en cualquier posición: 10×, 50× o 250× la apuesta con 3, 4 o 5 símbolos.',
+        '• La esfera azul también paga con 2 símbolos; no hay WILD ni giros gratis.',
+        '• Los importes impresos en ARS son decorativos; esta tabla muestra los premios en fichas.'
       ]
     },
     colors: {

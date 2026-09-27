@@ -69,3 +69,36 @@
     object-fit:fill!important; object-position:center!important;
   }
 }
+
+:root[data-skin="jokers-jewels"] .jj-frame-control { position:absolute!important; z-index:12!important; padding:0!important; border:0!important; border-radius:50%!important; background:transparent!important; color:transparent!important; box-shadow:none!important; cursor:pointer; touch-action:manipulation; }
+:root[data-skin="jokers-jewels"] .jj-info { left:0!important; top:84.5%!important; width:10.5%!important; height:5.5%!important; }
+:root[data-skin="jokers-jewels"] .jj-turbo { left:41.5%!important; top:84.5%!important; width:15.5%!important; height:5.5%!important; }
+:root[data-skin="jokers-jewels"] .jj-bet-menu { left:59.5%!important; top:84.5%!important; width:15.5%!important; height:5.5%!important; }
+:root[data-skin="jokers-jewels"] .jj-settings { right:1.5%!important; top:91.2%!important; width:10.5%!important; height:4.5%!important; }
+:root[data-skin="jokers-jewels"] .jj-frame-control:focus-visible { outline:2px solid #ffe88e!important; outline-offset:2px; }
+:root[data-skin="jokers-jewels"] #autoSpin.is-active { outline:2px solid rgba(255,232,142,.8); outline-offset:1px; box-shadow:0 0 12px rgba(255,232,142,.6)!important; }
+:root[data-skin="jokers-jewels"] #jjTurbo.is-active { background:rgba(255,232,142,.18)!important; box-shadow:0 0 0 2px rgba(255,232,142,.9),0 0 12px rgba(255,232,142,.65)!important; }
+.jj-modal { display:none; position:fixed; inset:0; z-index:80; place-items:center; padding:14px; box-sizing:border-box; background:rgba(6,3,12,.78); backdrop-filter:blur(4px); }
+.jj-modal.open { display:grid; }
+.jj-dialog { position:relative; width:min(88vw,390px); max-height:82vh; overflow:auto; padding:24px 18px 18px; box-sizing:border-box; color:#fff0d4; text-align:center; border:2px solid #e4be64; border-radius:16px; background:linear-gradient(180deg,rgba(54,23,79,.98),rgba(21,10,35,.99)); box-shadow:0 0 26px rgba(240,77,197,.38); }
+.jj-dialog h2 { margin:0 28px 8px; color:#ffe88e; font-size:clamp(18px,5vw,25px); letter-spacing:1px; }
+.jj-dialog p { margin:6px 0 14px; color:#f3d9ef; font-size:14px; }
+.jj-dialog button { min-height:40px; padding:8px 13px; color:#fff4d4; font-weight:800; border:1px solid #c99b5c; border-radius:9px; background:linear-gradient(180deg,#4a2265,#251039); cursor:pointer; touch-action:manipulation; }
+.jj-dialog button:active { transform:translateY(1px) scale(.98); }
+.jj-close { position:absolute; top:8px; right:8px; width:32px; min-height:32px!important; padding:0!important; color:#ffe88e!important; font-size:22px; line-height:1; }
+.jj-dialog-actions,.jj-menu-actions { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.jj-dialog-actions button { min-width:62px; }
+.jj-cancel { margin-top:12px; min-width:120px; }
+.jj-bet-summary { display:grid; grid-template-columns:1fr auto; gap:9px 12px; margin:15px 3px; padding:12px; text-align:left; border:1px solid rgba(228,190,100,.45); border-radius:10px; background:rgba(0,0,0,.24); }
+.jj-bet-summary b { color:#ffe88e; text-align:right; }
+.jj-sound-toggle { width:100%; margin:12px 0 4px; }
+@media(max-width:700px) {
+  :root[data-skin="jokers-jewels"] .jj-info,
+  :root[data-skin="jokers-jewels"] .jj-turbo,
+  :root[data-skin="jokers-jewels"] .jj-bet-menu,
+  :root[data-skin="jokers-jewels"] .jj-settings { height:6.71%!important; }
+  :root[data-skin="jokers-jewels"] .jj-info,
+  :root[data-skin="jokers-jewels"] .jj-turbo,
+  :root[data-skin="jokers-jewels"] .jj-bet-menu { top:90.62%!important; }
+  :root[data-skin="jokers-jewels"] .jj-settings { top:96.5%!important; height:3%!important; }
+}

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
-  <link rel="stylesheet" href="themes/jokers-jewels.css?v=mask-edge-20260927-1929">
+  <link rel="stylesheet" href="themes/jokers-jewels.css?v=buttons-audio-20260927-2012">
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
@@ -44,7 +44,12 @@
       <button id="spin" class="spin" type="button" aria-label="Girar"><img class="spin-art spin-art-normal" alt=""><img class="spin-art spin-art-pressed" alt=""></button>
       <button id="minus" class="betminus" type="button" aria-label="Bajar apuesta">−</button><button id="plus" class="betplus" type="button" aria-label="Subir apuesta">+</button>
       <button id="lineUp" class="lineup" type="button" aria-label="Más líneas">+</button><button id="lineDown" class="linedown" type="button" aria-label="Menos líneas">−</button>
-      <button id="autoSpin" class="auto-spin" type="button" aria-pressed="false">AUTO</button><button id="menu" class="menu" type="button">PREMIOS</button>
+      <button id="autoSpin" class="auto-spin" type="button" aria-label="Autotiradas" aria-pressed="false">AUTO</button>
+      <button id="menu" class="menu" type="button" aria-label="Menú"></button>
+      <button id="jjInfo" class="jj-frame-control jj-info" type="button" aria-label="Información y tabla de premios"></button>
+      <button id="jjTurbo" class="jj-frame-control jj-turbo" type="button" aria-label="Turbo"></button>
+      <button id="jjBetMenu" class="jj-frame-control jj-bet-menu" type="button" aria-label="Configurar apuesta"></button>
+      <button id="jjSettings" class="jj-frame-control jj-settings" type="button" aria-label="Configuración"></button>
     </section>
   </main>
   <button id="autoStopOverlay" class="auto-stop-overlay" type="button">PARAR AUTO</button>
@@ -54,8 +59,42 @@
       <table><thead><tr></tr></thead><tbody id="paytableRows"></tbody></table><div class="paytable-rules"><b></b></div>
     </div>
   </div>
+  <div id="jjAutoModal" class="jj-modal" aria-hidden="true">
+    <section class="jj-dialog" role="dialog" aria-modal="true" aria-labelledby="jjAutoTitle">
+      <button class="jj-close" type="button" data-jj-close="jjAutoModal" aria-label="Cerrar">×</button>
+      <h2 id="jjAutoTitle">AUTO</h2><p>Elegí cuántas tiradas automáticas hacer.</p>
+      <div class="jj-dialog-actions"><button type="button" data-auto-spins="10">10</button><button type="button" data-auto-spins="25">25</button><button type="button" data-auto-spins="50">50</button></div>
+      <button class="jj-cancel" type="button" data-jj-close="jjAutoModal">Cancelar</button>
+    </section>
+  </div>
+  <div id="jjBetModal" class="jj-modal" aria-hidden="true">
+    <section class="jj-dialog" role="dialog" aria-modal="true" aria-labelledby="jjBetTitle">
+      <button class="jj-close" type="button" data-jj-close="jjBetModal" aria-label="Cerrar">×</button>
+      <h2 id="jjBetTitle">APUESTA</h2><p>Las 5 líneas son fijas.</p>
+      <div class="jj-bet-summary"><span>Monedas por línea</span><b id="jjCoinsPerLine">10</b><span>Valor de ficha</span><b>1</b><span>Apuesta total</span><b id="jjBetTotal">50</b></div>
+      <div class="jj-dialog-actions"><button type="button" data-jj-bet="-1" aria-label="Bajar apuesta">−</button><button type="button" data-jj-bet="1" aria-label="Subir apuesta">+</button><button type="button" id="jjBetMax">MÁX</button></div>
+    </section>
+  </div>
+  <div id="jjMenuModal" class="jj-modal" aria-hidden="true">
+    <section class="jj-dialog" role="dialog" aria-modal="true" aria-labelledby="jjMenuTitle">
+      <button class="jj-close" type="button" data-jj-close="jjMenuModal" aria-label="Cerrar">×</button>
+      <h2 id="jjMenuTitle">JOKER’S JEWELS</h2>
+      <div class="jj-menu-actions"><button type="button" id="jjMenuPrizes">Premios y reglas</button><button type="button" id="jjMenuSettings">Configuración</button></div>
+      <button class="jj-cancel" type="button" data-jj-close="jjMenuModal">Volver al juego</button>
+    </section>
+  </div>
+  <div id="jjSettingsModal" class="jj-modal" aria-hidden="true">
+    <section class="jj-dialog" role="dialog" aria-modal="true" aria-labelledby="jjSettingsTitle">
+      <button class="jj-close" type="button" data-jj-close="jjSettingsModal" aria-label="Cerrar">×</button>
+      <h2 id="jjSettingsTitle">CONFIGURACIÓN</h2>
+      <button id="jjSoundToggle" class="jj-sound-toggle" type="button" aria-pressed="true">Sonido: activado</button>
+      <button class="jj-cancel" type="button" data-jj-close="jjSettingsModal">Listo</button>
+    </section>
+  </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/jokers-jewels.js?v=1"></script>
-  <script src="main.js?v=integer-credit-display-20260927-1258"></script>
+  <script src="themes/jokers-jewels.js?v=rules-controls-20260927-2012"></script>
+  <script src="main.js?v=slot-controls-api-20260927-2012"></script>
+  <script src="themes/jokers-jewels-audio.js?v=original-audio-20260927-2012"></script>
+  <script src="themes/jokers-jewels-ui.js?v=buttons-20260927-2012"></script>
 </body>
 </html>
