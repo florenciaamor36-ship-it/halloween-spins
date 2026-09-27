@@ -1,8 +1,8 @@
 /* Joker's Jewels: uses the exact user-supplied mask as its full-screen frame. */
 :root[data-skin="jokers-jewels"] { --skin-accent:#f04dc5; --skin-glow:#4de4ff; --skin-highlight:#fff0ad; --skin-panel:#25103d; }
 :root[data-skin="jokers-jewels"] body { background:#09040f!important; }
-:root[data-skin="jokers-jewels"] .game { width:min(100vw,45.02vh)!important; height:min(222.12vw,100vh)!important; aspect-ratio:461/1024!important; background:#05030a!important; container-type:inline-size; }
-:root[data-skin="jokers-jewels"] .frame { z-index:4!important; }
+:root[data-skin="jokers-jewels"] .game { width:min(100vw,45.02vh)!important; height:min(222.12vw,100vh)!important; aspect-ratio:461/1024!important; background-color:#05030a!important; background-image:url("../assets/jokers-jewels/frame.webp?v=1")!important; background-repeat:no-repeat!important; background-position:center center!important; background-size:100% 100%!important; container-type:inline-size; }
+:root[data-skin="jokers-jewels"] .frame { display:none!important; }
 :root[data-skin="jokers-jewels"] .frame img { width:100%!important; height:100%!important; object-fit:fill!important; }
 :root[data-skin="jokers-jewels"] .reels { left:0!important; top:34.77%!important; width:100%!important; height:22.85%!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; overflow:hidden!important; z-index:6!important; }
 :root[data-skin="jokers-jewels"] .reels::after { content:none!important; display:none!important; }
