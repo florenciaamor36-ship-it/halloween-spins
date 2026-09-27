@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" fill="none">
+ <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a9"/><stop offset=".28" stop-color="#d89c34"/><stop offset=".55" stop-color="#fff0a9"/><stop offset="1" stop-color="#805019"/></linearGradient><filter id="s"><feGaussianBlur stdDeviation="7"/></filter></defs>
+ <rect x="14" y="14" width="872" height="1572" rx="40" stroke="#3b1f15" stroke-width="32" opacity=".75"/>
+ <rect x="22" y="22" width="856" height="1556" rx="34" stroke="url(#g)" stroke-width="13"/>
+ <rect x="40" y="40" width="820" height="1520" rx="28" stroke="#fff1b3" stroke-width="2" opacity=".68"/>
+ <rect x="82" y="361" width="736" height="682" rx="28" stroke="#6b3816" stroke-width="26" opacity=".8"/>
+ <rect x="83" y="362" width="734" height="680" rx="25" stroke="url(#g)" stroke-width="14"/>
+ <rect x="99" y="378" width="702" height="648" rx="17" stroke="#fff0b0" stroke-width="2" opacity=".85"/>
+ <path d="M78 308h744M98 1090h704" stroke="url(#g)" stroke-width="7" opacity=".9"/>
+ <g fill="#ffe68a" stroke="#8f5c24" stroke-width="8"><path d="M92 77l25 25-25 25-25-25z"/><path d="M808 77l25 25-25 25-25-25z"/><path d="M92 1498l25 25-25 25-25-25z"/><path d="M808 1498l25 25-25 25-25-25z"/></g>
+ <g stroke="url(#g)" stroke-width="7" opacity=".78"><path d="M70 220c32-42 63-42 95 0-32 42-63 42-95 0z"/><path d="M735 220c32-42 63-42 95 0-32 42-63 42-95 0z"/><path d="M70 1200c32-42 63-42 95 0-32 42-63 42-95 0z"/><path d="M735 1200c32-42 63-42 95 0-32 42-63 42-95 0z"/></g>
+</svg>

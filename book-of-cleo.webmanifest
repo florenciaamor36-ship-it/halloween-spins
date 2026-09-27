@@ -1,0 +1,10 @@
+{
+  "name": "Book of the Cleo",
+  "short_name": "Book of Cleo",
+  "start_url": "./book-of-cleo.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#100a18",
+  "theme_color": "#160e20"
+}

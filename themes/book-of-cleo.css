@@ -1,0 +1,54 @@
+/* Book of the Cleo is a separate portrait mask; existing masks are untouched. */
+:root[data-skin="book-of-cleo"] { --skin-accent:#f6d36f; --skin-glow:#ffb72b; --skin-highlight:#fff1b5; --skin-panel:#211328; }
+:root[data-skin="book-of-cleo"] body { background:#100a18; }
+:root[data-skin="book-of-cleo"] .game { width:min(100vw,56.25vh)!important; height:min(177.78vw,100vh)!important; aspect-ratio:9/16!important; background:#190f22 url("../assets/book-of-cleo/background.webp") center/cover no-repeat!important; container-type:inline-size; overflow:hidden; }
+:root[data-skin="book-of-cleo"] .cleo-title { position:absolute; z-index:5; left:12%; top:5.2%; width:76%; margin:0; text-align:center; color:#ffdf78; font-family:Georgia,serif; font-size:clamp(18px,6.5cqw,42px); line-height:.82; letter-spacing:.08em; text-shadow:0 2px 1px #4e2107,0 0 10px #f8bd41,0 0 20px rgba(255,201,84,.55); }
+:root[data-skin="book-of-cleo"] .cleo-title span { display:block; margin:.22em 0; color:#fff2be; font-size:.35em; letter-spacing:.3em; }
+:root[data-skin="book-of-cleo"] .frame { z-index:4; pointer-events:none; }
+:root[data-skin="book-of-cleo"] .frame img { width:100%!important; height:100%!important; object-fit:fill!important; }
+:root[data-skin="book-of-cleo"] .reels { left:12%!important; top:24%!important; width:76%!important; height:41%!important; border:0!important; border-radius:0!important; background:rgba(9,5,14,.22)!important; box-shadow:none!important; overflow:hidden!important; }
+:root[data-skin="book-of-cleo"] .reels::after { content:""!important; position:absolute!important; z-index:3!important; inset:0!important; display:block!important; pointer-events:none!important; border:1px solid rgba(255,222,139,.86)!important; background:linear-gradient(to right,transparent calc(100% - 1px),rgba(255,218,125,.68) 100%) 0 0 / 20% 100% repeat,linear-gradient(to bottom,transparent calc(100% - 1px),rgba(255,218,125,.68) 100%) 0 0 / 100% 33.333% repeat!important; }
+:root[data-skin="book-of-cleo"] .reels canvas { display:block!important; position:relative!important; z-index:1!important; }
+:root[data-skin="book-of-cleo"] .bet-bar, :root[data-skin="book-of-cleo"] .balance-bar, :root[data-skin="book-of-cleo"] .lines-bar { display:none!important; }
+:root[data-skin="book-of-cleo"] .announcement-panel { left:11%!important; top:67%!important; width:78%!important; height:6%!important; z-index:8!important; display:grid!important; place-items:center; border:2px solid #d6a745; border-radius:12px; background:linear-gradient(180deg,rgba(56,30,75,.97),rgba(19,11,28,.98)); box-shadow:0 0 13px rgba(255,205,77,.48),inset 0 0 0 2px rgba(12,7,18,.8); }
+:root[data-skin="book-of-cleo"] .announcement-panel img { display:none!important; }
+:root[data-skin="book-of-cleo"] .announcement-text { width:94%!important; height:90%!important; padding:3px 8px!important; color:#ffedb3!important; background:transparent!important; font-size:clamp(9px,2.4cqw,15px)!important; text-shadow:0 1px 2px #000!important; }
+:root[data-skin="book-of-cleo"] .display { color:#f6dfae!important; padding:3px!important; border:1px solid #bd8b37!important; border-radius:8px!important; background:linear-gradient(180deg,rgba(59,36,76,.97),rgba(20,12,28,.98))!important; box-shadow:inset 0 0 0 1px rgba(12,8,5,.75),0 2px 5px #000!important; text-shadow:none!important; }
+:root[data-skin="book-of-cleo"] .display.balance { left:5%!important; top:75%!important; width:43%!important; }
+:root[data-skin="book-of-cleo"] .display.bet { left:5%!important; top:82%!important; width:28%!important; }
+:root[data-skin="book-of-cleo"] .display.lines { left:auto!important; right:5%!important; top:82%!important; width:28%!important; }
+:root[data-skin="book-of-cleo"] .display.win { left:auto!important; right:5%!important; top:75%!important; width:43%!important; }
+:root[data-skin="book-of-cleo"] .display.jackpot { left:29%!important; top:15%!important; width:42%!important; color:#ffe5a5!important; }
+:root[data-skin="book-of-cleo"] .display .label { color:#e8c779!important; font-size:clamp(7px,1.7cqw,11px)!important; }
+:root[data-skin="book-of-cleo"] .display .value, :root[data-skin="book-of-cleo"] .display b { color:#fff0c0!important; font-size:clamp(11px,3cqw,18px)!important; text-shadow:0 1px 3px #000!important; }
+:root[data-skin="book-of-cleo"] .spin { left:41%!important; top:88%!important; width:18%!important; height:7%!important; display:grid!important; place-items:center; opacity:1!important; border:0!important; border-radius:50%!important; color:#381d0a!important; background:transparent url("../assets/book-of-cleo/spin.svg") center/100% 100% no-repeat!important; box-shadow:none!important; text-shadow:0 1px 1px #fff4bf!important; font-weight:900; }
+:root[data-skin="book-of-cleo"] .spin:active { background-image:url("../assets/book-of-cleo/spin-pressed.svg")!important; }
+:root[data-skin="book-of-cleo"] .spin span { font-size:clamp(8px,2.6cqw,16px); }
+:root[data-skin="book-of-cleo"] .menu, :root[data-skin="book-of-cleo"] .auto-spin, :root[data-skin="book-of-cleo"] .betminus, :root[data-skin="book-of-cleo"] .betplus, :root[data-skin="book-of-cleo"] .lineup, :root[data-skin="book-of-cleo"] .linedown { opacity:1!important; border:1px solid #c79c55!important; color:#f7e5b5!important; background:linear-gradient(#50371f,#1f150d)!important; }
+:root[data-skin="book-of-cleo"] .menu { left:auto!important; right:5%!important; top:75%!important; width:28%!important; height:5%!important; }
+:root[data-skin="book-of-cleo"] .auto-spin { left:5%!important; right:auto!important; top:91%!important; bottom:auto!important; width:28%!important; height:4%!important; }
+:root[data-skin="book-of-cleo"] .betminus { left:1%!important; top:83%!important; width:4%!important; height:4%!important; }
+:root[data-skin="book-of-cleo"] .betplus { left:33%!important; top:83%!important; width:4%!important; height:4%!important; }
+:root[data-skin="book-of-cleo"] .linedown { left:auto!important; right:33%!important; top:83%!important; width:4%!important; height:4%!important; }
+:root[data-skin="book-of-cleo"] .lineup { left:auto!important; right:1%!important; top:83%!important; width:4%!important; height:4%!important; }
+:root[data-skin="book-of-cleo"] button:disabled { opacity:.55!important; filter:grayscale(.45); cursor:not-allowed!important; }
+:root[data-skin="book-of-cleo"] .loading-fill { background:linear-gradient(90deg,#8f5a20,#f2d487,#9b672a)!important; }
+:root[data-skin="book-of-cleo"] .loading-track { border:1px solid #c99b54!important; background:#1e140c!important; }
+:root[data-skin="book-of-cleo"] .loading-status { color:#f2dfb0!important; text-shadow:0 1px 3px #000!important; }
+:root[data-skin="book-of-cleo"] .paytable-card { background-color:#211328!important; border:2px solid #d1a346!important; color:#fff0c0!important; }
+:root[data-skin="book-of-cleo"] .paytable-modal { z-index:100!important; }
+:root[data-skin="book-of-cleo"] .lowwin-card, :root[data-skin="book-of-cleo"] .bigwin-card { border-color:#f4d270!important; }
+.cleo-hold-overlay { position:fixed; inset:0; z-index:9999; display:grid; place-items:center; padding:12px; background:rgba(8,4,13,.91) url("../assets/book-of-cleo/hold-bg.webp") center/cover no-repeat; color:#fff1b5; font-family:Georgia,serif; }
+.cleo-hold-card { width:min(94vw,520px); max-height:94dvh; overflow:auto; padding:16px; text-align:center; border:2px solid #f0c95c; border-radius:18px; background:linear-gradient(180deg,rgba(44,19,59,.97),rgba(13,8,21,.98)); box-shadow:0 0 30px rgba(255,198,63,.55),inset 0 0 0 3px rgba(110,66,24,.65); }
+.cleo-hold-card h2 { margin:4px 0 8px; color:#ffdc73; font-size:clamp(25px,8vw,42px); text-shadow:0 0 12px #d87926; }
+.hold-kicker { margin:0; color:#f8e3a8; font-size:12px; letter-spacing:.25em; }
+.hold-copy,.hold-status { margin:7px 0; font:600 14px/1.25 Arial,sans-serif; }
+.hold-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:14px auto; max-width:390px; }
+.hold-cell { min-height:58px; display:grid; place-items:center; align-content:center; border:1px solid rgba(255,220,130,.55); border-radius:11px; background:linear-gradient(145deg,#30203d,#130c1b); color:#eee; font:bold 20px Arial,sans-serif; }
+.hold-cell.is-held { color:#ffe476; background:radial-gradient(circle,#704a1d,#24132c 72%); box-shadow:0 0 12px rgba(255,198,70,.55); }
+.hold-cell img { width:34px; height:34px; object-fit:contain; }
+.hold-cell b { font:900 13px Arial,sans-serif; }
+.hold-total { margin:10px 0; color:#ffe7a0; font:bold 16px Arial,sans-serif; }
+.hold-spin { min-height:44px; padding:10px 20px; border:2px solid #ffe086; border-radius:28px; color:#321b08; background:linear-gradient(#fff0a5,#dca23b); font:bold 16px Arial,sans-serif; box-shadow:0 3px 8px #000; }
+.hold-spin:disabled { opacity:.6; }
+@media(max-width:700px) { :root[data-skin="book-of-cleo"] body { display:block!important; } :root[data-skin="book-of-cleo"] .game { width:100vw!important; height:100vh!important; height:100dvh!important; max-width:100vw!important; max-height:none!important; aspect-ratio:auto!important; } }
