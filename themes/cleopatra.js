@@ -465,15 +465,15 @@ window.SLOT_GAME_CONFIG = {
   });
 })();
 
-// Layer the supplied coin loop and money cue while Cleopatra's Big Win is open.
+// Layer the seamless coin loop and money cue while Cleopatra's Big Win is open.
 (() => {
   const screen = document.getElementById('bigWinScreen');
   if (!screen) return;
-  const coins = new Audio('assets/cleopatra/audio/coins_loop.ffb413f2ddb645844bc71c773791531b.mp3?v=cleo-bigwin-coins-20260927');
+  const coins = new Audio('assets/cleopatra/audio/coins_loop_seamless.mp3?v=cleo-loop-crossfade-250ms-20260927');
   const money = new Audio('assets/cleopatra/audio/money.f733bac8e9c46045c0bef5b78d1e1804.mp3?v=cleo-bigwin-money-20260927');
   coins.preload = 'auto';
   coins.loop = true;
-  coins.volume = 0.55;
+  coins.volume = 0.72;
   money.preload = 'auto';
   money.loop = false;
   money.volume = 0.45;
