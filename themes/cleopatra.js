@@ -75,7 +75,7 @@ window.SLOT_GAME_CONFIG = {
     jackpotContributionRate: 0.1,
     minimumJackpotContribution: 1,
     bigWinBetMultiplier: 10,
-    lowWinBetMultiplier: 0.000001, // Cualquier premio positivo menor al Big Win usa NICE WIN.
+    lowWinBetMultiplier: 3,
     freeSpins: 0
   },
   specialSymbols: {
@@ -101,17 +101,18 @@ window.SLOT_GAME_CONFIG = {
     minimumMatch: 3,
     specialMinimumMatch: 3,
     paytable: {
-      0:{3:89.87,4:269.62,5:898.75}, 1:{3:35.95,4:89.87,5:179.75},
-      2:{3:35.95,4:89.87,5:179.75}, 3:{3:35.95,4:89.87,5:179.75},
-      4:{3:35.95,4:89.87,5:179.75}, 5:{3:17.97,4:35.95,5:89.87},
-      6:{3:17.97,4:35.95,5:89.87}, 7:{3:17.97,4:35.95,5:89.87},
-      8:{3:17.97,4:35.95,5:89.87}, 9:{3:17.97,4:35.95,5:89.87},
-      10:{5:1797.5}, 11:{3:1,4:2,5:4.99},
+      0:{3:91.68,4:200,5:400}, 1:{3:36.67,4:91.68,5:183.37},
+      2:{3:36.67,4:91.68,5:183.37}, 3:{3:36.67,4:91.68,5:183.37},
+      4:{3:36.67,4:91.68,5:183.37}, 5:{3:18.33,4:36.67,5:91.68},
+      6:{3:18.33,4:36.67,5:91.68}, 7:{3:18.33,4:36.67,5:91.68},
+      8:{3:18.33,4:36.67,5:91.68}, 9:{3:18.33,4:36.67,5:91.68},
+      10:{5:400}, 11:{3:1,4:2,5:4},
       12:{3:0,4:0,5:0}
     },
-    bonusFreeSpins: {3:5, 4:8, 5:12},
+    bonusFreeSpins: {3:3, 4:5, 5:8},
     paytableOrder: [5,6,7,8,9,1,2,3,4,0,10,11,12]
   },
+  features: { allowFreeSpinRetrigger: false },
   ui: {
     name: 'Cleopatra Spins · Vista previa',
     numberLocale: 'es-AR',
