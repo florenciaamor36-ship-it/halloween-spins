@@ -10,6 +10,21 @@
   if (!reels) return;
 
   const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  let suppressedClickUntil = 0;
+  document.addEventListener('pointerdown', event => {
+    const award = document.querySelector('.lowwin-screen.open, .bigwin-screen.open');
+    if (!award) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    suppressedClickUntil = performance.now() + 700;
+    award.onpointerdown?.(event);
+  }, true);
+  document.addEventListener('click', event => {
+    if (performance.now() > suppressedClickUntil) return;
+    suppressedClickUntil = 0;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
   let fxLayer;
   let fxTimer;
 
