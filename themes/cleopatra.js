@@ -502,6 +502,57 @@ window.SLOT_GAME_CONFIG = {
   window.addEventListener('pagehide', stopBigWinSounds, { once: true });
 })();
 
+// Cleopatra reel-stop cues: normal stop, plus assigned BONUS/SCATTER variants.
+(() => {
+  const sources = {
+    normal: 'assets/cleopatra/audio/reel-stop.mp3?v=cleo-reel-stop-20260927',
+    bonus: 'assets/cleopatra/audio/reel_stop_bonus.mp3?v=cleo-reel-stop-20260927',
+    scatter: 'assets/cleopatra/audio/reel_stop_scatter.mp3?v=cleo-reel-stop-20260927'
+  };
+  const makePool = src => {
+    const pool = { tracks: [], next: 0 };
+    for (let i = 0; i < 5; i++) {
+      const track = new Audio(src);
+      track.preload = 'auto';
+      track.volume = 0.34;
+      track.load();
+      pool.tracks.push(track);
+    }
+    return pool;
+  };
+  const pools = {
+    normal: makePool(sources.normal),
+    bonus: makePool(sources.bonus),
+    scatter: makePool(sources.scatter)
+  };
+  let unlocked = false;
+  const unlock = () => { unlocked = true; };
+  document.addEventListener('pointerdown', unlock, { once: true, passive: true });
+  document.addEventListener('keydown', unlock, { once: true });
+  const stopAll = () => Object.values(pools).forEach(pool => pool.tracks.forEach(track => {
+    track.pause();
+    try { track.currentTime = 0; } catch {}
+  }));
+  const play = key => {
+    if (!unlocked) return;
+    const pool = pools[key];
+    const track = pool.tracks[pool.next];
+    pool.next = (pool.next + 1) % pool.tracks.length;
+    track.pause();
+    try { track.currentTime = 0; } catch {}
+    try {
+      const attempt = track.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    } catch {}
+  };
+  window.addEventListener('slot:reel-stop', event => {
+    const keys = event.detail?.keys || [];
+    play(keys.includes('scatter') ? 'scatter' : keys.includes('bonus') ? 'bonus' : 'normal');
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAll(); });
+  window.addEventListener('pagehide', stopAll, { once: true });
+})();
+
 // Play the two assigned cues together only while NICE WIN is visible.
 (() => {
   const screen = document.getElementById('lowWinScreen');
