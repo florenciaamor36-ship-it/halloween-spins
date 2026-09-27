@@ -402,24 +402,20 @@ window.SLOT_GAME_CONFIG = {
   window.addEventListener('load', () => window.setTimeout(showPreview, 600), { once: true });
 })();
 
-// Cleopatra playlist: normal, Free Spins, Hold intro, then back to normal.
+// Cleopatra ambience: normal loop, Free Spins loop while free spins remain.
 (() => {
-  const playlist = [
-    'assets/cleopatra/audio/ambient_loop.cc7065347b0a237e9955be720db18ce2.mp3?v=cleo-playlist-20260927',
-    'assets/cleopatra/audio/ambient_free_loop.80394c45a1dae23b553261c4cb739950.mp3?v=cleo-playlist-20260927',
-    'assets/cleopatra/audio/ambient_hold_start.942b133c5e51c633e715eb60668d8bb2.mp3?v=cleo-playlist-20260927'
-  ];
-  const music = new Audio(playlist[0]);
+  const musicSources = {
+    normal: 'assets/cleopatra/audio/ambient_loop.cc7065347b0a237e9955be720db18ce2.mp3?v=cleo-ambient-20260927',
+    free: 'assets/cleopatra/audio/ambient_free_loop.80394c45a1dae23b553261c4cb739950.mp3?v=cleo-free-loop-20260927'
+  };
+  const music = new Audio(musicSources.normal);
   music.preload = 'auto';
-  music.loop = false;
+  music.loop = true;
   music.volume = 0.34;
-  const preloadTracks = playlist.slice(1).map(src => {
-    const track = new Audio(src);
-    track.preload = 'auto';
-    track.load();
-    return track;
-  });
-  let currentIndex = 0;
+  const freeMusicPreload = new Audio(musicSources.free);
+  freeMusicPreload.preload = 'auto';
+  freeMusicPreload.load();
+  let mode = 'normal';
   let unlocked = false;
   let started = false;
   let pending = false;
@@ -448,16 +444,23 @@ window.SLOT_GAME_CONFIG = {
     unlocked = true;
     startCurrentTrack();
   };
-  music.addEventListener('ended', () => {
-    currentIndex = (currentIndex + 1) % playlist.length;
+  const setMusicMode = nextMode => {
+    if (nextMode === mode) return;
+    mode = nextMode;
+    generation++;
     started = false;
     pending = false;
-    generation++;
-    music.src = playlist[currentIndex];
+    music.pause();
+    music.src = musicSources[mode];
     try { music.currentTime = 0; } catch {}
     music.load();
     startCurrentTrack();
-  });
+  };
   document.addEventListener('pointerdown', unlockMusic, { passive: true });
   document.addEventListener('keydown', unlockMusic);
+  window.addEventListener('slot:spin-result', event => {
+    const detail = event.detail || {};
+    if (Number(detail.awarded) > 0) setMusicMode('free');
+    else if (detail.isFreeSpin && Number(detail.freeSpinsRemaining) === 0) setMusicMode('normal');
+  });
 })();
