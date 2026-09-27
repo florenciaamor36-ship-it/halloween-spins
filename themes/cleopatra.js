@@ -35,19 +35,19 @@ window.SLOT_GAME_CONFIG = {
     winFrames: [{ key: 'cleopatra-win-glow', src: 'assets/cleopatra/win-glow.svg?v=1' }]
   },
   symbols: [
-    { key: 'pharaoh-mask', label: 'Máscara de faraón', asset: 'assets/cleopatra/symbols/fitted/pharaoh-mask.webp?v=1' },
-    { key: 'gold-scarab', label: 'Escarabajo dorado', asset: 'assets/cleopatra/symbols/fitted/gold-scarab.webp?v=1' },
-    { key: 'eye-of-horus', label: 'Ojo de Horus', asset: 'assets/cleopatra/symbols/fitted/eye-of-horus.webp?v=1' },
-    { key: 'anubis-idol', label: 'Ídolo de Anubis', asset: 'assets/cleopatra/symbols/fitted/anubis-idol.webp?v=1' },
-    { key: 'pharaoh-scepter', label: 'Cetro de faraón', asset: 'assets/cleopatra/symbols/fitted/pharaoh-scepter.webp?v=1' },
-    { key: 'bastet-cat', label: 'Gata Bastet', asset: 'assets/cleopatra/symbols/fitted/bastet-cat.webp?v=1' },
-    { key: 'royal-cobra', label: 'Cobra real', asset: 'assets/cleopatra/symbols/fitted/royal-cobra.webp?v=1' },
-    { key: 'golden-ankh', label: 'Anj dorado', asset: 'assets/cleopatra/symbols/fitted/golden-ankh.webp?v=1' },
-    { key: 'sacred-lotus', label: 'Loto sagrado', asset: 'assets/cleopatra/symbols/fitted/sacred-lotus.webp?v=1' },
-    { key: 'blue-lotus-medallion', label: 'Medallón de loto azul', asset: 'assets/cleopatra/symbols/fitted/blue-lotus-medallion.webp?v=1' },
-    { key: 'wild', label: 'CLEOPATRA · WILD', asset: 'assets/cleopatra/symbols/fitted/cleopatra-wild.webp?v=1' },
+    { key: 'h1', label: 'Cleopatra', asset: 'assets/cleopatra/symbols/imported/h1.webp?v=book-symbols-20260927' },
+    { key: 'h2', label: 'Ojo de Horus', asset: 'assets/cleopatra/symbols/imported/h2.webp?v=book-symbols-20260927' },
+    { key: 'h3', label: 'Anillo esmeralda', asset: 'assets/cleopatra/symbols/imported/h3.webp?v=book-symbols-20260927' },
+    { key: 'h4', label: 'Ankh azul', asset: 'assets/cleopatra/symbols/imported/h4.webp?v=book-symbols-20260927' },
+    { key: 'blue-book', label: 'Libro azul', asset: 'assets/cleopatra/symbols/imported/bluebook.webp?v=book-symbols-20260927' },
+    { key: 'r1', label: 'A', asset: 'assets/cleopatra/symbols/imported/r1.webp?v=book-symbols-20260927' },
+    { key: 'r2', label: 'K', asset: 'assets/cleopatra/symbols/imported/r2.webp?v=book-symbols-20260927' },
+    { key: 'r3', label: 'Q', asset: 'assets/cleopatra/symbols/imported/r3.webp?v=book-symbols-20260927' },
+    { key: 'r4', label: 'J', asset: 'assets/cleopatra/symbols/imported/r4.webp?v=book-symbols-20260927' },
+    { key: 'r5', label: '10', asset: 'assets/cleopatra/symbols/imported/r5.webp?v=book-symbols-20260927' },
+    { key: 'wild', label: 'Libro dorado · WILD', asset: 'assets/cleopatra/symbols/imported/goldbook-wild.webp?v=book-symbols-20260927' },
     { key: 'scatter', label: 'PIRÁMIDE · SCATTER', asset: 'assets/cleopatra/symbols/fitted/pyramid-scatter.webp?v=1' },
-    { key: 'bonus', label: 'TESORO · BONUS', asset: 'assets/cleopatra/symbols/fitted/treasure-bonus.webp?v=1' }
+    { key: 'bonus', label: 'Moneda · BONUS', asset: 'assets/cleopatra/symbols/imported/bonus.webp?v=book-symbols-20260927' }
   ],
   visual: {
     /* The supplied frame has a taller portrait window than a conventional 5×3
@@ -58,7 +58,7 @@ window.SLOT_GAME_CONFIG = {
     symbolFit: 'cell-width',
     winEffects: {
       bonus: { type: 'gold-chest', when: 'bonus-awarded', color: '#f4c96b', highlight: '#fff1ad' },
-      'blue-lotus-medallion': { type: 'blue-lotus', when: 'line-win', color: '#38bdf8', highlight: '#e0f7ff' }
+      'blue-book': { type: 'blue-lotus', when: 'line-win', color: '#38bdf8', highlight: '#e0f7ff' }
     }
   },
   defaults: {
@@ -82,7 +82,7 @@ window.SLOT_GAME_CONFIG = {
     wild: 'wild',
     scatter: 'scatter',
     bonus: 'bonus',
-    animatedWin: 'sacred-lotus'
+    animatedWin: 'blue-book'
   },
   rules: {
     cols: 5,
@@ -400,4 +400,64 @@ window.SLOT_GAME_CONFIG = {
     showAward(mode === 'bigwin' ? 5000 : 450);
   };
   window.addEventListener('load', () => window.setTimeout(showPreview, 600), { once: true });
+})();
+
+// Cleopatra playlist: normal, Free Spins, Hold intro, then back to normal.
+(() => {
+  const playlist = [
+    'assets/cleopatra/audio/ambient_loop.cc7065347b0a237e9955be720db18ce2.mp3?v=cleo-playlist-20260927',
+    'assets/cleopatra/audio/ambient_free_loop.80394c45a1dae23b553261c4cb739950.mp3?v=cleo-playlist-20260927',
+    'assets/cleopatra/audio/ambient_hold_start.942b133c5e51c633e715eb60668d8bb2.mp3?v=cleo-playlist-20260927'
+  ];
+  const music = new Audio(playlist[0]);
+  music.preload = 'auto';
+  music.loop = false;
+  music.volume = 0.34;
+  const preloadTracks = playlist.slice(1).map(src => {
+    const track = new Audio(src);
+    track.preload = 'auto';
+    track.load();
+    return track;
+  });
+  let currentIndex = 0;
+  let unlocked = false;
+  let started = false;
+  let pending = false;
+  let generation = 0;
+  const startCurrentTrack = () => {
+    if (!unlocked || started || pending) return;
+    pending = true;
+    const token = ++generation;
+    try {
+      const attempt = music.play();
+      if (attempt && typeof attempt.then === 'function') {
+        attempt.then(() => {
+          if (token === generation) { started = true; pending = false; }
+        }).catch(() => {
+          if (token === generation) { started = false; pending = false; }
+        });
+      } else {
+        started = true;
+        pending = false;
+      }
+    } catch {
+      pending = false;
+    }
+  };
+  const unlockMusic = () => {
+    unlocked = true;
+    startCurrentTrack();
+  };
+  music.addEventListener('ended', () => {
+    currentIndex = (currentIndex + 1) % playlist.length;
+    started = false;
+    pending = false;
+    generation++;
+    music.src = playlist[currentIndex];
+    try { music.currentTime = 0; } catch {}
+    music.load();
+    startCurrentTrack();
+  });
+  document.addEventListener('pointerdown', unlockMusic, { passive: true });
+  document.addEventListener('keydown', unlockMusic);
 })();
