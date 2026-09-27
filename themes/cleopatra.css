@@ -2,12 +2,12 @@
 :root[data-skin="cleopatra"] .game {
   background: #090b11 !important;
 }
-/* Widen the Cleopatra frame by 2 cm on each side; keep it centered. */
+/* The frame was already 2 cm wider per side; move the columns 3 cm farther out. */
 :root[data-skin="cleopatra"] .frame {
   z-index: 4 !important;
-  left: -2cm !important;
+  left: -5cm !important;
   right: auto !important;
-  width: calc(100% + 4cm) !important;
+  width: calc(100% + 10cm) !important;
 }
 :root[data-skin="cleopatra"] .cleopatra-title {
   position: absolute !important;
@@ -22,9 +22,9 @@
 }
 :root[data-skin="cleopatra"] #reels {
   z-index: 5 !important;
-  left: 20% !important;
+  left: calc(20% - 3cm) !important;
   top: 28.3% !important;
-  width: 60% !important;
+  width: calc(60% + 6cm) !important;
   height: 44.5% !important;
   overflow: visible !important;
   border: 0 !important;
