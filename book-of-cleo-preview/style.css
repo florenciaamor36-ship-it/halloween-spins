@@ -1,0 +1,1079 @@
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#080b12;color:#fff;font-family:Arial,sans-serif}body{display:grid;place-items:center;min-height:100vh}.game{position:relative;width:min(100vw,177.78vh);aspect-ratio:16/9;overflow:hidden;background:#111}.frame{position:absolute;inset:0;z-index:4;pointer-events:none}.frame img{width:100%;height:100%;display:block}.reels{position:absolute;z-index:5;left:28.9%;top:24.4%;width:42.2%;height:54%;overflow:hidden;border:3px solid #42184b;border-radius:8px;background:#111923;box-shadow:inset 0 0 24px #000}.reels:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 32%,#fff2 33%,transparent 35%,transparent 65%,#fff2 66%,transparent 68%);z-index:3}.ui{position:absolute;inset:0;z-index:5;pointer-events:none}.display{position:absolute;z-index:6;padding:2px 6px;border:0;background:transparent;font-size:clamp(8px,1.2vw,16px);color:transparent;text-align:center;pointer-events:none}.display b{display:block;font-size:clamp(12px,2vw,26px);color:#d8ff82;text-shadow:0 0 6px #94ff31}.balance{left:24.44%;top:90.93%;width:17%}.bet{left:24%;top:84.81%;width:17%;pointer-events:auto;cursor:pointer}.win{left:56%;top:84.46%;width:15%}.lines{left:71%;top:84.46%;width:15%;pointer-events:auto;cursor:pointer}.jackpot{left:48.2%;top:14.46%;width:22%}button{pointer-events:auto;color:#fff;border:0;border-radius:8px;background:transparent;cursor:pointer;font-weight:900;text-shadow:0 0 5px #baff55;z-index:7;opacity:.01!important}.spin{position:absolute;left:44.8%;top:84%;width:11%;height:14%}.betminus,.betplus{position:absolute;top:85%;width:4%;height:6%}.betminus{left:36%}.betplus{left:36%}.menu{position:absolute;left:80%;top:94%;width:10%;height:6%}.lineup,.linedown{position:absolute;left:89%;top:85%;width:5%;height:5%}.linedown{top:92%}@media(max-width:700px){body{display:block}.game{width:100vw;height:177.78vw;max-height:100vh;max-width:56.25vh;aspect-ratio:9/16}.reels{left:21.5%;top:22%;width:57.1%;height:47.2%;border-width:2px}.display{font-size:9px}.display b{font-size:16px}.balance{left:10%;top:94%;width:32%}.bet{left:9.2%;top:89%;width:27%}.win{left:76.5%;top:84.7%;width:20%}.lines{left:74.5%;top:89.6%;width:24%}.jackpot{left:44%;top:11.5%;width:32%;font-size:8px}.betminus{left:29%;top:86%;width:7%;height:5%}.betplus{left:29%;top:92%;width:7%;height:5%}.menu{left:79%;top:94%;width:18%;height:6%}.lineup,.linedown{left:93%;top:88%;width:7%;height:5%}.linedown{top:94%}.spin{left:38%;top:84%;width:25%;height:10%}}
+
+
+
+.paytable-modal{display:none;position:fixed;inset:0;z-index:30;place-items:center;background:rgba(3,5,12,.82);backdrop-filter:blur(5px);padding:18px}.paytable-modal.open{display:grid}.paytable-card{position:relative;width:min(92vw,430px);border:2px solid #d8ff82;border-radius:22px;padding:25px 22px 22px;background:linear-gradient(145deg,#171d2c,#090c16);box-shadow:0 0 35px rgba(183,255,77,.22),inset 0 0 24px rgba(255,255,255,.04);color:#fff}.paytable-brand{letter-spacing:2px;text-align:center;font-weight:900;color:#d8ff82;font-size:15px;text-shadow:0 0 8px #9cff36}.paytable-card h2{text-align:center;margin:8px 0 4px;color:#fff0a8;font-size:25px}.paytable-subtitle{text-align:center;color:#aeb8cb;margin:0 0 18px;font-size:13px}.paytable-subtitle b{color:#d8ff82}.paytable-card table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid #394257;border-radius:12px}.paytable-card th,.paytable-card td{padding:13px 12px;text-align:left;border-bottom:1px solid #30384b}.paytable-card th{background:#252d42;color:#fff0a8;font-size:12px;text-transform:uppercase;letter-spacing:.7px}.paytable-card td{background:#111727;font-size:14px}.paytable-card tr:last-child td{border-bottom:0}.paytable-card td:last-child{text-align:right;font-weight:900}.paytable-card .gold{color:#d8ff82;font-size:17px}.paytable-rules{display:grid;gap:6px;margin-top:18px;color:#bdc7d9;font-size:12px;line-height:1.35}.paytable-rules b{color:#fff0a8;letter-spacing:1px}.paytable-close{position:absolute;right:12px;top:9px;width:32px;height:32px;border:1px solid #5d6b83;border-radius:50%;background:#202a3d;color:#fff;font-size:23px;line-height:20px;cursor:pointer}
+
+.paytable-card table{font-size:12px}.paytable-card th,.paytable-card td{padding:8px 6px;text-align:center}.paytable-card th:first-child,.paytable-card td:first-child{text-align:left}.paytable-card td:first-child{display:flex;align-items:center;gap:7px;color:#fff}.pay-symbol{width:34px;height:34px;object-fit:contain;vertical-align:middle}.paytable-card td{color:#dce4f2}.paytable-card td:not(:first-child){color:#d8ff82;font-weight:900}.paytable-rules{margin-top:16px}
+/* Mobile portrait layout and compact paytable */
+html,body{overflow:hidden;width:100%;height:100%;}
+.paytable-modal{overflow:hidden;padding:10px;}
+.paytable-card{max-height:calc(100vh - 20px);overflow:hidden;padding:18px 12px 12px;border-radius:18px;}
+.paytable-card h2{font-size:21px;margin:5px 0 2px;}
+.paytable-subtitle{font-size:11px;margin-bottom:8px;}
+.paytable-card table{font-size:10px;table-layout:fixed;}
+.paytable-card th,.paytable-card td{padding:4px 3px;height:32px;}
+.paytable-card th:first-child{width:43%;}
+.paytable-card td:first-child{display:table-cell;text-align:left;white-space:nowrap;}
+.pay-symbol{display:inline-block;width:25px;height:25px;object-fit:contain;vertical-align:middle;margin-right:3px;}
+.paytable-card td:not(:first-child){font-size:13px;}
+.paytable-rules{gap:3px;margin-top:8px;font-size:10px;}
+.paytable-close{opacity:1!important;display:block!important;position:absolute;right:7px;top:7px;width:30px;height:30px;padding:0;line-height:25px;z-index:5;}
+@media(max-width:700px){.game{width:100vw;height:100vh;max-width:56.25vh;max-height:177.78vw;margin:0 auto;}.paytable-card{width:min(94vw,400px);}}
+
+/* Real asset loading screen */
+body{overflow:hidden;background:#080b12}
+.loading-screen{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#080b12;transition:opacity .45s ease,visibility .45s ease;}
+.loading-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loading-art{position:absolute;width:100vw;height:100vh;max-width:56.25vh;object-fit:cover;object-position:center;}
+.loading-ui{position:absolute;left:50%;bottom:7.1%;width:min(72vw,400px);transform:translateX(-50%);display:grid;gap:9px;text-align:center;}
+.loading-track{height:23px;padding:5px;border:2px solid #4b3858;border-radius:9px;background:#160d22;box-shadow:0 0 9px #07030c,inset 0 0 6px #000;}
+.loading-fill{height:100%;width:0%;border-radius:4px;background:linear-gradient(90deg,#5d8734,#d8ff82,#b5eb61);box-shadow:0 0 8px #d8ff82;transition:width .12s linear;}
+.loading-status{color:#e7e0bd;font-size:15px;font-weight:700;text-shadow:0 1px 3px #000;letter-spacing:.4px;}
+.loading-status b{color:#d8ff82;margin-left:4px;}
+@media(max-width:700px){.loading-ui{width:72vw;bottom:7.1%;}.loading-track{height:20px}.loading-status{font-size:13px}}
+
+/* Cover the loading bar printed in the artwork */
+.loading-ui{width:min(76vw,430px);bottom:6.6%;gap:8px;}
+.loading-track{height:38px;padding:6px;border:3px solid #4b3858;border-radius:11px;background:#10091a;box-shadow:0 0 12px #050208,inset 0 0 8px #000;}
+.loading-fill{height:100%;border-radius:5px;}
+@media(max-width:700px){.loading-ui{width:76vw;bottom:6.6%;}.loading-track{height:34px;padding:5px;}}
+
+/* Final loading bar alignment: 3mm lower and 3mm wider per side */
+.loading-ui{width:min(80vw,454px);bottom:5.5%;}
+@media(max-width:700px){.loading-ui{width:80vw;bottom:5.5%;}}
+
+/* One final millimeter lower */
+.loading-ui{bottom:5.1%;}
+@media(max-width:700px){.loading-ui{bottom:5.1%;}}
+
+/* Big Win overlay */
+.bigwin-screen{position:fixed;inset:0;z-index:40;display:none;place-items:center;background:#080b12;overflow:hidden;}
+.bigwin-screen.open{display:grid;}
+.bigwin-art{position:absolute;width:100vw;height:100vh;max-width:56.25vh;object-fit:cover;object-position:center;}
+.bigwin-number-cover{position:absolute;left:17%;top:53%;width:66%;height:17%;display:grid;place-items:center;align-content:center;gap:2px;border:3px solid #4b3858;border-radius:12px;background:#10091a;box-shadow:0 0 15px #050208,inset 0 0 9px #000;text-align:center;}
+.bigwin-label{color:#fff0a8;font-size:13px;font-weight:900;letter-spacing:2px;text-shadow:0 0 6px #000;}
+.bigwin-number{color:#d8ff82;font-size:clamp(32px,8vw,64px);font-weight:900;line-height:1;text-shadow:0 0 10px #a7ff42,0 2px 3px #000;}
+@media(max-width:700px){.bigwin-number-cover{left:15%;width:70%;top:53%;height:16%;}.bigwin-label{font-size:11px}.bigwin-number{font-size:clamp(30px,9vw,52px)}}
+
+/* Big Win full-screen effects around the WebP artwork */
+.bigwin-screen{background:radial-gradient(circle at center,#243c18 0%,#10180d 34%,#05070a 78%);}
+.bigwin-card{position:relative;z-index:3;width:min(92vw,560px);aspect-ratio:464/324;}
+.bigwin-art{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;}
+.bigwin-number-cover{left:24.8%;top:57.7%;width:46.6%;height:13.6%;border:3px solid #4b3858;border-radius:10px;background:#10091a;box-shadow:0 0 15px #050208,inset 0 0 9px #000;}
+.bigwin-rays{position:absolute;inset:-35%;z-index:0;background:repeating-conic-gradient(from 0deg,rgba(210,255,111,.0) 0deg 9deg,rgba(210,255,111,.28) 10deg 13deg,rgba(210,255,111,.0) 14deg 23deg);animation:bigwinRaySpin 8s linear infinite;opacity:.72;}
+.bigwin-lights{position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 15% 25%,rgba(255,239,92,.65),transparent 7%),radial-gradient(circle at 85% 30%,rgba(102,216,255,.58),transparent 8%),radial-gradient(circle at 13% 75%,rgba(255,89,194,.55),transparent 8%),radial-gradient(circle at 88% 76%,rgba(139,255,91,.6),transparent 8%);animation:bigwinLights 1.8s ease-in-out infinite alternate;pointer-events:none;}
+.bigwin-particles{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;}
+.bigwin-particle{position:absolute;width:9px;height:14px;border-radius:50%;background:#d8ff82;box-shadow:0 0 9px currentColor;animation:bigwinParticle 1.8s ease-out forwards;}
+@keyframes bigwinRaySpin{to{transform:rotate(360deg)}}
+@keyframes bigwinLights{to{filter:brightness(1.8) saturate(1.6);transform:scale(1.08)}}
+@keyframes bigwinParticle{0%{transform:translate(0,0) rotate(0) scale(.4);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(500deg) scale(1);opacity:0}}
+@media(max-width:700px){.bigwin-card{width:min(94vw,560px)}.bigwin-number-cover{border-width:2px}.bigwin-number{font-size:clamp(24px,8vw,46px)}}
+
+/* Big Win enters by zooming from the center */
+.bigwin-card{transform:scale(.08);opacity:0;}
+.bigwin-screen.open .bigwin-card{animation:bigwinZoomIn .72s cubic-bezier(.16,1.2,.35,1) forwards;}
+.bigwin-number-cover{background:linear-gradient(180deg,#171022,#09060e);opacity:1;overflow:hidden;}
+@keyframes bigwinZoomIn{0%{transform:scale(.08);opacity:0}70%{transform:scale(1.06);opacity:1}100%{transform:scale(1);opacity:1}}
+
+/* Big Win cover hides the original label completely */
+.bigwin-number-cover{top:53.2%;height:18.2%;}
+.bigwin-label{display:none!important;}
+@media(max-width:700px){.bigwin-number-cover{top:53.2%;height:18.2%;}}
+
+/* Low Win pumpkin celebration */
+.lowwin-screen{position:fixed;inset:0;z-index:39;display:none;place-items:center;overflow:hidden;background:radial-gradient(circle,#3b2b08 0%,#171006 38%,#05070a 85%);}
+.lowwin-screen.open{display:grid;}
+.lowwin-card{position:relative;z-index:3;width:min(80vw,430px);aspect-ratio:1;transform:scale(.2);opacity:0;}
+.lowwin-screen.open .lowwin-card{animation:lowWinZoom 1.2s cubic-bezier(.16,1.2,.3,1) forwards;}
+.lowwin-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
+.lowwin-title{position:absolute;top:8%;left:18%;width:64%;text-align:center;color:#fff0a8;font-weight:900;font-size:clamp(20px,5vw,36px);letter-spacing:2px;text-shadow:0 0 10px #ffb300,0 3px 3px #000;}
+.lowwin-amount{position:absolute;left:18%;top:72%;width:64%;height:15%;display:grid;place-items:center;background:#10091a;border:3px solid #ffd34d;border-radius:12px;box-shadow:0 0 20px #ffb300,inset 0 0 10px #000;color:#fff0a8;}
+.lowwin-amount span{font-size:clamp(28px,8vw,52px);font-weight:900;text-shadow:0 0 12px #ffd34d;}
+.lowwin-flames{position:absolute;z-index:2;font-size:clamp(30px,8vw,65px);letter-spacing:10vw;filter:drop-shadow(0 0 14px #ff7b00);animation:lowWinFire .45s ease-in-out infinite alternate;white-space:nowrap;}
+.lowwin-particles{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.lowwin-particle{position:absolute;width:8px;height:8px;border-radius:50%;background:#ffd34d;box-shadow:0 0 12px #ff9d00;animation:lowWinParticle 1.4s ease-out forwards;}
+@keyframes lowWinZoom{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes lowWinFire{to{transform:scale(1.1) rotate(2deg);filter:drop-shadow(0 0 24px #ffd34d)}}
+@keyframes lowWinParticle{0%{left:50%;top:50%;transform:scale(.2);opacity:0}15%{opacity:1}100%{left:var(--x);top:var(--y);transform:scale(1.2) rotate(360deg);opacity:0}}
+@media(max-width:700px){.lowwin-card{width:82vw}.lowwin-amount{border-width:2px}.lowwin-title{font-size:clamp(18px,5vw,30px)}}
+
+/* Desktop control bar alignment: center the live values inside the artwork boxes
+   without changing the mobile layout. The labels are part of the frame artwork. */
+
+
+/* Urgent desktop panel correction: each live value is centered by its own
+   relative control box; no text element is vertically offset. */
+
+
+/* Preserve the existing mobile layout; the box flex structure is desktop-only. */
+@media (max-width:700px){
+  .control-box{display:contents;}
+}
+
+/* Final desktop alignment for the lower control panel. */
+
+
+/* Final desktop flex/static positioning for the lower control panel. */
+
+
+/* Final desktop tuning for the LINES box and value baseline. */
+
+
+/* Definitive desktop LINES box alignment. */
+
+
+/* Unified portrait mode on every screen size. */
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background-color:#0d0614;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.game{
+  position:relative;
+  width:min(100vw,56.25vh);
+  height:min(100vh,177.78vw);
+  max-width:calc(100vh * (9 / 16));
+  aspect-ratio:9 / 16;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.frame img{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.reels{
+  left:21.5%;
+  top:22%;
+  width:57.1%;
+  height:47.2%;
+  border-width:2px;
+}
+
+.display{
+  font-size:9px;
+  line-height:normal;
+}
+
+.display b{
+  font-size:16px;
+  line-height:normal;
+}
+
+.balance{left:10%;top:94%;width:32%;}
+.bet{left:9.2%;top:89%;width:27%;}
+.win{left:76.5%;top:84.7%;width:20%;}
+.lines{left:74.5%;top:89.6%;width:24%;}
+.jackpot{left:44%;top:11.5%;width:32%;font-size:8px;}
+
+.control-box{
+  display:contents;
+}
+
+.control-box .label{
+  position:static;
+  line-height:1;
+  margin:0;
+  padding:0;
+}
+
+.control-box .value,
+.ui b.value{
+  position:static;
+  transform:none;
+  line-height:1;
+  margin:0;
+  padding-top:8px;
+}
+
+.spin{left:38%;top:84%;width:25%;height:10%;}
+.betminus,.betplus{left:29%;top:86%;width:7%;height:5%;}
+.betplus{top:92%;}
+.menu{left:79%;top:94%;width:18%;height:6%;}
+.lineup,.linedown{left:93%;top:88%;width:7%;height:5%;}
+.linedown{top:94%;}
+
+.loading-art{
+  width:100vw;
+  height:100vh;
+  max-width:56.25vh;
+  object-fit:cover;
+}
+
+.loading-ui{width:80vw;bottom:5.1%;}
+
+.lowwin-card{width:82vw;}
+.bigwin-card{width:min(94vw,560px);}
+
+/* Raise all bottom indicator values by approximately 3 mm. */
+.ui .display.balance .value,
+.ui .display.bet .value,
+.ui .display.lines .value,
+.ui .display.win .value{
+  transform:translateY(-3mm) !important;
+}
+
+/* Custom SPIN button artwork: normal and pressed states. */
+.spin{
+  opacity:1 !important;
+  overflow:visible;
+  background:transparent;
+  border:0;
+}
+
+.spin-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+.spin-art-pressed{display:none;}
+.spin:active .spin-art-normal{display:none;}
+.spin:active .spin-art-pressed{display:block;}
+
+/* Enlarge both SPIN states to fully cover the green background circle. */
+.spin-art{
+  transform:scale(1.5) !important;
+}
+
+/* Keep prize animations inside the unified portrait play area on desktop. */
+.bigwin-card{
+  width:min(94vw,56.25vh) !important;
+}
+
+.lowwin-card{
+  width:min(82vw,56.25vh) !important;
+}
+
+/* Align the reel window with the inner frame of the new portrait artwork. */
+.reels{
+  top:24% !important;
+  height:45.2% !important;
+}
+
+/* Lower the reel window another step while preserving its lower edge. */
+.reels{
+  top:26% !important;
+  height:43.2% !important;
+}
+
+/* Lower the reel window another two centimeters. */
+.reels{
+  top:28% !important;
+  height:41.2% !important;
+}
+
+/* Lower the reel window four more centimeters while keeping its lower edge in frame. */
+.reels{
+  top:32% !important;
+  height:37.2% !important;
+}
+
+/* Stretch the reel window two centimeters upward and downward. */
+.reels{
+  top:30% !important;
+  height:41.2% !important;
+}
+
+/* Raise the reel window another half centimeter while preserving its lower edge. */
+.reels{
+  top:29.5% !important;
+  height:41.7% !important;
+}
+
+/* BET panel artwork in the upper-right corner, kept clear of the reel window. */
+.bet-bar{
+  position:absolute;
+  z-index:5;
+  top:3%;
+  right:2%;
+  width:40%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* PC-only fine adjustment for the BET panel. */
+@media (min-width:701px){
+  .bet-bar{
+    top:2% !important;
+  }
+}
+
+/* Keep PC and mobile proportional to the same 9:16 game canvas. */
+.bet-bar{
+  top:2% !important;
+}
+
+.bigwin-card{
+  width:min(94vw,52.875vh) !important;
+}
+
+.lowwin-card{
+  width:min(82vw,46.125vh) !important;
+}
+
+/* Put the player's live balance inside the number window of the BET panel. */
+.display.balance{
+  left:auto !important;
+  right:2% !important;
+  top:7% !important;
+  width:40% !important;
+  height:10% !important;
+  z-index:6;
+}
+
+.display.balance .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.balance .label{
+  display:none !important;
+}
+
+.display.balance .value,
+.display.balance #balance{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+}
+
+/* Center the balance value inside the number window of the upper-right panel. */
+.display.balance{
+  top:5.5% !important;
+  height:6% !important;
+}
+
+/* Lower the balance value one centimeter inside the upper-right panel. */
+.display.balance{
+  top:6.5% !important;
+}
+
+/* Fine-tune the balance value: half a centimeter down and right. */
+.display.balance{
+  top:7% !important;
+  right:1.5% !important;
+}
+
+/* Final balance position fine-tune. */
+.display.balance{
+  top:6.75% !important;
+  right:.5% !important;
+}
+
+/* Temporary LINES panel placement for the portrait lower section. */
+.lines-bar{
+  position:absolute;
+  z-index:5;
+  left:35%;
+  top:71.5%;
+  width:30%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* Final paired layout: LINES left and BET right on the same proportional row. */
+.lines-bar{
+  left:5% !important;
+  top:71.5% !important;
+  width:36% !important;
+}
+
+.bet-bar{
+  left:auto !important;
+  right:5% !important;
+  top:71.5% !important;
+  width:36% !important;
+}
+
+/* Keep the live balance in its original lower indicator position until its own panel is provided. */
+.display.balance{
+  left:10% !important;
+  right:auto !important;
+  top:94% !important;
+  width:32% !important;
+  height:auto !important;
+}
+
+/* Match BET height to the LINES panel on the shared lower row. */
+.lines-bar,
+.bet-bar{
+  width:36% !important;
+  height:19.1% !important;
+  object-fit:fill !important;
+}
+
+/* Keep both lower panels clear of SPIN and restore the player's visible balance. */
+.lines-bar,
+.bet-bar{
+  height:18.1% !important;
+}
+
+.display.balance{
+  left:auto !important;
+  right:4% !important;
+  top:12% !important;
+  width:28% !important;
+  height:6% !important;
+  z-index:7 !important;
+}
+
+.display.balance .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.balance .label{
+  display:none !important;
+}
+
+.display.balance .value,
+.display.balance #balance{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+}
+
+/* Restore the balance frame separately and clear the lower panels above SPIN. */
+.balance-bar{
+  position:absolute;
+  z-index:5;
+  top:2%;
+  right:2%;
+  width:40%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+.lines-bar,
+.bet-bar{
+  top:70% !important;
+  width:32% !important;
+  height:13% !important;
+  object-fit:fill !important;
+}
+
+.lines-bar{left:6% !important;}
+.bet-bar{left:auto !important;right:6% !important;}
+
+.display.balance{
+  left:auto !important;
+  right:2% !important;
+  top:5.5% !important;
+  width:40% !important;
+  height:6% !important;
+  z-index:7 !important;
+}
+
+/* Add a clear horizontal gap around SPIN. */
+.lines-bar,
+.bet-bar{
+  width:30% !important;
+}
+
+.lines-bar{left:4% !important;}
+.bet-bar{right:4% !important;}
+
+/* Final spacing: leave a clear gap between both panels and SPIN. */
+.lines-bar,
+.bet-bar{
+  width:28% !important;
+}
+
+.lines-bar{left:3% !important;}
+.bet-bar{right:3% !important;}
+
+/* Make the live balance window visibly readable until a dedicated balance asset is supplied. */
+.display.balance{
+  background:rgba(9,14,24,.82) !important;
+  border:2px solid #71849b !important;
+  border-radius:8px !important;
+  box-shadow:0 0 8px rgba(0,0,0,.65), inset 0 0 8px rgba(255,255,255,.08) !important;
+}
+
+/* Restore the original transparent balance placement; the artwork supplies the frame. */
+.display.balance{
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+/* Final cleanup: show only the balance number, without the unwanted rectangle. */
+.balance-bar{
+  display:none !important;
+}
+
+.display.balance{
+  top:7.5% !important;
+  background:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+}
+
+/* Restore the balance artwork; keep the live number transparent over it. */
+.balance-bar{
+  display:block !important;
+  position:absolute !important;
+  z-index:5 !important;
+  top:2% !important;
+  right:2% !important;
+  width:40% !important;
+  height:auto !important;
+}
+
+.display.balance{
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+/* Move the balance number two centimeters up and two to the right. */
+.display.balance{
+  top:5.5% !important;
+  right:0 !important;
+}
+
+/* Lower the balance number one centimeter. */
+.display.balance{
+  top:6.5% !important;
+}
+
+/* Move balance down 2 mm and keep any-length values centered inside its window. */
+.display.balance{
+  top:6.7% !important;
+}
+
+.display.balance .value,
+.display.balance #balance{
+  max-width:100% !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+  text-align:center !important;
+  justify-content:center !important;
+}
+
+/* Lower balance value another 2 mm. */
+.display.balance{
+  top:6.9% !important;
+}
+
+/* Put the live line count inside the LINES panel. */
+.display.lines{
+  left:3% !important;
+  top:70% !important;
+  width:28% !important;
+  height:13% !important;
+  z-index:7 !important;
+  pointer-events:none !important;
+}
+
+.display.lines .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.lines .label{
+  display:none !important;
+}
+
+.display.lines .value,
+.display.lines #lines{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+  white-space:nowrap !important;
+}
+
+/* Click targets over the minus and plus artwork in the LINES panel. */
+.lineup,
+.linedown{
+  z-index:8 !important;
+  top:74% !important;
+  width:6% !important;
+  height:5% !important;
+  opacity:.01 !important;
+}
+
+.linedown{left:5% !important;}
+.lineup{left:23% !important;}
+
+/* Fine-tune the LINES number below the label and match the neon label style. */
+.display.lines{
+  top:70.75% !important;
+}
+
+.display.lines .value,
+.display.lines #lines{
+  font-size:clamp(17px,2.15vw,28px) !important;
+  font-weight:900 !important;
+  letter-spacing:.5px !important;
+  color:#d8ff82 !important;
+  text-shadow:0 0 6px #94ff31 !important;
+}
+
+/* Center the live BET value inside the opaque window of the BET panel. */
+.display.bet{
+  left:auto !important;
+  right:3% !important;
+  top:70% !important;
+  width:28% !important;
+  height:13% !important;
+  z-index:7 !important;
+  pointer-events:none !important;
+}
+
+.display.bet .control-box{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
+  padding:0 !important;
+}
+
+.display.bet .label{
+  display:none !important;
+}
+
+.display.bet .value,
+.display.bet #bet{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1 !important;
+  transform:none !important;
+  font-size:clamp(17px,2.15vw,28px) !important;
+  font-weight:900 !important;
+  letter-spacing:.5px !important;
+  color:#d8ff82 !important;
+  text-shadow:0 0 6px #94ff31 !important;
+  white-space:nowrap !important;
+}
+
+/* Lower the BET value one centimeter inside its panel. */
+.display.bet{
+  top:71% !important;
+}
+
+/* Align BET value baseline with the LINES value. */
+.display.bet{
+  top:70.75% !important;
+}
+
+/* BET controls on the same horizontal line as LINES controls. */
+.betminus,
+.betplus{
+  z-index:8 !important;
+  top:74% !important;
+  width:6% !important;
+  height:5% !important;
+  opacity:.01 !important;
+}
+
+.betminus{left:71% !important;}
+.betplus{left:89% !important;}
+
+/* Slightly smaller BET value so three-digit bets stay inside the window. */
+.display.bet .value,
+.display.bet #bet{
+  font-size:clamp(15px,1.9vw,24px) !important;
+  max-width:82% !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+}
+
+/* Lower the BET number 2 mm without moving its controls. */
+.display.bet{
+  top:70.95% !important;
+}
+
+/* Exact visible 2 mm offset for the BET number. */
+.display.bet .value,
+.display.bet #bet{
+  transform:translateY(2mm) !important;
+}
+
+/* Raise the BET number by 1 mm from the exact visible offset. */
+.display.bet .value,
+.display.bet #bet{
+  transform:translateY(1mm) !important;
+}
+
+/* Align both lower panels and all four controls with SPIN's horizontal center. */
+.lines-bar,
+.bet-bar{
+  top:82.5% !important;
+}
+
+.display.lines,
+.display.bet{
+  top:82.5% !important;
+}
+
+.lineup,
+.linedown,
+.betminus,
+.betplus{
+  top:86.5% !important;
+}
+
+/* Lower both BET and LINES values by exactly 2 mm. */
+.display.lines .value,
+.display.lines #lines{
+  transform:translateY(2mm) !important;
+}
+
+.display.bet .value,
+.display.bet #bet{
+  transform:translateY(3mm) !important;
+}
+
+/* Use the supplied portrait frame as the paytable modal background. */
+.paytable-card{
+  width:min(92vw,430px) !important;
+  height:min(94vh,770px) !important;
+  max-height:calc(100vh - 20px) !important;
+  aspect-ratio:571 / 1024;
+  padding:13% 13% 14% !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent url('assets/paytable/frame.webp?v=1') center/100% 100% no-repeat !important;
+  box-shadow:none !important;
+  overflow:hidden !important;
+}
+
+.paytable-close{
+  top:4% !important;
+  right:8% !important;
+  z-index:6 !important;
+}
+
+.paytable-card table{
+  font-size:clamp(9px,1.5vw,13px);
+}
+
+/* Make the existing MENU control visible until its custom artwork is supplied. */
+.menu{
+  opacity:1 !important;
+  color:#d8ff82 !important;
+  border:1px solid #71849b !important;
+  background:rgba(9,14,24,.82) !important;
+  text-shadow:0 0 6px #94ff31 !important;
+}
+
+/* Themed MENU button, kept in the bottom-right corner away from SPIN. */
+.menu{
+  left:73% !important;
+  top:auto !important;
+  right:3% !important;
+  bottom:1% !important;
+  width:24% !important;
+  height:5% !important;
+  z-index:10 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  opacity:1 !important;
+  padding:0 !important;
+  border:2px solid #d8ff82 !important;
+  border-radius:10px !important;
+  background:linear-gradient(180deg,#3b2755 0%,#171126 55%,#090812 100%) !important;
+  box-shadow:0 0 0 2px #241637 inset,0 0 12px rgba(216,255,130,.42),0 3px 0 #05040b !important;
+  color:#d8ff82 !important;
+  font-size:clamp(10px,2.2vw,18px) !important;
+  font-weight:900 !important;
+  letter-spacing:1px !important;
+  line-height:1 !important;
+  text-shadow:0 0 6px #94ff31,0 2px 2px #000 !important;
+}
+
+.menu:active{
+  transform:translateY(2px) scale(.98);
+  box-shadow:0 0 0 2px #241637 inset,0 0 8px rgba(216,255,130,.35) !important;
+}
+
+/* Announcement panel below the reels */
+.announcement-panel{position:absolute;z-index:6;left:27%;top:79.3%;width:46%;height:13%;display:grid;place-items:center;pointer-events:none;overflow:hidden;}
+.announcement-panel img{position:absolute;width:100%;height:100%;object-fit:fill;}
+.announcement-text{position:relative;z-index:2;width:78%;text-align:center;color:#d8ff82;font-weight:900;font-size:clamp(10px,1.5vw,20px);text-shadow:0 0 7px #8dff4a,0 2px 3px #000;}
+@media(max-width:700px){.announcement-panel{left:10%;top:70.3%;width:80%;height:12.5%;}.announcement-text{font-size:clamp(10px,3.2vw,18px);}}
+
+/* Opaque announcement fill fitted inside the decorative frame */
+.announcement-text{width:76%;height:62%;display:grid;place-items:center;padding:2px 8px;box-sizing:border-box;overflow:hidden;background:rgba(0,0,0,.68);border-radius:5px;}
+@media(max-width:700px){.announcement-text{width:76%;height:62%;padding:2px 6px;border-radius:4px;}}
+
+/* Widen inner announcement fill by approximately 4–5mm per side */
+.announcement-text{width:84%;}
+@media(max-width:700px){.announcement-text{width:84%;}}
+
+/* Add approximately 2mm more on each side */
+.announcement-text{width:88%;}
+@media(max-width:700px){.announcement-text{width:88%;}}
+
+.announcement-pulse{animation:announcementPulse .8s ease-in-out infinite alternate;font-size:clamp(13px,2.5vw,25px)!important;line-height:1.05;white-space:pre-line;}
+@keyframes announcementPulse{from{opacity:.72;transform:scale(.98)}to{opacity:1;transform:scale(1.04)}}
+
+
+
+/* Hide the extra numeric value beside BET */
+#bet{display:none!important;}
+/* Final visibility rules */
+.win{display:none!important;}
+#bet{display:none!important;}
+
+
+/* AUTOTIROS button opposite MENU */
+.auto-spin{position:absolute!important;left:3%!important;right:auto!important;top:auto!important;bottom:1%!important;width:24%!important;height:5%!important;z-index:10!important;display:flex!important;align-items:center!important;justify-content:center!important;opacity:1!important;padding:0!important;border:2px solid #d8ff82!important;border-radius:10px!important;background:linear-gradient(180deg,#3b2755 0%,#171126 55%,#090812 100%)!important;box-shadow:0 0 0 2px #241637 inset,0 0 12px rgba(216,255,130,.42),0 3px 0 #05040b!important;color:#d8ff82!important;font-size:clamp(9px,2vw,16px)!important;font-weight:900!important;letter-spacing:.5px!important;line-height:1!important;text-shadow:0 0 6px #94ff31,0 2px 2px #000!important;}
+.auto-spin.is-active{border-color:#ff9c54!important;color:#fff0a8!important;box-shadow:0 0 12px rgba(255,156,84,.7),0 3px 0 #05040b!important;}
+.auto-spin:active{transform:translateY(2px) scale(.98);}
+
+.auto-stop-overlay{position:fixed!important;top:12px!important;left:50%!important;bottom:auto!important;transform:translateX(-50%)!important;width:min(68vw,280px)!important;height:44px!important;display:none!important;align-items:center!important;justify-content:center!important;z-index:100!important;opacity:1!important;border:2px solid #ffb464!important;border-radius:10px!important;background:linear-gradient(180deg,#582b1e,#21121a)!important;color:#fff0a8!important;font-size:clamp(12px,3vw,17px)!important;letter-spacing:.6px!important;box-shadow:0 0 14px rgba(255,156,84,.55)!important;}
+.auto-stop-overlay.is-visible{display:flex!important;}
+
+/* Lower the visible JACKPOT number by 5% of the shared portrait canvas. */
+.display.jackpot{
+  top:19.5% !important;
+}
+
+/* Shift only the live JACKPOT number one centimeter to the right. */
+.display.jackpot #jackpot{
+  transform:translateX(1cm) !important;
+}
+
+
+/* Pull JACKPOT value half a centimeter back to the left. */
+.display.jackpot #jackpot{
+  transform:translateX(.5cm) !important;
+}
+
+
+/* Unified portrait layout: keep the in-game announcement clear of SPIN on every screen. */
+.game{
+  container-type:inline-size;
+}
+
+.game .announcement-panel{
+  left:10% !important;
+  top:70.3% !important;
+  width:80% !important;
+  height:12.5% !important;
+}
+
+.game .announcement-text{
+  font-size:clamp(10px,3.2cqw,18px) !important;
+  padding:2px 6px !important;
+  border-radius:4px !important;
+}
+
+.game .announcement-text.announcement-pulse{
+  font-size:clamp(13px,3.6cqw,20px) !important;
+}
+
+
+/* Keep the loading progress bar proportional to the shared 9:16 game canvas. */
+.loading-ui{
+  width:min(80vw,45vh) !important;
+}
+
+/* Proportional audit: scale in-game text from the shared 9:16 game canvas,
+   preserving the 390px-wide mobile reference and its approved positions. */
+.display{font-size:clamp(9px,2.31cqw,16px);}
+.display b{font-size:clamp(16px,4.10cqw,26px);}
+.display.jackpot{font-size:clamp(8px,2.05cqw,16px);}
+.display.lines .value,
+.display.lines #lines{font-size:clamp(17px,4.36cqw,28px)!important;}
+.display.bet .value,
+.display.bet #bet{font-size:clamp(15px,3.85cqw,24px)!important;}
+.menu{font-size:clamp(10px,2.56cqw,18px)!important;}
+.auto-spin{font-size:clamp(9px,2.31cqw,16px)!important;}
+
+/* Prize graphics stay centered as full-screen layers, but their artwork and
+   lettering follow the same portrait-canvas scale as the game. */
+.bigwin-card{container-type:inline-size;}
+.bigwin-number{font-size:clamp(24px,8.52cqw,46px)!important;}
+.lowwin-card{container-type:inline-size;}
+.lowwin-title{font-size:clamp(18px,6.10cqw,36px)!important;}
+.lowwin-amount span{font-size:clamp(28px,9.76cqw,52px)!important;}
+.lowwin-flames{font-size:clamp(30px,min(8vw,4.5vh),65px);letter-spacing:min(10vw,5.625vh);}
+.bigwin-particle{width:clamp(9px,min(2.31vw,1.30vh),12px);height:clamp(14px,min(3.59vw,2.02vh),18px);}
+.lowwin-particle{width:clamp(8px,min(2.05vw,1.15vh),10px);height:clamp(8px,min(2.05vw,1.15vh),10px);}
+
+/* Fit the loading scene to the shared canvas rather than cropping it to a
+   taller phone viewport. Keep the loading bar anchored inside that canvas. */
+.loading-art{
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(100vw,56.25vh)!important;
+  height:min(100vh,177.78vw)!important;
+  max-width:calc(100vh * (9 / 16));
+  object-fit:cover;
+}
+.loading-ui{
+  bottom:calc(max(0px,calc(50vh - 88.89vw)) + min(5.1vh,9.0667vw))!important;
+}
+.loading-status{font-size:clamp(13px,min(3.33vw,1.875vh),15px);}
+
+/* Keep the auto-stop affordance proportionate to the game canvas on PC and
+   phone while leaving its approved mobile width and top offset intact. */
+.auto-stop-overlay{
+  top:calc(max(0px,calc(50vh - 88.89vw)) + min(1.73vh,3.08vw))!important;
+  width:min(68vw,38.2vh)!important;
+  height:min(6.35vh,11.29vw)!important;
+  font-size:max(12px,min(3vw,1.69vh))!important;
+}
+
+/* Preserve the paytable frame's native 571:1024 ratio and size its interior
+   against the game canvas (percentage padding was viewport-based and squeezed
+   desktop content into a very narrow column). */
+.paytable-card{
+  width:min(94vw,52.875vh,calc((100vh - 20px)*0.5576171875))!important;
+  height:auto!important;
+  max-height:calc(100vh - 20px)!important;
+  aspect-ratio:571 / 1024!important;
+  padding:min(12.22vw,6.874vh) min(12.22vw,6.874vh) min(13.16vw,7.403vh)!important;
+}
+.paytable-brand{font-size:clamp(15px,min(3.846vw,2.17vh),20px);}
+.paytable-card h2{font-size:clamp(21px,min(5.385vw,3.04vh),28px)!important;}
+.paytable-subtitle{font-size:clamp(11px,min(2.82vw,1.59vh),16px);}
+.paytable-card table{font-size:clamp(9px,min(2.31vw,1.30vh),13px);}
+.paytable-card th{font-size:clamp(12px,min(3.08vw,1.735vh),17px);}
+.paytable-card td{font-size:clamp(14px,min(3.59vw,2.02vh),19px);}
+.paytable-card td:not(:first-child){font-size:clamp(13px,min(3.333vw,1.875vh),18px);}
+.paytable-card th,.paytable-card td{height:clamp(29px,min(7.44vw,4.19vh),35px)!important;}
+.pay-symbol{width:min(6.41vw,3.61vh);height:min(6.41vw,3.61vh);}
+.paytable-rules{font-size:clamp(10px,min(2.564vw,1.444vh),14px);}
+.paytable-close{width:min(7.69vw,4.33vh);height:min(7.69vw,4.33vh);font-size:min(5.90vw,3.32vh);line-height:1;}
+
+
+/* Raise the loading bar 3 mm within the shared portrait canvas. */
+.loading-ui{
+  bottom:calc(max(0px,calc(50vh - 88.89vw)) + min(5.1vh,9.0667vw) + 3mm) !important;
+}
+
+
+/* Keep the loading artwork and progress bar inside the same 9:16 canvas as the game. */
+.loading-canvas{position:relative;width:min(100vw,56.25vh);height:min(100vh,177.78vw);aspect-ratio:9/16;overflow:hidden;}
+.loading-canvas .loading-art{position:absolute!important;inset:0!important;left:auto!important;top:auto!important;transform:none!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;}
+.loading-canvas .loading-ui{left:50%!important;right:auto!important;bottom:5.1%!important;width:80%!important;transform:translateX(-50%)!important;}
+
+
+/* Keep the announcement inside the gap between reels and lower controls. */
+.game .announcement-panel{top:71.5%!important;height:10.5%!important;}
+/* Shorten BET/LINES art so it ends above AUTO and MENU. */
+.game .lines-bar,.game .bet-bar{top:82.5%!important;height:10.5%!important;object-fit:fill!important;}
+
+
+/* Mobile portrait: fill the browser's visible height instead of letterboxing the top. */
+@media(max-width:700px) and (orientation:portrait){
+  html,body{width:100%!important;height:100dvh!important;min-height:100dvh!important;}
+  .game{width:100vw!important;height:100vh!important;height:100dvh!important;max-width:100vw!important;max-height:100dvh!important;aspect-ratio:auto!important;margin:0!important;}
+  .loading-canvas{width:100vw!important;height:100vh!important;height:100dvh!important;max-width:100vw!important;aspect-ratio:auto!important;}
+  .loading-canvas .loading-art{object-fit:fill!important;}
+}
+/* Overlay the live progress fill directly on the blank track printed in loading-screen.webp. */
+.loading-canvas .loading-ui{position:absolute!important;inset:0!important;left:0!important;right:0!important;top:0!important;bottom:0!important;width:100%!important;height:100%!important;transform:none!important;display:block!important;gap:0!important;text-align:center!important;}
+.loading-canvas .loading-track{position:absolute!important;left:13.6%!important;top:86.4%!important;width:72.4%!important;height:3%!important;padding:0!important;border:0!important;border-radius:3px!important;background:#180d22!important;box-shadow:none!important;overflow:hidden!important;}
+.loading-canvas .loading-fill{height:100%!important;border-radius:0!important;}
+.loading-canvas .loading-status{position:absolute!important;left:0!important;right:0!important;top:90.5%!important;width:100%!important;text-align:center!important;}
+
+
+/* Raise only the LINES and BET values by 1.5 mm from their current positions. */
+.display.lines .value,.display.lines #lines{transform:translateY(.5mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(1.5mm)!important;}
+
+
+/* Center LINES and BET readouts over their shortened artwork panels. */
+.display.lines{left:3%!important;right:auto!important;top:82.5%!important;width:28%!important;height:10.5%!important;}
+.display.bet{left:auto!important;right:3%!important;top:82.5%!important;width:28%!important;height:10.5%!important;}
+.display.lines .control-box,.display.bet .control-box{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:100%!important;padding:0!important;}
+/* Raise both values another 1 mm while keeping them horizontally centered. */
+.display.lines .value,.display.lines #lines{transform:translateY(-1mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(0mm)!important;}
+
+
+/* Raise LINES by 2 mm and align BET to the same value baseline. */
+.display.lines .value,.display.lines #lines{transform:translateY(-3mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(-3mm)!important;}
+/* Raise only the BALANCE number by 2 mm. */
+.display.balance .value,.display.balance #balance{transform:translateY(-2mm)!important;}
+
+
+/* Lower aligned BET and LINES readouts by 2 mm. */
+.display.lines .value,.display.lines #lines{transform:translateY(-1mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(-1mm)!important;}
+/* Extend the live loading fill 1 mm upward while keeping its lower edge fixed. */
+.loading-canvas .loading-track{top:calc(86.4% - 3mm)!important;height:calc(3% + 1mm)!important;}
+
+
+/* Lower only the BET value 3 mm from its aligned position. */
+.display.bet .value,.display.bet #bet{transform:translateY(2mm)!important;}
+
+
+/* Lower LINES by 4 mm and BET by 1 mm from the prior aligned position. */
+.display.lines .value,.display.lines #lines{transform:translateY(3mm)!important;}
+.display.bet .value,.display.bet #bet{transform:translateY(3mm)!important;}
+/* Lower the green loading track another 1 mm without changing its height. */
+.loading-canvas .loading-track{top:calc(86.4% - 1mm)!important;height:calc(3% + 1mm)!important;}
+
+/* Remove mobile's blue tap flash while preserving a visible keyboard focus. */
+button, [role="button"], .display.bet, .display.lines {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus, [role="button"]:focus, .display.bet:focus, .display.lines:focus {
+  outline: none !important;
+}
+button:focus-visible, [role="button"]:focus-visible,
+.display.bet:focus-visible, .display.lines:focus-visible {
+  outline: 2px solid var(--skin-accent, #e7c47a) !important;
+  outline-offset: 2px !important;
+}

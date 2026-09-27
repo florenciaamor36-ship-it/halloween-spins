@@ -1,0 +1,10 @@
+{
+  "name": "Book of the Cleo — Prueba",
+  "short_name": "Book of Cleo",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#100a18",
+  "theme_color": "#160e20"
+}
