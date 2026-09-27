@@ -94,7 +94,7 @@ window.SLOT_GAME_CONFIG = {
       10:{5:400}, 11:{3:1,4:2,5:4},
       12:{3:0,4:0,5:0}
     },
-    bonusFreeSpins: {3:3, 4:5, 5:8}
+    bonusFreeSpins: {3:3, 4:5, 5:8},
     paytableOrder: [5,6,7,8,9,1,2,3,4,0,10,11,12]
   },
   features: { allowFreeSpinRetrigger: false },
