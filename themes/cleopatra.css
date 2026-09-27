@@ -391,47 +391,14 @@
 }
 :root[data-skin="cleopatra"] .auto-spin { left: 5% !important; right: auto !important; }
 :root[data-skin="cleopatra"] .menu { left: auto !important; right: 5% !important; }
-:root[data-skin="cleopatra"] .menu {
-  left: auto !important; right: 3% !important;
-  top: auto !important; bottom: .5% !important;
-  width: 28% !important; height: 5.6% !important;
-  display: block !important; padding: 0 !important;
-  border: 0 !important; border-radius: 0 !important;
-  background: transparent !important;
-  background-image: none !important;
-  box-shadow: none !important;
-  color: transparent !important; font-size: 0 !important;
-  line-height: 0 !important; letter-spacing: 0 !important;
-  text-shadow: none !important; overflow: visible !important;
-  z-index: 9 !important;
-}
-:root[data-skin="cleopatra"] .menu::before,
-:root[data-skin="cleopatra"] .menu::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
-  transition: none;
-}
-:root[data-skin="cleopatra"] .menu::before {
-  background-image: var(--menu-art-normal, url("../assets/cleopatra/buttons/menu-normal.webp?v=2"));
-  opacity: 1;
-}
-:root[data-skin="cleopatra"] .menu::after {
-  background-image: var(--menu-art-pressed, url("../assets/cleopatra/buttons/menu-pressed.webp?v=2"));
-  opacity: 0;
-}
+/* MENU and AUTO share the same Cleopatra button styling; labels stay distinct. */
+:root[data-skin="cleopatra"] .auto-spin:active,
+:root[data-skin="cleopatra"] .auto-spin.is-pressed,
 :root[data-skin="cleopatra"] .menu:active,
 :root[data-skin="cleopatra"] .menu.is-pressed {
   transform: translateY(1px) scale(.98) !important;
+  filter: brightness(.92);
 }
-:root[data-skin="cleopatra"] .menu:active::before,
-:root[data-skin="cleopatra"] .menu.is-pressed::before { opacity: 0; }
-:root[data-skin="cleopatra"] .menu:active::after,
-:root[data-skin="cleopatra"] .menu.is-pressed::after { opacity: 1; }
 :root[data-skin="cleopatra"] .auto-spin.is-active { border-color: #42d2cf !important; color: #fff0bc !important; }
 :root[data-skin="cleopatra"] .auto-stop-overlay {
   opacity: 1 !important;
