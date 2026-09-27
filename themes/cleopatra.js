@@ -509,35 +509,27 @@ window.SLOT_GAME_CONFIG = {
     bonus: 'assets/cleopatra/audio/reel_stop_bonus.mp3?v=cleo-reel-stop-20260927',
     scatter: 'assets/cleopatra/audio/reel_stop_scatter.mp3?v=cleo-reel-stop-20260927'
   };
-  const makePool = src => {
-    const pool = { tracks: [], next: 0 };
-    for (let i = 0; i < 5; i++) {
-      const track = new Audio(src);
-      track.preload = 'auto';
-      track.volume = 0.34;
-      track.load();
-      pool.tracks.push(track);
-    }
-    return pool;
-  };
-  const pools = {
-    normal: makePool(sources.normal),
-    bonus: makePool(sources.bonus),
-    scatter: makePool(sources.scatter)
-  };
+  const cues = Object.fromEntries(Object.entries(sources).map(([key, src]) => {
+    const track = new Audio(src);
+    track.preload = 'none';
+    track.volume = 0.34;
+    return [key, track];
+  }));
   let unlocked = false;
-  const unlock = () => { unlocked = true; };
+  const unlock = () => {
+    if (unlocked) return;
+    unlocked = true;
+    Object.values(cues).forEach(track => { track.preload = 'auto'; track.load(); });
+  };
   document.addEventListener('pointerdown', unlock, { once: true, passive: true });
   document.addEventListener('keydown', unlock, { once: true });
-  const stopAll = () => Object.values(pools).forEach(pool => pool.tracks.forEach(track => {
+  const stopAll = () => Object.values(cues).forEach(track => {
     track.pause();
     try { track.currentTime = 0; } catch {}
-  }));
+  });
   const play = key => {
     if (!unlocked) return;
-    const pool = pools[key];
-    const track = pool.tracks[pool.next];
-    pool.next = (pool.next + 1) % pool.tracks.length;
+    const track = cues[key];
     track.pause();
     try { track.currentTime = 0; } catch {}
     try {
