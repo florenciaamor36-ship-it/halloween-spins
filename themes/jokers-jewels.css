@@ -1,0 +1,42 @@
+/* Joker's Jewels: uses the exact user-supplied mask as its full-screen frame. */
+:root[data-skin="jokers-jewels"] { --skin-accent:#f04dc5; --skin-glow:#4de4ff; --skin-highlight:#fff0ad; --skin-panel:#25103d; }
+:root[data-skin="jokers-jewels"] body { background:#09040f!important; }
+:root[data-skin="jokers-jewels"] .game { width:min(100vw,45.02vh)!important; height:min(222.12vw,100vh)!important; aspect-ratio:461/1024!important; background:#05030a!important; container-type:inline-size; }
+:root[data-skin="jokers-jewels"] .frame { z-index:4!important; }
+:root[data-skin="jokers-jewels"] .frame img { width:100%!important; height:100%!important; object-fit:fill!important; }
+:root[data-skin="jokers-jewels"] .reels { left:0!important; top:34.77%!important; width:100%!important; height:22.85%!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; overflow:hidden!important; z-index:6!important; }
+:root[data-skin="jokers-jewels"] .reels::after { content:none!important; display:none!important; }
+:root[data-skin="jokers-jewels"] .reels canvas { display:block!important; position:relative!important; z-index:1!important; }
+:root[data-skin="jokers-jewels"] .bet-bar, :root[data-skin="jokers-jewels"] .balance-bar, :root[data-skin="jokers-jewels"] .lines-bar { display:none!important; }
+:root[data-skin="jokers-jewels"] .announcement-panel { left:5%!important; top:57.72%!important; width:90%!important; height:5.9%!important; z-index:8!important; display:grid!important; place-items:center!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .announcement-panel img { display:none!important; }
+:root[data-skin="jokers-jewels"] .announcement-text { width:96%!important; height:90%!important; padding:2px 6px!important; color:#fff0ad!important; background:transparent!important; font-size:clamp(8px,2.05cqw,13px)!important; line-height:1.05!important; text-align:center!important; text-shadow:0 1px 3px #140825,0 0 5px #30104d!important; }
+:root[data-skin="jokers-jewels"] .display { z-index:10!important; padding:0!important; color:#fff0ad!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; text-align:center!important; text-shadow:0 1px 3px #11071b,0 0 4px #351052!important; }
+:root[data-skin="jokers-jewels"] .display.balance { left:0!important; top:64.1%!important; width:25%!important; }
+:root[data-skin="jokers-jewels"] .display.bet { left:25%!important; top:64.1%!important; width:25%!important; }
+:root[data-skin="jokers-jewels"] .display.lines { left:50%!important; top:64.1%!important; width:25%!important; cursor:pointer!important; }
+:root[data-skin="jokers-jewels"] .display.win { left:75%!important; top:64.1%!important; width:25%!important; }
+:root[data-skin="jokers-jewels"] .display.jackpot { display:none!important; }
+:root[data-skin="jokers-jewels"] .display .control-box { padding:0!important; border:0!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .display .label { display:block!important; color:#f9d5f1!important; font-size:clamp(6px,1.5cqw,9px)!important; line-height:1.05!important; }
+:root[data-skin="jokers-jewels"] .display .value, :root[data-skin="jokers-jewels"] .display b { color:#fff7d4!important; font-size:clamp(9px,2.3cqw,14px)!important; line-height:1.08!important; }
+:root[data-skin="jokers-jewels"] .spin { left:39.1%!important; top:67.8%!important; width:21.8%!important; height:9.3%!important; padding:0!important; border:0!important; border-radius:50%!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .spin-art { display:none!important; }
+:root[data-skin="jokers-jewels"] .betminus { left:26.3%!important; top:70.3%!important; width:8.3%!important; height:5.2%!important; border:0!important; border-radius:50%!important; color:transparent!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .betplus { left:65.1%!important; top:70.3%!important; width:8.3%!important; height:5.2%!important; border:0!important; border-radius:50%!important; color:transparent!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .lineup, :root[data-skin="jokers-jewels"] .linedown { display:none!important; }
+:root[data-skin="jokers-jewels"] .auto-spin { left:24.3%!important; top:84.5%!important; width:14.7%!important; height:5.5%!important; border:0!important; color:transparent!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .menu { left:auto!important; right:1.5%!important; top:84.5%!important; width:10.5%!important; height:5.5%!important; border:0!important; color:transparent!important; background:transparent!important; box-shadow:none!important; }
+:root[data-skin="jokers-jewels"] .auto-stop-overlay { color:#fff0ad!important; border:1px solid #e747bc!important; background:rgba(37,16,61,.96)!important; }
+:root[data-skin="jokers-jewels"] .loading-fill { background:linear-gradient(90deg,#e747bc,#4de4ff,#ffd54a)!important; }
+:root[data-skin="jokers-jewels"] .loading-track { border:1px solid #e4be64!important; background:#21112f!important; }
+:root[data-skin="jokers-jewels"] .loading-status { color:#fff0ad!important; text-shadow:0 1px 3px #000!important; }
+:root[data-skin="jokers-jewels"] .paytable-card { color:#fff0d4!important; border:2px solid #e4be64!important; border-radius:14px!important; background:linear-gradient(180deg,#321454,#170c27)!important; box-shadow:0 0 28px rgba(240,77,197,.35)!important; }
+:root[data-skin="jokers-jewels"] .paytable-card h2, :root[data-skin="jokers-jewels"] .paytable-brand { color:#ffe88e!important; }
+:root[data-skin="jokers-jewels"] .paytable-card th, :root[data-skin="jokers-jewels"] .paytable-card td { color:#fff0d4!important; }
+:root[data-skin="jokers-jewels"] .paytable-rules { color:#f8d9ef!important; }
+:root[data-skin="jokers-jewels"] button:disabled { opacity:.55!important; filter:grayscale(.45); cursor:not-allowed!important; }
+@media(max-width:700px) {
+  :root[data-skin="jokers-jewels"] body { display:block!important; }
+  :root[data-skin="jokers-jewels"] .game { width:100vw!important; height:100vh!important; height:100dvh!important; max-width:100vw!important; max-height:none!important; aspect-ratio:auto!important; }
+}

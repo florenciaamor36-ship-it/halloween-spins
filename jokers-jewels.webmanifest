@@ -1,0 +1,9 @@
+{
+  "name": "Joker's Jewels",
+  "short_name": "Joker's Jewels",
+  "start_url": "jokers-jewels.html",
+  "display": "standalone",
+  "background_color": "#09040f",
+  "theme_color": "#160a27",
+  "lang": "es-AR"
+}
