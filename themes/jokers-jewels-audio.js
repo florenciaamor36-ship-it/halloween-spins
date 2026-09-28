@@ -9,6 +9,7 @@
     spinLayer: '5a0f1cd858b757447bc8922c77638eda',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     lowWin: '15a5662eee5877144961aed23792af6f',
+    mediumWin: 'e263a2caf6af0974fbf9a121ef142a97',
     bigWinExtra: 'd5dac4e3f146825419fd707cf3037780',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
     guitaritaStop: '449b467a62eb8f146958821523282d81',
@@ -125,11 +126,11 @@
     const result = event.detail || {};
     const totalWin = Number(result.totalWin) || 0;
     const wager = Number(result.bet) || 0;
-    const bigWinMultiplier = Number(window.SLOT_GAME_CONFIG?.defaults?.bigWinBetMultiplier) || 10;
-    if (totalWin > 0 && !(wager > 0 && totalWin >= wager * bigWinMultiplier)) play('symbol-win', ids.symbolWin);
+    const lowWinMultiplier = Number(window.SLOT_GAME_CONFIG?.defaults?.lowWinBetMultiplier) || 3;
+    if (totalWin > 0 && wager > 0 && totalWin < wager * lowWinMultiplier) play('low-win', ids.lowWin);
     if (Number(result.scatterCount) >= 3) play('bonus', ids.bonus);
   });
-  window.addEventListener('slot:low-win-start', () => play('low-win', ids.lowWin));
+  window.addEventListener('slot:low-win-start', () => play('medium-win', ids.mediumWin));
   window.addEventListener('slot:big-win-start', () => {
     play('symbol-win-big', ids.symbolWin);
     play('big-win-extra', ids.bigWinExtra);
