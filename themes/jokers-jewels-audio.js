@@ -8,6 +8,7 @@
     introMusic: '03f479c4b31870b46a50406a8f4210aa',
     spinLayer: '5a0f1cd858b757447bc8922c77638eda',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
+    lowWin: '15a5662eee5877144961aed23792af6f',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
     guitaritaStop: '449b467a62eb8f146958821523282d81',
     // The third reel stop has no assigned clip.
@@ -124,6 +125,7 @@
     if (Number(result.totalWin) > 0) play('symbol-win', ids.symbolWin);
     if (Number(result.scatterCount) >= 3) play('bonus', ids.bonus);
   });
+  window.addEventListener('slot:low-win-start', () => play('low-win', ids.lowWin));
 
   window.SLOT_JJ_AUDIO = Object.freeze({
     format,
