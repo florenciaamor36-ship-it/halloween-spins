@@ -9,6 +9,7 @@
     reelStart: '7466eae9fa1a8ca43ba573a19bfd04d6',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
+    guitaritaStop: '449b467a62eb8f146958821523282d81',
     paytableButton: 'eb676f1125280a44ea444439633afbe0',
     reelStops: [
       '2c5945eef37c8f843989fc1feaa5f774',
@@ -78,7 +79,13 @@
     play('reel-start', ids.reelStart);
   });
   window.addEventListener('slot:reel-stop', event => {
-    const column = Number(event.detail?.column) || 0;
+    const detail = event.detail || {};
+    const column = Number(detail.column) || 0;
+    const landedSymbols = Array.isArray(detail.keys) ? detail.keys : [];
+    if (landedSymbols.includes('mandolin')) {
+      play(`guitarita-stop-${column}`, ids.guitaritaStop);
+      return;
+    }
     play(`reel-stop-${column}`, ids.reelStops[column] || ids.reelStops[0]);
   });
   window.addEventListener('slot:spin-result', event => {
