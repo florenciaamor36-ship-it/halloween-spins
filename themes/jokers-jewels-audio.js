@@ -7,7 +7,7 @@
   const ids = {
     spinLayer: '5a0f1cd858b757447bc8922c77638eda',
     introMusic: '03f479c4b31870b46a50406a8f4210aa',
-    spinButton: '001df54acc624694a94820f46856578b',
+    spinButton: '5a0f1cd858b757447bc8922c77638eda',
     reelStart: '7466eae9fa1a8ca43ba573a19bfd04d6',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
