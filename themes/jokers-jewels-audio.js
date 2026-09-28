@@ -6,7 +6,7 @@
   const mime = useOgg ? 'audio/ogg' : 'audio/mpeg';
   const ids = {
     introMusic: '03f479c4b31870b46a50406a8f4210aa',
-    highWin: '5a0f1cd858b757447bc8922c77638eda',
+    spinLayer: '5a0f1cd858b757447bc8922c77638eda',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
     guitaritaStop: '449b467a62eb8f146958821523282d81',
@@ -23,7 +23,7 @@
   const pool = new Map();
   let muted = false;
   let started = false;
-  let currentMusic = 'paused';
+  let currentMusic = 'idle';
   let musicGeneration = 0;
   const decode = encoded => {
     const binary = atob(encoded);
@@ -62,24 +62,26 @@
       if (result?.catch) result.catch(() => {});
     });
   };
-  const pauseIdleMusic = () => {
-    currentMusic = 'paused';
-    musicGeneration++;
-    const audio = pool.get('intro-music');
-    if (audio) { audio.pause(); audio.currentTime = 0; }
+  const stopMusicTracks = () => {
+    ['spin-layer', 'intro-music'].forEach(key => {
+      const audio = pool.get(key);
+      if (audio) { audio.pause(); audio.currentTime = 0; }
+    });
   };
-  const startIdleMusic = () => {
+  const switchMusic = kind => {
     started = true;
-    currentMusic = 'idle';
+    currentMusic = kind;
     const generation = ++musicGeneration;
-    const existing = pool.get('intro-music');
-    if (existing) { existing.pause(); existing.currentTime = 0; }
+    stopMusicTracks();
     if (muted) return;
+    const isSpin = kind === 'spin';
+    const key = isSpin ? 'spin-layer' : 'intro-music';
+    const id = isSpin ? ids.spinLayer : ids.introMusic;
     ready.then(() => {
       if (muted || generation !== musicGeneration) return;
-      const url = sources.get(ids.introMusic);
+      const url = sources.get(id);
       if (!url) return;
-      const audio = getAudio('intro-music', url, true);
+      const audio = getAudio(key, url, true);
       audio.currentTime = 0;
       const result = audio.play();
       if (result?.catch) result.catch(() => {});
@@ -88,23 +90,23 @@
   const stopAll = () => pool.forEach(audio => { audio.pause(); audio.currentTime = 0; });
   const setMuted = value => {
     muted = Boolean(value);
-    if (muted) stopAll(); else if (started && currentMusic === 'idle') startIdleMusic();
+    if (muted) stopAll(); else if (started) switchMusic(currentMusic);
     window.dispatchEvent(new CustomEvent('slot:sound-change', { detail: { muted } }));
     return muted;
   };
 
   // Start idle music only after the first user gesture (browser autoplay policy).
   const startIdleAfterPointer = event => {
-    if (!started && !event.target?.closest?.('#spin')) startIdleMusic();
+    if (!started && !event.target?.closest?.('#spin')) switchMusic('idle');
   };
   const startIdleAfterKey = event => {
-    if (!started && !['Space', 'Enter'].includes(event.code)) startIdleMusic();
+    if (!started && !['Space', 'Enter'].includes(event.code)) switchMusic('idle');
   };
   document.addEventListener('pointerdown', startIdleAfterPointer, { once: true, capture: true });
   document.addEventListener('keydown', startIdleAfterKey, { once: true, capture: true });
 
-  // Spin and reel motion are intentionally silent; stop any idle loop while spinning.
-  window.addEventListener('slot:spin-start', pauseIdleMusic);
+  // Spin button and reel-start effects remain silent; ID24 is the spin loop.
+  window.addEventListener('slot:spin-start', () => switchMusic('spin'));
   window.addEventListener('slot:reel-stop', event => {
     const detail = event.detail || {};
     const column = Number(detail.column) || 0;
@@ -117,12 +119,11 @@
     if (stopId) play(`reel-stop-${column}`, stopId);
   });
   window.addEventListener('slot:spin-result', event => {
-    startIdleMusic();
+    switchMusic('idle');
     const result = event.detail || {};
     if (Number(result.totalWin) > 0) play('symbol-win', ids.symbolWin);
     if (Number(result.scatterCount) >= 3) play('bonus', ids.bonus);
   });
-  window.addEventListener('slot:big-win-start', () => play('high-win', ids.highWin));
 
   window.SLOT_JJ_AUDIO = Object.freeze({
     format,
