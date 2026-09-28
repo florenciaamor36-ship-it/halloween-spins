@@ -123,3 +123,33 @@
 .jj-lines-options button { min-width:48px!important; min-height:46px!important; font-size:17px; }
 .jj-lines-options button.is-selected { color:#26103d!important; border-color:#fff0ad!important; background:linear-gradient(135deg,#ffe88e,#f04dc5)!important; box-shadow:0 0 14px rgba(255,232,142,.72), inset 0 0 5px rgba(255,255,255,.55)!important; }
 .jj-lines-options button:disabled { opacity:.5; cursor:not-allowed; }
+
+/* High-contrast AUTO picker: clearly separate the card, options, and backdrop. */
+#jjAutoModal.jj-modal { background:rgba(3,2,10,.86); backdrop-filter:blur(7px) saturate(1.2); }
+#jjAutoModal .jj-dialog {
+  border:2px solid #ffe277;
+  background:linear-gradient(145deg,#71338f 0%,#48205f 48%,#241033 100%);
+  box-shadow:0 0 0 1px rgba(77,228,255,.42),0 0 34px rgba(240,77,197,.66),inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 24px rgba(255,226,119,.1);
+}
+#jjAutoModal .jj-dialog h2 { color:#fff0ad; text-shadow:0 0 12px rgba(240,77,197,.9),0 2px 3px #190722; }
+#jjAutoModal .jj-dialog p { color:#fff7ff; text-shadow:0 1px 3px #1b0828; }
+#jjAutoModal .jj-dialog-actions button {
+  min-width:76px;
+  min-height:56px;
+  color:#fff!important;
+  border:1px solid #ffe277!important;
+  background:linear-gradient(145deg,#e747bc 0%,#8147bd 58%,#346b87 100%)!important;
+  box-shadow:0 3px 0 #281039,0 0 14px rgba(77,228,255,.38),inset 0 1px 0 rgba(255,255,255,.36)!important;
+  text-shadow:0 1px 3px #21092e;
+  font-size:18px;
+}
+#jjAutoModal .jj-dialog-actions button:hover,
+#jjAutoModal .jj-dialog-actions button:focus-visible {
+  border-color:#fff5bd!important;
+  box-shadow:0 0 0 2px rgba(255,226,119,.62),0 0 20px rgba(77,228,255,.68),inset 0 1px 0 rgba(255,255,255,.55)!important;
+}
+#jjAutoModal .jj-cancel {
+  color:#fff0d4!important;
+  border-color:rgba(255,226,119,.78)!important;
+  background:linear-gradient(180deg,#362147,#1d102c)!important;
+}
