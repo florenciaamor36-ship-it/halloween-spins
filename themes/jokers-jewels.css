@@ -111,3 +111,15 @@
 :root[data-skin="jokers-jewels"] #loadingScreen { z-index:2147483646!important; background:#080b12!important; transition:none!important; }
 :root[data-skin="jokers-jewels"] #loadingScreen > .loading-canvas { background:#080b12 url("../assets/jokers-jewels/loading-poster-v2.webp?v=poster-only-20260928-0150") center/100% 100% no-repeat!important; }
 :root[data-skin="jokers-jewels"] #loadingScreen:not(.is-hidden) ~ #game { visibility:hidden!important; }
+
+
+/* Interactive bet and line readouts plus the selectable-lines mini-menu. */
+:root[data-skin="jokers-jewels"] .display.bet,
+:root[data-skin="jokers-jewels"] .display.lines { pointer-events:auto!important; cursor:pointer!important; }
+:root[data-skin="jokers-jewels"] .display.bet:focus-visible,
+:root[data-skin="jokers-jewels"] .display.lines:focus-visible { outline:2px solid #ffe88e!important; outline-offset:2px; }
+.jj-lines-summary { display:flex; align-items:center; justify-content:space-between; margin:12px 3px 14px; padding:10px 12px; color:#f3d9ef; border:1px solid rgba(228,190,100,.5); border-radius:10px; background:rgba(0,0,0,.24); }
+.jj-lines-summary b { color:#ffe88e; font-size:1.2em; }
+.jj-lines-options button { min-width:48px!important; min-height:46px!important; font-size:17px; }
+.jj-lines-options button.is-selected { color:#26103d!important; border-color:#fff0ad!important; background:linear-gradient(135deg,#ffe88e,#f04dc5)!important; box-shadow:0 0 14px rgba(255,232,142,.72), inset 0 0 5px rgba(255,255,255,.55)!important; }
+.jj-lines-options button:disabled { opacity:.5; cursor:not-allowed; }

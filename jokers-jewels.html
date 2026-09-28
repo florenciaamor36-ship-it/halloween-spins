@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
-  <link rel="stylesheet" href="themes/jokers-jewels.css?v=poster-only-20260928-0150">
+  <link rel="stylesheet" href="themes/jokers-jewels.css?v=jj-minimenus-20260928-0958">
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
@@ -38,8 +38,8 @@
     <img class="lines-bar" alt="">
     <section class="ui">
       <div class="display balance"><div class="control-box"><span class="label">SALDO</span><b id="balance" class="value">10000</b></div></div>
-      <div class="display bet"><div class="control-box"><span class="label">APUESTA</span><b id="bet" class="value">50</b></div></div>
-      <div class="display lines"><div class="control-box"><span class="label">LÍNEAS</span><b id="lines" class="value">20</b></div></div>
+      <div class="display bet" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="jjBetModal" aria-label="Configurar apuesta"><div class="control-box"><span class="label">APUESTA</span><b id="bet" class="value">50</b></div></div>
+      <div class="display lines" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="jjLinesModal" aria-label="Elegir cantidad de líneas"><div class="control-box"><span class="label">LÍNEAS</span><b id="lines" class="value">5</b></div></div>
       <div class="display win"><div class="control-box"><span class="label">PREMIO</span><b id="win" class="value">0</b></div></div>
       <div class="display jackpot"><span class="label" id="jackpotLabel">JACKPOT</span> <b id="jackpot">0</b></div>
       <button id="spin" class="spin" type="button" aria-label="Girar"><img class="spin-art spin-art-normal" alt=""><img class="spin-art spin-art-pressed" alt=""></button>
@@ -68,12 +68,28 @@
       <button class="jj-cancel" type="button" data-jj-close="jjAutoModal">Cancelar</button>
     </section>
   </div>
+  <div id="jjLinesModal" class="jj-modal" aria-hidden="true">
+    <section class="jj-dialog" role="dialog" aria-modal="true" aria-labelledby="jjLinesTitle">
+      <button class="jj-close" type="button" data-jj-close="jjLinesModal" aria-label="Cerrar">×</button>
+      <h2 id="jjLinesTitle">LÍNEAS</h2><p>Elegí cuántas de las cinco líneas querés activar.</p>
+      <div class="jj-lines-summary"><span>Líneas activas</span><b id="jjSelectedLines">5</b></div>
+      <div class="jj-dialog-actions jj-lines-options">
+        <button type="button" data-jj-lines="1" aria-label="Activar 1 línea">1</button>
+        <button type="button" data-jj-lines="2" aria-label="Activar 2 líneas">2</button>
+        <button type="button" data-jj-lines="3" aria-label="Activar 3 líneas">3</button>
+        <button type="button" data-jj-lines="4" aria-label="Activar 4 líneas">4</button>
+        <button type="button" data-jj-lines="5" aria-label="Activar 5 líneas">5</button>
+      </div>
+      <button class="jj-cancel" type="button" data-jj-close="jjLinesModal">Listo</button>
+    </section>
+  </div>
   <div id="jjBetModal" class="jj-modal" aria-hidden="true">
     <section class="jj-dialog" role="dialog" aria-modal="true" aria-labelledby="jjBetTitle">
       <button class="jj-close" type="button" data-jj-close="jjBetModal" aria-label="Cerrar">×</button>
-      <h2 id="jjBetTitle">APUESTA</h2><p>Las 5 líneas son fijas.</p>
+      <h2 id="jjBetTitle">APUESTA</h2><p>Ajustá el total; las líneas se eligen por separado.</p>
       <div class="jj-bet-summary"><span>Monedas por línea</span><b id="jjCoinsPerLine">10</b><span>Valor de ficha</span><b>1</b><span>Apuesta total</span><b id="jjBetTotal">50</b></div>
       <div class="jj-dialog-actions"><button type="button" data-jj-bet="-1" aria-label="Bajar apuesta">−</button><button type="button" data-jj-bet="1" aria-label="Subir apuesta">+</button><button type="button" id="jjBetMax">MÁX</button></div>
+      <button class="jj-cancel" type="button" data-jj-close="jjBetModal">Listo</button>
     </section>
   </div>
   <div id="jjMenuModal" class="jj-modal" aria-hidden="true">
@@ -93,9 +109,9 @@
     </section>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/jokers-jewels.js?v=rules-controls-20260927-2012"></script>
-  <script src="main.js?v=big-win-pair-20260928-0103"></script>
+  <script src="themes/jokers-jewels.js?v=jj-minimenus-20260928-0958"></script>
+  <script src="main.js?v=jj-lines-api-20260928-0958"></script>
   <script src="themes/jokers-jewels-audio.js?v=win-tiers-20260928-0135"></script>
-  <script src="themes/jokers-jewels-ui.js?v=buttons-20260927-2012"></script>
+  <script src="themes/jokers-jewels-ui.js?v=jj-minimenus-20260928-0958"></script>
 </body>
 </html>

@@ -40,7 +40,7 @@
       minBet: 25,
       maxBet: 500,
       betStep: 25,
-      minLines: 5,
+      minLines: 1,
       maxLines: 5,
       lineStep: 1,
       jackpotContributionRate: 0,
@@ -117,7 +117,7 @@
         prize: 'PREMIO: {amount} fichas'
       },
       paytableRules: [
-        '• Los símbolos comunes pagan de izquierda a derecha en 5 líneas fijas.',
+        '• Elegí entre 1 y 5 líneas activas; los símbolos comunes pagan de izquierda a derecha.',
         '• BONUS paga en cualquier posición: 10×, 50× o 250× la apuesta con 3, 4 o 5 símbolos.',
         '• La esfera azul también paga con 2 símbolos; no hay WILD ni giros gratis.',
         '• Los importes impresos en ARS son decorativos; esta tabla muestra los premios en fichas.'
