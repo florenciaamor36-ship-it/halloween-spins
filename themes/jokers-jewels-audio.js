@@ -6,13 +6,11 @@
   const mime = useOgg ? 'audio/ogg' : 'audio/mpeg';
   const ids = {
     introMusic: '03f479c4b31870b46a50406a8f4210aa',
-    spinButton: '001df54acc624694a94820f46856578b',
     highWin: '5a0f1cd858b757447bc8922c77638eda',
-    reelStart: '7466eae9fa1a8ca43ba573a19bfd04d6',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
     guitaritaStop: '449b467a62eb8f146958821523282d81',
-    // The third reel stop is left unassigned: its previous clip was assigned to Spin.
+    // The third reel stop has no assigned clip.
     reelStops: [
       '2c5945eef37c8f843989fc1feaa5f774',
       '8b11b54b721817d4ba95cfacd79af491',
@@ -105,17 +103,8 @@
   document.addEventListener('pointerdown', startIdleAfterPointer, { once: true, capture: true });
   document.addEventListener('keydown', startIdleAfterKey, { once: true, capture: true });
 
-  // The user assigned this clip to a manual tap on Spin.
-  document.getElementById('spin')?.addEventListener('click', () => {
-    const state = window.SLOT_GAME_API?.getState?.();
-    if (state?.spinning || (state && state.balance < state.bet)) return;
-    play('spin-button', ids.spinButton);
-  }, { capture: true });
-
-  window.addEventListener('slot:spin-start', () => {
-    pauseIdleMusic();
-    play('reel-start', ids.reelStart);
-  });
+  // Spin and reel motion are intentionally silent; stop any idle loop while spinning.
+  window.addEventListener('slot:spin-start', pauseIdleMusic);
   window.addEventListener('slot:reel-stop', event => {
     const detail = event.detail || {};
     const column = Number(detail.column) || 0;
