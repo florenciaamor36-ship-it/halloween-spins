@@ -7,7 +7,7 @@
     id: 'jokers-jewels',
     assets: {
       frame: { portrait: `${base}frame.webp?v=1`, fallback: `${base}frame.webp?v=1` },
-      loading: `${base}frame.webp?v=1`,
+      loading: `${base}loading-poster-v2.webp?v=poster-load-20260928-2044`,
       spin: { normal: blank, pressed: blank },
       indicators: { balance: blank, bet: blank, lines: blank },
       announcementFrame: blank,
