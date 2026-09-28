@@ -5,14 +5,14 @@
   const format = useOgg ? 'ogg' : 'mp3';
   const mime = useOgg ? 'audio/ogg' : 'audio/mpeg';
   const ids = {
-    spinLayer: '5a0f1cd858b757447bc8922c77638eda',
     introMusic: '03f479c4b31870b46a50406a8f4210aa',
-    spinButton: '5a0f1cd858b757447bc8922c77638eda',
+    spinButton: '001df54acc624694a94820f46856578b',
+    highWin: '5a0f1cd858b757447bc8922c77638eda',
     reelStart: '7466eae9fa1a8ca43ba573a19bfd04d6',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
     guitaritaStop: '449b467a62eb8f146958821523282d81',
-    // The third reel stop is left unassigned: this clip was assigned to Spin.
+    // The third reel stop is left unassigned: its previous clip was assigned to Spin.
     reelStops: [
       '2c5945eef37c8f843989fc1feaa5f774',
       '8b11b54b721817d4ba95cfacd79af491',
@@ -25,7 +25,7 @@
   const pool = new Map();
   let muted = false;
   let started = false;
-  let currentMusic = 'idle';
+  let currentMusic = 'paused';
   let musicGeneration = 0;
   const decode = encoded => {
     const binary = atob(encoded);
@@ -64,25 +64,24 @@
       if (result?.catch) result.catch(() => {});
     });
   };
-  const stopMusicTracks = () => {
-    ['spin-layer', 'intro-music'].forEach(key => {
-      const audio = pool.get(key);
-      if (audio) { audio.pause(); audio.currentTime = 0; }
-    });
+  const pauseIdleMusic = () => {
+    currentMusic = 'paused';
+    musicGeneration++;
+    const audio = pool.get('intro-music');
+    if (audio) { audio.pause(); audio.currentTime = 0; }
   };
-  const switchMusic = kind => {
+  const startIdleMusic = () => {
     started = true;
-    currentMusic = kind;
+    currentMusic = 'idle';
     const generation = ++musicGeneration;
-    stopMusicTracks();
+    const existing = pool.get('intro-music');
+    if (existing) { existing.pause(); existing.currentTime = 0; }
     if (muted) return;
-    const key = kind === 'spin' ? 'spin-layer' : 'intro-music';
-    const id = kind === 'spin' ? ids.spinLayer : ids.introMusic;
     ready.then(() => {
       if (muted || generation !== musicGeneration) return;
-      const url = sources.get(id);
+      const url = sources.get(ids.introMusic);
       if (!url) return;
-      const audio = getAudio(key, url, true);
+      const audio = getAudio('intro-music', url, true);
       audio.currentTime = 0;
       const result = audio.play();
       if (result?.catch) result.catch(() => {});
@@ -91,22 +90,22 @@
   const stopAll = () => pool.forEach(audio => { audio.pause(); audio.currentTime = 0; });
   const setMuted = value => {
     muted = Boolean(value);
-    if (muted) stopAll(); else if (started) switchMusic(currentMusic);
+    if (muted) stopAll(); else if (started && currentMusic === 'idle') startIdleMusic();
     window.dispatchEvent(new CustomEvent('slot:sound-change', { detail: { muted } }));
     return muted;
   };
 
   // Start idle music only after the first user gesture (browser autoplay policy).
   const startIdleAfterPointer = event => {
-    if (!started && !event.target?.closest?.('#spin')) switchMusic('idle');
+    if (!started && !event.target?.closest?.('#spin')) startIdleMusic();
   };
   const startIdleAfterKey = event => {
-    if (!started && !['Space', 'Enter'].includes(event.code)) switchMusic('idle');
+    if (!started && !['Space', 'Enter'].includes(event.code)) startIdleMusic();
   };
   document.addEventListener('pointerdown', startIdleAfterPointer, { once: true, capture: true });
   document.addEventListener('keydown', startIdleAfterKey, { once: true, capture: true });
 
-  // This clip is assigned to a manual tap on Spin, not to the automatic spins.
+  // The user assigned this clip to a manual tap on Spin.
   document.getElementById('spin')?.addEventListener('click', () => {
     const state = window.SLOT_GAME_API?.getState?.();
     if (state?.spinning || (state && state.balance < state.bet)) return;
@@ -114,7 +113,7 @@
   }, { capture: true });
 
   window.addEventListener('slot:spin-start', () => {
-    switchMusic('spin');
+    pauseIdleMusic();
     play('reel-start', ids.reelStart);
   });
   window.addEventListener('slot:reel-stop', event => {
@@ -129,11 +128,12 @@
     if (stopId) play(`reel-stop-${column}`, stopId);
   });
   window.addEventListener('slot:spin-result', event => {
-    switchMusic('idle');
+    startIdleMusic();
     const result = event.detail || {};
     if (Number(result.totalWin) > 0) play('symbol-win', ids.symbolWin);
     if (Number(result.scatterCount) >= 3) play('bonus', ids.bonus);
   });
+  window.addEventListener('slot:big-win-start', () => play('high-win', ids.highWin));
 
   window.SLOT_JJ_AUDIO = Object.freeze({
     format,
