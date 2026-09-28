@@ -102,3 +102,9 @@
   :root[data-skin="jokers-jewels"] .jj-bet-menu { top:90.62%!important; }
   :root[data-skin="jokers-jewels"] .jj-settings { top:96.5%!important; height:3%!important; }
 }
+
+/* Fit the live progress UI into the clear gap on the supplied loading poster. */
+:root[data-skin="jokers-jewels"] #loadingScreen .loading-ui { position:absolute!important; inset:0!important; left:0!important; right:0!important; top:0!important; bottom:0!important; width:100%!important; height:100%!important; transform:none!important; display:block!important; gap:0!important; text-align:center!important; }
+:root[data-skin="jokers-jewels"] #loadingScreen .loading-track { position:absolute!important; left:13.6%!important; top:87.8%!important; width:72.4%!important; height:1.9%!important; padding:0!important; border:1px solid #e4be64!important; border-radius:8px!important; background:#180d22!important; box-shadow:0 0 9px #07030c!important; overflow:hidden!important; }
+:root[data-skin="jokers-jewels"] #loadingScreen .loading-fill { height:100%!important; border-radius:6px!important; }
+:root[data-skin="jokers-jewels"] #loadingScreen .loading-status { position:absolute!important; left:0!important; right:0!important; top:90.1%!important; width:100%!important; color:#fff0ad!important; font-size:clamp(10px,2.3vw,12px)!important; line-height:1!important; text-align:center!important; text-shadow:0 1px 3px #000!important; }
