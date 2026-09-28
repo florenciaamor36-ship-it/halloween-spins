@@ -6,15 +6,17 @@
   const mime = useOgg ? 'audio/ogg' : 'audio/mpeg';
   const ids = {
     spinLayer: '5a0f1cd858b757447bc8922c77638eda',
+    introMusic: '03f479c4b31870b46a50406a8f4210aa',
+    spinButton: '001df54acc624694a94820f46856578b',
     reelStart: '7466eae9fa1a8ca43ba573a19bfd04d6',
     symbolWin: '8f89a6bf762dfd94ca4af48db13aaba6',
     bonus: '8d33b7e80ab75454598a7d74ea9e7644',
     guitaritaStop: '449b467a62eb8f146958821523282d81',
-    paytableButton: 'eb676f1125280a44ea444439633afbe0',
+    // The third reel stop is left unassigned: this clip was assigned to Spin.
     reelStops: [
       '2c5945eef37c8f843989fc1feaa5f774',
       '8b11b54b721817d4ba95cfacd79af491',
-      '001df54acc624694a94820f46856578b',
+      null,
       '42e7dee34b4ce9442bbf2c7f71a5b613',
       '41965fe4f5e42d44baf4babc1245047c'
     ]
@@ -23,6 +25,8 @@
   const pool = new Map();
   let muted = false;
   let started = false;
+  let currentMusic = 'idle';
+  let musicGeneration = 0;
   const decode = encoded => {
     const binary = atob(encoded);
     const bytes = new Uint8Array(binary.length);
@@ -38,7 +42,6 @@
     }
   };
   const ready = loadBundle('sounds').catch(() => {});
-  loadBundle('GUI_sounds').catch(() => {});
   const getAudio = (key, url, loop = false) => {
     if (!pool.has(key)) {
       const audio = new Audio(url);
@@ -61,21 +64,57 @@
       if (result?.catch) result.catch(() => {});
     });
   };
-  const startMusic = () => {
-    if (muted) return;
+  const stopMusicTracks = () => {
+    ['spin-layer', 'intro-music'].forEach(key => {
+      const audio = pool.get(key);
+      if (audio) { audio.pause(); audio.currentTime = 0; }
+    });
+  };
+  const switchMusic = kind => {
     started = true;
-    play('spin-layer', ids.spinLayer, true);
+    currentMusic = kind;
+    const generation = ++musicGeneration;
+    stopMusicTracks();
+    if (muted) return;
+    const key = kind === 'spin' ? 'spin-layer' : 'intro-music';
+    const id = kind === 'spin' ? ids.spinLayer : ids.introMusic;
+    ready.then(() => {
+      if (muted || generation !== musicGeneration) return;
+      const url = sources.get(id);
+      if (!url) return;
+      const audio = getAudio(key, url, true);
+      audio.currentTime = 0;
+      const result = audio.play();
+      if (result?.catch) result.catch(() => {});
+    });
   };
   const stopAll = () => pool.forEach(audio => { audio.pause(); audio.currentTime = 0; });
   const setMuted = value => {
     muted = Boolean(value);
-    if (muted) stopAll(); else if (started) startMusic();
+    if (muted) stopAll(); else if (started) switchMusic(currentMusic);
     window.dispatchEvent(new CustomEvent('slot:sound-change', { detail: { muted } }));
     return muted;
   };
 
+  // Start idle music only after the first user gesture (browser autoplay policy).
+  const startIdleAfterPointer = event => {
+    if (!started && !event.target?.closest?.('#spin')) switchMusic('idle');
+  };
+  const startIdleAfterKey = event => {
+    if (!started && !['Space', 'Enter'].includes(event.code)) switchMusic('idle');
+  };
+  document.addEventListener('pointerdown', startIdleAfterPointer, { once: true, capture: true });
+  document.addEventListener('keydown', startIdleAfterKey, { once: true, capture: true });
+
+  // This clip is assigned to a manual tap on Spin, not to the automatic spins.
+  document.getElementById('spin')?.addEventListener('click', () => {
+    const state = window.SLOT_GAME_API?.getState?.();
+    if (state?.spinning || (state && state.balance < state.bet)) return;
+    play('spin-button', ids.spinButton);
+  }, { capture: true });
+
   window.addEventListener('slot:spin-start', () => {
-    startMusic();
+    switchMusic('spin');
     play('reel-start', ids.reelStart);
   });
   window.addEventListener('slot:reel-stop', event => {
@@ -86,16 +125,15 @@
       play(`guitarita-stop-${column}`, ids.guitaritaStop);
       return;
     }
-    play(`reel-stop-${column}`, ids.reelStops[column] || ids.reelStops[0]);
+    const stopId = ids.reelStops[column];
+    if (stopId) play(`reel-stop-${column}`, stopId);
   });
   window.addEventListener('slot:spin-result', event => {
+    switchMusic('idle');
     const result = event.detail || {};
     if (Number(result.totalWin) > 0) play('symbol-win', ids.symbolWin);
     if (Number(result.scatterCount) >= 3) play('bonus', ids.bonus);
   });
-  window.addEventListener('slot:paytable-open', () => play('paytable-button', ids.paytableButton));
-  window.addEventListener('slot:paytable-close', () => play('paytable-button', ids.paytableButton));
-  window.addEventListener('slot:bet-change', () => play('paytable-button', ids.paytableButton));
 
   window.SLOT_JJ_AUDIO = Object.freeze({
     format,
@@ -103,6 +141,7 @@
     isMuted: () => muted,
     toggleMute: () => setMuted(!muted),
     setMuted,
-    playUi: name => { if (name === 'button') play('paytable-button', ids.paytableButton); }
+    // Generic GUI sounds remain unmapped until their event IDs are identified.
+    playUi: () => {}
   });
 })();
