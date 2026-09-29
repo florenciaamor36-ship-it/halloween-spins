@@ -21,6 +21,82 @@
     node.setAttribute('aria-hidden', 'false');
   };
   const playButton = () => audio()?.playUi?.('button');
+  const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const flyPrizeCoins = (game, source, target, config = {}) => {
+    if (!game || !source || !target) return Promise.resolve();
+    const gameRect = game.getBoundingClientRect();
+    const sourceRect = source.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    if (!gameRect.width || !gameRect.height || !sourceRect.width || !targetRect.width) return Promise.resolve();
+    const count = Math.max(8, Math.min(36, Math.floor(Number(config.coinCount) || 22)));
+    const stagger = Math.max(10, Number(config.coinStaggerMs) || 38);
+    const duration = Math.max(700, Number(config.coinDurationMs) || 1150);
+    const originX = sourceRect.left + sourceRect.width / 2;
+    const originY = sourceRect.top + sourceRect.height / 2;
+    const destX = targetRect.left + targetRect.width / 2;
+    const destY = targetRect.top + targetRect.height / 2;
+    return new Promise(resolve => {
+      let remaining = count;
+      let finished = false;
+      const coins = [];
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        coins.forEach(coin => coin.remove());
+        target.classList.add('jj-balance-arrival');
+        setTimeout(() => target.classList.remove('jj-balance-arrival'), 900);
+        resolve();
+      };
+      for (let i = 0; i < count; i++) {
+        const coin = document.createElement('span');
+        coin.className = 'jj-coin-flight';
+        const startX = originX + (Math.random() - .5) * Math.min(34, sourceRect.width * .28);
+        const startY = originY + (Math.random() - .5) * Math.min(14, sourceRect.height * .35);
+        const endX = destX + (Math.random() - .5) * Math.min(34, targetRect.width * .45);
+        const endY = destY + (Math.random() - .5) * Math.min(10, targetRect.height * .28);
+        const dx = endX - startX, dy = endY - startY;
+        coin.style.left = `${startX - gameRect.left}px`;
+        coin.style.top = `${startY - gameRect.top}px`;
+        coin.style.setProperty('--dx', `${dx}px`);
+        coin.style.setProperty('--dy', `${dy}px`);
+        coin.style.setProperty('--mx', `${dx * .55 + (Math.random() - .5) * 20}px`);
+        coin.style.setProperty('--my', `${dy * .55 - (14 + Math.random() * 26)}px`);
+        coin.style.setProperty('--delay', `${i * stagger}ms`);
+        coin.style.setProperty('--spin-mid', `${(Math.random() - .5) * 540}deg`);
+        coin.style.setProperty('--spin-end', `${(Math.random() - .5) * 900}deg`);
+        game.appendChild(coin);
+        coins.push(coin);
+        coin.addEventListener('animationend', () => {
+          coin.remove();
+          if (!finished && --remaining === 0) finish();
+        }, { once: true });
+      }
+      setTimeout(finish, duration + stagger * (count - 1) + 500);
+    });
+  };
+  window.SLOT_GAME_UI = window.SLOT_GAME_UI || {};
+  window.SLOT_GAME_UI.celebratePrize = async ({ title, amountText } = {}) => {
+    const panel = $('announcementPanel');
+    const box = $('announcementText');
+    const game = $('game');
+    const balanceBox = document.querySelector('.display.balance .control-box');
+    if (!panel || !box || !game || !balanceBox) return;
+    const config = window.SLOT_GAME_CONFIG?.features?.prizeBalanceTransfer || {};
+    const titleNode = document.createElement('span');
+    titleNode.className = 'jj-prize-title';
+    titleNode.textContent = String(title || 'PREMIO');
+    const amountNode = document.createElement('span');
+    amountNode.className = 'jj-prize-amount';
+    amountNode.textContent = String(amountText || '');
+    box.replaceChildren(titleNode, amountNode);
+    box.classList.remove('announcement-pulse');
+    box.classList.add('jj-prize-message', 'jj-prize-celebrating');
+    panel.classList.add('jj-prize-celebrating');
+    await pause(Math.max(900, Number(config.textDurationMs) || 1250));
+    box.classList.remove('jj-prize-celebrating');
+    panel.classList.remove('jj-prize-celebrating');
+    await flyPrizeCoins(game, panel, balanceBox, config);
+  };
   const updateLinesSummary = () => {
     const state = api()?.getState?.();
     if (!state) return;

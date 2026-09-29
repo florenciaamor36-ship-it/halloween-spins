@@ -87,6 +87,7 @@
     },
     features: {
       allowFreeSpinRetrigger: false,
+      prizeBalanceTransfer: { enabled: true, textDurationMs: 1250, coinCount: 22, coinDurationMs: 1150, coinStaggerMs: 38 },
       turboSpin: { multiplier: 2.2 },
       keyboardControls: true,
       preventKeyboardWhenModal: true,
