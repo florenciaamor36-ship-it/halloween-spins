@@ -314,8 +314,12 @@
 :root[data-skin="jokers-jewels"] .display.bet #bet {
   display:flex!important; align-items:center!important; justify-content:center!important;
   height:100%!important; padding:0 2px!important;
-  color:#fff0ad!important; background:rgba(255,226,119,.09)!important;
-  font-size:clamp(9px,2.4cqw,13px)!important; line-height:1!important;
+  color:#fff0ad!important;
+  background-color:rgba(255,226,119,.20)!important; background-image:none!important;
+  opacity:1!important; filter:none!important; mix-blend-mode:normal!important;
+  font-family:inherit!important; font-size:clamp(9px,2.4cqw,13px)!important;
+  font-weight:900!important; letter-spacing:.2px!important; line-height:1!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.85)!important;
   font-variant-numeric:tabular-nums!important; white-space:nowrap!important;
   transform:none!important; margin:0!important;
 }
