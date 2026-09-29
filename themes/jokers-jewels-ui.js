@@ -1,7 +1,7 @@
 (() => {
-  if (new URLSearchParams(window.location.search).has('clean-preview')) {
-    document.documentElement.classList.add('jj-clean-preview');
-  }
+  const previewParams = new URLSearchParams(window.location.search);
+  if (previewParams.has('clean-preview')) document.documentElement.classList.add('jj-clean-preview');
+  if (previewParams.has('layout-preview')) document.documentElement.classList.add('jj-layout-preview');
   const $ = id => document.getElementById(id);
   const api = () => window.SLOT_GAME_API;
   const audio = () => window.SLOT_JJ_AUDIO;
@@ -89,6 +89,7 @@
   if ($('menu')) $('menu').onclick = event => { event.preventDefault(); playButton(); openModal('jjMenuModal'); };
   $('jjSettings')?.addEventListener('click', () => { playButton(); updateSound(); openModal('jjSettingsModal'); });
   $('jjBetMenu')?.addEventListener('click', openBetMenu);
+  $('jjLinesArt')?.addEventListener('click', openLinesMenu);
   $('jjTurbo')?.addEventListener('click', () => { playButton(); api()?.toggleTurbo?.(); });
   if ($('autoSpin')) $('autoSpin').onclick = event => {
     event.preventDefault();

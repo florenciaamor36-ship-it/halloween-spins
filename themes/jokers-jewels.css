@@ -173,4 +173,61 @@
 :root[data-skin="jokers-jewels"].jj-clean-preview .jj-modal,
 :root[data-skin="jokers-jewels"].jj-clean-preview .bigwin-screen,
 :root[data-skin="jokers-jewels"].jj-clean-preview .lowwin-screen { display:none!important; }
-:root[data-skin="jokers-jewels"].jj-clean-preview .orientation-warning { display:none!important; }
+:root[data-skin="jokers-jewels"].jj-clean-preview .orientation-warning,
+:root[data-skin="jokers-jewels"].jj-layout-preview .orientation-warning { display:none!important; }
+
+/* New paired user artwork for Bet, Spin and Lines. */
+:root[data-skin="jokers-jewels"] #spin {
+  left:32.15%!important; top:68%!important;
+  width:35.7cqw!important; height:36cqw!important;
+  z-index:14!important; opacity:1!important; overflow:visible!important;
+  border:0!important; border-radius:0!important; padding:0!important;
+  background:transparent!important; box-shadow:none!important;
+}
+:root[data-skin="jokers-jewels"] #spin .spin-art {
+  display:block!important; width:100%!important; height:100%!important;
+  object-fit:contain!important; transform:none!important; pointer-events:none!important;
+}
+:root[data-skin="jokers-jewels"] #spin .spin-art-normal { display:block!important; }
+:root[data-skin="jokers-jewels"] #spin .spin-art-pressed { display:none!important; }
+:root[data-skin="jokers-jewels"] #spin:active .spin-art-normal { display:none!important; }
+:root[data-skin="jokers-jewels"] #spin:active .spin-art-pressed { display:block!important; }
+
+:root[data-skin="jokers-jewels"] .jj-art-button {
+  display:block!important; position:absolute!important; z-index:14!important;
+  padding:0!important; border:0!important; border-radius:0!important;
+  background:transparent!important; box-shadow:none!important;
+  opacity:1!important; overflow:visible!important; cursor:pointer;
+  touch-action:manipulation;
+}
+:root[data-skin="jokers-jewels"] .jj-art-button .jj-art-state {
+  position:absolute!important; inset:0!important; display:block!important;
+  width:100%!important; height:100%!important; object-fit:contain!important;
+  transform:none!important; pointer-events:none!important;
+}
+:root[data-skin="jokers-jewels"] .jj-art-button .jj-art-pressed { display:none!important; }
+:root[data-skin="jokers-jewels"] .jj-art-button:active .jj-art-normal { display:none!important; }
+:root[data-skin="jokers-jewels"] .jj-art-button:active .jj-art-pressed { display:block!important; }
+:root[data-skin="jokers-jewels"] #jjBetMenu {
+  left:10.7%!important; top:71.4%!important;
+  width:21.3cqw!important; height:25.1cqw!important;
+}
+:root[data-skin="jokers-jewels"] #jjLinesArt {
+  left:69%!important; top:71.4%!important;
+  width:21.1cqw!important; height:25.1cqw!important;
+}
+:root[data-skin="jokers-jewels"] #minus,
+:root[data-skin="jokers-jewels"] #plus { display:none!important; }
+
+/* Keep the existing AUTO and PREMIOS controls visible over the new backdrop. */
+:root[data-skin="jokers-jewels"] .auto-spin,
+:root[data-skin="jokers-jewels"] .menu {
+  opacity:1!important; color:#e8ffff!important;
+  border:1px solid #52dce8!important; border-radius:9px!important;
+  background:linear-gradient(180deg,rgba(19,57,69,.97),rgba(18,27,46,.97))!important;
+  box-shadow:0 0 8px rgba(82,220,232,.38),inset 0 0 6px rgba(82,220,232,.13)!important;
+  text-shadow:0 1px 2px #061319!important;
+}
+:root[data-skin="jokers-jewels"] .auto-spin { font-size:clamp(9px,2.5cqw,13px)!important; }
+:root[data-skin="jokers-jewels"] .menu { font-size:clamp(7px,2.1cqw,11px)!important; }
+:root[data-skin="jokers-jewels"] .auto-spin.is-active { color:#fff0ad!important; border-color:#ffad65!important; }

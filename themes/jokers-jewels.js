@@ -8,7 +8,10 @@
     assets: {
       frame: { portrait: `${base}frame.webp?v=1`, fallback: `${base}frame.webp?v=1` },
       loading: `${base}loading-poster-v2.webp?v=poster-load-20260928-2044`,
-      spin: { normal: blank, pressed: blank },
+      spin: {
+        normal: `${base}buttons/spin-normal.webp?v=jj-buttons-20260929-1108`,
+        pressed: `${base}buttons/spin-pressed.webp?v=jj-buttons-20260929-1108`
+      },
       indicators: { balance: blank, bet: blank, lines: blank },
       announcementFrame: blank,
       bigWin: `${symbols}joker.webp?v=1`,

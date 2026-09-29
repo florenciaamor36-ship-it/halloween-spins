@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-2">
-  <link rel="stylesheet" href="themes/jokers-jewels.css?v=jj-clean-preview-20260929-1005">
+  <link rel="stylesheet" href="themes/jokers-jewels.css?v=jj-buttons-20260929-1108">
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
@@ -51,7 +51,14 @@
       <button id="menu" class="menu" type="button" aria-label="Menú"></button>
       <button id="jjInfo" class="jj-frame-control jj-info" type="button" aria-label="Información y tabla de premios"></button>
       <button id="jjTurbo" class="jj-frame-control jj-turbo" type="button" aria-label="Turbo"></button>
-      <button id="jjBetMenu" class="jj-frame-control jj-bet-menu" type="button" aria-label="Configurar apuesta"></button>
+      <button id="jjBetMenu" class="jj-frame-control jj-bet-menu jj-art-button" type="button" aria-label="Configurar apuesta" aria-haspopup="dialog" aria-controls="jjBetModal">
+        <img class="jj-art-state jj-art-normal" src="assets/jokers-jewels/buttons/bet-normal.webp?v=jj-buttons-20260929-1108" alt="" aria-hidden="true">
+        <img class="jj-art-state jj-art-pressed" src="assets/jokers-jewels/buttons/bet-pressed.webp?v=jj-buttons-20260929-1108" alt="" aria-hidden="true">
+      </button>
+      <button id="jjLinesArt" class="jj-frame-control jj-lines-art jj-art-button" type="button" aria-label="Elegir cantidad de líneas" aria-haspopup="dialog" aria-controls="jjLinesModal">
+        <img class="jj-art-state jj-art-normal" src="assets/jokers-jewels/buttons/lines-normal.webp?v=jj-buttons-20260929-1108" alt="" aria-hidden="true">
+        <img class="jj-art-state jj-art-pressed" src="assets/jokers-jewels/buttons/lines-pressed.webp?v=jj-buttons-20260929-1108" alt="" aria-hidden="true">
+      </button>
       <button id="jjSettings" class="jj-frame-control jj-settings" type="button" aria-label="Configuración"></button>
     </section>
   </main>
@@ -111,9 +118,9 @@
     </section>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/jokers-jewels.js?v=poster-load-20260928-2044"></script>
+  <script src="themes/jokers-jewels.js?v=jj-buttons-20260929-1108"></script>
   <script src="main.js?v=jj-lines-api-20260928-0958"></script>
   <script src="themes/jokers-jewels-audio.js?v=win-tiers-20260928-0135"></script>
-  <script src="themes/jokers-jewels-ui.js?v=jj-clean-preview-20260929-1005"></script>
+  <script src="themes/jokers-jewels-ui.js?v=jj-buttons-20260929-1108"></script>
 </body>
 </html>
