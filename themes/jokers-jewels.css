@@ -286,8 +286,37 @@
   font-variant-numeric:tabular-nums!important; white-space:nowrap!important;
   transform:none!important; margin:0!important;
 }
-/* Reflow the remaining readouts evenly across the upper strip. */
-:root[data-skin="jokers-jewels"] .display.bet { left:0!important; width:33.333%!important; }
-:root[data-skin="jokers-jewels"] .display.lines { left:33.333%!important; width:33.333%!important; }
-:root[data-skin="jokers-jewels"] .display.win { left:66.666%!important; width:33.334%!important; }
+/* Keep lines and prize on the upper strip; pair SALDO and APUESTA below. */
+:root[data-skin="jokers-jewels"] .display.lines { left:0!important; width:50%!important; }
+:root[data-skin="jokers-jewels"] .display.win { left:50%!important; width:50%!important; }
+:root[data-skin="jokers-jewels"] .display.balance { left:9.5%!important; top:91.2%!important; width:31%!important; height:5.5%!important; z-index:20!important; }
+:root[data-skin="jokers-jewels"] .display.bet { left:59.5%!important; top:91.2%!important; width:31%!important; height:5.5%!important; z-index:20!important; }
+:root[data-skin="jokers-jewels"] .display.balance .control-box,
+:root[data-skin="jokers-jewels"] .display.bet .control-box {
+  display:grid!important; grid-template-columns:52% 48%!important;
+  align-items:stretch!important; width:100%!important; height:100%!important;
+  overflow:hidden!important; padding:0!important;
+  border:1px solid rgba(82,220,232,.92)!important; border-radius:8px!important;
+  background:rgba(8,17,31,.96)!important;
+  box-shadow:0 0 10px rgba(82,220,232,.27),inset 0 0 6px rgba(255,255,255,.06)!important;
+}
+:root[data-skin="jokers-jewels"] .display.balance .label,
+:root[data-skin="jokers-jewels"] .display.bet .label {
+  display:flex!important; align-items:center!important; justify-content:center!important;
+  height:100%!important; padding:0 2px!important;
+  color:#62e4ed!important; background:rgba(82,220,232,.15)!important;
+  border-right:1px solid rgba(82,220,232,.55)!important;
+  font-size:clamp(8px,2cqw,11px)!important; line-height:1!important; font-weight:900!important;
+}
+:root[data-skin="jokers-jewels"] .display.balance .value,
+:root[data-skin="jokers-jewels"] .display.balance #balance,
+:root[data-skin="jokers-jewels"] .display.bet .value,
+:root[data-skin="jokers-jewels"] .display.bet #bet {
+  display:flex!important; align-items:center!important; justify-content:center!important;
+  height:100%!important; padding:0 2px!important;
+  color:#fff0ad!important; background:rgba(255,226,119,.09)!important;
+  font-size:clamp(9px,2.4cqw,13px)!important; line-height:1!important;
+  font-variant-numeric:tabular-nums!important; white-space:nowrap!important;
+  transform:none!important; margin:0!important;
+}
 
