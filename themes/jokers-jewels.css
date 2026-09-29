@@ -7,6 +7,16 @@
 :root[data-skin="jokers-jewels"] .reels { left:0!important; top:34.77%!important; width:100%!important; height:22.85%!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; overflow:hidden!important; z-index:6!important; }
 :root[data-skin="jokers-jewels"] .reels::after { content:none!important; display:none!important; }
 :root[data-skin="jokers-jewels"] .reels canvas { display:block!important; position:relative!important; z-index:1!important; }
+
+/* User-supplied lower backdrop: starts exactly below the reel window. */
+:root[data-skin="jokers-jewels"] .jj-lower-background {
+  position:absolute!important;
+  left:0!important; right:0!important; bottom:0!important;
+  top:57.62%!important;
+  z-index:2!important;
+  pointer-events:none!important;
+  background:#241033 url("../assets/jokers-jewels/lower-background.webp?v=lower-bg-20260929-0953") center center / cover no-repeat!important;
+}
 :root[data-skin="jokers-jewels"] .bet-bar, :root[data-skin="jokers-jewels"] .balance-bar, :root[data-skin="jokers-jewels"] .lines-bar { display:none!important; }
 :root[data-skin="jokers-jewels"] .announcement-panel { left:5%!important; top:57.72%!important; width:90%!important; height:5.9%!important; z-index:8!important; display:grid!important; place-items:center!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; }
 :root[data-skin="jokers-jewels"] .announcement-panel img { display:none!important; }
@@ -49,6 +59,7 @@
     background-position:center 56.5%!important;
   }
   :root[data-skin="jokers-jewels"] #game .reels { top:29.92%!important; height:27.89%!important; }
+  :root[data-skin="jokers-jewels"] .jj-lower-background { top:57.81%!important; }
   :root[data-skin="jokers-jewels"] .announcement-panel { top:57.93%!important; height:7.2%!important; }
   :root[data-skin="jokers-jewels"] .display.balance,
   :root[data-skin="jokers-jewels"] .display.bet,
