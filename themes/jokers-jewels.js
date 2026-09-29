@@ -108,7 +108,7 @@
       paytableSymbolHeader: 'Símbolo',
       rulesTitle: 'REGLAS',
       spinLabel: 'Girar',
-      menuLabel: 'PREMIOS',
+      menuLabel: 'INFO',
       loadingLabel: "Cargando Joker's Jewels",
       lowWinTitle: '¡PREMIO!',
       labels: { balance: 'SALDO', bet: 'APUESTA', lines: 'LÍNEAS', win: 'PREMIO', jackpot: 'JACKPOT' },

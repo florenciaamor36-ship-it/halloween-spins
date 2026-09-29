@@ -238,3 +238,21 @@
 :root[data-skin="jokers-jewels"] .auto-spin { font-size:clamp(9px,2.5cqw,13px)!important; }
 :root[data-skin="jokers-jewels"] .menu { font-size:clamp(7px,2.1cqw,11px)!important; }
 :root[data-skin="jokers-jewels"] .auto-spin.is-active { color:#fff0ad!important; border-color:#ffad65!important; }
+
+/* Equal lower buttons, balanced left and right. */
+:root[data-skin="jokers-jewels"] .auto-spin {
+  left:17%!important; right:auto!important; top:84.5%!important;
+  width:16%!important; height:5.5%!important;
+  font-size:clamp(9px,2.5cqw,13px)!important;
+}
+:root[data-skin="jokers-jewels"] .menu {
+  left:auto!important; right:17%!important; top:84.5%!important;
+  width:16%!important; height:5.5%!important;
+  font-size:clamp(9px,2.5cqw,13px)!important;
+}
+@media(max-width:700px) {
+  :root[data-skin="jokers-jewels"] .auto-spin,
+  :root[data-skin="jokers-jewels"] .menu { top:90.62%!important; height:6.71%!important; width:16%!important; }
+  :root[data-skin="jokers-jewels"] .auto-spin { left:17%!important; right:auto!important; }
+  :root[data-skin="jokers-jewels"] .menu { left:auto!important; right:17%!important; }
+}
