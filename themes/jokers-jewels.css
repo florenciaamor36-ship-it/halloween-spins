@@ -20,6 +20,13 @@
 :root[data-skin="jokers-jewels"] .bet-bar, :root[data-skin="jokers-jewels"] .balance-bar, :root[data-skin="jokers-jewels"] .lines-bar { display:none!important; }
 :root[data-skin="jokers-jewels"] .announcement-panel { left:5%!important; top:57.72%!important; width:90%!important; height:5.9%!important; z-index:8!important; display:grid!important; place-items:center!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; }
 :root[data-skin="jokers-jewels"] .announcement-panel img { display:none!important; }
+:root[data-skin="jokers-jewels"] .announcement-panel {
+  z-index:24!important;
+  border:1px solid rgba(82,220,232,.86)!important;
+  border-radius:8px!important;
+  background:linear-gradient(180deg,rgba(18,11,31,.96),rgba(12,9,24,.96))!important;
+  box-shadow:0 0 10px rgba(82,220,232,.28),inset 0 0 7px rgba(255,255,255,.07)!important;
+}
 :root[data-skin="jokers-jewels"] .announcement-text { width:96%!important; height:90%!important; padding:2px 6px!important; color:#fff0ad!important; background:transparent!important; font-size:clamp(8px,2.05cqw,13px)!important; line-height:1.05!important; text-align:center!important; text-shadow:0 1px 3px #140825,0 0 5px #30104d!important; }
 :root[data-skin="jokers-jewels"] .display { z-index:10!important; padding:0!important; color:#fff0ad!important; border:0!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; text-align:center!important; text-shadow:0 1px 3px #11071b,0 0 4px #351052!important; }
 :root[data-skin="jokers-jewels"] .display.balance { left:0!important; top:64.1%!important; width:25%!important; }
