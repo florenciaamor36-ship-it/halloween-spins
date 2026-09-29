@@ -200,7 +200,7 @@
   if (previewParams.has('prize-flow-preview')) {
     const playPrizePreview = () => {
       const loading = $('loadingScreen');
-      if (loading && getComputedStyle(loading).display !== 'none') { setTimeout(playPrizePreview, 250); return; }
+      if (loading && !loading.classList.contains('is-hidden')) { setTimeout(playPrizePreview, 250); return; }
       const balanceNode = $('balance');
       if (!balanceNode || !window.SLOT_GAME_UI?.celebratePrize) return;
       const current = Number(String(balanceNode.textContent).replace(/[^\d-]/g, '')) || 0;
