@@ -197,4 +197,18 @@
   window.addEventListener('slot:turbo-change', updateTurbo);
   window.addEventListener('slot:spin-start', updateBetSummary);
   updateAutoplay(); updateTurbo(); updateSound(); updateBetSummary();
+  if (previewParams.has('prize-flow-preview')) {
+    const playPrizePreview = () => {
+      const loading = $('loadingScreen');
+      if (loading && getComputedStyle(loading).display !== 'none') { setTimeout(playPrizePreview, 250); return; }
+      const balanceNode = $('balance');
+      if (!balanceNode || !window.SLOT_GAME_UI?.celebratePrize) return;
+      const current = Number(String(balanceNode.textContent).replace(/[^\d-]/g, '')) || 0;
+      const demoAmount = 450;
+      if ($('win')) $('win').textContent = demoAmount.toLocaleString('es-AR');
+      window.SLOT_GAME_UI.celebratePrize({ title: 'NICE WIN', amountText: `${demoAmount.toLocaleString('es-AR')} fichas` })
+        .then(() => { balanceNode.textContent = (current + demoAmount).toLocaleString('es-AR'); });
+    };
+    setTimeout(playPrizePreview, 300);
+  }
 })();
