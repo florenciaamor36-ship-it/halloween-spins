@@ -51,6 +51,7 @@
   },
     specialSymbols: { wild: 'wild', scatter: 'scatter', bonus: 'bonus', animatedWin: 'mask-symbol-1' },
   rules: {
+    targetRtpPercent: 93, payoutScale: 1.162492647355474,
     cols: 5,
     rows: 3,
     paylines: [
@@ -110,7 +111,8 @@
         '• El BET total se reparte entre las líneas activas.',
         '• El premio cuenta de izquierda a derecha.',
         '• WILD reemplaza cualquier símbolo.',
-        '• BONUS: 3, 4 o 5 símbolos dan 5, 8 o 12 tiros gratis.'
+        '• BONUS: 3, 4 o 5 símbolos dan 3, 5 o 8 tiros gratis.',
+        '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
       ]
     },
     colors: {

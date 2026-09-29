@@ -6,7 +6,7 @@ const ROWS := 3
 const CELL := Vector2(108, 112)
 var origin := Vector2.ZERO
 
-var balance := 10000
+var balance: float = 10000.0
 var bet := 50
 var spinning := false
 var symbols: Array[Sprite2D] = []
@@ -41,7 +41,7 @@ func _build_reels() -> void:
         for col in COLS:
             var sprite := Sprite2D.new()
             sprite.position = origin + Vector2(col * CELL.x, row * CELL.y)
-            sprite.texture = _load_symbol(SYMBOLS[randi() % SYMBOLS.size()])
+            sprite.texture = _load_symbol(SYMBOLS[randi_range(0, SYMBOLS.size() - 1)])
             sprite.scale = Vector2(0.72, 0.72)
             add_child(sprite)
             symbols.append(sprite)
@@ -52,7 +52,7 @@ func _load_symbol(symbol: String) -> Texture2D:
     return texture
 
 func _build_controls() -> void:
-    balance_label = _make_label("BALANCE  $%d" % balance, Vector2(70, 700), 20)
+    balance_label = _make_label("BALANCE  $%d" % roundi(balance), Vector2(70, 700), 20)
     bet_label = _make_label("BET  $%d" % bet, Vector2(70, 755), 20)
     win_label = _make_label("WIN  $0", Vector2(390, 700), 20)
 
@@ -103,10 +103,10 @@ func spin() -> void:
     spinning = true
     spin_button.disabled = true
     balance -= bet
-    balance_label.text = "BALANCE  $%d" % balance
+    balance_label.text = "BALANCE  $%d" % roundi(balance)
     var final_values: Array[int] = []
     for i in COLS * ROWS:
-        final_values.append(randi() % SYMBOLS.size())
+        final_values.append(randi_range(0, SYMBOLS.size() - 1))
 
     for col in COLS:
         var delay := 0.75 + col * 0.22
@@ -130,8 +130,8 @@ func _finish_spin() -> void:
     spin_button.disabled = false
     var win := _calculate_win()
     balance += win
-    win_label.text = "WIN  $%d" % win
-    balance_label.text = "BALANCE  $%d" % balance
+    win_label.text = "WIN  $%d" % roundi(win)
+    balance_label.text = "BALANCE  $%d" % roundi(balance)
 
-func _calculate_win() -> int:
-    return bet * 2 if symbol_values[1] == symbol_values[6] and symbol_values[6] == symbol_values[11] else 0
+func _calculate_win() -> float:
+    return float(bet) * 157.17 if symbol_values[1] == symbol_values[6] and symbol_values[6] == symbol_values[11] else 0.0

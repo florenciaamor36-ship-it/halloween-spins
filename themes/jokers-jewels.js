@@ -59,6 +59,7 @@
       animatedWin: 'joker'
     },
     rules: {
+      targetRtpPercent: 93, payoutScale: 1.162404138746787,
       cols: 5,
       rows: 3,
       paylines: [
@@ -124,7 +125,8 @@
         '• Elegí entre 1 y 5 líneas activas; los símbolos comunes pagan de izquierda a derecha.',
         '• BONUS paga en cualquier posición: 10×, 50× o 250× la apuesta con 3, 4 o 5 símbolos.',
         '• La esfera azul también paga con 2 símbolos; no hay WILD ni giros gratis.',
-        '• Los importes impresos en ARS son decorativos; esta tabla muestra los premios en fichas.'
+        '• Los importes impresos en ARS son decorativos; esta tabla muestra los premios en fichas.',
+        '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
       ]
     },
     colors: {

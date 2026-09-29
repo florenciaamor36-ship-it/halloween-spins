@@ -63,6 +63,7 @@
       allowFreeSpinRetrigger: false
     },
     rules: {
+      targetRtpPercent: 93, payoutScale: 0.996671848425419,
       cols: 5, rows: 3, paylines, lineColors,
       symbolWeights: [70,75,80,85,100,100,105,110,110,45,40,20,60],
       weightTotal: 1000,
@@ -99,7 +100,8 @@
         '• El WILD sustituye símbolos regulares.',
         '• 3 o más WILD o SCATTER activan giros gratis.',
         '• 6 o más BONUS activan Hold & Ring; la moneda 15 otorga el Grand Jackpot.',
-        '• SCATTER temporal para probar la máscara.'
+        '• SCATTER temporal para probar la máscara.',
+        '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
       ]
     },
     colors: {

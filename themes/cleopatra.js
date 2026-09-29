@@ -85,6 +85,7 @@ window.SLOT_GAME_CONFIG = {
     animatedWin: 'blue-book'
   },
   rules: {
+    targetRtpPercent: 93, payoutScale: 1.162492647355474,
     cols: 5,
     rows: 3,
     paylines: [
@@ -146,7 +147,8 @@ window.SLOT_GAME_CONFIG = {
       '• El premio de línea cuenta de izquierda a derecha.',
       '• WILD sustituye a los símbolos regulares.',
       '• PIRÁMIDE (SCATTER): 3 o más pagan la APUESTA total.',
-      '• TESORO (BONUS): 3, 4 o 5 dan 5, 8 o 12 giros gratis.'
+      '• TESORO (BONUS): 3, 4 o 5 dan 3, 5 o 8 giros gratis.',
+      '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
     ]
   },
   colors: {
