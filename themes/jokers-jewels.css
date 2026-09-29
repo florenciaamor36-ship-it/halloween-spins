@@ -164,3 +164,13 @@
   border-color:rgba(255,226,119,.78)!important;
   background:linear-gradient(180deg,#362147,#1d102c)!important;
 }
+
+/* Temporary clean view: inspect the reel and lower background without the HUD. */
+:root[data-skin="jokers-jewels"].jj-clean-preview .ui,
+:root[data-skin="jokers-jewels"].jj-clean-preview .announcement-panel,
+:root[data-skin="jokers-jewels"].jj-clean-preview .auto-stop-overlay,
+:root[data-skin="jokers-jewels"].jj-clean-preview .paytable-modal,
+:root[data-skin="jokers-jewels"].jj-clean-preview .jj-modal,
+:root[data-skin="jokers-jewels"].jj-clean-preview .bigwin-screen,
+:root[data-skin="jokers-jewels"].jj-clean-preview .lowwin-screen { display:none!important; }
+:root[data-skin="jokers-jewels"].jj-clean-preview .orientation-warning { display:none!important; }

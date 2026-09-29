@@ -1,4 +1,7 @@
 (() => {
+  if (new URLSearchParams(window.location.search).has('clean-preview')) {
+    document.documentElement.classList.add('jj-clean-preview');
+  }
   const $ = id => document.getElementById(id);
   const api = () => window.SLOT_GAME_API;
   const audio = () => window.SLOT_JJ_AUDIO;
