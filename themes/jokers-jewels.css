@@ -326,3 +326,7 @@
   transform:none!important; margin:0!important;
 }
 
+/* The LINES selector already opens the live choice dialog. Hide its duplicate readout. */
+:root[data-skin="jokers-jewels"] .display.lines { display:none!important; }
+:root[data-skin="jokers-jewels"] .display.win { left:0!important; width:100%!important; }
+
