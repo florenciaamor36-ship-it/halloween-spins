@@ -123,8 +123,23 @@
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
   <script src="themes/jokers-jewels.js?v=jj-prize-transfer-20260929-1259"></script>
-  <script src="main.js?v=jj-prize-transfer-20260929-1259"></script>
+  <script src="main.js?v=jj-prize-transfer-20260929-1309"></script>
   <script src="themes/jokers-jewels-audio.js?v=win-tiers-20260928-0135"></script>
   <script src="themes/jokers-jewels-ui.js?v=jj-prize-transfer-20260929-1259"></script>
+  <script>
+    if (new URLSearchParams(window.location.search).has('jj-prize-preview')) {
+      let attempts = 0;
+      const startPrizePreview = () => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (window.SLOT_GAME_UI?.celebratePrize && (!loadingScreen || loadingScreen.classList.contains('is-hidden'))) {
+          window.SLOT_GAME_UI.celebratePrize({ title: 'BIG WIN', amountText: '12.500 fichas' });
+          return;
+        }
+        if (attempts++ < 80) window.setTimeout(startPrizePreview, 120);
+      };
+      if (document.readyState === 'complete') window.setTimeout(startPrizePreview, 250);
+      else window.addEventListener('load', () => window.setTimeout(startPrizePreview, 250), { once: true });
+    }
+  </script>
 </body>
 </html>
