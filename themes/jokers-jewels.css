@@ -330,3 +330,75 @@
 :root[data-skin="jokers-jewels"] .display.lines { display:none!important; }
 :root[data-skin="jokers-jewels"] .display.win { left:0!important; width:100%!important; }
 
+/* High-contrast, clearly structured APUESTA card. */
+:root[data-skin="jokers-jewels"] .jj-dialog button { opacity:1!important; }
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-dialog {
+  width:min(90vw,420px)!important; padding:24px 20px 20px!important;
+  color:#f4f8fb!important; border:2px solid #52dce8!important; border-radius:16px!important;
+  background:linear-gradient(155deg,#2b1746 0%,#17152b 52%,#0d1723 100%)!important;
+  box-shadow:0 0 0 2px rgba(82,220,232,.14),0 0 28px rgba(82,220,232,.32),inset 0 1px 0 rgba(255,255,255,.12)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-dialog h2 {
+  margin:0 32px 8px!important; color:#fff0ad!important;
+  font-size:clamp(22px,5vw,27px)!important; letter-spacing:1px!important;
+  text-shadow:0 1px 3px #090713!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-dialog p {
+  margin:7px 0 14px!important; color:#e8f2f5!important;
+  font-size:clamp(14px,3.7vw,16px)!important; line-height:1.35!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-summary {
+  display:grid!important; gap:4px!important; margin:14px 0 0!important; padding:12px!important;
+  border:1px solid rgba(82,220,232,.72)!important; border-radius:12px!important;
+  background:rgba(5,13,25,.97)!important; box-shadow:inset 0 0 10px rgba(82,220,232,.08)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-row {
+  display:flex!important; align-items:center!important; justify-content:space-between!important;
+  gap:12px!important; min-height:35px!important; padding:3px 5px!important;
+  color:#edf5f7!important; font-size:clamp(14px,3.8vw,16px)!important; line-height:1.2!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-row span { color:#e6f2f5!important; font-weight:600!important; }
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-row b {
+  color:#fff0ad!important; font-size:17px!important; font-weight:900!important;
+  font-variant-numeric:tabular-nums!important; text-shadow:0 1px 2px #000!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-row-total {
+  min-height:48px!important; margin-top:5px!important; padding:8px 10px!important;
+  border:1px solid rgba(255,226,119,.86)!important; border-radius:9px!important;
+  background:linear-gradient(90deg,rgba(82,220,232,.18),rgba(255,226,119,.16))!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-row-total span { color:#fff!important; font-weight:900!important; }
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-bet-row-total b {
+  color:#ffe277!important; font-size:clamp(19px,5vw,23px)!important;
+  text-shadow:0 0 7px rgba(255,226,119,.32)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-dialog-actions {
+  display:grid!important; grid-template-columns:1fr 1fr 1.2fr!important;
+  gap:10px!important; margin:16px 0 0!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-dialog-actions button {
+  width:100%!important; min-width:0!important; min-height:50px!important; padding:8px 10px!important;
+  color:#efffff!important; opacity:1!important; font-size:23px!important; font-weight:900!important;
+  border:1px solid #52dce8!important; border-radius:10px!important;
+  background:linear-gradient(145deg,#256273,#17364b)!important;
+  box-shadow:0 3px 0 #0a1624,0 0 12px rgba(82,220,232,.2),inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal #jjBetMax {
+  color:#281239!important; font-size:15px!important; border-color:#fff0ad!important;
+  background:linear-gradient(145deg,#ffe88e,#e3b43d)!important;
+  box-shadow:0 3px 0 #704b24,0 0 10px rgba(255,226,119,.24)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-cancel {
+  width:100%!important; min-height:46px!important; margin-top:14px!important; padding:10px 14px!important;
+  color:#efffff!important; opacity:1!important; font-size:15px!important; font-weight:900!important;
+  border:1px solid #52dce8!important; border-radius:10px!important;
+  background:linear-gradient(180deg,#1d5263,#153047)!important;
+  box-shadow:0 3px 0 #0a1624,0 0 12px rgba(82,220,232,.2)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal .jj-close {
+  display:grid!important; place-items:center!important; opacity:1!important;
+  color:#fff0ad!important; border-color:rgba(82,220,232,.75)!important;
+  background:#19354b!important; box-shadow:0 0 8px rgba(82,220,232,.28)!important;
+}
+:root[data-skin="jokers-jewels"] #jjBetModal button:disabled { opacity:.48!important; filter:grayscale(.55)!important; }
+
