@@ -3,16 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#1b120c">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="preload" as="image" href="assets/loading/loading.webp?v=load-3">
+  <link rel="stylesheet" href="style.css?v=spin-art-3">
 </head>
 <body>
+  <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
+    <img class="loading-art" src="assets/loading/loading.webp?v=load-3" alt="">
+    <div class="loading-ui">
+      <div class="loading-label"><span>PREPARANDO LOS RODILLOS</span><b id="loadingPercent">0%</b></div>
+      <div class="loading-track"><div id="loadingFill" class="loading-fill"></div></div>
+    </div>
+  </section>
   <main class="machine" aria-label="Prototipo Immortal Ways Buffalo">
     <img class="frame-art" src="assets/frame/frame.webp" alt="Marco vertical Immortal Ways Buffalo con rejilla 5 por 5">
     <div id="grid" class="grid" role="grid" aria-label="Símbolos: cinco columnas por cinco filas"></div>
     <div class="meter" aria-live="polite"><span id="message">LISTO PARA GIRAR</span><b id="win">—</b></div>
     <div class="hud"><span>SALDO <b id="balance">1000.00</b></span><span>APUESTA <b id="bet">1.00</b></span></div>
-    <button id="spin" class="spin" type="button">GIRAR</button>
+    <button id="spin" class="spin" type="button" aria-label="Girar" disabled>
+      <img class="spin-art spin-art-normal" src="assets/buttons/spin-normal.webp?v=spin-cutout-6" alt="">
+      <img class="spin-art spin-art-pressed" src="assets/buttons/spin-pressed.webp?v=spin-cutout-6" alt="">
+    </button>
     <div class="caption">PROTOTIPO · 5 RODILLOS × 5 FILAS · 20 LÍNEAS</div>
   </main>
   <details class="paytable">
@@ -21,6 +33,6 @@
     <div class="table-wrap"><table><thead><tr><th>Símbolo</th><th>Peso</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody id="paytable-body"></tbody></table></div>
     <p class="rtp-note">93% calculado por enumeración exacta de los 759.375 resultados posibles de una línea; 20 líneas iguales en apuesta.</p>
   </details>
-  <script src="game.js?v=2"></script>
+  <script src="game.js?v=spin-art-3"></script>
 </body>
 </html>

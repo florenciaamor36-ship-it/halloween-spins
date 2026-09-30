@@ -118,4 +118,18 @@
   }
   spinButton.addEventListener('click',spin);
   renderInitial();
+  function preloadAssets(){
+    const screen=document.getElementById('loading');
+    const fill=document.getElementById('loadingFill');
+    const percent=document.getElementById('loadingPercent');
+    const sources=['assets/frame/frame.webp','assets/loading/loading.webp','assets/buttons/spin-normal.webp','assets/buttons/spin-pressed.webp',...symbols.map(s=>`assets/symbols/${s.id}.webp`)];
+    let loaded=0;
+    const tasks=sources.map(src=>new Promise(resolve=>{
+      const image=new Image(); let finished=false;
+      const done=()=>{if(finished)return;finished=true;loaded++;const value=Math.round(loaded/sources.length*100);if(fill)fill.style.width=`${value}%`;if(percent)percent.textContent=`${value}%`;resolve();};
+      image.onload=done;image.onerror=done;image.src=src;if(image.complete)done();
+    }));
+    Promise.all(tasks).then(()=>setTimeout(()=>{spinButton.disabled=false;screen?.classList.add('is-hidden');setTimeout(()=>screen?.remove(),500)},180));
+  }
+  preloadAssets();
 })();

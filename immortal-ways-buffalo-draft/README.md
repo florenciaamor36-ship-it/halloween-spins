@@ -1,6 +1,6 @@
 # Immortal Ways Buffalo — working 5×5 draft
 
-Run locally with `python3 -m http.server 8000` from this folder, then open `http://localhost:8000/`. This is a separate draft; it does not change the published game repository. The custom SPIN art is intentionally not used pending clean cutout review.
+Run locally with `python3 -m http.server 8000` from this folder, then open `http://localhost:8000/`. This is a standalone 5×5 prototype page; it does not replace or modify the shared production slot engine. The frame, loading poster, and custom normal/pressed SPIN artwork are now used in this draft.
 
 ## 5×5 symbol curation
 
@@ -37,6 +37,6 @@ The 20 paylines are five straight rows plus fifteen zig-zag paths encoded in `ga
 
 ## Asset processing and current limitation
 
-The downloaded source images are preserved in `incoming/`. Usable isolated WebPs are in `assets/symbols/` (including repaired `horse.webp` and current-email `bison.webp`); frame/loading conversions are `assets/frame/frame.webp` and `assets/loading/loading.webp`. `assets/buttons/spin-normal.webp` and `spin-pressed.webp` are old untrusted attempts: do not integrate. The draft instead uses a generic CSS spin button. The supplied Bison animation is a restrained short bounce/zoom, one narrow golden sheen, and tiny edge glints only—no large halo.
+The downloaded source images are preserved in `incoming/`. Isolated WebP symbols are in `assets/symbols/`; frame, loading poster, and the reviewed normal/pressed SPIN cutouts are in `assets/frame/`, `assets/loading/`, and `assets/buttons/`. The Bison effect is a restrained short bounce/zoom, one golden sheen, and tiny edge glints only—no large halo. The Lobo source carries a small generator mark, and the Q art is less cohesive than the gold-framed symbols, so both remain reviewable draft choices.
 
 This prototype follows the user's supplied **5×5 frame**, not the original Immortal Ways Buffalo mechanic of six reels with variable heights. That rules/layout mismatch remains an explicit open decision for a later production adaptation.
