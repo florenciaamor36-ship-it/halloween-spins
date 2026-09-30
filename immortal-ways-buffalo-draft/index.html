@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <main class="machine" aria-label="Prototipo Immortal Ways Buffalo">
@@ -15,6 +15,12 @@
     <button id="spin" class="spin" type="button">GIRAR</button>
     <div class="caption">PROTOTIPO · 5 RODILLOS × 5 FILAS · 20 LÍNEAS</div>
   </main>
-  <script src="game.js?v=1"></script>
+  <details class="paytable">
+    <summary>VER PAGOS · RTP TEÓRICO 93%</summary>
+    <p>Premios por 3 / 4 / 5 símbolos consecutivos desde la izquierda. Multiplicadores sobre la apuesta de cada línea (apuesta total ÷ 20). Wild sustituye; Scatter todavía no paga ni activa giros gratis.</p>
+    <div class="table-wrap"><table><thead><tr><th>Símbolo</th><th>Peso</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody id="paytable-body"></tbody></table></div>
+    <p class="rtp-note">93% calculado por enumeración exacta de los 759.375 resultados posibles de una línea; 20 líneas iguales en apuesta.</p>
+  </details>
+  <script src="game.js?v=2"></script>
 </body>
 </html>

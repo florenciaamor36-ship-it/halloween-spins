@@ -32,7 +32,13 @@
   let balance = 1000;
   let cells = [];
   const weightTotal = symbols.reduce((n,s) => n + s.weight, 0);
-  const byId = Object.fromEntries(symbols.map(s => [s.id,s]));
+  const paytableBody=document.getElementById('paytable-body');
+  for (const s of symbols) {
+    const row=document.createElement('tr');
+    const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE).toFixed(2)) : ['—','—','—'];
+    row.innerHTML=`<td>${s.name}</td><td>${s.weight}</td><td>${pays[0]}</td><td>${pays[1]}</td><td>${pays[2]}</td>`;
+    paytableBody.appendChild(row);
+  }
 
   // The 20 paths are five straight lines plus fifteen zig-zag routes.
   PAYLINES.forEach((_, i) => { if (PAYLINES[i].length !== 5) throw new Error('Payline must traverse all five reels'); });
