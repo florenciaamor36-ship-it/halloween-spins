@@ -11,7 +11,7 @@ body{min-height:100vh}
 .loading-track{height:9px;padding:1px;overflow:hidden;border:1px solid #c39a50;border-radius:8px;background:#26170d;box-shadow:inset 0 1px 3px #090604}
 .loading-fill{width:0;height:100%;border-radius:6px;background:linear-gradient(90deg,#9a5d20,#ffe08a,#bd7925);transition:width .12s ease}
 .frame-art{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:fill;pointer-events:none}
-.grid{position:absolute;left:17.8%;top:25.85%;width:64.2%;height:42%;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr)}
+.grid{position:absolute;left:14%;top:25.7%;width:72%;height:41.2%;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr)}
 .cell{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;overflow:visible}
 .symbol{display:block;width:94%;height:94%;object-fit:contain;filter:drop-shadow(0 1px 2px #25170d);transition:transform .12s ease,filter .12s ease}
 .grid.spinning .symbol{animation:tumble .12s linear infinite alternate}

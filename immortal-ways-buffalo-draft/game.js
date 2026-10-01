@@ -56,7 +56,7 @@
   function show(board) {
     board.forEach((s,i) => {
       const img=cells[i].firstElementChild;
-      img.src=`assets/symbols/${s.id}.webp`;
+      img.src=`assets/symbols/${s.id}.webp?v=spin-art-4`;
       img.alt=s.name;
       cells[i].dataset.symbol=s.id;
     });
@@ -122,7 +122,7 @@
     const screen=document.getElementById('loading');
     const fill=document.getElementById('loadingFill');
     const percent=document.getElementById('loadingPercent');
-    const sources=['assets/frame/frame.webp','assets/loading/loading.webp','assets/buttons/spin-normal.webp','assets/buttons/spin-pressed.webp',...symbols.map(s=>`assets/symbols/${s.id}.webp`)];
+    const sources=['assets/frame/frame.webp','assets/loading/loading.webp','assets/buttons/spin-normal.webp','assets/buttons/spin-pressed.webp',...symbols.map(s=>`assets/symbols/${s.id}.webp?v=spin-art-4`)];
     let loaded=0;
     const tasks=sources.map(src=>new Promise(resolve=>{
       const image=new Image(); let finished=false;
