@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1b120c">
+  <title>Immortal Ways Buffalo — prueba de líneas ganadoras</title>
+  <link rel="preload" as="image" href="../immortal-ways-buffalo-draft/assets/loading/loading.webp?v=load-3">
+  <link rel="stylesheet" href="style.css?v=goldline-2">
+</head>
+<body>
+  <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
+    <img class="loading-art" src="../immortal-ways-buffalo-draft/assets/loading/loading.webp?v=load-3" alt="">
+    <div class="loading-ui">
+      <div class="loading-label"><span>PREPARANDO LOS RODILLOS</span><b id="loadingPercent">0%</b></div>
+      <div class="loading-track"><div id="loadingFill" class="loading-fill"></div></div>
+    </div>
+  </section>
+  <main class="machine" aria-label="Prototipo Immortal Ways Buffalo">
+    <img class="frame-art" src="../immortal-ways-buffalo-draft/assets/frame/frame.webp" alt="Marco vertical Immortal Ways Buffalo con rejilla 5 por 5">
+    <div id="grid" class="grid" role="grid" aria-label="Símbolos: cinco columnas por cinco filas"></div>
+    <div class="meter" aria-live="polite"><span id="message">LISTO PARA GIRAR</span><b id="win">—</b></div>
+    <div class="hud"><span>SALDO <b id="balance">1000.00</b></span><span>APUESTA <b id="bet">1.00</b></span></div>
+    <button id="spin" class="spin" type="button" aria-label="Girar" disabled>
+      <img class="spin-art spin-art-normal" src="../immortal-ways-buffalo-draft/assets/buttons/spin-normal.webp?v=spin-cutout-6" alt="">
+      <img class="spin-art spin-art-pressed" src="../immortal-ways-buffalo-draft/assets/buttons/spin-pressed.webp?v=spin-cutout-6" alt="">
+    </button>
+    <button id="infoButton" class="info-button" type="button" aria-label="Abrir información de pagos y líneas" aria-haspopup="dialog" aria-controls="infoDialog">ⓘ</button>
+    <div class="caption">PROTOTIPO · 5 RODILLOS × 5 FILAS · 20 LÍNEAS</div>
+  </main>
+  <dialog id="infoDialog" class="info-dialog" aria-labelledby="infoTitle">
+    <div class="info-header">
+      <h2 id="infoTitle">INFORMACIÓN · PAGOS Y LÍNEAS</h2>
+      <button id="infoClose" class="info-close" type="button" aria-label="Cerrar información">×</button>
+    </div>
+    <div class="info-tabs" role="tablist" aria-label="Información de juego">
+      <button class="info-tab" id="tab-pays" type="button" role="tab" aria-selected="true" aria-controls="info-pays">Pagos</button>
+      <button class="info-tab" id="tab-lines" type="button" role="tab" aria-selected="false" aria-controls="info-lines">Líneas (20)</button>
+    </div>
+    <div class="info-content">
+      <section id="info-pays" class="info-section" role="tabpanel" aria-labelledby="tab-pays">
+        <p id="pay-note">Premios por 3 / 4 / 5 símbolos consecutivos desde la izquierda. Wild sustituye; Scatter no paga ni activa giros gratis.</p>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Símbolo</th><th scope="col">Peso*</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th></tr></thead><tbody id="paytable-body"></tbody></table></div>
+        <p class="rtp-note">*El peso indica frecuencia relativa, no premio. RTP teórico: 93%, calculado con los 759.375 resultados posibles de una línea y 20 líneas con la misma apuesta.</p>
+      </section>
+      <section id="info-lines" class="info-section" role="tabpanel" aria-labelledby="tab-lines" hidden>
+        <p>Cada número indica la fila que toma esa línea en cada rodillo: 1 arriba y 5 abajo. La línea paga si coinciden 3, 4 o 5 símbolos seguidos desde la izquierda.</p>
+        <div class="table-wrap"><table class="payline-table"><thead><tr><th scope="col">Línea</th><th scope="col">Rodillo 1</th><th scope="col">Rodillo 2</th><th scope="col">Rodillo 3</th><th scope="col">Rodillo 4</th><th scope="col">Rodillo 5</th></tr></thead><tbody id="payline-body"></tbody></table></div>
+      </section>
+    </div>
+  </dialog>
+  <section class="preview-only" aria-label="Controles de vista previa">
+    <b>COPIA DE PRUEBA · Saldo ficticio; máquina activa intacta</b>
+    <button id="previewWin" type="button">Mostrar premio de ejemplo</button>
+  </section>
+  <script src="game.js?v=goldline-2"></script>
+</body>
+</html>
