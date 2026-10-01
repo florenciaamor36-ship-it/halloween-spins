@@ -107,13 +107,15 @@
     return best;
   }
   function clearPaylineTrace() { paylineOverlay.querySelectorAll('.payline-segment').forEach(el=>el.remove()); }
-  function clearMarks() { cells.forEach(c=>c.classList.remove('win-cell','win-final','bison-hit')); clearPaylineTrace(); grid.classList.remove('win-showing'); document.querySelector('.meter').classList.remove('is-winning'); }
+  function clearMarks() { cells.forEach(c=>c.classList.remove('win-cell','win-final','bison-hit')); clearPaylineTrace(); grid.classList.remove('win-showing','win-summary'); document.querySelector('.meter').classList.remove('is-winning'); }
   function clearCurrentLine() { cells.forEach(c=>c.classList.remove('win-cell')); clearPaylineTrace(); }
   function drawPayline(path,count,totalMs) {
-    const points=Array.from({length:count},(_,col)=>`${(col+.5).toFixed(3)},${(path[col]+.5).toFixed(3)}`).join(' ');
+    const coords=Array.from({length:count},(_,col)=>({x:col+.5,y:path[col]+.5}));
+    const points=coords.map(p=>`${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ');
+    const length=coords.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-coords[i].x,p.y-coords[i].y),0);
     for(const cls of ['payline-outline','payline-glow','payline-core']) {
       const line=document.createElementNS(svgNS,'polyline');
-      line.setAttribute('points',points);line.setAttribute('pathLength','1');line.setAttribute('stroke-dasharray','1');line.classList.add('payline-segment',cls);
+      line.setAttribute('points',points);line.setAttribute('stroke-dasharray',length.toFixed(3));line.setAttribute('stroke-dashoffset',length.toFixed(3));line.classList.add('payline-segment',cls);
       line.style.animationDuration=`${Math.round(totalMs)}ms`;
       paylineOverlay.appendChild(line);
     }
@@ -135,6 +137,7 @@
     cells.forEach(c=>c.classList.remove('win-cell'));
     for(const i of winningCells) cells[i].classList.add('win-final');
     grid.classList.remove('win-showing');
+    grid.classList.add('win-summary');
     message.textContent=`${wins.length} LÍNEA${wins.length===1?'':'S'} CON PREMIO`;
     winLabel.textContent=`+${total.toFixed(2)}`;
     await pause(preview?1200:850);

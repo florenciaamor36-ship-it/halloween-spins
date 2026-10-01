@@ -65,18 +65,20 @@ td:first-child,th:first-child{text-align:left}
 /* Aislado: animación de líneas premiadas. */
 .cell .symbol{position:relative;z-index:2}
 .payline-overlay{position:absolute;inset:0;z-index:4;width:100%;height:100%;overflow:visible;pointer-events:none}
-.cell.win-cell .symbol{filter:brightness(1.18) saturate(1.16) drop-shadow(0 0 2px #fff3bf) drop-shadow(0 0 7px #ffd353) drop-shadow(0 0 16px rgba(255,164,27,.95)) drop-shadow(0 0 25px rgba(160,78,7,.6));transform:scale(1.06)
-.cell.win-final .symbol{filter:brightness(1.16) saturate(1.14) drop-shadow(0 0 2px #fff3bf) drop-shadow(0 0 7px #ffd353) drop-shadow(0 0 16px rgba(255,164,27,.9)) drop-shadow(0 0 24px rgba(160,78,7,.55));transform:scale(1.055)}
-.payline-segment{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation-name:payline-trace;animation-timing-function:cubic-bezier(.2,.8,.25,1);animation-fill-mode:forwards}
+.cell.win-cell .symbol{filter:brightness(1.2) saturate(1.18) drop-shadow(0 0 3px #fff3bf) drop-shadow(0 0 9px #ffd353) drop-shadow(0 0 20px rgba(255,164,27,1)) drop-shadow(0 0 28px rgba(160,78,7,.7));transform:scale(1.06);animation:gold-pulse .58s ease-in-out infinite alternate}
+.cell.win-final .symbol{filter:brightness(1.22) saturate(1.2) drop-shadow(0 0 3px #fff3bf) drop-shadow(0 0 9px #ffd353) drop-shadow(0 0 20px rgba(255,164,27,1)) drop-shadow(0 0 28px rgba(160,78,7,.68));transform:scale(1.055);animation:gold-pulse .9s ease-in-out infinite alternate}
+.payline-segment{fill:none;stroke-linecap:round;stroke-linejoin:round;animation-name:payline-trace;animation-timing-function:cubic-bezier(.2,.8,.25,1);animation-fill-mode:forwards}
 .payline-outline{stroke:#63370b;stroke-width:.15;opacity:.94;filter:drop-shadow(0 0 5px rgba(255,165,28,.9))}
 .payline-glow{stroke:#ffbd35;stroke-width:.075;opacity:1;filter:drop-shadow(0 0 5px rgba(255,190,54,1)) drop-shadow(0 0 12px rgba(255,174,37,.95))}
 .payline-core{stroke:#fff3bb;stroke-width:.025;opacity:1;filter:drop-shadow(0 0 3px #fff0ae)}
 .payline-halo{fill:rgba(255,190,52,.28);opacity:.25;filter:blur(4px);animation:halo-breathe .55s ease-in-out infinite alternate}
 .grid.win-showing .cell:not(.win-cell) .symbol{filter:brightness(.58) saturate(.72);opacity:.62;transition:filter .25s ease,opacity .25s ease}
+.grid.win-summary .cell:not(.win-final) .symbol{filter:brightness(.78) saturate(.82);opacity:.82;transition:filter .3s ease,opacity .3s ease}
 .meter.is-winning{padding:0 4%;border-top:1px solid rgba(255,220,137,.72);border-bottom:1px solid rgba(255,220,137,.72);border-radius:7px;background:linear-gradient(90deg,rgba(26,15,6,.1),rgba(48,25,7,.9) 18%,rgba(48,25,7,.9) 82%,rgba(26,15,6,.1));box-shadow:0 0 14px rgba(255,171,43,.55)}
 .meter.is-winning #message{font-size:clamp(10px,2.6vw,15px);font-weight:700;color:#fff0be}
 .meter.is-winning #win{font-size:clamp(16px,4.5vw,22px);color:#fff4c8;text-shadow:0 0 5px #fff1b0,0 0 12px #ffc246,0 0 22px rgba(255,164,33,.9);animation:prize-pop .42s cubic-bezier(.2,.8,.3,1) both}
 @keyframes prize-pop{0%{transform:scale(.75);opacity:.45}72%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+@keyframes gold-pulse{from{filter:brightness(1.12) saturate(1.12) drop-shadow(0 0 2px rgba(255,240,190,.86)) drop-shadow(0 0 8px rgba(255,190,52,.72))}to{filter:brightness(1.3) saturate(1.25) drop-shadow(0 0 5px #fff0b2) drop-shadow(0 0 18px rgba(255,171,34,1))}}
 @keyframes payline-trace{to{stroke-dashoffset:0}}
 @keyframes halo-breathe{from{opacity:.22}to{opacity:.72}}
 .preview-only{width:min(92vw,700px);margin:14px auto 32px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #9b7542;border-radius:10px;background:#211c18;color:#ead4a4;font:12px Arial,sans-serif}
@@ -84,4 +86,4 @@ td:first-child,th:first-child{text-align:left}
 .preview-only button{min-height:40px;padding:8px 12px;border:1px solid #d7a94b;border-radius:8px;background:linear-gradient(#986222,#543415);color:#fff0c3;font:700 12px Arial,sans-serif;cursor:pointer}
 .preview-only button:disabled{opacity:.55;cursor:wait}
 @media(max-width:520px){.preview-only{margin:10px auto 24px;flex-direction:column;text-align:center}.preview-only button{width:100%}}
-@media(prefers-reduced-motion:reduce){.payline-halo{animation:none;opacity:.62}.payline-segment{animation-duration:.01ms!important}.meter.is-winning #win{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.payline-halo{animation:none;opacity:.62}.payline-segment{animation-duration:.01ms!important}.cell.win-cell .symbol,.cell.win-final .symbol,.meter.is-winning #win{animation:none!important}}
