@@ -181,7 +181,6 @@
   if(previewWin) previewWin.addEventListener('click',async()=>{
     if(spinButton.disabled)return;
     spinButton.disabled=true;previewWin.disabled=true;
-    const savedBalance=balance;
     const targetIndex=5;const target=PAYLINES[targetIndex];
     const bison=symbols.find(s=>s.id==='bison');const scatter=symbols.find(s=>s.id==='scatter');
     let board=null;
@@ -195,7 +194,6 @@
     if(!board){board=Array.from({length:25},()=>scatter);for(let col=0;col<3;col++)board[target[col]*5+col]=bison;}
     balance-=bet;balanceLabel.textContent=balance.toFixed(2);
     await settle(board,true);
-    balance=savedBalance;balanceLabel.textContent=balance.toFixed(2);
     spinButton.disabled=false;previewWin.disabled=false;
   });
   renderInitial();
