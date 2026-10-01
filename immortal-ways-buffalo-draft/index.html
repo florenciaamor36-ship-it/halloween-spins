@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1b120c">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
   <link rel="preload" as="image" href="assets/loading/loading.webp?v=load-3">
-  <link rel="stylesheet" href="style.css?v=spin-art-5">
+  <link rel="stylesheet" href="style.css?v=info-lines-1">
 </head>
 <body>
   <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
@@ -25,14 +25,30 @@
       <img class="spin-art spin-art-normal" src="assets/buttons/spin-normal.webp?v=spin-cutout-6" alt="">
       <img class="spin-art spin-art-pressed" src="assets/buttons/spin-pressed.webp?v=spin-cutout-6" alt="">
     </button>
+    <button id="infoButton" class="info-button" type="button" aria-label="Abrir información de pagos y líneas" aria-haspopup="dialog" aria-controls="infoDialog">ⓘ</button>
     <div class="caption">PROTOTIPO · 5 RODILLOS × 5 FILAS · 20 LÍNEAS</div>
   </main>
-  <details class="paytable">
-    <summary>VER PAGOS · RTP TEÓRICO 93%</summary>
-    <p>Premios por 3 / 4 / 5 símbolos consecutivos desde la izquierda. Multiplicadores sobre la apuesta de cada línea (apuesta total ÷ 20). Wild sustituye; Scatter todavía no paga ni activa giros gratis.</p>
-    <div class="table-wrap"><table><thead><tr><th>Símbolo</th><th>Peso</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody id="paytable-body"></tbody></table></div>
-    <p class="rtp-note">93% calculado por enumeración exacta de los 759.375 resultados posibles de una línea; 20 líneas iguales en apuesta.</p>
-  </details>
-  <script src="game.js?v=spin-art-4"></script>
+  <dialog id="infoDialog" class="info-dialog" aria-labelledby="infoTitle">
+    <div class="info-header">
+      <h2 id="infoTitle">INFORMACIÓN · PAGOS Y LÍNEAS</h2>
+      <button id="infoClose" class="info-close" type="button" aria-label="Cerrar información">×</button>
+    </div>
+    <div class="info-tabs" role="tablist" aria-label="Información de juego">
+      <button class="info-tab" id="tab-pays" type="button" role="tab" aria-selected="true" aria-controls="info-pays">Pagos</button>
+      <button class="info-tab" id="tab-lines" type="button" role="tab" aria-selected="false" aria-controls="info-lines">Líneas (20)</button>
+    </div>
+    <div class="info-content">
+      <section id="info-pays" class="info-section" role="tabpanel" aria-labelledby="tab-pays">
+        <p id="pay-note">Premios por 3 / 4 / 5 símbolos consecutivos desde la izquierda. Wild sustituye; Scatter no paga ni activa giros gratis.</p>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Símbolo</th><th scope="col">Peso*</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th></tr></thead><tbody id="paytable-body"></tbody></table></div>
+        <p class="rtp-note">*El peso indica frecuencia relativa, no premio. RTP teórico: 93%, calculado con los 759.375 resultados posibles de una línea y 20 líneas con la misma apuesta.</p>
+      </section>
+      <section id="info-lines" class="info-section" role="tabpanel" aria-labelledby="tab-lines" hidden>
+        <p>Cada número indica la fila que toma esa línea en cada rodillo: 1 arriba y 5 abajo. La línea paga si coinciden 3, 4 o 5 símbolos seguidos desde la izquierda.</p>
+        <div class="table-wrap"><table class="payline-table"><thead><tr><th scope="col">Línea</th><th scope="col">Rodillo 1</th><th scope="col">Rodillo 2</th><th scope="col">Rodillo 3</th><th scope="col">Rodillo 4</th><th scope="col">Rodillo 5</th></tr></thead><tbody id="payline-body"></tbody></table></div>
+      </section>
+    </div>
+  </dialog>
+  <script src="game.js?v=info-lines-1"></script>
 </body>
 </html>

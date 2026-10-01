@@ -33,12 +33,32 @@
   let cells = [];
   const weightTotal = symbols.reduce((n,s) => n + s.weight, 0);
   const paytableBody=document.getElementById('paytable-body');
+  const paylineBody=document.getElementById('payline-body');
+  const lineStake=bet/PAYLINES.length;
+  document.getElementById('pay-note').textContent=`Pago en créditos por una línea ganadora; apuesta total ${bet.toFixed(2)} (${lineStake.toFixed(2)} por línea).`;
   for (const s of symbols) {
     const row=document.createElement('tr');
-    const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE).toFixed(2)) : ['—','—','—'];
-    row.innerHTML=`<td>${s.name}</td><td>${s.weight}</td><td>${pays[0]}</td><td>${pays[1]}</td><td>${pays[2]}</td>`;
+    const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE*lineStake).toFixed(2)) : ['—','—','—'];
+    row.innerHTML=`<th scope="row">${s.name}</th><td>${s.weight}</td><td>${pays[0]}</td><td>${pays[1]}</td><td>${pays[2]}</td>`;
     paytableBody.appendChild(row);
   }
+  PAYLINES.forEach((path,index)=>{
+    const row=document.createElement('tr');
+    row.innerHTML=`<th scope="row">${index+1}</th>${path.map(rowIndex=>`<td>${rowIndex+1}</td>`).join('')}`;
+    paylineBody.appendChild(row);
+  });
+  const infoDialog=document.getElementById('infoDialog');
+  document.getElementById('infoButton').addEventListener('click',()=>infoDialog.showModal());
+  document.getElementById('infoClose').addEventListener('click',()=>infoDialog.close());
+  infoDialog.addEventListener('click',event=>{if(event.target===infoDialog)infoDialog.close();});
+  document.querySelectorAll('.info-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.info-tab').forEach(other=>{
+        const active=other===tab;other.setAttribute('aria-selected',String(active));
+        document.getElementById(other.getAttribute('aria-controls')).hidden=!active;
+      });
+    });
+  });
 
   // The 20 paths are five straight lines plus fifteen zig-zag routes.
   PAYLINES.forEach((_, i) => { if (PAYLINES[i].length !== 5) throw new Error('Payline must traverse all five reels'); });
