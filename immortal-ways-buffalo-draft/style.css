@@ -68,15 +68,6 @@ td:first-child,th:first-child{text-align:left}
 .rtp-note{font-size:11px;color:#ccb98f}
 .payline-overlay{position:absolute;left:var(--reels-left);top:var(--reels-top);width:var(--reels-width);height:var(--reels-height);z-index:4;overflow:visible;pointer-events:none}
 .winning-route{opacity:1}
-.winning-payline-glow,.winning-payline-outline,.winning-payline-metal,.winning-payline-highlight,.winning-payline-sweep{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
-.winning-payline-glow{stroke:#e7ad48;stroke-width:20;opacity:.38;filter:blur(3.2px)}
-.winning-payline-outline{stroke:rgba(28,14,5,.98);stroke-width:13}
-.winning-payline-metal{stroke:#e7b95f;stroke:url(#paylineGold);stroke-width:7.2}
-.winning-payline-highlight{stroke:rgba(255,246,216,.96);stroke-width:1.6}
-.winning-payline-sweep{stroke:#fff8e2;stroke-width:2.4;stroke-dasharray:8 160;stroke-dashoffset:0;opacity:0;filter:drop-shadow(0 0 3px rgba(255,223,137,.95));animation:payline-sweep 2.25s ease-in-out .35s infinite}
-@keyframes payline-sweep{0%{stroke-dashoffset:0;opacity:0}16%{opacity:.9}74%{opacity:.58}100%{stroke-dashoffset:-168;opacity:0}}
-.payline-badge{filter:drop-shadow(0 1px 3px rgba(20,10,4,.82))}
-.payline-badge .badge-outer{fill:#28170b;stroke:#ffe09a;stroke-width:1.15;vector-effect:non-scaling-stroke}
-.payline-badge .badge-inner{fill:url(#paylineGold);stroke:#805019;stroke-width:.7;vector-effect:non-scaling-stroke}
-.payline-badge text{fill:#2a190b;stroke:#fff0bd;stroke-width:.18;paint-order:stroke;font:800 4.7px Arial,sans-serif}
-.cell.win-cell .win-frame{border-color:rgba(255,216,126,.92);box-shadow:inset 0 0 10px rgba(255,185,56,.22),0 0 9px rgba(255,202,82,.46);animation:win-frame-reveal .48s ease-out both}
+.winning-route path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.winning-payline-color{stroke-width:10;opacity:.48}
+.winning-payline-core{stroke:#fff;stroke-width:2.5;opacity:.9}

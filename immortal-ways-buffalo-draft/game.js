@@ -23,6 +23,8 @@
     [4,4,3,2,2],[1,1,2,3,3],[3,3,2,1,1],[0,1,0,1,0],[4,3,4,3,4],
     [2,1,0,1,2],[2,3,4,3,2],[0,1,1,1,0],[4,3,3,3,4],[1,2,1,2,1]
   ];
+  // Cleopatra's exact line palette, applied by the same payline number.
+  const LINE_COLORS=['#f2c96b','#45d9e8','#f28d67','#9d74d8','#64ce98','#ffbc57','#27b7be','#ec82b4','#97c957','#e49e2a','#4bb8a5','#7775d7','#d76bd1','#df5c4d','#55bb78','#e7cb59','#38a9dc','#ad83e5','#7fc967','#df7c99'];
   const grid = document.getElementById('grid');
   const spinButton = document.getElementById('spin');
   const message = document.getElementById('message');
@@ -31,6 +33,7 @@
   const bet = 1;
   let balance = 1000;
   let cells = [];
+  let paylineClearTimer=null;
   const weightTotal = symbols.reduce((n,s) => n + s.weight, 0);
   const paytableBody=document.getElementById('paytable-body');
   const paylineBody=document.getElementById('payline-body');
@@ -103,49 +106,26 @@
     return best;
   }
   function clearMarks() {
+    if(paylineClearTimer){clearTimeout(paylineClearTimer);paylineClearTimer=null;}
     cells.forEach(c=>c.classList.remove('win-cell','bison-hit'));
     paylineLayer.replaceChildren();
   }
-  function smoothRoute(points) {
-    if(points.length<3) return `M${points.map(([x,y])=>`${x},${y}`).join(' L')}`;
-    let d=`M${points[0][0]},${points[0][1]}`;
-    for(let i=0;i<points.length-1;i++) {
-      const p0=points[Math.max(0,i-1)],p1=points[i],p2=points[i+1],p3=points[Math.min(points.length-1,i+2)];
-      const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6];
-      const c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
-      d+=` C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`;
-    }
-    return d;
-  }
-  function drawWinningPayline(rows,count,lineOrder,lineNumber) {
-    const y0=10+rows[0]*20;
-    const points=[[9.2,y0],...rows.slice(0,count).map((row,col)=>[10+col*20,10+row*20])];
-    const d=smoothRoute(points);
+  function drawWinningPayline(rows,lineNumber) {
+    const points=rows.map((row,col)=>[10+col*20,10+row*20]);
+    const d=`M${points.map(([x,y])=>`${x},${y}`).join(' L')}`;
     const route=document.createElementNS(SVG_NS,'g');
     route.classList.add('winning-route');
     route.setAttribute('aria-hidden','true');
-    for(const className of ['winning-payline-glow','winning-payline-outline','winning-payline-metal','winning-payline-highlight','winning-payline-sweep']) {
-      const path=document.createElementNS(SVG_NS,'path');
-      path.setAttribute('d',d);
-      path.classList.add(className);
-      route.appendChild(path);
-    }
-    const badge=document.createElementNS(SVG_NS,'g');
-    badge.classList.add('payline-badge');
-    badge.setAttribute('transform',`translate(4.7 ${y0})`);
-    const outer=document.createElementNS(SVG_NS,'circle');outer.setAttribute('r','4.5');outer.classList.add('badge-outer');badge.appendChild(outer);
-    const inner=document.createElementNS(SVG_NS,'circle');inner.setAttribute('r','3.45');inner.classList.add('badge-inner');badge.appendChild(inner);
-    const label=document.createElementNS(SVG_NS,'text');label.setAttribute('text-anchor','middle');label.setAttribute('dominant-baseline','central');label.textContent=String(lineNumber);badge.appendChild(label);
-    route.appendChild(badge);
+    const color=document.createElementNS(SVG_NS,'path');
+    color.setAttribute('d',d);
+    color.setAttribute('stroke',LINE_COLORS[(lineNumber-1)%LINE_COLORS.length]);
+    color.classList.add('winning-payline-color');
+    route.appendChild(color);
+    const core=document.createElementNS(SVG_NS,'path');
+    core.setAttribute('d',d);
+    core.classList.add('winning-payline-core');
+    route.appendChild(core);
     paylineLayer.appendChild(route);
-    route.querySelectorAll('path').forEach(path=>{
-      if(path.classList.contains('winning-payline-sweep')) return;
-      const length=path.getTotalLength();
-      path.style.strokeDasharray=String(length);
-      path.style.strokeDashoffset=String(length);
-      path.style.transition=`stroke-dashoffset 560ms cubic-bezier(.2,.75,.25,1) ${Math.min(lineOrder*100,400)}ms`;
-      requestAnimationFrame(()=>requestAnimationFrame(()=>{path.style.strokeDashoffset='0';}));
-    });
   }
   function settle(board) {
     show(board); clearMarks();
@@ -156,9 +136,10 @@
         total+=result.amount*(bet/PAYLINES.length);
         winningLines++;
         for(let col=0;col<result.count;col++) cells[path[col]*5+col].classList.add('win-cell');
-        drawWinningPayline(path,result.count,winningLines-1,lineIndex+1);
+        drawWinningPayline(path,lineIndex+1);
       }
     });
+    if(winningLines>0) paylineClearTimer=window.setTimeout(()=>{paylineClearTimer=null;clearMarks();},2600);
     // Approved Bison appearance: brief restrained bounce/zoom, a single gold sheen,
     // and two small edge glints; no halo or extra particle effects.
     board.forEach((s,i)=>{
@@ -179,7 +160,7 @@
     route.forEach((row,col)=>{board[row*5+col]=col<4?bison:scatter;});
     show(board);clearMarks();
     route.slice(0,4).forEach((row,col)=>cells[row*5+col].classList.add('win-cell'));
-    drawWinningPayline(route,4,0,18);
+    drawWinningPayline(route,18);
     message.textContent='VISTA PREVIA · LÍNEA 18';
     winLabel.textContent='—';
   }
