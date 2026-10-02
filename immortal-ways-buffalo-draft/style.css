@@ -61,3 +61,8 @@ th,td{padding:7px 8px;border-bottom:1px solid #59432d}
 th{color:#f7d778}
 td:first-child,th:first-child{text-align:left}
 .rtp-note{font-size:11px;color:#ccb98f}
+.payline-overlay{position:absolute;inset:0;z-index:6;width:100%;height:100%;overflow:visible;pointer-events:none}
+.winning-payline-outline,.winning-payline{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:100;stroke-dashoffset:100;animation:draw-winning-line .42s ease-out var(--line-delay,0ms) forwards}
+.winning-payline-outline{stroke:rgba(15,8,3,.9);stroke-width:6}
+.winning-payline{stroke-width:2.8}
+@keyframes draw-winning-line{to{stroke-dashoffset:0}}

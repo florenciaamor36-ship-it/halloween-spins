@@ -67,6 +67,14 @@
     const img=document.createElement('img'); img.className='symbol'; img.alt=''; img.draggable=false;
     cell.appendChild(img); grid.appendChild(cell); cells.push(cell);
   }
+  const SVG_NS='http://www.w3.org/2000/svg';
+  const PAYLINE_COLORS=['#ffe36e','#5ee7ff','#ff8eb1','#8aef8b','#c8a0ff'];
+  const paylineOverlay=document.createElementNS(SVG_NS,'svg');
+  paylineOverlay.classList.add('payline-overlay');
+  paylineOverlay.setAttribute('viewBox','0 0 100 100');
+  paylineOverlay.setAttribute('preserveAspectRatio','none');
+  paylineOverlay.setAttribute('aria-hidden','true');
+  grid.appendChild(paylineOverlay);
   function pick() {
     let n=Math.random()*weightTotal;
     for (const s of symbols) { n-=s.weight; if (n<0) return s; }
@@ -99,7 +107,24 @@
     }
     return best;
   }
-  function clearMarks() { cells.forEach(c=>c.classList.remove('win-cell','bison-hit')); }
+  function clearMarks() {
+    cells.forEach(c=>c.classList.remove('win-cell','bison-hit'));
+    paylineOverlay.replaceChildren();
+  }
+  function drawWinningPayline(rows,count,lineOrder) {
+    const points=rows.slice(0,count).map((row,col)=>`${10+col*20},${10+row*20}`);
+    const d=points.map((point,index)=>`${index===0?'M':'L'}${point}`).join(' ');
+    const color=PAYLINE_COLORS[lineOrder%PAYLINE_COLORS.length];
+    for(const className of ['winning-payline-outline','winning-payline']) {
+      const path=document.createElementNS(SVG_NS,'path');
+      path.setAttribute('d',d);
+      path.setAttribute('pathLength','100');
+      path.classList.add(className);
+      path.style.setProperty('--line-delay',`${Math.min(lineOrder*55,330)}ms`);
+      if(className==='winning-payline') path.style.stroke=color;
+      paylineOverlay.appendChild(path);
+    }
+  }
   function settle(board) {
     show(board); clearMarks();
     let total=0, winningLines=0;
@@ -109,6 +134,7 @@
         total+=result.amount*(bet/PAYLINES.length);
         winningLines++;
         for(let col=0;col<result.count;col++) cells[path[col]*5+col].classList.add('win-cell');
+        drawWinningPayline(path,result.count,winningLines-1);
       }
     });
     // Approved Bison appearance: brief restrained bounce/zoom, a single gold sheen,
