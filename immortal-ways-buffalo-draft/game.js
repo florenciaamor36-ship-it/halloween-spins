@@ -119,12 +119,12 @@
   }
   function drawWinningPayline(rows,count,lineOrder,lineNumber) {
     const y0=10+rows[0]*20;
-    const points=[[7.6,y0],...rows.slice(0,count).map((row,col)=>[10+col*20,10+row*20])];
+    const points=[[9.2,y0],...rows.slice(0,count).map((row,col)=>[10+col*20,10+row*20])];
     const d=smoothRoute(points);
     const route=document.createElementNS(SVG_NS,'g');
     route.classList.add('winning-route');
     route.setAttribute('aria-hidden','true');
-    for(const className of ['winning-payline-glow','winning-payline-outline','winning-payline-metal','winning-payline-highlight']) {
+    for(const className of ['winning-payline-glow','winning-payline-outline','winning-payline-metal','winning-payline-highlight','winning-payline-sweep']) {
       const path=document.createElementNS(SVG_NS,'path');
       path.setAttribute('d',d);
       path.classList.add(className);
@@ -132,13 +132,14 @@
     }
     const badge=document.createElementNS(SVG_NS,'g');
     badge.classList.add('payline-badge');
-    badge.setAttribute('transform',`translate(3.8 ${y0})`);
-    const outer=document.createElementNS(SVG_NS,'circle');outer.setAttribute('r','3.8');outer.classList.add('badge-outer');badge.appendChild(outer);
-    const inner=document.createElementNS(SVG_NS,'circle');inner.setAttribute('r','2.9');inner.classList.add('badge-inner');badge.appendChild(inner);
+    badge.setAttribute('transform',`translate(4.7 ${y0})`);
+    const outer=document.createElementNS(SVG_NS,'circle');outer.setAttribute('r','4.5');outer.classList.add('badge-outer');badge.appendChild(outer);
+    const inner=document.createElementNS(SVG_NS,'circle');inner.setAttribute('r','3.45');inner.classList.add('badge-inner');badge.appendChild(inner);
     const label=document.createElementNS(SVG_NS,'text');label.setAttribute('text-anchor','middle');label.setAttribute('dominant-baseline','central');label.textContent=String(lineNumber);badge.appendChild(label);
     route.appendChild(badge);
     paylineLayer.appendChild(route);
     route.querySelectorAll('path').forEach(path=>{
+      if(path.classList.contains('winning-payline-sweep')) return;
       const length=path.getTotalLength();
       path.style.strokeDasharray=String(length);
       path.style.strokeDashoffset=String(length);
