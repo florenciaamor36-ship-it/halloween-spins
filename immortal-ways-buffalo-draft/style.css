@@ -67,9 +67,11 @@ th{color:#f7d778}
 td:first-child,th:first-child{text-align:left}
 .rtp-note{font-size:11px;color:#ccb98f}
 .payline-overlay{position:absolute;left:var(--reels-left);top:var(--reels-top);width:var(--reels-width);height:var(--reels-height);z-index:4;overflow:visible;pointer-events:none}
-.winning-route{opacity:.98}
+.winning-route{opacity:.96}
 .winning-payline-glow,.winning-payline-outline,.winning-payline-metal,.winning-payline-highlight{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
-.winning-payline-glow{stroke:#e3b156;stroke-width:9;opacity:.25;filter:blur(1.3px)}
-.winning-payline-outline{stroke:rgba(34,18,7,.94);stroke-width:6}
-.winning-payline-metal{stroke:#e7b95f;stroke:url(#paylineGold);stroke-width:3.2}
-.winning-payline-highlight{stroke:rgba(255,244,207,.86);stroke-width:.85}
+.winning-payline-glow{stroke:#e3b156;stroke-width:7;opacity:.22;filter:blur(1.2px)}
+.winning-payline-outline{stroke:rgba(34,18,7,.92);stroke-width:4.4}
+.winning-payline-metal{stroke:#e7b95f;stroke:url(#paylineGold);stroke-width:2.65}
+.winning-payline-highlight{stroke:rgba(255,244,207,.82);stroke-width:.65}
+
+/* Premium western route: slim layered bronze-and-gold strokes keep symbols legible. */

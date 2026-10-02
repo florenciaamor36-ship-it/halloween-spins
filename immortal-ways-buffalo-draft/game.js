@@ -163,6 +163,7 @@
     if(total>0){ message.textContent=`${winningLines} LÍNEA${winningLines===1?'':'S'} CON PREMIO`; winLabel.textContent=`+${total.toFixed(2)}`; }
     else { message.textContent='SIN PREMIO — ¡OTRA!'; winLabel.textContent='0.00'; }
   }
+  // Visual-only test route: deliberately bypasses spin(), settlement, and balance updates.
   function showPaylinePreview(){
     const board=makeGrid(),route=PAYLINES[17];
     const bison=symbols.find(s=>s.id==='bison'),scatter=symbols.find(s=>s.id==='scatter');
