@@ -67,11 +67,13 @@ th{color:#f7d778}
 td:first-child,th:first-child{text-align:left}
 .rtp-note{font-size:11px;color:#ccb98f}
 .payline-overlay{position:absolute;left:var(--reels-left);top:var(--reels-top);width:var(--reels-width);height:var(--reels-height);z-index:4;overflow:visible;pointer-events:none}
-.winning-route{opacity:.96}
+.winning-route{opacity:.98}
 .winning-payline-glow,.winning-payline-outline,.winning-payline-metal,.winning-payline-highlight{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
-.winning-payline-glow{stroke:#e3b156;stroke-width:7;opacity:.22;filter:blur(1.2px)}
-.winning-payline-outline{stroke:rgba(34,18,7,.92);stroke-width:4.4}
-.winning-payline-metal{stroke:#e7b95f;stroke:url(#paylineGold);stroke-width:2.65}
-.winning-payline-highlight{stroke:rgba(255,244,207,.82);stroke-width:.65}
-
-/* Premium western route: slim layered bronze-and-gold strokes keep symbols legible. */
+.winning-payline-glow{stroke:#e3b156;stroke-width:12;opacity:.3;filter:blur(2px)}
+.winning-payline-outline{stroke:rgba(34,18,7,.96);stroke-width:8}
+.winning-payline-metal{stroke:#e7b95f;stroke:url(#paylineGold);stroke-width:4.3}
+.winning-payline-highlight{stroke:rgba(255,244,207,.9);stroke-width:1.2}
+.payline-badge{filter:drop-shadow(0 1px 2px rgba(20,10,4,.7))}
+.payline-badge .badge-outer{fill:#2d1a0b;stroke:#f1c76b;stroke-width:.8;vector-effect:non-scaling-stroke}
+.payline-badge .badge-inner{fill:none;stroke:rgba(255,239,194,.72);stroke-width:.45;vector-effect:non-scaling-stroke}
+.payline-badge text{fill:#fff1c4;stroke:#241409;stroke-width:.35;paint-order:stroke;font:700 4px Arial,sans-serif}

@@ -117,8 +117,9 @@
     }
     return d;
   }
-  function drawWinningPayline(rows,count,lineOrder) {
-    const points=rows.slice(0,count).map((row,col)=>[10+col*20,10+row*20]);
+  function drawWinningPayline(rows,count,lineOrder,lineNumber) {
+    const y0=10+rows[0]*20;
+    const points=[[7.6,y0],...rows.slice(0,count).map((row,col)=>[10+col*20,10+row*20])];
     const d=smoothRoute(points);
     const route=document.createElementNS(SVG_NS,'g');
     route.classList.add('winning-route');
@@ -129,6 +130,13 @@
       path.classList.add(className);
       route.appendChild(path);
     }
+    const badge=document.createElementNS(SVG_NS,'g');
+    badge.classList.add('payline-badge');
+    badge.setAttribute('transform',`translate(3.8 ${y0})`);
+    const outer=document.createElementNS(SVG_NS,'circle');outer.setAttribute('r','3.8');outer.classList.add('badge-outer');badge.appendChild(outer);
+    const inner=document.createElementNS(SVG_NS,'circle');inner.setAttribute('r','2.9');inner.classList.add('badge-inner');badge.appendChild(inner);
+    const label=document.createElementNS(SVG_NS,'text');label.setAttribute('text-anchor','middle');label.setAttribute('dominant-baseline','central');label.textContent=String(lineNumber);badge.appendChild(label);
+    route.appendChild(badge);
     paylineLayer.appendChild(route);
     route.querySelectorAll('path').forEach(path=>{
       const length=path.getTotalLength();
@@ -141,13 +149,13 @@
   function settle(board) {
     show(board); clearMarks();
     let total=0, winningLines=0;
-    PAYLINES.forEach(path=>{
+    PAYLINES.forEach((path,lineIndex)=>{
       const result=lineWin(board,path);
       if (result.amount>0) {
         total+=result.amount*(bet/PAYLINES.length);
         winningLines++;
         for(let col=0;col<result.count;col++) cells[path[col]*5+col].classList.add('win-cell');
-        drawWinningPayline(path,result.count,winningLines-1);
+        drawWinningPayline(path,result.count,winningLines-1,lineIndex+1);
       }
     });
     // Approved Bison appearance: brief restrained bounce/zoom, a single gold sheen,
@@ -163,14 +171,14 @@
     if(total>0){ message.textContent=`${winningLines} LÍNEA${winningLines===1?'':'S'} CON PREMIO`; winLabel.textContent=`+${total.toFixed(2)}`; }
     else { message.textContent='SIN PREMIO — ¡OTRA!'; winLabel.textContent='0.00'; }
   }
-  // Visual-only test route: deliberately bypasses spin(), settlement, and balance updates.
+  // Visual-only test route; it never settles a win or changes the balance.
   function showPaylinePreview(){
     const board=makeGrid(),route=PAYLINES[17];
     const bison=symbols.find(s=>s.id==='bison'),scatter=symbols.find(s=>s.id==='scatter');
     route.forEach((row,col)=>{board[row*5+col]=col<4?bison:scatter;});
     show(board);clearMarks();
     route.slice(0,4).forEach((row,col)=>cells[row*5+col].classList.add('win-cell'));
-    drawWinningPayline(route,4,0);
+    drawWinningPayline(route,4,0,18);
     message.textContent='VISTA PREVIA · LÍNEA 18';
     winLabel.textContent='—';
   }
