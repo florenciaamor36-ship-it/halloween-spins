@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1b120c">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
   <link rel="preload" as="image" href="assets/loading/loading.webp?v=load-3">
-  <link rel="stylesheet" href="style.css?v=indicators-mobile-1">
+  <link rel="stylesheet" href="style.css?v=indicator-overflow-1">
 </head>
 <body>
   <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
@@ -25,7 +25,7 @@
       <g id="paylinePaths"></g>
     </svg>
     <div class="meter" aria-live="polite"><span id="message">LISTO PARA GIRAR</span><b id="win">—</b></div>
-    <div class="hud"><span>SALDO <b id="balance">1000.00</b></span><span>APUESTA <b id="bet">1.00</b></span></div>
+    <div class="hud" aria-label="Indicadores de apuesta"><span class="hud-item"><span class="hud-label">SALDO</span><b id="balance" class="hud-value">1000.00</b></span><span class="hud-item"><span class="hud-label">APUESTA</span><b id="bet" class="hud-value">1.00</b></span></div>
     <button id="spin" class="spin" type="button" aria-label="Girar" disabled>
       <img class="spin-art spin-art-normal" src="assets/buttons/spin-normal.webp?v=spin-cutout-6" alt="">
       <img class="spin-art spin-art-pressed" src="assets/buttons/spin-pressed.webp?v=spin-cutout-6" alt="">
@@ -54,6 +54,6 @@
       </section>
     </div>
   </dialog>
-  <script src="game.js?v=payline-cleopatra-1"></script>
+  <script src="game.js?v=indicator-overflow-1"></script>
 </body>
 </html>

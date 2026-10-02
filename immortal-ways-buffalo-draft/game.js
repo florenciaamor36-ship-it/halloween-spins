@@ -110,6 +110,22 @@
     cells.forEach(c=>c.classList.remove('win-cell','bison-hit'));
     paylineLayer.replaceChildren();
   }
+  function fitTextValue(element,minSize=7){
+    if(!element)return;
+    element.style.fontSize='';
+    const available=element.clientWidth;
+    let size=parseFloat(getComputedStyle(element).fontSize)||10;
+    if(!available)return;
+    for(let i=0;i<24&&element.scrollWidth>available+1&&size>minSize;i++){
+      size=Math.max(minSize,size-.5);
+      element.style.fontSize=`${size}px`;
+    }
+  }
+  function fitIndicators(){
+    document.querySelectorAll('.hud-value').forEach(value=>fitTextValue(value));
+    fitTextValue(winLabel);
+  }
+  window.addEventListener('resize',()=>requestAnimationFrame(fitIndicators),{passive:true});
   function drawWinningPayline(rows,lineNumber) {
     const points=rows.map((row,col)=>[10+col*20,10+row*20]);
     const d=`M${points.map(([x,y])=>`${x},${y}`).join(' L')}`;
@@ -152,6 +168,7 @@
     balanceLabel.textContent=balance.toFixed(2);
     if(total>0){ message.textContent=`${winningLines} LÍNEA${winningLines===1?'':'S'} CON PREMIO`; winLabel.textContent=`+${total.toFixed(2)}`; }
     else { message.textContent='SIN PREMIO — ¡OTRA!'; winLabel.textContent='0.00'; }
+    requestAnimationFrame(fitIndicators);
   }
   // Visual-only test route; it never settles a win or changes the balance.
   function showPaylinePreview(){
@@ -163,13 +180,14 @@
     drawWinningPayline(route,18);
     message.textContent='VISTA PREVIA · LÍNEA 18';
     winLabel.textContent='—';
+    requestAnimationFrame(fitIndicators);
   }
   function renderInitial(){ const b=makeGrid(); show(b); }
   async function spin(){
     if(spinButton.disabled) return;
     if(balance<bet){message.textContent='SALDO INSUFICIENTE';return;}
     balance-=bet; balanceLabel.textContent=balance.toFixed(2);
-    spinButton.disabled=true; message.textContent='GIRANDO…'; winLabel.textContent='—'; clearMarks(); grid.classList.add('spinning');
+    spinButton.disabled=true; message.textContent='GIRANDO…'; winLabel.textContent='—'; requestAnimationFrame(fitIndicators); clearMarks(); grid.classList.add('spinning');
     const start=Date.now();
     const timer=setInterval(()=>show(makeGrid()),85);
     await new Promise(resolve=>setTimeout(resolve,1050));
@@ -178,6 +196,7 @@
   }
   spinButton.addEventListener('click',spin);
   renderInitial();
+  requestAnimationFrame(fitIndicators);
   function preloadAssets(){
     const screen=document.getElementById('loading');
     const fill=document.getElementById('loadingFill');
