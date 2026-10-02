@@ -163,6 +163,16 @@
     if(total>0){ message.textContent=`${winningLines} LÍNEA${winningLines===1?'':'S'} CON PREMIO`; winLabel.textContent=`+${total.toFixed(2)}`; }
     else { message.textContent='SIN PREMIO — ¡OTRA!'; winLabel.textContent='0.00'; }
   }
+  function showPaylinePreview(){
+    const board=makeGrid(),route=PAYLINES[17];
+    const bison=symbols.find(s=>s.id==='bison'),scatter=symbols.find(s=>s.id==='scatter');
+    route.forEach((row,col)=>{board[row*5+col]=col<4?bison:scatter;});
+    show(board);clearMarks();
+    route.slice(0,4).forEach((row,col)=>cells[row*5+col].classList.add('win-cell'));
+    drawWinningPayline(route,4,0);
+    message.textContent='VISTA PREVIA · LÍNEA 18';
+    winLabel.textContent='—';
+  }
   function renderInitial(){ const b=makeGrid(); show(b); }
   async function spin(){
     if(spinButton.disabled) return;
@@ -188,7 +198,10 @@
       const done=()=>{if(finished)return;finished=true;loaded++;const value=Math.round(loaded/sources.length*100);if(fill)fill.style.width=`${value}%`;if(percent)percent.textContent=`${value}%`;resolve();};
       image.onload=done;image.onerror=done;image.src=src;if(image.complete)done();
     }));
-    Promise.all(tasks).then(()=>setTimeout(()=>{spinButton.disabled=false;screen?.classList.add('is-hidden');setTimeout(()=>screen?.remove(),500)},180));
+    Promise.all(tasks).then(()=>setTimeout(()=>{
+      spinButton.disabled=false;screen?.classList.add('is-hidden');
+      setTimeout(()=>{screen?.remove();if(new URLSearchParams(location.search).get('payline-preview')==='1')showPaylinePreview();},500);
+    },180));
   }
   preloadAssets();
 })();
