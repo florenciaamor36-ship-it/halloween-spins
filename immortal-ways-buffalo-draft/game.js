@@ -68,7 +68,7 @@
     cell.appendChild(img); grid.appendChild(cell); cells.push(cell);
   }
   const SVG_NS='http://www.w3.org/2000/svg';
-  const PAYLINE_COLORS=['#ffe36e','#5ee7ff','#ff8eb1','#8aef8b','#c8a0ff'];
+  const PAYLINE_COLOR='#f1c76b';
   const paylineOverlay=document.createElementNS(SVG_NS,'svg');
   paylineOverlay.classList.add('payline-overlay');
   paylineOverlay.setAttribute('viewBox','0 0 100 100');
@@ -114,7 +114,7 @@
   function drawWinningPayline(rows,count,lineOrder) {
     const points=rows.slice(0,count).map((row,col)=>`${10+col*20},${10+row*20}`);
     const d=points.map((point,index)=>`${index===0?'M':'L'}${point}`).join(' ');
-    const color=PAYLINE_COLORS[lineOrder%PAYLINE_COLORS.length];
+    const color=PAYLINE_COLOR;
     for(const className of ['winning-payline-outline','winning-payline']) {
       const path=document.createElementNS(SVG_NS,'path');
       path.setAttribute('d',d);
