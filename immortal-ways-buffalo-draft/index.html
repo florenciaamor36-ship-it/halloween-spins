@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1b120c">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
   <link rel="preload" as="image" href="assets/loading/loading.webp?v=load-3">
-  <link rel="stylesheet" href="style.css?v=payline-gold-2">
+  <link rel="stylesheet" href="style.css?v=payline-premium-1">
 </head>
 <body>
   <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
@@ -21,7 +21,16 @@
   <main class="machine" aria-label="Prototipo Immortal Ways Buffalo">
     <img class="frame-art" src="assets/frame/frame.webp" alt="Marco vertical Immortal Ways Buffalo con rejilla 5 por 5">
     <div id="grid" class="grid" role="grid" aria-label="Símbolos: cinco columnas por cinco filas"></div>
-    <svg id="paylineOverlay" class="payline-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <svg id="paylineOverlay" class="payline-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="paylineGold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff3cf"></stop>
+          <stop offset="46%" stop-color="#f1c76b"></stop>
+          <stop offset="100%" stop-color="#b7792d"></stop>
+        </linearGradient>
+      </defs>
+      <g id="paylinePaths"></g>
+    </svg>
     <div class="meter" aria-live="polite"><span id="message">LISTO PARA GIRAR</span><b id="win">—</b></div>
     <div class="hud"><span>SALDO <b id="balance">1000.00</b></span><span>APUESTA <b id="bet">1.00</b></span></div>
     <button id="spin" class="spin" type="button" aria-label="Girar" disabled>
@@ -52,6 +61,6 @@
       </section>
     </div>
   </dialog>
-  <script src="game.js?v=payline-gold-2"></script>
+  <script src="game.js?v=payline-premium-1"></script>
 </body>
 </html>

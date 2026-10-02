@@ -65,11 +65,11 @@
   for (let i=0;i<25;i++) {
     const cell=document.createElement('div'); cell.className='cell'; cell.setAttribute('role','gridcell');
     const img=document.createElement('img'); img.className='symbol'; img.alt=''; img.draggable=false;
-    cell.appendChild(img); grid.appendChild(cell); cells.push(cell);
+    const frame=document.createElement('span'); frame.className='win-frame'; frame.setAttribute('aria-hidden','true');
+    cell.appendChild(img); cell.appendChild(frame); grid.appendChild(cell); cells.push(cell);
   }
   const SVG_NS='http://www.w3.org/2000/svg';
-  const PAYLINE_COLOR='#f1c76b';
-  const paylineOverlay=document.getElementById('paylineOverlay');
+  const paylineLayer=document.getElementById('paylinePaths');
   function pick() {
     let n=Math.random()*weightTotal;
     for (const s of symbols) { n-=s.weight; if (n<0) return s; }
@@ -104,24 +104,39 @@
   }
   function clearMarks() {
     cells.forEach(c=>c.classList.remove('win-cell','bison-hit'));
-    paylineOverlay.replaceChildren();
+    paylineLayer.replaceChildren();
+  }
+  function smoothRoute(points) {
+    if(points.length<3) return `M${points.map(([x,y])=>`${x},${y}`).join(' L')}`;
+    let d=`M${points[0][0]},${points[0][1]}`;
+    for(let i=0;i<points.length-1;i++) {
+      const p0=points[Math.max(0,i-1)],p1=points[i],p2=points[i+1],p3=points[Math.min(points.length-1,i+2)];
+      const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6];
+      const c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+      d+=` C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`;
+    }
+    return d;
   }
   function drawWinningPayline(rows,count,lineOrder) {
-    const points=rows.slice(0,count).map((row,col)=>`${10+col*20},${10+row*20}`);
-    const d=points.map((point,index)=>`${index===0?'M':'L'}${point}`).join(' ');
-    const color=PAYLINE_COLOR;
-    for(const className of ['winning-payline-outline','winning-payline']) {
+    const points=rows.slice(0,count).map((row,col)=>[10+col*20,10+row*20]);
+    const d=smoothRoute(points);
+    const route=document.createElementNS(SVG_NS,'g');
+    route.classList.add('winning-route');
+    route.setAttribute('aria-hidden','true');
+    for(const className of ['winning-payline-glow','winning-payline-outline','winning-payline-metal','winning-payline-highlight']) {
       const path=document.createElementNS(SVG_NS,'path');
       path.setAttribute('d',d);
       path.classList.add(className);
-      if(className==='winning-payline') path.style.stroke=color;
-      paylineOverlay.appendChild(path);
+      route.appendChild(path);
+    }
+    paylineLayer.appendChild(route);
+    route.querySelectorAll('path').forEach(path=>{
       const length=path.getTotalLength();
       path.style.strokeDasharray=String(length);
       path.style.strokeDashoffset=String(length);
-      path.style.transition=`stroke-dashoffset 420ms ease-out ${Math.min(lineOrder*55,330)}ms`;
+      path.style.transition=`stroke-dashoffset 560ms cubic-bezier(.2,.75,.25,1) ${Math.min(lineOrder*100,400)}ms`;
       requestAnimationFrame(()=>requestAnimationFrame(()=>{path.style.strokeDashoffset='0';}));
-    }
+    });
   }
   function settle(board) {
     show(board); clearMarks();
