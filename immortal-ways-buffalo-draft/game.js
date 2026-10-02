@@ -178,8 +178,8 @@
     show(board);clearMarks();
     route.slice(0,4).forEach((row,col)=>cells[row*5+col].classList.add('win-cell'));
     drawWinningPayline(route,18);
-    message.textContent='VISTA PREVIA · LÍNEA 18';
-    winLabel.textContent='—';
+    message.textContent='PREVIA · L18';
+    winLabel.textContent='';
     requestAnimationFrame(fitIndicators);
   }
   function renderInitial(){ const b=makeGrid(); show(b); }
