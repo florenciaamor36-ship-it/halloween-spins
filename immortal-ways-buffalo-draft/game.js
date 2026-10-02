@@ -69,12 +69,7 @@
   }
   const SVG_NS='http://www.w3.org/2000/svg';
   const PAYLINE_COLOR='#f1c76b';
-  const paylineOverlay=document.createElementNS(SVG_NS,'svg');
-  paylineOverlay.classList.add('payline-overlay');
-  paylineOverlay.setAttribute('viewBox','0 0 100 100');
-  paylineOverlay.setAttribute('preserveAspectRatio','none');
-  paylineOverlay.setAttribute('aria-hidden','true');
-  grid.appendChild(paylineOverlay);
+  const paylineOverlay=document.getElementById('paylineOverlay');
   function pick() {
     let n=Math.random()*weightTotal;
     for (const s of symbols) { n-=s.weight; if (n<0) return s; }

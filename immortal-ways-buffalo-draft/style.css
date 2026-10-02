@@ -1,4 +1,5 @@
 *{box-sizing:border-box}
+:root{--reels-left:14%;--reels-top:25.7%;--reels-width:72%;--reels-height:41.2%}
 html,body{margin:0;min-height:100%;background:#10151d;color:#f6e9c6;font-family:Georgia,'Times New Roman',serif}
 body{min-height:100vh}
 .machine{position:relative;width:min(100vw,56.25vh,520px);aspect-ratio:573/1024;margin:0 auto;overflow:hidden;background:#182332;user-select:none;touch-action:manipulation}
@@ -12,7 +13,7 @@ body{min-height:100vh}
 .loading-track{height:9px;padding:1px;overflow:hidden;border:1px solid #c39a50;border-radius:8px;background:#26170d;box-shadow:inset 0 1px 3px #090604}
 .loading-fill{width:0;height:100%;border-radius:6px;background:linear-gradient(90deg,#9a5d20,#ffe08a,#bd7925);transition:width .12s ease}
 .frame-art{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:fill;pointer-events:none}
-.grid{position:absolute;left:14%;top:25.7%;width:72%;height:41.2%;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr)}
+.grid{position:absolute;left:var(--reels-left);top:var(--reels-top);width:var(--reels-width);height:var(--reels-height);z-index:2;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr)}
 .cell{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;overflow:visible}
 .symbol{display:block;width:94%;height:94%;object-fit:contain;filter:drop-shadow(0 1px 2px #25170d);transition:transform .12s ease,filter .12s ease}
 .grid.spinning .symbol{animation:tumble .12s linear infinite alternate}
@@ -62,7 +63,7 @@ th,td{padding:7px 8px;border-bottom:1px solid #59432d}
 th{color:#f7d778}
 td:first-child,th:first-child{text-align:left}
 .rtp-note{font-size:11px;color:#ccb98f}
-.payline-overlay{position:absolute;inset:0;z-index:20;width:100%;height:100%;overflow:visible;pointer-events:none;isolation:isolate}
+.payline-overlay{position:absolute;left:var(--reels-left);top:var(--reels-top);width:var(--reels-width);height:var(--reels-height);z-index:4;overflow:visible;pointer-events:none}
 .winning-payline-outline,.winning-payline{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.98}
 .winning-payline-outline{stroke:rgba(23,12,5,.94);stroke-width:5.5}
 .winning-payline{stroke-width:2.6}
