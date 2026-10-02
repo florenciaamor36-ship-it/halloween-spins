@@ -118,11 +118,14 @@
     for(const className of ['winning-payline-outline','winning-payline']) {
       const path=document.createElementNS(SVG_NS,'path');
       path.setAttribute('d',d);
-      path.setAttribute('pathLength','100');
       path.classList.add(className);
-      path.style.setProperty('--line-delay',`${Math.min(lineOrder*55,330)}ms`);
       if(className==='winning-payline') path.style.stroke=color;
       paylineOverlay.appendChild(path);
+      const length=path.getTotalLength();
+      path.style.strokeDasharray=String(length);
+      path.style.strokeDashoffset=String(length);
+      path.style.transition=`stroke-dashoffset 420ms ease-out ${Math.min(lineOrder*55,330)}ms`;
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{path.style.strokeDashoffset='0';}));
     }
   }
   function settle(board) {
