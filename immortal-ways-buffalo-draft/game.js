@@ -30,21 +30,50 @@
   const message = document.getElementById('message');
   const winLabel = document.getElementById('win');
   const balanceLabel = document.getElementById('balance');
-  const bet = 1;
+  const wagerLabel=document.getElementById('bet');
+  const betButton=document.getElementById('betButton');
+  const linesButton=document.getElementById('linesButton');
+  const betLevelLabel=document.getElementById('betLevelValue');
+  const linesValueLabel=document.getElementById('linesValue');
+  const betDialog=document.getElementById('betDialog');
+  const linesDialog=document.getElementById('linesDialog');
+  const betOptionButtons=[...document.querySelectorAll('.bet-option')];
+  const lineOptionButtons=[...document.querySelectorAll('.line-option')];
+  const wagerTotalLabels=[...document.querySelectorAll('.wager-total-label')];
+  const wagerBreakdownLabels=[...document.querySelectorAll('.wager-breakdown-label')];
+  const payNote=document.getElementById('pay-note');
   let balance = 1000;
+  let lineBet = 0.05;
+  let activeLines = 20;
   let cells = [];
   let paylineClearTimer=null;
   const weightTotal = symbols.reduce((n,s) => n + s.weight, 0);
   const paytableBody=document.getElementById('paytable-body');
   const paylineBody=document.getElementById('payline-body');
-  const lineStake=bet/PAYLINES.length;
-  document.getElementById('pay-note').textContent=`Pago en créditos por una línea ganadora; apuesta total ${bet.toFixed(2)} (${lineStake.toFixed(2)} por línea).`;
-  for (const s of symbols) {
-    const row=document.createElement('tr');
-    const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE*lineStake).toFixed(2)) : ['—','—','—'];
-    row.innerHTML=`<th scope="row">${s.name}</th><td>${s.weight}</td><td>${pays[0]}</td><td>${pays[1]}</td><td>${pays[2]}</td>`;
-    paytableBody.appendChild(row);
+  function currentWager(){return Math.round(lineBet*activeLines*100)/100;}
+  function renderPaytable(){
+    paytableBody.replaceChildren();
+    for (const s of symbols) {
+      const row=document.createElement('tr');
+      const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE*lineBet).toFixed(2)) : ['—','—','—'];
+      row.innerHTML=`<th scope="row">${s.name}</th><td>${s.weight}</td><td>${pays[0]}</td><td>${pays[1]}</td><td>${pays[2]}</td>`;
+      paytableBody.appendChild(row);
+    }
   }
+  function updateWagerUI(){
+    const total=currentWager();
+    betLevelLabel.textContent=lineBet.toFixed(2);
+    linesValueLabel.textContent=String(activeLines);
+    wagerLabel.textContent=total.toFixed(2);
+    wagerTotalLabels.forEach(label=>label.textContent=total.toFixed(2));
+    wagerBreakdownLabels.forEach(label=>label.textContent=`${lineBet.toFixed(2)} × ${activeLines} líneas`);
+    payNote.textContent=`Premios por línea ganadora; BET ${lineBet.toFixed(2)} por línea. Apuesta total actual: ${total.toFixed(2)} (${activeLines} líneas activas).`;
+    betOptionButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.betLevel)===lineBet)));
+    lineOptionButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.lines)===activeLines)));
+    renderPaytable();
+    requestAnimationFrame(fitIndicators);
+  }
+  updateWagerUI();
   PAYLINES.forEach((path,index)=>{
     const row=document.createElement('tr');
     row.innerHTML=`<th scope="row">${index+1}</th>${path.map(rowIndex=>`<td>${rowIndex+1}</td>`).join('')}`;
@@ -62,6 +91,31 @@
       });
     });
   });
+  function bindChoiceMenu(trigger,dialog,closeButton){
+    trigger.addEventListener('click',()=>{
+      if(trigger.disabled)return;
+      trigger.setAttribute('aria-expanded','true');
+      dialog.showModal();
+    });
+    closeButton.addEventListener('click',()=>dialog.close());
+    dialog.addEventListener('close',()=>{
+      trigger.setAttribute('aria-expanded','false');
+      trigger.focus();
+    });
+    dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+  }
+  bindChoiceMenu(betButton,betDialog,document.getElementById('betMenuClose'));
+  bindChoiceMenu(linesButton,linesDialog,document.getElementById('linesMenuClose'));
+  betOptionButtons.forEach(button=>button.addEventListener('click',()=>{
+    lineBet=Number(button.dataset.betLevel);
+    updateWagerUI();
+    betDialog.close();
+  }));
+  lineOptionButtons.forEach(button=>button.addEventListener('click',()=>{
+    activeLines=Number(button.dataset.lines);
+    updateWagerUI();
+    linesDialog.close();
+  }));
 
   // The 20 paths are five straight lines plus fifteen zig-zag routes.
   PAYLINES.forEach((_, i) => { if (PAYLINES[i].length !== 5) throw new Error('Payline must traverse all five reels'); });
@@ -146,10 +200,10 @@
   function settle(board) {
     show(board); clearMarks();
     let total=0, winningLines=0;
-    PAYLINES.forEach((path,lineIndex)=>{
+    PAYLINES.slice(0,activeLines).forEach((path,lineIndex)=>{
       const result=lineWin(board,path);
       if (result.amount>0) {
-        total+=result.amount*(bet/PAYLINES.length);
+        total+=result.amount*lineBet;
         winningLines++;
         for(let col=0;col<result.count;col++) cells[path[col]*5+col].classList.add('win-cell');
         drawWinningPayline(path,lineIndex+1);
@@ -185,14 +239,15 @@
   function renderInitial(){ const b=makeGrid(); show(b); }
   async function spin(){
     if(spinButton.disabled) return;
-    if(balance<bet){message.textContent='SALDO INSUFICIENTE';return;}
-    balance-=bet; balanceLabel.textContent=balance.toFixed(2);
-    spinButton.disabled=true; message.textContent='GIRANDO…'; winLabel.textContent='—'; requestAnimationFrame(fitIndicators); clearMarks(); grid.classList.add('spinning');
-    const start=Date.now();
+    const wager=currentWager();
+    if(balance<wager){message.textContent='SALDO INSUFICIENTE';return;}
+    balance-=wager; balanceLabel.textContent=balance.toFixed(2);
+    spinButton.disabled=true;betButton.disabled=true;linesButton.disabled=true;
+    message.textContent='GIRANDO…';winLabel.textContent='—';requestAnimationFrame(fitIndicators);clearMarks();grid.classList.add('spinning');
     const timer=setInterval(()=>show(makeGrid()),85);
     await new Promise(resolve=>setTimeout(resolve,1050));
-    clearInterval(timer); grid.classList.remove('spinning');
-    const board=makeGrid(); settle(board); spinButton.disabled=false;
+    clearInterval(timer);grid.classList.remove('spinning');
+    const board=makeGrid();settle(board);spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;
   }
   spinButton.addEventListener('click',spin);
   renderInitial();

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1b120c">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
   <link rel="preload" as="image" href="assets/loading/loading.webp?v=load-3">
-  <link rel="stylesheet" href="style.css?v=info-button-1">
+  <link rel="stylesheet" href="style.css?v=bet-lines-1">
 </head>
 <body>
   <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
@@ -31,6 +31,10 @@
       <img class="spin-art spin-art-pressed" src="assets/buttons/spin-pressed.webp?v=spin-cutout-6" alt="">
     </button>
     <button id="infoButton" class="info-button" type="button" aria-label="Abrir información de pagos y líneas" aria-haspopup="dialog" aria-controls="infoDialog"><span class="info-icon" aria-hidden="true">i</span><span>INFO</span></button>
+    <div class="wager-controls" role="group" aria-label="Ajustes de apuesta">
+      <button id="betButton" class="wager-control-button" type="button" aria-label="Elegir apuesta por línea" aria-haspopup="dialog" aria-expanded="false" aria-controls="betDialog"><span class="wager-control-label">BET</span><b id="betLevelValue" class="wager-control-value">0.05</b></button>
+      <button id="linesButton" class="wager-control-button" type="button" aria-label="Elegir cantidad de líneas activas" aria-haspopup="dialog" aria-expanded="false" aria-controls="linesDialog"><span class="wager-control-label">LINES</span><b id="linesValue" class="wager-control-value">20</b></button>
+    </div>
     <div class="caption">PROTOTIPO · 5 RODILLOS × 5 FILAS · 20 LÍNEAS</div>
   </main>
   <dialog id="infoDialog" class="info-dialog" aria-labelledby="infoTitle">
@@ -46,7 +50,7 @@
       <section id="info-pays" class="info-section" role="tabpanel" aria-labelledby="tab-pays">
         <p id="pay-note">Premios por 3 / 4 / 5 símbolos consecutivos desde la izquierda. Wild sustituye; Scatter no paga ni activa giros gratis.</p>
         <div class="table-wrap"><table><thead><tr><th scope="col">Símbolo</th><th scope="col">Peso*</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th></tr></thead><tbody id="paytable-body"></tbody></table></div>
-        <p class="rtp-note">*El peso indica frecuencia relativa, no premio. RTP teórico: 93%, calculado con los 759.375 resultados posibles de una línea y 20 líneas con la misma apuesta.</p>
+        <p class="rtp-note">*El peso indica frecuencia relativa, no premio. RTP teórico: 93% por línea; se mantiene al variar las líneas activas si se conserva la misma apuesta por línea. Hay 20 líneas disponibles.</p>
       </section>
       <section id="info-lines" class="info-section" role="tabpanel" aria-labelledby="tab-lines" hidden>
         <p>Cada número indica la fila que toma esa línea en cada rodillo: 1 arriba y 5 abajo. La línea paga si coinciden 3, 4 o 5 símbolos seguidos desde la izquierda.</p>
@@ -54,6 +58,52 @@
       </section>
     </div>
   </dialog>
-  <script src="game.js?v=indicator-overflow-2"></script>
+  <dialog id="betDialog" class="choice-dialog" aria-labelledby="betDialogTitle">
+    <div class="choice-header">
+      <div><h2 id="betDialogTitle">BET POR LÍNEA</h2><p>Elegí cuánto apostar en cada línea.</p></div>
+      <button id="betMenuClose" class="choice-close" type="button" aria-label="Cerrar menú BET">×</button>
+    </div>
+    <div class="choice-grid bet-choice-grid" role="group" aria-label="Apuesta por línea">
+      <button class="choice-option bet-option" type="button" data-bet-level="0.01" aria-pressed="false">0.01</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="0.02" aria-pressed="false">0.02</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="0.05" aria-pressed="true">0.05</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="0.10" aria-pressed="false">0.10</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="0.20" aria-pressed="false">0.20</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="0.50" aria-pressed="false">0.50</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="1.00" aria-pressed="false">1.00</button>
+      <button class="choice-option bet-option" type="button" data-bet-level="2.00" aria-pressed="false">2.00</button>
+    </div>
+    <p class="choice-summary"><span class="choice-summary-title">APUESTA TOTAL</span><b class="wager-total-label">1.00</b><span class="wager-breakdown-label">0.05 × 20 líneas</span></p>
+  </dialog>
+  <dialog id="linesDialog" class="choice-dialog" aria-labelledby="linesDialogTitle">
+    <div class="choice-header">
+      <div><h2 id="linesDialogTitle">LÍNEAS ACTIVAS</h2><p>Elegí cuántas líneas jugar.</p></div>
+      <button id="linesMenuClose" class="choice-close" type="button" aria-label="Cerrar menú de líneas">×</button>
+    </div>
+    <div class="choice-grid lines-choice-grid" role="group" aria-label="Cantidad de líneas activas">
+      <button class="choice-option line-option" type="button" data-lines="1" aria-pressed="false">1</button>
+      <button class="choice-option line-option" type="button" data-lines="2" aria-pressed="false">2</button>
+      <button class="choice-option line-option" type="button" data-lines="3" aria-pressed="false">3</button>
+      <button class="choice-option line-option" type="button" data-lines="4" aria-pressed="false">4</button>
+      <button class="choice-option line-option" type="button" data-lines="5" aria-pressed="false">5</button>
+      <button class="choice-option line-option" type="button" data-lines="6" aria-pressed="false">6</button>
+      <button class="choice-option line-option" type="button" data-lines="7" aria-pressed="false">7</button>
+      <button class="choice-option line-option" type="button" data-lines="8" aria-pressed="false">8</button>
+      <button class="choice-option line-option" type="button" data-lines="9" aria-pressed="false">9</button>
+      <button class="choice-option line-option" type="button" data-lines="10" aria-pressed="false">10</button>
+      <button class="choice-option line-option" type="button" data-lines="11" aria-pressed="false">11</button>
+      <button class="choice-option line-option" type="button" data-lines="12" aria-pressed="false">12</button>
+      <button class="choice-option line-option" type="button" data-lines="13" aria-pressed="false">13</button>
+      <button class="choice-option line-option" type="button" data-lines="14" aria-pressed="false">14</button>
+      <button class="choice-option line-option" type="button" data-lines="15" aria-pressed="false">15</button>
+      <button class="choice-option line-option" type="button" data-lines="16" aria-pressed="false">16</button>
+      <button class="choice-option line-option" type="button" data-lines="17" aria-pressed="false">17</button>
+      <button class="choice-option line-option" type="button" data-lines="18" aria-pressed="false">18</button>
+      <button class="choice-option line-option" type="button" data-lines="19" aria-pressed="false">19</button>
+      <button class="choice-option line-option" type="button" data-lines="20" aria-pressed="true">20</button>
+    </div>
+    <p class="choice-summary"><span class="choice-summary-title">APUESTA TOTAL</span><b class="wager-total-label">1.00</b><span class="wager-breakdown-label">0.05 × 20 líneas</span></p>
+  </dialog>
+  <script src="game.js?v=bet-lines-1"></script>
 </body>
 </html>
