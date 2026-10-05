@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1b120c">
   <title>Immortal Ways Buffalo — prototipo 5×5</title>
   <link rel="preload" as="image" href="assets/loading/loading.webp?v=load-3">
-  <link rel="stylesheet" href="style.css?v=bet-lines-1">
+  <link rel="stylesheet" href="style.css?v=spin-anchor-1">
 </head>
 <body>
   <section id="loading" class="loading-screen" aria-live="polite" aria-label="Cargando Immortal Ways Buffalo">
@@ -26,15 +26,13 @@
     </svg>
     <div class="meter" aria-live="polite"><span id="message">LISTO PARA GIRAR</span><b id="win">—</b></div>
     <div class="hud" aria-label="Indicadores de apuesta"><span class="hud-item"><span class="hud-label">SALDO</span><b id="balance" class="hud-value">1000.00</b></span><span class="hud-item"><span class="hud-label">APUESTA</span><b id="bet" class="hud-value">1.00</b></span></div>
+    <button id="betButton" class="wager-control-button" type="button" aria-label="Elegir apuesta por línea" aria-haspopup="dialog" aria-expanded="false" aria-controls="betDialog"><span class="wager-control-label">BET</span><b id="betLevelValue" class="wager-control-value">0.05</b></button>
     <button id="spin" class="spin" type="button" aria-label="Girar" disabled>
       <img class="spin-art spin-art-normal" src="assets/buttons/spin-normal.webp?v=spin-cutout-6" alt="">
       <img class="spin-art spin-art-pressed" src="assets/buttons/spin-pressed.webp?v=spin-cutout-6" alt="">
     </button>
-    <button id="infoButton" class="info-button" type="button" aria-label="Abrir información de pagos y líneas" aria-haspopup="dialog" aria-controls="infoDialog"><span class="info-icon" aria-hidden="true">i</span><span>INFO</span></button>
-    <div class="wager-controls" role="group" aria-label="Ajustes de apuesta">
-      <button id="betButton" class="wager-control-button" type="button" aria-label="Elegir apuesta por línea" aria-haspopup="dialog" aria-expanded="false" aria-controls="betDialog"><span class="wager-control-label">BET</span><b id="betLevelValue" class="wager-control-value">0.05</b></button>
-      <button id="linesButton" class="wager-control-button" type="button" aria-label="Elegir cantidad de líneas activas" aria-haspopup="dialog" aria-expanded="false" aria-controls="linesDialog"><span class="wager-control-label">LINES</span><b id="linesValue" class="wager-control-value">20</b></button>
-    </div>
+    <button id="linesButton" class="wager-control-button" type="button" aria-label="Elegir cantidad de líneas activas" aria-haspopup="dialog" aria-expanded="false" aria-controls="linesDialog"><span class="wager-control-label">LINES</span><b id="linesValue" class="wager-control-value">20</b></button>
+    <button id="infoButton" class="info-button" type="button" aria-label="Abrir información de pagos y líneas" aria-haspopup="dialog" aria-controls="infoDialog" title="Información de pagos y líneas"><span class="info-icon" aria-hidden="true">i</span></button>
     <div class="caption">PROTOTIPO · 5 RODILLOS × 5 FILAS · 20 LÍNEAS</div>
   </main>
   <dialog id="infoDialog" class="info-dialog" aria-labelledby="infoTitle">
@@ -104,6 +102,6 @@
     </div>
     <p class="choice-summary"><span class="choice-summary-title">APUESTA TOTAL</span><b class="wager-total-label">1.00</b><span class="wager-breakdown-label">0.05 × 20 líneas</span></p>
   </dialog>
-  <script src="game.js?v=bet-lines-1"></script>
+  <script src="game.js?v=spin-anchor-1"></script>
 </body>
 </html>
