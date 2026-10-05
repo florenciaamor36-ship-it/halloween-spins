@@ -195,7 +195,7 @@
               activateTurboReel(col+1,now);
             }
           }
-        }else if(activeTurboCol>=0&&elapsed>=turboStopAt){
+        }else if(activeTurboCol>=0&&now>=turboStopAt){
           const justStopped=activeTurboCol;
           stopReel(justStopped);
           if(justStopped<4)activateTurboReel(justStopped+1,now);
