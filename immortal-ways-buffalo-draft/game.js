@@ -156,30 +156,44 @@
     return new Promise(resolve=>{
       const started=performance.now();
       const stopAt=[420,560,700,840,980];
-      const stopped=Array(5).fill(false);
-      let suspenseStarted=false,lastRoll=started;
+      const stopped=Array(5).fill(false),lastRoll=Array(5).fill(started);
+      let suspenseStarted=false,activeTurboCol=-1,turboStopAt=0;
       grid.classList.add('spinning');
       cells.forEach(cell=>cell.classList.add('reel-spinning'));
+      function stopReel(col){
+        stopped[col]=true;showReel(finalBoard,col);
+        for(let row=0;row<5;row++)cells[row*5+col].classList.remove('reel-spinning','turbo-reel');
+      }
+      function activateTurboReel(col,now){
+        activeTurboCol=col;turboStopAt=now+2000;
+        for(let row=0;row<5;row++)cells[row*5+col].classList.add('turbo-reel');
+        machine.classList.add('suspense-active');
+      }
       function tick(now){
-        const elapsed=now-started,rollInterval=suspenseStarted?48:82;
-        if(now-lastRoll>=rollInterval){
-          for(let col=0;col<5;col++)if(!stopped[col])rollReel(col);
-          lastRoll=now;
-        }
+        const elapsed=now-started;
         for(let col=0;col<5;col++){
-          if(stopped[col]||elapsed<stopAt[col])continue;
-          stopped[col]=true;
-          showReel(finalBoard,col);
-          for(let row=0;row<5;row++)cells[row*5+col].classList.remove('reel-spinning');
-          if(!suspenseStarted&&col<4&&reelHasBison(finalBoard,col)){
-            suspenseStarted=true;
-            machine.classList.add('suspense-active','suspense-turbo');
-            for(let next=col+1;next<5;next++){const normalStop=stopAt[next];stopAt[next]=Math.max(normalStop+2000,elapsed+(next-col)*145);}
+          if(stopped[col])continue;
+          const interval=col===activeTurboCol?24:82;
+          if(now-lastRoll[col]>=interval){rollReel(col);lastRoll[col]=now;}
+        }
+        if(!suspenseStarted){
+          const col=stopped.findIndex(value=>!value);
+          if(col>=0&&elapsed>=stopAt[col]){
+            stopReel(col);
+            if(col<4&&reelHasBison(finalBoard,col)){
+              suspenseStarted=true;
+              activateTurboReel(col+1,now);
+            }
           }
+        }else if(activeTurboCol>=0&&elapsed>=turboStopAt){
+          const justStopped=activeTurboCol;
+          stopReel(justStopped);
+          if(justStopped<4)activateTurboReel(justStopped+1,now);
+          else{activeTurboCol=-1;machine.classList.remove('suspense-active');}
         }
         if(stopped.every(Boolean)){
           grid.classList.remove('spinning');
-          machine.classList.remove('suspense-active','suspense-turbo');
+          machine.classList.remove('suspense-active');
           resolve();
           return;
         }
