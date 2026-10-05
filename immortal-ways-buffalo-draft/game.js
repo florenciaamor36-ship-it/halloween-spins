@@ -43,32 +43,33 @@
   const wagerBreakdownLabels=[...document.querySelectorAll('.wager-breakdown-label')];
   const payNote=document.getElementById('pay-note');
   let balance = 1000;
-  let lineBet = 0.05;
+  let totalBet = 25;
   let activeLines = 20;
   let cells = [];
   let paylineClearTimer=null;
   const weightTotal = symbols.reduce((n,s) => n + s.weight, 0);
   const paytableBody=document.getElementById('paytable-body');
   const paylineBody=document.getElementById('payline-body');
-  function currentWager(){return Math.round(lineBet*activeLines*100)/100;}
+  function currentWager(){return totalBet;}
+  function currentLineBet(){return totalBet/activeLines;}
   function renderPaytable(){
     paytableBody.replaceChildren();
     for (const s of symbols) {
       const row=document.createElement('tr');
-      const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE*lineBet).toFixed(2)) : ['—','—','—'];
+      const pays=s.pay ? s.pay.map(v=>(v*PAYOUT_SCALE*currentLineBet()).toFixed(2)) : ['—','—','—'];
       row.innerHTML=`<th scope="row">${s.name}</th><td>${s.weight}</td><td>${pays[0]}</td><td>${pays[1]}</td><td>${pays[2]}</td>`;
       paytableBody.appendChild(row);
     }
   }
   function updateWagerUI(){
-    const total=currentWager();
-    betLevelLabel.textContent=lineBet.toFixed(2);
+    const total=currentWager(),lineAmount=currentLineBet();
+    betLevelLabel.textContent=String(totalBet);
     linesValueLabel.textContent=String(activeLines);
     wagerLabel.textContent=total.toFixed(2);
     wagerTotalLabels.forEach(label=>label.textContent=total.toFixed(2));
-    wagerBreakdownLabels.forEach(label=>label.textContent=`${lineBet.toFixed(2)} × ${activeLines} líneas`);
-    payNote.textContent=`Premios por línea ganadora; BET ${lineBet.toFixed(2)} por línea. Apuesta total actual: ${total.toFixed(2)} (${activeLines} líneas activas).`;
-    betOptionButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.betLevel)===lineBet)));
+    wagerBreakdownLabels.forEach(label=>label.textContent=`${lineAmount.toFixed(2)} por línea × ${activeLines}`);
+    payNote.textContent=`Premios por línea ganadora; BET total ${total.toFixed(2)} (${lineAmount.toFixed(2)} por línea con ${activeLines} líneas activas).`;
+    betOptionButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.betTotal)===totalBet)));
     lineOptionButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.lines)===activeLines)));
     renderPaytable();
     requestAnimationFrame(fitIndicators);
@@ -107,7 +108,7 @@
   bindChoiceMenu(betButton,betDialog,document.getElementById('betMenuClose'));
   bindChoiceMenu(linesButton,linesDialog,document.getElementById('linesMenuClose'));
   betOptionButtons.forEach(button=>button.addEventListener('click',()=>{
-    lineBet=Number(button.dataset.betLevel);
+    totalBet=Number(button.dataset.betTotal);
     updateWagerUI();
     betDialog.close();
   }));
@@ -203,7 +204,7 @@
     PAYLINES.slice(0,activeLines).forEach((path,lineIndex)=>{
       const result=lineWin(board,path);
       if (result.amount>0) {
-        total+=result.amount*lineBet;
+        total+=result.amount*currentLineBet();
         winningLines++;
         for(let col=0;col<result.count;col++) cells[path[col]*5+col].classList.add('win-cell');
         drawWinningPayline(path,lineIndex+1);
