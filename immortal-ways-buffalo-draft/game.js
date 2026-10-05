@@ -147,9 +147,10 @@
   function makeGrid() { return Array.from({length:25},pick); }
   function setCellSymbol(index,s) {
     const cell=cells[index],img=cell.firstElementChild;
-    img.src=`assets/symbols/${s.id}.webp?v=spin-art-4`;
-    img.alt=s.name;
-    cell.dataset.symbol=s.id;
+    const src=`assets/symbols/${s.id}.webp?v=spin-art-4`;
+    if(img.getAttribute('src')!==src)img.src=src;
+    if(img.alt!==s.name)img.alt=s.name;
+    if(cell.dataset.symbol!==s.id)cell.dataset.symbol=s.id;
   }
   function show(board) { board.forEach((s,i)=>setCellSymbol(i,s)); }
   function showReel(board,col) {
@@ -168,11 +169,25 @@
       const stopAt=[420,560,700,840,980];
       const stopped=Array(5).fill(false),lastRoll=Array(5).fill(started);
       let suspenseStarted=false,activeTurboCol=-1,turboStopAt=0;
+      let resolved=false,lastFrameAt=started,safetyTimer=null;
       grid.classList.add('spinning');
       cells.forEach(cell=>cell.classList.add('reel-spinning'));
       function stopReel(col){
         stopped[col]=true;showReel(finalBoard,col);
         for(let row=0;row<5;row++)cells[row*5+col].classList.remove('reel-spinning','turbo-reel');
+      }
+      function finishAnimation(){
+        if(resolved)return;
+        resolved=true;
+        for(let col=0;col<5;col++)stopReel(col);
+        grid.classList.remove('spinning');
+        machine.classList.remove('suspense-active');
+        if(safetyTimer!==null)clearTimeout(safetyTimer);
+        document.removeEventListener('visibilitychange',recoverAfterPause);
+        resolve();
+      }
+      function recoverAfterPause(){
+        if(!document.hidden&&performance.now()-lastFrameAt>1200)finishAnimation();
       }
       function activateTurboReel(col,now){
         activeTurboCol=col;turboStopAt=now+TURBO_REEL_DURATION;
@@ -180,10 +195,12 @@
         machine.classList.add('suspense-active');
       }
       function tick(now){
+        if(resolved)return;
+        lastFrameAt=now;
         const elapsed=now-started;
         for(let col=0;col<5;col++){
           if(stopped[col])continue;
-          const interval=col===activeTurboCol?24:82;
+          const interval=col===activeTurboCol?34:82;
           if(now-lastRoll[col]>=interval){rollReel(col);lastRoll[col]=now;}
         }
         if(!suspenseStarted){
@@ -201,14 +218,11 @@
           if(justStopped<4)activateTurboReel(justStopped+1,now);
           else{activeTurboCol=-1;machine.classList.remove('suspense-active');}
         }
-        if(stopped.every(Boolean)){
-          grid.classList.remove('spinning');
-          machine.classList.remove('suspense-active');
-          resolve();
-          return;
-        }
+        if(stopped.every(Boolean)){finishAnimation();return;}
         requestAnimationFrame(tick);
       }
+      document.addEventListener('visibilitychange',recoverAfterPause);
+      safetyTimer=window.setTimeout(finishAnimation,6000);
       requestAnimationFrame(tick);
     });
   }
