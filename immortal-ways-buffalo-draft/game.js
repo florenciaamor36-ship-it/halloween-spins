@@ -29,6 +29,7 @@
   const grid = document.getElementById('grid');
   const machine = document.querySelector('.machine');
   const spinButton = document.getElementById('spin');
+  const autoButton = document.getElementById('autoButton');
   const message = document.getElementById('message');
   const winLabel = document.getElementById('win');
   const balanceLabel = document.getElementById('balance');
@@ -49,6 +50,7 @@
   let activeLines = 20;
   let cells = [];
   let paylineClearTimer=null;
+  let autoSpinning=false,autoTimer=null;
   const weightTotal = symbols.reduce((n,s) => n + s.weight, 0);
   const paytableBody=document.getElementById('paytable-body');
   const paylineBody=document.getElementById('payline-body');
@@ -324,24 +326,46 @@
   async function runBisonSuspensePreview(){
     const board=makeGrid(),bison=symbols.find(s=>s.id==='bison');
     board[10]=bison;
-    spinButton.disabled=true;betButton.disabled=true;linesButton.disabled=true;
+    spinButton.disabled=true;autoButton.disabled=true;betButton.disabled=true;linesButton.disabled=true;
     message.textContent='PREVIA · BISONTE';winLabel.textContent='—';clearMarks();
     try{
       await animateReels(board);
       show(board);message.textContent='PREVIA · EFECTO BISONTE';winLabel.textContent='';
-    }finally{spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;}
+    }finally{spinButton.disabled=false;autoButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;}
   }
   function renderInitial(){ const b=makeGrid(); show(b); }
+  function updateAutoButton(){
+    autoButton.textContent=autoSpinning?'STOP':'AUTO';
+    autoButton.setAttribute('aria-pressed',String(autoSpinning));
+    autoButton.setAttribute('aria-label',autoSpinning?'Detener giros automáticos':'Iniciar giros automáticos');
+    autoButton.title=autoSpinning?'Detener los giros automáticos':'Giros automáticos';
+  }
+  function stopAuto(){
+    autoSpinning=false;
+    if(autoTimer!==null){clearTimeout(autoTimer);autoTimer=null;}
+    updateAutoButton();
+  }
+  autoButton.addEventListener('click',()=>{
+    if(autoSpinning){stopAuto();return;}
+    autoSpinning=true;updateAutoButton();
+    if(!spinButton.disabled)spin();
+  });
   async function spin(){
     if(spinButton.disabled) return;
     const wager=currentWager();
-    if(balance<wager){message.textContent='SALDO INSUFICIENTE';return;}
+    if(balance<wager){message.textContent='SALDO INSUFICIENTE';if(autoSpinning)stopAuto();return;}
     const finalBoard=makeGrid();
     balance-=wager; balanceLabel.textContent=balance.toFixed(2);
     spinButton.disabled=true;betButton.disabled=true;linesButton.disabled=true;
     message.textContent='GIRANDO…';winLabel.textContent='—';requestAnimationFrame(fitIndicators);clearMarks();
     try{await animateReels(finalBoard);settle(finalBoard);}
-    finally{spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;}
+    finally{
+      spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;
+      if(autoSpinning){
+        if(balance>=currentWager())autoTimer=window.setTimeout(()=>{autoTimer=null;spin();},350);
+        else stopAuto();
+      }
+    }
   }
   spinButton.addEventListener('click',spin);
   renderInitial();
