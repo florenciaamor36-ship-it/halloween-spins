@@ -122,7 +122,7 @@
 
   // The 20 paths are five straight lines plus fifteen zig-zag routes.
   PAYLINES.forEach((_, i) => { if (PAYLINES[i].length !== 5) throw new Error('Payline must traverse all five reels'); });
-  const sparkPaths=[['5%','25%','-12px','-18px'],['84%','38%','14px','-10px'],['10%','66%','-15px','10px'],['80%','73%','13px','15px']];
+  const sparkPaths=[['4%','18%','-17px','-26px'],['90%','26%','20px','-20px'],['6%','53%','-20px','-3px'],['94%','61%','20px','5px'],['18%','84%','-15px','19px'],['80%','88%','16px','22px'],['42%','8%','-4px','-24px'],['56%','43%','17px','13px']];
   for (let i=0;i<25;i++) {
     const cell=document.createElement('div'); cell.className='cell'; cell.setAttribute('role','gridcell');
     const img=document.createElement('img'); img.className='symbol'; img.alt=''; img.draggable=false;
