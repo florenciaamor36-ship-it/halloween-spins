@@ -17,7 +17,7 @@
     {id:'scatter',name:'Scatter',weight:5,pay:null,special:true}
   ];
   const PAYOUT_SCALE = 33.407138443089984;
-  const TURBO_REEL_DURATION = 650;
+  const TURBO_REEL_DURATION = 450;
   const PAYLINES = [
     [2,2,2,2,2],[1,1,1,1,1],[3,3,3,3,3],[0,0,0,0,0],[4,4,4,4,4],
     [0,1,2,1,0],[4,3,2,3,4],[1,0,1,2,1],[3,4,3,2,3],[0,0,1,2,2],
@@ -122,11 +122,20 @@
 
   // The 20 paths are five straight lines plus fifteen zig-zag routes.
   PAYLINES.forEach((_, i) => { if (PAYLINES[i].length !== 5) throw new Error('Payline must traverse all five reels'); });
+  const sparkPaths=[['5%','25%','-12px','-18px'],['84%','38%','14px','-10px'],['10%','66%','-15px','10px'],['80%','73%','13px','15px']];
   for (let i=0;i<25;i++) {
     const cell=document.createElement('div'); cell.className='cell'; cell.setAttribute('role','gridcell');
     const img=document.createElement('img'); img.className='symbol'; img.alt=''; img.draggable=false;
     const frame=document.createElement('span'); frame.className='win-frame'; frame.setAttribute('aria-hidden','true');
-    cell.appendChild(img); cell.appendChild(frame); grid.appendChild(cell); cells.push(cell);
+    const sparkLayer=document.createElement('span');sparkLayer.className='spark-layer';sparkLayer.setAttribute('aria-hidden','true');
+    sparkPaths.forEach(([left,top,x,y],sparkIndex)=>{
+      const spark=document.createElement('i');spark.className='spark';
+      spark.style.left=left;spark.style.top=top;spark.style.setProperty('--spark-x',x);spark.style.setProperty('--spark-y',y);
+      spark.style.animationDelay=`-${(sparkIndex*57+(i%5)*31)%310}ms`;
+      spark.style.animationDuration=`${220+(sparkIndex%3)*32+(i%5)*14}ms`;
+      sparkLayer.appendChild(spark);
+    });
+    cell.appendChild(img); cell.appendChild(frame); cell.appendChild(sparkLayer); grid.appendChild(cell); cells.push(cell);
   }
   const SVG_NS='http://www.w3.org/2000/svg';
   const paylineLayer=document.getElementById('paylinePaths');

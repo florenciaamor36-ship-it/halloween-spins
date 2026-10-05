@@ -23,10 +23,15 @@ body{min-height:100vh}
 .grid.spinning .symbol{animation:tumble .12s linear infinite alternate}
 .grid.spinning .cell.reel-spinning .symbol{--reel-blur-low:.28px;--reel-blur-high:.72px;animation:reel-tumble .10s linear infinite alternate}
 .grid.spinning .cell.turbo-reel .symbol{--reel-blur-low:1.45px;--reel-blur-high:2.3px;animation-duration:.032s}
+.spark-layer{position:absolute;inset:0;z-index:4;overflow:visible;pointer-events:none}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;opacity:0;background:radial-gradient(circle,#fff 0 16%,#fff4a0 24%,#ffd23f 52%,rgba(255,142,20,0) 78%);box-shadow:0 0 4px 1px rgba(255,211,83,.92),0 0 9px rgba(255,129,24,.58);pointer-events:none}
+.spark:after{content:"";position:absolute;left:2px;top:2px;width:10px;height:1.5px;border-radius:2px;background:linear-gradient(90deg,rgba(255,244,169,.9),rgba(255,193,49,.52),transparent);transform:rotate(-35deg);transform-origin:left center}
+.cell.turbo-reel .spark{animation:spark-eject .28s ease-out infinite}
+@keyframes spark-eject{0%{opacity:0;transform:translate3d(0,0,0) scale(.55) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate3d(var(--spark-x),var(--spark-y),0) scale(0) rotate(180deg)}}
 @keyframes reel-tumble{from{transform:translateY(-5px) scale(.96);filter:blur(var(--reel-blur-low)) drop-shadow(0 1px 2px #25170d)}to{transform:translateY(5px) scale(1.02);filter:blur(var(--reel-blur-high)) drop-shadow(0 1px 2px #25170d)}}
 .machine.suspense-active{animation:bison-suspense-vibration .065s linear infinite;transform-origin:center center}
 @keyframes bison-suspense-vibration{0%,100%{transform:translate3d(0,0,0) rotate(0)}16%{transform:translate3d(-2.5px,1.5px,0) rotate(-.18deg)}33%{transform:translate3d(2px,-2px,0) rotate(.14deg)}50%{transform:translate3d(-1.5px,-1.5px,0) rotate(.2deg)}66%{transform:translate3d(2.5px,1.5px,0) rotate(-.14deg)}83%{transform:translate3d(-2px,2px,0) rotate(.1deg)}}
-@media(prefers-reduced-motion:reduce){.machine.suspense-active{animation:none}.grid.spinning .cell.turbo-reel .symbol{--reel-blur-low:.4px;--reel-blur-high:.7px;animation-duration:.10s}}
+@media(prefers-reduced-motion:reduce){.machine.suspense-active{animation:none}.grid.spinning .cell.turbo-reel .symbol{--reel-blur-low:.4px;--reel-blur-high:.7px;animation-duration:.10s}.cell.turbo-reel .spark{animation:none;opacity:0}}
 .cell.win-cell .symbol{filter:drop-shadow(0 0 3px #ffd264) drop-shadow(0 1px 2px #25170d)}
 @keyframes tumble{from{transform:translateY(-4px) scale(.96);filter:blur(.4px)}to{transform:translateY(4px) scale(1.02);filter:blur(0)}}
 .cell.bison-hit .symbol{animation:bison-bounce .54s cubic-bezier(.2,.8,.3,1) both}
