@@ -17,6 +17,7 @@
     {id:'scatter',name:'Scatter',weight:5,pay:null,special:true}
   ];
   const PAYOUT_SCALE = 33.407138443089984;
+  const TURBO_REEL_DURATION = 650;
   const PAYLINES = [
     [2,2,2,2,2],[1,1,1,1,1],[3,3,3,3,3],[0,0,0,0,0],[4,4,4,4,4],
     [0,1,2,1,0],[4,3,2,3,4],[1,0,1,2,1],[3,4,3,2,3],[0,0,1,2,2],
@@ -165,7 +166,7 @@
         for(let row=0;row<5;row++)cells[row*5+col].classList.remove('reel-spinning','turbo-reel');
       }
       function activateTurboReel(col,now){
-        activeTurboCol=col;turboStopAt=now+2000;
+        activeTurboCol=col;turboStopAt=now+TURBO_REEL_DURATION;
         for(let row=0;row<5;row++)cells[row*5+col].classList.add('turbo-reel');
         machine.classList.add('suspense-active');
       }
