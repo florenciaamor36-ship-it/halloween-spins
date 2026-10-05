@@ -21,6 +21,12 @@ body{min-height:100vh}
 @keyframes win-frame-reveal{0%{opacity:0;transform:scale(.96)}55%{opacity:1;transform:scale(1)}100%{opacity:.92;transform:scale(1)}}
 .symbol{display:block;width:94%;height:94%;object-fit:contain;filter:drop-shadow(0 1px 2px #25170d);transition:transform .12s ease,filter .12s ease}
 .grid.spinning .symbol{animation:tumble .12s linear infinite alternate}
+.grid.spinning .cell.reel-spinning .symbol{--reel-blur-low:.28px;--reel-blur-high:.72px;animation:reel-tumble .10s linear infinite alternate}
+.machine.suspense-turbo .grid.spinning .cell.reel-spinning .symbol{--reel-blur-low:.9px;--reel-blur-high:1.35px;animation-duration:.055s}
+@keyframes reel-tumble{from{transform:translateY(-5px) scale(.96);filter:blur(var(--reel-blur-low)) drop-shadow(0 1px 2px #25170d)}to{transform:translateY(5px) scale(1.02);filter:blur(var(--reel-blur-high)) drop-shadow(0 1px 2px #25170d)}}
+.machine.suspense-active{animation:bison-suspense-vibration .11s linear infinite;transform-origin:center center}
+@keyframes bison-suspense-vibration{0%,100%{transform:translate3d(0,0,0)}25%{transform:translate3d(-1px,.5px,0)}50%{transform:translate3d(1px,-.5px,0)}75%{transform:translate3d(.5px,1px,0)}}
+@media(prefers-reduced-motion:reduce){.machine.suspense-active{animation:none}.machine.suspense-turbo .grid.spinning .cell.reel-spinning .symbol{--reel-blur-low:.35px;--reel-blur-high:.6px;animation-duration:.10s}}
 .cell.win-cell .symbol{filter:drop-shadow(0 0 3px #ffd264) drop-shadow(0 1px 2px #25170d)}
 @keyframes tumble{from{transform:translateY(-4px) scale(.96);filter:blur(.4px)}to{transform:translateY(4px) scale(1.02);filter:blur(0)}}
 .cell.bison-hit .symbol{animation:bison-bounce .54s cubic-bezier(.2,.8,.3,1) both}

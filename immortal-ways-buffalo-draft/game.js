@@ -26,6 +26,7 @@
   // Cleopatra's exact line palette, applied by the same payline number.
   const LINE_COLORS=['#f2c96b','#45d9e8','#f28d67','#9d74d8','#64ce98','#ffbc57','#27b7be','#ec82b4','#97c957','#e49e2a','#4bb8a5','#7775d7','#d76bd1','#df5c4d','#55bb78','#e7cb59','#38a9dc','#ad83e5','#7fc967','#df7c99'];
   const grid = document.getElementById('grid');
+  const machine = document.querySelector('.machine');
   const spinButton = document.getElementById('spin');
   const message = document.getElementById('message');
   const winLabel = document.getElementById('win');
@@ -134,12 +135,57 @@
     return symbols[symbols.length-1];
   }
   function makeGrid() { return Array.from({length:25},pick); }
-  function show(board) {
-    board.forEach((s,i) => {
-      const img=cells[i].firstElementChild;
-      img.src=`assets/symbols/${s.id}.webp?v=spin-art-4`;
-      img.alt=s.name;
-      cells[i].dataset.symbol=s.id;
+  function setCellSymbol(index,s) {
+    const cell=cells[index],img=cell.firstElementChild;
+    img.src=`assets/symbols/${s.id}.webp?v=spin-art-4`;
+    img.alt=s.name;
+    cell.dataset.symbol=s.id;
+  }
+  function show(board) { board.forEach((s,i)=>setCellSymbol(i,s)); }
+  function showReel(board,col) {
+    for(let row=0;row<5;row++)setCellSymbol(row*5+col,board[row*5+col]);
+  }
+  function rollReel(col) {
+    for(let row=0;row<5;row++)setCellSymbol(row*5+col,pick());
+  }
+  function reelHasBison(board,col) {
+    for(let row=0;row<5;row++)if(board[row*5+col].id==='bison')return true;
+    return false;
+  }
+  function animateReels(finalBoard) {
+    return new Promise(resolve=>{
+      const started=performance.now();
+      const stopAt=[420,560,700,840,980];
+      const stopped=Array(5).fill(false);
+      let suspenseStarted=false,lastRoll=started;
+      grid.classList.add('spinning');
+      cells.forEach(cell=>cell.classList.add('reel-spinning'));
+      function tick(now){
+        const elapsed=now-started,rollInterval=suspenseStarted?48:82;
+        if(now-lastRoll>=rollInterval){
+          for(let col=0;col<5;col++)if(!stopped[col])rollReel(col);
+          lastRoll=now;
+        }
+        for(let col=0;col<5;col++){
+          if(stopped[col]||elapsed<stopAt[col])continue;
+          stopped[col]=true;
+          showReel(finalBoard,col);
+          for(let row=0;row<5;row++)cells[row*5+col].classList.remove('reel-spinning');
+          if(!suspenseStarted&&col<4&&reelHasBison(finalBoard,col)){
+            suspenseStarted=true;
+            machine.classList.add('suspense-active','suspense-turbo');
+            for(let next=col+1;next<5;next++){const normalStop=stopAt[next];stopAt[next]=Math.max(normalStop+2000,elapsed+(next-col)*145);}
+          }
+        }
+        if(stopped.every(Boolean)){
+          grid.classList.remove('spinning');
+          machine.classList.remove('suspense-active','suspense-turbo');
+          resolve();
+          return;
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     });
   }
   function lineWin(board, rows) {
@@ -237,18 +283,27 @@
     winLabel.textContent='';
     requestAnimationFrame(fitIndicators);
   }
+  async function runBisonSuspensePreview(){
+    const board=makeGrid(),bison=symbols.find(s=>s.id==='bison');
+    board[10]=bison;
+    spinButton.disabled=true;betButton.disabled=true;linesButton.disabled=true;
+    message.textContent='PREVIA · BISONTE';winLabel.textContent='—';clearMarks();
+    try{
+      await animateReels(board);
+      show(board);message.textContent='PREVIA · EFECTO BISONTE';winLabel.textContent='';
+    }finally{spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;}
+  }
   function renderInitial(){ const b=makeGrid(); show(b); }
   async function spin(){
     if(spinButton.disabled) return;
     const wager=currentWager();
     if(balance<wager){message.textContent='SALDO INSUFICIENTE';return;}
+    const finalBoard=makeGrid();
     balance-=wager; balanceLabel.textContent=balance.toFixed(2);
     spinButton.disabled=true;betButton.disabled=true;linesButton.disabled=true;
-    message.textContent='GIRANDO…';winLabel.textContent='—';requestAnimationFrame(fitIndicators);clearMarks();grid.classList.add('spinning');
-    const timer=setInterval(()=>show(makeGrid()),85);
-    await new Promise(resolve=>setTimeout(resolve,1050));
-    clearInterval(timer);grid.classList.remove('spinning');
-    const board=makeGrid();settle(board);spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;
+    message.textContent='GIRANDO…';winLabel.textContent='—';requestAnimationFrame(fitIndicators);clearMarks();
+    try{await animateReels(finalBoard);settle(finalBoard);}
+    finally{spinButton.disabled=false;betButton.disabled=false;linesButton.disabled=false;}
   }
   spinButton.addEventListener('click',spin);
   renderInitial();
@@ -266,7 +321,12 @@
     }));
     Promise.all(tasks).then(()=>setTimeout(()=>{
       spinButton.disabled=false;screen?.classList.add('is-hidden');
-      setTimeout(()=>{screen?.remove();if(new URLSearchParams(location.search).get('payline-preview')==='1')showPaylinePreview();},500);
+      setTimeout(()=>{
+        screen?.remove();
+        const params=new URLSearchParams(location.search);
+        if(params.get('bison-suspense-preview')==='1')runBisonSuspensePreview();
+        else if(params.get('payline-preview')==='1')showPaylinePreview();
+      },500);
     },180));
   }
   preloadAssets();
