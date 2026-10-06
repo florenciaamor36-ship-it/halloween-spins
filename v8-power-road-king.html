@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-4">
-  <link rel="stylesheet" href="themes/v8-power-road-king.css?v=v8-road-king-20261006-15">
+  <link rel="stylesheet" href="themes/v8-power-road-king.css?v=v8-road-king-20261006-18">
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
@@ -40,8 +40,8 @@
     <img class="lines-bar" alt="">
     <section class="ui">
       <div class="display balance"><div class="control-box"><span class="label">SALDO</span><b id="balance" class="value">10000</b></div></div>
-      <div class="display bet"><div class="control-box"><span class="label">APUESTA</span><b id="bet" class="value">50</b></div></div>
-      <div class="display lines"><div class="control-box"><span class="label">LÍNEAS</span><b id="lines" class="value">20</b></div></div>
+      <button id="betIndicator" class="display bet settings-indicator" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="rkSettingsMenu"><div class="control-box"><span class="label">APUESTA</span><b id="bet" class="value">50</b></div></button>
+      <button id="linesIndicator" class="display lines settings-indicator" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="rkSettingsMenu"><div class="control-box"><span class="label">LÍNEAS</span><b id="lines" class="value">20</b></div></button>
       <div class="display win"><div class="control-box"><span class="label">PREMIO</span><b id="win" class="value">0</b></div></div>
       <div class="display jackpot"><span class="label" id="jackpotLabel">TESORO</span> <b id="jackpot">75420</b></div>
       <button id="spin" class="spin" type="button" aria-label="Girar"><span>GIRAR</span></button>
@@ -51,6 +51,22 @@
     </section>
   </main>
   <button id="autoStopOverlay" class="auto-stop-overlay" type="button">PARAR AUTO</button>
+  <div id="rkSettingsMenu" class="rk-settings-menu" aria-hidden="true">
+    <button id="settingsBackdrop" class="rk-settings-backdrop" type="button" aria-label="Cerrar configuración"></button>
+    <section class="rk-settings-card" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <button id="closeSettingsMenu" class="rk-settings-close" type="button" aria-label="Cerrar">×</button>
+      <h2 id="settingsTitle">CONFIGURAR</h2>
+      <div id="betSetting" class="rk-setting-panel">
+        <p class="rk-setting-label">APUESTA TOTAL</p>
+        <div class="rk-bet-stepper"><button id="betStepDown" type="button" aria-label="Bajar apuesta">−</button><strong id="betSettingValue">25</strong><button id="betStepUp" type="button" aria-label="Subir apuesta">+</button></div>
+        <p id="betStepHint" class="rk-setting-hint"></p>
+      </div>
+      <div id="lineSetting" class="rk-setting-panel" hidden>
+        <p class="rk-setting-label">ELEGÍ CANTIDAD DE LÍNEAS</p>
+        <div id="lineChoiceButtons" class="rk-line-choices"></div>
+      </div>
+    </section>
+  </div>
   <div id="paytableModal" class="paytable-modal" aria-hidden="true">
     <div class="paytable-card"><button id="closePaytable" class="paytable-close" aria-label="Cerrar">×</button>
       <div class="paytable-brand"></div><h2></h2><p class="paytable-subtitle"></p>
@@ -58,7 +74,7 @@
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/v8-power-road-king.js?v=v8-road-king-20261006-15"></script>
-  <script src="main.js?v=v8-road-king-20261006-15"></script>
+  <script src="themes/v8-power-road-king.js?v=v8-road-king-20261006-18"></script>
+  <script src="main.js?v=v8-road-king-20261006-18"></script>
 </body>
 </html>
