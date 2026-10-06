@@ -343,3 +343,7 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
   html[data-skin="v8-road-king"] #game .reels.is-spinning canvas,
   html[data-skin="v8-road-king"] #game .reels.is-spinning::before { animation:none !important; }
 }
+
+
+/* Keep the announcement plate out of the way unless it carries a message. */
+html[data-skin="v8-road-king"] #game .announcement-panel.rk-announcement-empty { display:none !important; }
