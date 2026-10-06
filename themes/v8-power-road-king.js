@@ -1,4 +1,5 @@
 /* Local V8 Road King mask. Prize math is temporary and not user-approved final rules. */
+if (new URLSearchParams(window.location.search).get('desktop-preview') === '1') document.documentElement.classList.add('rk-desktop-preview');
 (() => {
  const transparent='assets/v8-power-road-king/transparent.webp';
  window.SLOT_GAME_CONFIG={schemaVersion:1,id:'v8-road-king',assets:{frame:{portrait:'assets/v8-power-road-king/frame.webp',fallback:'assets/v8-power-road-king/frame.webp'},loading:'assets/v8-power-road-king/loading.webp',spin:{normal:transparent,pressed:transparent},indicators:{balance:transparent,bet:transparent,lines:transparent},announcementFrame:transparent,bigWin:'assets/v8-power-road-king/effects/big-win.webp',lowWin:'assets/v8-power-road-king/effects/low-win.webp',paytableFrame:transparent,winFrames:[{key:'v8-win-glow',src:'assets/v8-power-road-king/effects/win-glow.webp'}]},
