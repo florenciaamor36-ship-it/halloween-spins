@@ -1,0 +1,10 @@
+{
+  "name": "V8 Power Slots · Road King",
+  "short_name": "Road King",
+  "start_url": "./v8-power-road-king.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090d14",
+  "theme_color": "#090d14"
+}
