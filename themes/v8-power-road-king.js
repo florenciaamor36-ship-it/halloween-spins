@@ -18,7 +18,7 @@ if (new URLSearchParams(window.location.search).get('desktop-preview') === '1') 
     { key: 'wild', label: 'WILD', asset: 'assets/v8-power-road-king/symbols/wild-centered.webp' },
     { key: 'scatter', label: 'SCATTER', asset: 'assets/v8-power-road-king/symbols/scatter-centered.webp' },
     { key: 'bonus', label: 'BONUS', asset: 'assets/v8-power-road-king/symbols/bonus-centered.webp' }
- ],visual:{symbolScale:.94,symbolScaleY:1,symbolFit:'cell-width'},
+ ],visual:{symbolScale:.68,symbolScaleY:1,symbolFit:'cell-width'},
  defaults:{balance:1000,bet:25,jackpot:0,lines:20,minBet:25,maxBet:500,betStep:25,minLines:5,maxLines:20,lineStep:5,jackpotContributionRate:0,minimumJackpotContribution:0,bigWinBetMultiplier:10,lowWinBetMultiplier:3,freeSpins:0},
  specialSymbols:{wild:'wild',scatter:'scatter',bonus:'bonus',animatedWin:'cosmic-engine-heart'},
  rules:{targetRtpPercent:93, // temporary baseline math; pending user approval
