@@ -136,8 +136,11 @@ html[data-skin="v8-road-king"] #game .ui #menu { left:auto !important; right:5% 
   height:100% !important; max-width:none !important; object-fit:fill !important;
 }
 :root[data-skin="v8-road-king"] #loadingScreen .loading-ui {
-  position:absolute !important; left:13% !important; bottom:10% !important;
-  width:74% !important; z-index:2 !important; padding:6px 10px 5px !important;
+  position:absolute !important; left:13% !important; right:auto !important;
+  top:auto !important; bottom:10% !important; width:74% !important;
+  height:auto !important; max-height:none !important; transform:none !important;
+  display:grid !important; gap:6px !important; text-align:left !important;
+  z-index:2 !important; padding:6px 10px 5px !important;
   border:1px solid rgba(190,218,238,.65) !important; border-radius:8px !important;
   background:rgba(5,10,17,.82) !important; box-shadow:0 2px 7px rgba(0,0,0,.85) !important;
   box-sizing:border-box !important;
