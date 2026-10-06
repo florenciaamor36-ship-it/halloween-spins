@@ -508,3 +508,10 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 :root[data-skin="v8-road-king"] #rkSettingsMenu .rk-settings-backdrop { z-index:0 !important; }
 :root[data-skin="v8-road-king"] #rkSettingsMenu .rk-settings-card { z-index:2 !important; pointer-events:auto !important; }
 :root[data-skin="v8-road-king"] #rkSettingsMenu .rk-settings-card button { position:relative !important; z-index:3 !important; pointer-events:auto !important; }
+
+
+/* These controls are the indicator chips themselves, so keep their content fully visible. */
+:root[data-skin="v8-road-king"] #game .ui .display.bet.settings-indicator,
+:root[data-skin="v8-road-king"] #game .ui .display.lines.settings-indicator {
+  opacity:1 !important; appearance:none !important; -webkit-appearance:none !important;
+}
