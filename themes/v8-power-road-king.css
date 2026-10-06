@@ -495,3 +495,10 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 @media(prefers-reduced-motion:reduce) {
   :root[data-skin="v8-road-king"] #game .ui button.settings-indicator { transition:none !important; }
 }
+
+
+/* Let the two setting indicators receive taps above the shared no-click HUD layer. */
+:root[data-skin="v8-road-king"] #game .ui .display.bet.settings-indicator,
+:root[data-skin="v8-road-king"] #game .ui .display.lines.settings-indicator {
+  pointer-events:auto !important; cursor:pointer !important; z-index:12 !important;
+}
