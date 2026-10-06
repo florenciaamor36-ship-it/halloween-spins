@@ -11,14 +11,17 @@
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-4">
-  <link rel="stylesheet" href="themes/v8-power-road-king.css?v=v8-road-king-20261006-4">
+  <link rel="stylesheet" href="themes/v8-power-road-king.css?v=v8-road-king-20261006-5">
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
   <section id="loadingScreen" class="loading-screen" aria-live="polite">
-    <img class="loading-art" src="assets/v8-power-road-king/loading.webp" alt="" fetchpriority="high" decoding="sync">
-    <div class="loading-ui"><div class="loading-track"><div id="loadingBar" class="loading-fill"></div></div>
-      <div class="loading-status"><span id="loadingMessage">Cargando máscara</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div>
+    <div class="loading-canvas">
+      <img class="loading-art" src="assets/v8-power-road-king/loading.webp" alt="" fetchpriority="high" decoding="sync">
+      <div class="loading-ui">
+        <div class="loading-track"><div id="loadingBar" class="loading-fill"></div></div>
+        <div class="loading-status"><span class="loading-label"><span id="loadingMessage">Cargando Road King</span><span id="loadingDots">...</span></span><b id="loadingPercent">0%</b></div>
+      </div>
     </div>
   </section>
   <section id="lowWinScreen" class="lowwin-screen" aria-hidden="true">

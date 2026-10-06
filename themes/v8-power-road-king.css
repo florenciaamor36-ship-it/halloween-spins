@@ -121,3 +121,72 @@ html[data-skin="v8-road-king"] #game .ui #menu {
 }
 html[data-skin="v8-road-king"] #game .ui #autoSpin { left:5% !important; right:auto !important; }
 html[data-skin="v8-road-king"] #game .ui #menu { left:auto !important; right:5% !important; }
+
+
+/* Loading screen shares the exact portrait canvas with the gameplay frame. */
+:root[data-skin="v8-road-king"] #loadingScreen { display:grid !important; place-items:center !important; }
+:root[data-skin="v8-road-king"] #loadingScreen > .loading-canvas {
+  position:relative !important; width:min(100vw,56.25dvh) !important;
+  height:min(100dvh,177.78vw) !important; max-width:100vw !important;
+  max-height:100dvh !important; aspect-ratio:9/16 !important;
+  margin:0 auto !important; overflow:hidden !important; container-type:inline-size !important;
+}
+:root[data-skin="v8-road-king"] #loadingScreen .loading-art {
+  position:absolute !important; inset:0 !important; width:100% !important;
+  height:100% !important; max-width:none !important; object-fit:fill !important;
+}
+:root[data-skin="v8-road-king"] #loadingScreen .loading-ui {
+  position:absolute !important; left:13% !important; bottom:10% !important;
+  width:74% !important; z-index:2 !important; padding:6px 10px 5px !important;
+  border:1px solid rgba(190,218,238,.65) !important; border-radius:8px !important;
+  background:rgba(5,10,17,.82) !important; box-shadow:0 2px 7px rgba(0,0,0,.85) !important;
+  box-sizing:border-box !important;
+}
+:root[data-skin="v8-road-king"] #loadingScreen .loading-track {
+  height:clamp(6px,1.5cqw,9px) !important; border:1px solid #91c9ef !important;
+  border-radius:8px !important; background:#0a1119 !important; overflow:hidden !important;
+}
+:root[data-skin="v8-road-king"] #loadingScreen .loading-fill {
+  height:100% !important; border-radius:inherit !important;
+  background:linear-gradient(90deg,#c54d24,#f7a23b,#d8efff) !important;
+}
+:root[data-skin="v8-road-king"] #loadingScreen .loading-status {
+  display:flex !important; align-items:center !important; justify-content:space-between !important;
+  gap:8px !important; margin-top:5px !important; color:#f2f7fb !important;
+  font-size:clamp(9px,2.2cqw,12px) !important; line-height:1 !important;
+  text-shadow:0 1px 3px #000 !important;
+}
+:root[data-skin="v8-road-king"] #loadingScreen .loading-label { display:flex !important; align-items:center !important; gap:2px !important; }
+
+/* Square, evenly spaced touch controls sized for the lower V8 panel. */
+:root[data-skin="v8-road-king"] #game .ui .display.bet { left:8% !important; right:auto !important; width:33% !important; }
+:root[data-skin="v8-road-king"] #game .ui .display.lines { left:59% !important; right:auto !important; width:33% !important; }
+:root[data-skin="v8-road-king"] #game .ui #minus,
+:root[data-skin="v8-road-king"] #game .ui #plus,
+:root[data-skin="v8-road-king"] #game .ui #lineDown,
+:root[data-skin="v8-road-king"] #game .ui #lineUp {
+  top:83.2% !important; width:6.5% !important; height:4% !important;
+  padding:0 !important; border-radius:6px !important;
+  font-size:clamp(12px,2.8cqw,14px) !important;
+}
+:root[data-skin="v8-road-king"] #game .ui #minus { left:1% !important; right:auto !important; }
+:root[data-skin="v8-road-king"] #game .ui #plus { left:42% !important; right:auto !important; }
+:root[data-skin="v8-road-king"] #game .ui #lineDown { left:51.5% !important; right:auto !important; }
+:root[data-skin="v8-road-king"] #game .ui #lineUp { left:auto !important; right:1% !important; }
+:root[data-skin="v8-road-king"] #game .ui #spin {
+  left:41.5% !important; top:87.5% !important; width:17% !important; height:9.6% !important;
+  border-radius:50% !important;
+}
+:root[data-skin="v8-road-king"] #game .ui #autoSpin,
+:root[data-skin="v8-road-king"] #game .ui #menu {
+  top:91.5% !important; width:22% !important; height:4.2% !important;
+  font-size:clamp(9px,2.4cqw,12px) !important;
+}
+:root[data-skin="v8-road-king"] #game .ui #autoSpin { left:6% !important; right:auto !important; }
+:root[data-skin="v8-road-king"] #game .ui #menu { left:auto !important; right:6% !important; }
+@media(max-width:700px) {
+ :root[data-skin="v8-road-king"]:not([data-skin="cleopatra"]) #loadingScreen > .loading-canvas {
+   width:min(100vw,56.25dvh) !important; height:min(100dvh,177.78vw) !important;
+   max-width:100vw !important; max-height:100dvh !important; aspect-ratio:9/16 !important; margin:0 auto !important;
+ }
+}
