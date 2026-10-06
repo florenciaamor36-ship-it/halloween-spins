@@ -346,7 +346,7 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 
 
 /* Use the strip under the reels for the three live betting indicators. */
-html[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip {
+:root[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip {
   left:5% !important; top:69.9% !important; width:90% !important; height:3.9% !important;
   z-index:8 !important; border:1px solid rgba(145,196,225,.82) !important;
   border-radius:7px !important;
@@ -354,10 +354,10 @@ html[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip {
   box-shadow:inset 0 1px 0 rgba(236,248,255,.24),inset 0 0 0 1px rgba(0,0,0,.88),
     0 2px 7px rgba(0,0,0,.78),0 0 8px rgba(89,158,198,.16) !important;
 }
-html[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip:not(.rk-message-active) .announcement-text { display:none !important; }
-html[data-skin="v8-road-king"] #game .ui .display.balance,
-html[data-skin="v8-road-king"] #game .ui .display.bet,
-html[data-skin="v8-road-king"] #game .ui .display.lines {
+:root[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip:not(.rk-message-active) .announcement-text { display:none !important; }
+:root[data-skin="v8-road-king"] #game .ui .display.balance,
+:root[data-skin="v8-road-king"] #game .ui .display.bet,
+:root[data-skin="v8-road-king"] #game .ui .display.lines {
   display:block !important; position:absolute !important; top:69.9% !important; height:3.9% !important;
   min-height:0 !important; box-sizing:border-box !important; padding:2px 7px !important;
   overflow:hidden !important; z-index:10 !important; pointer-events:none !important;
@@ -365,44 +365,44 @@ html[data-skin="v8-road-king"] #game .ui .display.lines {
   background:linear-gradient(180deg,rgba(23,42,58,.98),rgba(7,14,22,.98)) !important;
   box-shadow:inset 0 1px 0 rgba(236,248,255,.12),inset 0 0 0 1px rgba(0,0,0,.78) !important;
 }
-html[data-skin="v8-road-king"] #game .ui .display.balance { left:5% !important; right:auto !important; width:30% !important; }
-html[data-skin="v8-road-king"] #game .ui .display.bet { left:35% !important; right:auto !important; width:30% !important; }
-html[data-skin="v8-road-king"] #game .ui .display.lines { left:65% !important; right:auto !important; width:30% !important; }
-html[data-skin="v8-road-king"] #game .ui .display.balance .control-box,
-html[data-skin="v8-road-king"] #game .ui .display.bet .control-box,
-html[data-skin="v8-road-king"] #game .ui .display.lines .control-box {
+:root[data-skin="v8-road-king"] #game .ui .display.balance { left:5% !important; right:auto !important; width:30% !important; }
+:root[data-skin="v8-road-king"] #game .ui .display.bet { left:35% !important; right:auto !important; width:30% !important; }
+:root[data-skin="v8-road-king"] #game .ui .display.lines { left:65% !important; right:auto !important; width:30% !important; }
+:root[data-skin="v8-road-king"] #game .ui .display.balance .control-box,
+:root[data-skin="v8-road-king"] #game .ui .display.bet .control-box,
+:root[data-skin="v8-road-king"] #game .ui .display.lines .control-box {
   display:flex !important; position:static !important; flex-direction:row !important;
   align-items:center !important; justify-content:space-between !important; gap:3px !important;
   width:100% !important; height:100% !important; min-width:0 !important; margin:0 !important;
   padding:0 !important; transform:none !important;
 }
-html[data-skin="v8-road-king"] #game .ui .display.balance .label,
-html[data-skin="v8-road-king"] #game .ui .display.bet .label,
-html[data-skin="v8-road-king"] #game .ui .display.lines .label {
+:root[data-skin="v8-road-king"] #game .ui .display.balance .label,
+:root[data-skin="v8-road-king"] #game .ui .display.bet .label,
+:root[data-skin="v8-road-king"] #game .ui .display.lines .label {
   display:block !important; position:static !important; width:auto !important; height:auto !important;
   margin:0 !important; padding:0 !important; color:#94cdef !important;
   font-size:clamp(7px,1.75cqw,10px) !important; line-height:1 !important; font-weight:900 !important;
   letter-spacing:.02em !important; white-space:nowrap !important; transform:none !important;
 }
-html[data-skin="v8-road-king"] #game .ui .display.balance .value,
-html[data-skin="v8-road-king"] #game .ui .display.bet .value,
-html[data-skin="v8-road-king"] #game .ui .display.lines .value {
+:root[data-skin="v8-road-king"] #game .ui .display.balance .value,
+:root[data-skin="v8-road-king"] #game .ui .display.bet .value,
+:root[data-skin="v8-road-king"] #game .ui .display.lines .value {
   display:block !important; position:static !important; width:auto !important; height:auto !important;
   max-width:66% !important; min-width:0 !important; margin:0 !important; padding:0 !important;
   color:#fff0c5 !important; font-size:clamp(9px,2.35cqw,13px) !important; line-height:1 !important;
   font-weight:900 !important; text-align:right !important; text-shadow:0 1px 3px #000 !important;
   white-space:nowrap !important; transform:none !important;
 }
-html[data-skin="v8-road-king"] #game .ui .display.win {
+:root[data-skin="v8-road-king"] #game .ui .display.win {
   left:25% !important; right:auto !important; top:75.2% !important; width:50% !important;
   height:6.4% !important; min-height:0 !important; box-sizing:border-box !important;
 }
-html[data-skin="v8-road-king"] #game .ui.rk-message-active .display.balance,
-html[data-skin="v8-road-king"] #game .ui.rk-message-active .display.bet,
-html[data-skin="v8-road-king"] #game .ui.rk-message-active .display.lines { visibility:hidden !important; }
-html[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip.rk-message-active {
+:root[data-skin="v8-road-king"] #game .ui.rk-message-active .display.balance,
+:root[data-skin="v8-road-king"] #game .ui.rk-message-active .display.bet,
+:root[data-skin="v8-road-king"] #game .ui.rk-message-active .display.lines { visibility:hidden !important; }
+:root[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip.rk-message-active {
   display:grid !important; z-index:11 !important;
 }
-html[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip.rk-message-active .announcement-text {
+:root[data-skin="v8-road-king"] #game .announcement-panel.rk-hud-strip.rk-message-active .announcement-text {
   display:grid !important; width:96% !important; height:100% !important; place-items:center !important;
 }
