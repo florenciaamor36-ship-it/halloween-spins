@@ -502,3 +502,9 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 :root[data-skin="v8-road-king"] #game .ui .display.lines.settings-indicator {
   pointer-events:auto !important; cursor:pointer !important; z-index:12 !important;
 }
+
+
+/* Keep the popover controls above the full-screen dismiss backdrop. */
+:root[data-skin="v8-road-king"] #rkSettingsMenu .rk-settings-backdrop { z-index:0 !important; }
+:root[data-skin="v8-road-king"] #rkSettingsMenu .rk-settings-card { z-index:2 !important; pointer-events:auto !important; }
+:root[data-skin="v8-road-king"] #rkSettingsMenu .rk-settings-card button { position:relative !important; z-index:3 !important; pointer-events:auto !important; }
