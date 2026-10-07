@@ -712,3 +712,27 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 :root[data-skin="v8-road-king"] #rkSettingsMenu .rk-bet-stepper button:disabled {
   opacity:.48 !important; filter:saturate(.55) !important;
 }
+
+
+/* Use the supplied Road King SPIN artwork for both real button states. */
+:root[data-skin="v8-road-king"] #game .ui #spin {
+  opacity:1 !important; pointer-events:auto !important; cursor:pointer !important;
+  left:42% !important; top:87% !important; width:16% !important; height:9.8% !important;
+  padding:0 !important; border:0 !important; border-radius:0 !important;
+  background:transparent !important; box-shadow:none !important; animation:none !important;
+  overflow:visible !important; transform:none !important; filter:none !important;
+}
+:root[data-skin="v8-road-king"] #game .ui #spin::before,
+:root[data-skin="v8-road-king"] #game .ui #spin::after {
+  display:none !important; content:none !important; animation:none !important;
+}
+:root[data-skin="v8-road-king"] #game .ui #spin .spin-art {
+  position:absolute !important; inset:0 !important; width:100% !important; height:100% !important;
+  object-fit:contain !important; transform:none !important; filter:none !important;
+  pointer-events:none !important;
+}
+:root[data-skin="v8-road-king"] #game .ui #spin .spin-art-normal { display:block !important; }
+:root[data-skin="v8-road-king"] #game .ui #spin .spin-art-pressed { display:none !important; }
+:root[data-skin="v8-road-king"] #game .ui #spin:active { transform:none !important; filter:none !important; background:transparent !important; box-shadow:none !important; }
+:root[data-skin="v8-road-king"] #game .ui #spin:active .spin-art-normal { display:none !important; }
+:root[data-skin="v8-road-king"] #game .ui #spin:active .spin-art-pressed { display:block !important; }
