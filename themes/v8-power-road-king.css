@@ -773,3 +773,19 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 :root[data-skin="v8-road-king"] .paytable-card th:not(:first-child) {
   font-size:clamp(10px,2.8vw,12px) !important; letter-spacing:0 !important;
 }
+
+
+/* Fit the full paytable and rules inside the portrait paytable frame. */
+:root[data-skin="v8-road-king"] .paytable-card th,
+:root[data-skin="v8-road-king"] .paytable-card td {
+  height:clamp(24px,min(6.15vw,3.46vh),28px) !important;
+  padding:1px 2px !important; line-height:1.05 !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card td:not(:first-child) { padding:1px !important; }
+:root[data-skin="v8-road-king"] .paytable-card td:first-child .pay-symbol {
+  width:20px !important; height:20px !important; margin-right:2px !important;
+}
+:root[data-skin="v8-road-king"] .paytable-rules {
+  gap:2px !important; margin-top:5px !important;
+  font-size:clamp(9px,2.35vw,11px) !important; line-height:1.18 !important;
+}
