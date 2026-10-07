@@ -717,7 +717,7 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 /* Use the supplied Road King SPIN artwork for both real button states. */
 :root[data-skin="v8-road-king"] #game .ui #spin {
   opacity:1 !important; pointer-events:auto !important; cursor:pointer !important;
-  left:35% !important; top:82.5% !important; width:30% !important; height:16% !important;
+  left:33% !important; top:81.4% !important; width:34% !important; height:17.2% !important;
   padding:0 !important; border:0 !important; border-radius:0 !important;
   background:transparent !important; box-shadow:none !important; animation:none !important;
   overflow:visible !important; transform:none !important; filter:none !important;
