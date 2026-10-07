@@ -736,3 +736,40 @@ html[data-skin="v8-road-king"] #game .reels.is-spinning::before {
 :root[data-skin="v8-road-king"] #game .ui #spin:active { transform:none !important; filter:none !important; background:transparent !important; box-shadow:none !important; }
 :root[data-skin="v8-road-king"] #game .ui #spin:active .spin-art-normal { display:none !important; }
 :root[data-skin="v8-road-king"] #game .ui #spin:active .spin-art-pressed { display:block !important; }
+
+
+/* Keep Road King paytable names and multipliers inside their own cells. */
+:root[data-skin="v8-road-king"] .paytable-card table {
+  width:100% !important; table-layout:fixed !important; border-collapse:separate !important;
+  border-spacing:0 !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card th:first-child,
+:root[data-skin="v8-road-king"] .paytable-card td:first-child { width:43% !important; }
+:root[data-skin="v8-road-king"] .paytable-card th:not(:first-child),
+:root[data-skin="v8-road-king"] .paytable-card td:not(:first-child) {
+  width:19% !important; padding:4px 1px !important; text-align:center !important;
+  white-space:nowrap !important; vertical-align:middle !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card th,
+:root[data-skin="v8-road-king"] .paytable-card td {
+  padding:4px 3px !important; height:clamp(29px,min(7.44vw,4.19vh),35px) !important;
+  line-height:1.1 !important; vertical-align:middle !important; overflow:hidden !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card th:first-child,
+:root[data-skin="v8-road-king"] .paytable-card td:first-child { text-align:left !important; }
+:root[data-skin="v8-road-king"] .paytable-card td:first-child .pay-symbol {
+  display:inline-block !important; width:22px !important; height:22px !important;
+  margin-right:2px !important; object-fit:contain !important; vertical-align:middle !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card td:first-child span {
+  display:inline-block !important; width:calc(100% - 27px) !important; max-width:calc(100% - 27px) !important;
+  overflow:hidden !important; text-overflow:ellipsis !important; white-space:nowrap !important;
+  vertical-align:middle !important; font-size:clamp(10px,2.75vw,12px) !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card td:not(:first-child) {
+  font-size:clamp(10px,2.8vw,12px) !important; letter-spacing:-.25px !important;
+  font-variant-numeric:tabular-nums !important; font-weight:900 !important;
+}
+:root[data-skin="v8-road-king"] .paytable-card th:not(:first-child) {
+  font-size:clamp(10px,2.8vw,12px) !important; letter-spacing:0 !important;
+}
