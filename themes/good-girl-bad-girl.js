@@ -31,6 +31,7 @@
   assets:{frame:{portrait:`${root}frame-landscape.webp`,fallback:`${root}frame-landscape.webp`},loading:`${root}loading.webp`,spin:{normal:transparent,pressed:transparent},indicators:{balance:transparent,bet:transparent,lines:transparent},announcementFrame:transparent,bigWin:transparent,lowWin:transparent,paytableFrame:transparent,winFrames:[{key:'ggbg-win-glow',src:transparent}]},
   symbols,featureAssets:{nonReel:nonReelAssets},
   visual:{symbolScale:1,symbolScaleY:1,symbolFit:'cell-width',reelPerspective:0},
+  effects:{wildFire:{enabled:true}},
   animations:{spin:{firstStopMs:650,stopStaggerMs:220,symbolCycleMs:16,reelSpeed:1.5,fallbackMs:2600},idle:{smooth:true,intervalMs:3.75,transitionMs:3.5,staggerMs:2.5}},
   defaults:{balance:1000,bet:25,jackpot:0,lines:10,minBet:25,maxBet:500,betStep:25,minLines:10,maxLines:10,lineStep:5,jackpotContributionRate:0,minimumJackpotContribution:0,bigWinBetMultiplier:1000,lowWinBetMultiplier:1000,freeSpins:0},
   specialSymbols:{wild:'wild',scatter:'scatter-heaven',scatters:['scatter-heaven','scatter-hell'],bonus:'bonus',animatedWin:'good-girl'},
