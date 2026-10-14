@@ -31,7 +31,7 @@
   assets:{frame:{portrait:`${root}frame-landscape.webp`,fallback:`${root}frame-landscape.webp`},loading:`${root}loading.webp`,spin:{normal:transparent,pressed:transparent},indicators:{balance:transparent,bet:transparent,lines:transparent},announcementFrame:transparent,bigWin:transparent,lowWin:transparent,paytableFrame:transparent,winFrames:[{key:'ggbg-win-glow',src:transparent}]},
   symbols,featureAssets:{nonReel:nonReelAssets},
   visual:{symbolScale:1,symbolScaleY:1,symbolFit:'cell-width',reelPerspective:0},
-  animations:{spin:{firstStopMs:650,stopStaggerMs:220,symbolCycleMs:60,reelSpeed:1.5,fallbackMs:2600}},
+  animations:{spin:{firstStopMs:650,stopStaggerMs:220,symbolCycleMs:16,reelSpeed:1.5,fallbackMs:2600}},
   defaults:{balance:1000,bet:25,jackpot:0,lines:10,minBet:25,maxBet:500,betStep:25,minLines:10,maxLines:10,lineStep:5,jackpotContributionRate:0,minimumJackpotContribution:0,bigWinBetMultiplier:1000,lowWinBetMultiplier:1000,freeSpins:0},
   specialSymbols:{wild:'wild',scatter:'scatter-heaven',scatters:['scatter-heaven','scatter-hell'],bonus:'bonus',animatedWin:'good-girl'},
   rules:{cols:5,rows:3,payoutScale:1,paylines:[[1,1,1,1,1],[0,0,0,0,0],[2,2,2,2,2],[0,1,2,1,0],[2,1,0,1,2],[0,0,1,2,2],[2,2,1,0,0],[1,0,0,0,1],[1,2,2,2,1],[1,0,1,0,1]],lineColors:['#f5d47b','#64d9e8','#ff6b75','#b690ff','#f8aa52','#b9e887','#6dc0ff','#ff8ac5','#ffdf63','#82f0d5'],symbolWeights:weights,weightTotal,paytableCounts:[3,4,5],minimumMatch:3,specialMinimumMatch:3,paytable,bonusFreeSpins:{},paytableOrder:symbols.map((symbol,i)=>symbol.category==='feature-placeholder'?null:i).filter(i=>i!==null)},
