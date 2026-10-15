@@ -80,18 +80,18 @@ class SlotScene extends Phaser.Scene{
    const image=this.symbols[index],width=image.displayWidth,height=image.displayHeight,cell=Math.min(width,height);
    if(!cell){fire.setVisible(false);return}
    fire.setVisible(true);
-   const count=18;
+   const count=14;
    for(let n=0;n<count;n++){
-    const angle=(n/count)*Math.PI*2-Math.PI/2+Math.sin(time*2.8+n*1.9+index)*.035;
+    const angle=(n/count)*Math.PI*2-Math.PI/2+Math.sin(time*2.8+n*1.9+index)*.024;
     const radialX=Math.cos(angle),radialY=Math.sin(angle);
-    let dx=radialX*.88,dy=radialY*.88-.34;
+    let dx=radialX*.82,dy=radialY*.55-.78;
     const directionLength=Math.hypot(dx,dy);dx/=directionLength;dy/=directionLength;
     const tx=-dy,ty=dx;
     const flicker=.5+.5*Math.sin(time*8+n*1.73+index*.61);
-    const sway=Math.sin(time*10+n*2.1+index)*cell*.012;
-    const bx=image.x+radialX*width*.385,by=image.y+radialY*height*.385;
-    const halfWidth=cell*(.025+.018*flicker);
-    const length=cell*(.105+.065*flicker)*(n%5===0?1.12:1);
+    const sway=Math.sin(time*10+n*2.1+index)*cell*.006;
+    const bx=image.x+radialX*width*.39,by=image.y+radialY*height*.39;
+    const halfWidth=cell*(.022+.01*flicker);
+    const length=cell*(.055+.045*flicker)*(n%4===0?1.08:1);
     const drawFlame=(widthScale,lengthScale,color,alpha)=>{
      const w=halfWidth*widthScale,l=length*lengthScale;
      const points=[
