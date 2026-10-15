@@ -28,7 +28,7 @@
   demonic:'snd_devil_frame_loop_mpegl3a_medium.mp3'
  };
  const active=new Set();
- let muted=false,unlocked=false,spinning=false,music=null,musicKey='',intro=null,reelLoop=null,bigWinLevel=null;
+ let muted=false,unlocked=false,spinning=false,music=null,musicKey='',intro=null,reelLoop=null,bigWinLevel=null,spinCues=new Set();
  try{muted=localStorage.getItem('ggbg-sound-muted')==='1'}catch{}
  const button=document.createElement('button');
  button.id='ggbgSoundToggle';button.type='button';button.className='ggbg-sound-toggle';
@@ -80,17 +80,19 @@
  document.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' ')unlock()},{capture:true});
  button.addEventListener('click',()=>setMuted(!muted));
  document.addEventListener('click',event=>{const target=event.target.closest?.('button');if(!target||target.id==='ggbgSoundToggle'||target.id==='spin')return;play(Math.random()<.5?'click':'clickAlt',.32)},false);
- window.addEventListener('slot:spin-start',()=>{spinning=true;play('spin',.62);if(reelLoop)stop(reelLoop,80);reelLoop=play('reelLoop',.28,true);setMusic('musicMain')});
- window.addEventListener('slot:reel-stop',event=>{const column=Number(event.detail?.column),index=Number.isFinite(column)?Math.max(0,Math.min(files.reelStops.length-1,column)):0;play(`reelStop${index+1}`,.48);if(index===files.reelStops.length-1&&reelLoop){stop(reelLoop,180);reelLoop=null}});
+ window.addEventListener('slot:spin-start',()=>{spinning=true;spinCues.clear();play('spin',.62);if(reelLoop)stop(reelLoop,80);reelLoop=play('reelLoop',.28,true);setMusic('musicMain')});
+ window.addEventListener('slot:reel-stop',event=>{
+  const detail=event.detail||{},column=Number(detail.column),index=Number.isFinite(column)?Math.max(0,Math.min(files.reelStops.length-1,column)):0,keys=Array.isArray(detail.keys)?detail.keys:[];
+  play(`reelStop${index+1}`,.48);
+  const special=keys.some(key=>key==='scatter-heaven'||key==='scatter-hell')?'scatter':keys.includes('wild')?'wild':null;
+  if(special&&!spinCues.has(special)){spinCues.add(special);play(special,special==='scatter'?.5:.42)}
+  const girl=keys.find(key=>key==='good-girl'||key==='bad-girl'),girlCue=girl==='good-girl'?'angelic':girl==='bad-girl'?'demonic':null;
+  if(girlCue&&!spinCues.has(girlCue)){spinCues.add(girlCue);play(girlCue,.32)}
+  if(index===files.reelStops.length-1&&reelLoop){stop(reelLoop,180);reelLoop=null}
+ });
  window.addEventListener('slot:spin-result',event=>{
   spinning=false;const detail=event.detail||{};if(reelLoop){stop(reelLoop,160);reelLoop=null}setMusic('musicIdle');
-  const keys=(detail.values||[]).map(index=>cfg.symbols[index]?.key||'');
-  if(detail.awarded>0){play('scatterTrigger',.7);setTimeout(()=>play('fsTriggered',.62),220);setTimeout(()=>play('fsTransition',.45),850)}
-  else if(detail.scatterCount>0)play('scatter',.58);
-  if(detail.wildCount>0)play('wild',.48);
-  const wins=Array.isArray(detail.wins)?detail.wins:[];
-  if(keys.includes('good-girl'))play('angelic',.35);
-  if(keys.includes('bad-girl'))play('demonic',.35);
+  if(detail.awarded>0){if(detail.scatterCount>0)play('scatterTrigger',.7);setTimeout(()=>play('fsTriggered',.62),220);setTimeout(()=>play('fsTransition',.45),850)}
   const bet=Number(detail.bet)||0,amount=Number(detail.totalWin)||0,multiplier=bet?amount/bet:0,big=Number(cfg.defaults?.bigWinBetMultiplier)||Infinity;
   if(amount>0&&multiplier<big){const tier=multiplier>=20?'winL':multiplier>=8?'winM':multiplier>=3?'winS':'winXS';play(tier,.62)}
  });
