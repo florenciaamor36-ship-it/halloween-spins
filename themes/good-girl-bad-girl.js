@@ -5,7 +5,7 @@
   {key:'good-girl',label:'Good Girl',category:'reel',asset:asset('good-girl-smile'),animationFrames:[asset('good-girl-smile'),asset('good-girl-happy')]},
   {key:'bad-girl',label:'Bad Girl',category:'reel',asset:asset('bad-girl-devil'),animationFrames:[asset('bad-girl-devil'),asset('bad-girl-devil-2'),asset('bad-girl-devil-3')]},
   {key:'black-devil-cat',label:'Black Devil Cat',category:'reel',asset:asset('black-devil-cat')},
-  {key:'white-cat',label:'White Cat',category:'reel',asset:asset('white-cat')},
+  {key:'white-cat',label:'White Cat',category:'reel',asset:`${asset('white-cat')}?v=white-cat-headfix-20261015-1`},
   {key:'good-lyre',label:'Lyre',category:'reel',asset:asset('good-lyre')},
   {key:'letter-9',label:'9',category:'reel',asset:asset('letter-9')},
   {key:'letter-10',label:'10',category:'reel',asset:asset('letter-10')},
