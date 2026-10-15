@@ -89,8 +89,8 @@
   else if(detail.scatterCount>0)play('scatter',.58);
   if(detail.wildCount>0)play('wild',.48);
   const wins=Array.isArray(detail.wins)?detail.wins:[];
-  if(wins.some(win=>cfg.symbols[win.symbol]?.key==='good-girl'||(win.positions||[]).some(index=>keys[index]==='good-girl')))play('angelic',.35);
-  if(wins.some(win=>cfg.symbols[win.symbol]?.key==='bad-girl'||(win.positions||[]).some(index=>keys[index]==='bad-girl')))play('demonic',.35);
+  if(keys.includes('good-girl'))play('angelic',.35);
+  if(keys.includes('bad-girl'))play('demonic',.35);
   const bet=Number(detail.bet)||0,amount=Number(detail.totalWin)||0,multiplier=bet?amount/bet:0,big=Number(cfg.defaults?.bigWinBetMultiplier)||Infinity;
   if(amount>0&&multiplier<big){const tier=multiplier>=20?'winL':multiplier>=8?'winM':multiplier>=3?'winS':'winXS';play(tier,.62)}
  });
