@@ -23,12 +23,10 @@
   bigLevels:[1,2,3].map(n=>`snd_bigwin_level${n}_mpegl3a_medium.mp3`),
   bigOutro:'snd_bigwin_outro_mpegl3a_medium.mp3',
   fsTriggered:'snd_fs_triggered_mpegl3a_medium.mp3',
-  fsTransition:'snd_fs_transition_mpegl3a_medium.mp3',
-  angelic:'snd_angelic_frame_loop_mpegl3a_medium.mp3',
-  demonic:'snd_devil_frame_loop_mpegl3a_medium.mp3'
+  fsTransition:'snd_fs_transition_mpegl3a_medium.mp3'
  };
  const active=new Set();
- let muted=false,unlocked=false,spinning=false,music=null,musicKey='',intro=null,reelLoop=null,bigWinLevel=null,spinCues=new Set();
+ let muted=false,unlocked=false,spinning=false,freeSpinMode=false,music=null,musicKey='',intro=null,reelLoop=null,bigWinLevel=null,spinCues=new Set();
  try{muted=localStorage.getItem('ggbg-sound-muted')==='1'}catch{}
  const button=document.createElement('button');
  button.id='ggbgSoundToggle';button.type='button';button.className='ggbg-sound-toggle';
@@ -75,24 +73,22 @@
  function stopAll(){for(const audio of [...active]){audio.pause();audio.currentTime=0;active.delete(audio)}music=null;musicKey='';intro=null;reelLoop=null;bigWinLevel=null}
  function updateButton(){const label=muted?'Activar sonido':'Silenciar sonido';button.textContent=muted?'🔇':'🔊';button.title=label;button.setAttribute('aria-label',label);button.setAttribute('aria-pressed',String(muted))}
  function setMuted(value){muted=Boolean(value);try{localStorage.setItem('ggbg-sound-muted',muted?'1':'0')}catch{}if(muted)stopAll();else if(unlocked)setMusic(spinning?'musicMain':'musicIdle');updateButton()}
- function unlock(){if(unlocked)return;unlocked=true;if(!muted)startIntro()}
+ function unlock(event){if(unlocked)return;unlocked=true;if(!muted&&!event?.target?.closest?.('#spin'))startIntro()}
  document.addEventListener('pointerdown',unlock,{capture:true,once:true});
- document.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' ')unlock()},{capture:true});
+ document.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' ')unlock(event)},{capture:true});
  button.addEventListener('click',()=>setMuted(!muted));
  document.addEventListener('click',event=>{const target=event.target.closest?.('button');if(!target||target.id==='ggbgSoundToggle'||target.id==='spin')return;play(Math.random()<.5?'click':'clickAlt',.32)},false);
- window.addEventListener('slot:spin-start',()=>{spinning=true;spinCues.clear();play('spin',.62);if(reelLoop)stop(reelLoop,80);reelLoop=play('reelLoop',.28,true);setMusic('musicMain')});
+ window.addEventListener('slot:spin-start',event=>{const isFreeSpin=Boolean(event.detail?.isFreeSpin);if(isFreeSpin&&!freeSpinMode)setTimeout(()=>play('fsTransition',.45),140);freeSpinMode=isFreeSpin;spinning=true;spinCues.clear();play('spin',.62);if(reelLoop)stop(reelLoop,80);reelLoop=play('reelLoop',.28,true);setMusic('musicMain')});
  window.addEventListener('slot:reel-stop',event=>{
   const detail=event.detail||{},column=Number(detail.column),index=Number.isFinite(column)?Math.max(0,Math.min(files.reelStops.length-1,column)):0,keys=Array.isArray(detail.keys)?detail.keys:[];
   play(`reelStop${index+1}`,.48);
   const special=keys.some(key=>key==='scatter-heaven'||key==='scatter-hell')?'scatter':keys.includes('wild')?'wild':null;
   if(special&&!spinCues.has(special)){spinCues.add(special);play(special,special==='scatter'?.5:.42)}
-  const girl=keys.find(key=>key==='good-girl'||key==='bad-girl'),girlCue=girl==='good-girl'?'angelic':girl==='bad-girl'?'demonic':null;
-  if(girlCue&&!spinCues.has(girlCue)){spinCues.add(girlCue);play(girlCue,.32)}
   if(index===files.reelStops.length-1&&reelLoop){stop(reelLoop,180);reelLoop=null}
  });
  window.addEventListener('slot:spin-result',event=>{
   spinning=false;const detail=event.detail||{};if(reelLoop){stop(reelLoop,160);reelLoop=null}setMusic('musicIdle');
-  if(detail.awarded>0){if(detail.scatterCount>0)play('scatterTrigger',.7);setTimeout(()=>play('fsTriggered',.62),220);setTimeout(()=>play('fsTransition',.45),850)}
+  if(detail.awarded>0){if(detail.scatterCount>0)play('scatterTrigger',.7);setTimeout(()=>play('fsTriggered',.62),220)}
   const bet=Number(detail.bet)||0,amount=Number(detail.totalWin)||0,multiplier=bet?amount/bet:0,big=Number(cfg.defaults?.bigWinBetMultiplier)||Infinity;
   if(amount>0&&multiplier<big){const tier=multiplier>=20?'winL':multiplier>=8?'winM':multiplier>=3?'winS':'winXS';play(tier,.62)}
  });
