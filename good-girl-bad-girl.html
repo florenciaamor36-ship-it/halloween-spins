@@ -7,10 +7,12 @@
   <title>Good Girl Bad Girl · Tragamonedas</title>
   <link rel="stylesheet" href="style.css?v=ggbg-original-art-correction-20261014-1">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-tokens-1">
-  <link rel="stylesheet" href="themes/good-girl-bad-girl.css?v=ggbg-original-art-correction-20261014-1">
+  <link rel="stylesheet" href="themes/good-girl-bad-girl.css?v=ggbg-mobile-fullscreen-20261015-1">
 </head>
 <body>
   <div class="orientation-warning" role="status">Poné el teléfono en horizontal para jugar.</div>
+  <button id="fullscreenToggle" class="fullscreen-toggle" type="button" aria-label="Entrar en pantalla completa" title="Pantalla completa">⛶</button>
+  <div id="fullscreenHint" class="fullscreen-hint" role="status" aria-live="polite"></div>
   <section id="loadingScreen" class="loading-screen" aria-live="polite">
     <div class="loading-canvas">
       <img class="loading-art" alt="Pantalla de carga Good Girl Bad Girl">
@@ -58,5 +60,6 @@
   <script src="phaser.min.js?v=4.2.1"></script>
   <script src="themes/good-girl-bad-girl.js?v=ggbg-wildfire-visible-20261014-2"></script>
   <script src="main.js?v=ggbg-wildfire-visible-20261014-2"></script>
+  <script src="themes/good-girl-bad-girl-fullscreen.js?v=ggbg-mobile-fullscreen-20261015-1"></script>
 </body>
 </html>
