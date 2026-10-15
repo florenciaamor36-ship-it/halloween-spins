@@ -65,7 +65,7 @@
 :root[data-layout="vertical"] .display.balance,
 :root[data-layout="vertical"] .display.bet,
 :root[data-layout="vertical"] .display.lines {
-  top:91% !important; height:6.5% !important; width:30% !important; align-items:center !important; justify-content:center !important;
+  display:flex !important; top:91% !important; height:6.5% !important; width:30% !important; align-items:center !important; justify-content:center !important;
 }
 :root[data-layout="vertical"] .display.balance { left:2% !important; }
 :root[data-layout="vertical"] .display.bet { left:35% !important; }
