@@ -30,7 +30,7 @@ html[data-skin="helios"] body{display:flex!important;align-items:center!importan
 #spin:after{content:"GIRAR";position:absolute;z-index:4;bottom:-3%;padding:3px 9px;border:1px solid #ffe28b;border-radius:999px;background:#321458;color:#fff1bd;font-size:clamp(8px,1.6vw,12px);font-weight:900}
 #minus,#plus{top:89%!important;width:8%!important;height:5.5%!important;border-radius:50%!important;font-size:20px!important}
 #minus{left:5%!important}#plus{left:24%!important}
-#lineDown,#lineUp{top:89%!important;width:8%!important;height:5.5%!important;border-radius:50%!important;font-size:20px!important}
+#lineDown,#lineUp{left:auto!important;top:89%!important;width:8%!important;height:5.5%!important;border-radius:50%!important;font-size:20px!important}
 #lineDown{right:24%!important}#lineUp{right:5%!important}
 #autoSpin.auto-spin,#menu.menu{top:95%!important;width:26%!important;height:4.2%!important;border-radius:999px!important}
 #autoSpin{left:7%!important}#menu{right:7%!important}
