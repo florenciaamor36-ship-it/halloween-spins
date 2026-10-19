@@ -254,3 +254,7 @@ html[data-skin="helios"] #menu.menu{left:auto!important;right:7%!important;top:9
 html[data-skin="helios"] #spin:after{bottom:-2%!important;}
 
 /* v10: control positions are pinned on the corresponding Helios elements in HTML. */
+
+/* Remove the redundant spin caption and keep the paytable as a small info icon. */
+html[data-skin="helios"] #spin:after{content:none!important;display:none!important;}
+html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;border-radius:50%!important;padding:0!important;font-size:clamp(13px,3vw,18px)!important;letter-spacing:0!important;}
