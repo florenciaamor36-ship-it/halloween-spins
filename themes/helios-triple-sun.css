@@ -277,3 +277,28 @@ html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;bor
     width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;transform:none!important;
   }
 }
+
+/* Force full-device fit on portrait touch screens, including mobile browsers in desktop mode. */
+@media (orientation:portrait) and (pointer:coarse){
+  html[data-skin="helios"],html[data-skin="helios"] body{
+    width:100vw!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;overflow:hidden!important;
+  }
+  :root[data-skin="helios"] #game{
+    position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;min-width:100vw!important;min-height:100vh!important;min-height:100dvh!important;max-width:100vw!important;max-height:100vh!important;max-height:100dvh!important;aspect-ratio:auto!important;margin:0!important;overflow:hidden!important;
+  }
+  :root[data-skin="helios"] #game picture.frame{
+    position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  }
+  :root[data-skin="helios"] #game picture.frame img{
+    position:absolute!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;
+  }
+  :root[data-skin="helios"] #loadingScreen{
+    position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;
+  }
+  :root[data-skin="helios"] #loadingScreen>.loading-canvas{
+    position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;min-width:100vw!important;min-height:100vh!important;min-height:100dvh!important;max-width:none!important;max-height:none!important;aspect-ratio:auto!important;margin:0!important;overflow:hidden!important;
+  }
+  :root[data-skin="helios"] #loadingScreen>.loading-canvas .loading-art{
+    position:absolute!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;transform:none!important;
+  }
+}
