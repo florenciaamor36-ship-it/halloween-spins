@@ -262,3 +262,18 @@ html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;bor
 /* The Girar caption and the redundant PREMIES panel are removed. */
 #spin:after{content:none!important;display:none!important;}
 #menu.menu{display:none!important;}
+
+/* Helios mobile: fill the complete screen with the game background and loading art. */
+@media(max-width:700px) and (orientation:portrait){
+  :root[data-skin="helios"] #game,
+  :root[data-skin="helios"] #loadingScreen>.loading-canvas{
+    width:100vw!important;height:100dvh!important;max-width:100vw!important;max-height:100dvh!important;aspect-ratio:auto!important;margin:0!important;
+  }
+  :root[data-skin="helios"] #game .frame,
+  :root[data-skin="helios"] #game .frame img{
+    width:100%!important;height:100%!important;object-fit:fill!important;
+  }
+  :root[data-skin="helios"] #loadingScreen>.loading-canvas .loading-art{
+    width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;transform:none!important;
+  }
+}
