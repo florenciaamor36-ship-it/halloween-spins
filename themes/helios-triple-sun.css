@@ -27,7 +27,7 @@ html[data-skin="helios"] body{display:flex!important;align-items:center!importan
 #game button:active{transform:translateY(2px);filter:brightness(.84)}
 #spin.spin{left:41%!important;top:84%!important;width:18%!important;height:10.5%!important;border:0!important;border-radius:50%!important;background:transparent!important;box-shadow:none!important;opacity:1!important}
 #spin .spin-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important}
-#spin:after{content:"GIRAR";position:absolute;z-index:4;bottom:-3%;padding:3px 9px;border:1px solid #ffe28b;border-radius:999px;background:#321458;color:#fff1bd;font-size:clamp(8px,1.6vw,12px);font-weight:900}
+#spin:after{content:none!important;display:none!important}
 #minus,#plus{top:84.5%!important;width:8%!important;height:5.5%!important;border-radius:50%!important;font-size:20px!important}
 #minus{left:5%!important}#plus{left:24%!important}
 #lineDown,#lineUp{left:auto!important;top:84.5%!important;width:8%!important;height:5.5%!important;border-radius:50%!important;font-size:20px!important}
@@ -258,3 +258,7 @@ html[data-skin="helios"] #spin:after{bottom:-2%!important;}
 /* Remove the redundant spin caption and keep the paytable as a small info icon. */
 html[data-skin="helios"] #spin:after{content:none!important;display:none!important;}
 html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;border-radius:50%!important;padding:0!important;font-size:clamp(13px,3vw,18px)!important;letter-spacing:0!important;}
+
+/* The Girar caption and the redundant PREMIES panel are removed. */
+#spin:after{content:none!important;display:none!important;}
+#menu.menu{display:none!important;}
