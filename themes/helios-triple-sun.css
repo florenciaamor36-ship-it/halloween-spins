@@ -115,3 +115,66 @@ html[data-skin="helios"] #spin:after{
   html[data-skin="helios"] #autoSpin.auto-spin,
   html[data-skin="helios"] #menu.menu{top:94.1%!important;width:25.5%!important;height:3.8%!important}
 }
+
+
+/* Helios: compact, calm control panel with consistent readouts. */
+html[data-skin="helios"] #game .display{
+  padding:.35% .75%!important;
+  border:1px solid rgba(255,224,160,.34)!important;
+  border-radius:12px!important;
+  background:linear-gradient(145deg,rgba(27,13,50,.68),rgba(13,7,32,.72))!important;
+  box-shadow:0 1px 4px rgba(0,0,0,.28),inset 0 1px 2px rgba(255,255,255,.035)!important;
+  -webkit-backdrop-filter:blur(3px);
+  backdrop-filter:blur(3px);
+}
+html[data-skin="helios"] #game .display.balance{top:68.5%!important;height:5.8%!important}
+html[data-skin="helios"] #game .display.bet,
+html[data-skin="helios"] #game .display.win,
+html[data-skin="helios"] #game .display.lines{top:75.5%!important;height:5.9%!important}
+html[data-skin="helios"] #game .display.bet .control-box,
+html[data-skin="helios"] #game .display.win .control-box,
+html[data-skin="helios"] #game .display.lines .control-box{
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+  gap:2px!important;width:100%!important;height:100%!important;padding:0!important;
+}
+html[data-skin="helios"] #game .display .label{
+  position:static!important;display:block!important;margin:0!important;padding:0!important;
+  color:rgba(255,231,183,.91)!important;font-size:clamp(7px,1.18vw,9px)!important;
+  line-height:1!important;letter-spacing:.06em!important;transform:none!important;
+}
+html[data-skin="helios"] #game .display .value,
+html[data-skin="helios"] #game .display b{
+  position:static!important;display:block!important;margin:0!important;padding:0!important;
+  color:#fff!important;font-size:clamp(13px,2.15vw,17px)!important;line-height:1!important;
+  text-shadow:0 1px 3px rgba(255,209,101,.2)!important;transform:none!important;
+}
+html[data-skin="helios"] #game .display.balance .control-box{
+  display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;
+  gap:.6em!important;width:100%!important;height:100%!important;padding:0!important;
+}
+html[data-skin="helios"] #game button:not(#spin){
+  border:1px solid rgba(255,226,163,.46)!important;
+  background:linear-gradient(155deg,rgba(74,43,99,.86),rgba(32,18,59,.88))!important;
+  box-shadow:0 1px 4px rgba(0,0,0,.35),inset 0 1px 4px rgba(255,255,255,.06)!important;
+  text-shadow:0 1px 2px rgba(15,6,31,.68)!important;
+}
+html[data-skin="helios"] #minus,html[data-skin="helios"] #plus,
+html[data-skin="helios"] #lineDown,html[data-skin="helios"] #lineUp{
+  top:85.1%!important;width:8%!important;height:4.5%!important;border-radius:50%!important;font-size:17px!important;
+}
+html[data-skin="helios"] #autoSpin.auto-spin,html[data-skin="helios"] #menu.menu{
+  top:94.3%!important;width:25%!important;height:3.6%!important;border-radius:999px!important;
+}
+html[data-skin="helios"] #spin:after{
+  padding:2px 7px!important;border:1px solid rgba(255,226,163,.58)!important;
+  background:rgba(37,18,62,.88)!important;box-shadow:0 1px 2px rgba(0,0,0,.24)!important;
+  font-size:clamp(8px,1.35vw,10px)!important;
+}
+@media(max-width:700px){
+  html[data-skin="helios"] #game .display.balance{top:68.5%!important;height:5.8%!important}
+  html[data-skin="helios"] #game .display.bet,html[data-skin="helios"] #game .display.win,
+  html[data-skin="helios"] #game .display.lines{top:75.5%!important;height:5.9%!important}
+  html[data-skin="helios"] #minus,html[data-skin="helios"] #plus,
+  html[data-skin="helios"] #lineDown,html[data-skin="helios"] #lineUp{top:85.1%!important;width:8%!important;height:4.5%!important}
+  html[data-skin="helios"] #autoSpin.auto-spin,html[data-skin="helios"] #menu.menu{top:94.3%!important;width:25%!important;height:3.6%!important}
+}
