@@ -252,3 +252,5 @@ html[data-skin="helios"] #spin.spin{left:40%!important;right:auto!important;top:
 html[data-skin="helios"] #autoSpin.auto-spin{left:7%!important;right:auto!important;top:94.2%!important;bottom:auto!important;width:25%!important;height:3.8%!important;}
 html[data-skin="helios"] #menu.menu{left:auto!important;right:7%!important;top:94.2%!important;bottom:auto!important;width:25%!important;height:3.8%!important;}
 html[data-skin="helios"] #spin:after{bottom:-2%!important;}
+
+/* v10: control positions are pinned on the corresponding Helios elements in HTML. */
