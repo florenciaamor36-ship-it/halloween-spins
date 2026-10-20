@@ -279,7 +279,7 @@ html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;bor
 }
 
 /* Keep the gameplay canvas at 9:16 while the background fills the whole portrait device. */
-@media (orientation:portrait) and (pointer:coarse){
+@media (orientation:portrait) and (pointer:coarse), (max-width:700px) and (orientation:portrait){
   html[data-skin="helios"],html[data-skin="helios"] body{
     width:100vw!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;overflow:hidden!important;
   }
