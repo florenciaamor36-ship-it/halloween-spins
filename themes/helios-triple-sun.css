@@ -278,20 +278,20 @@ html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;bor
   }
 }
 
-/* Force full-device fit on portrait touch screens, including mobile browsers in desktop mode. */
+/* Keep the gameplay canvas at 9:16 while the background fills the whole portrait device. */
 @media (orientation:portrait) and (pointer:coarse){
   html[data-skin="helios"],html[data-skin="helios"] body{
     width:100vw!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;overflow:hidden!important;
   }
+  html[data-skin="helios"] body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("../assets/helios-triple-sun/frame.webp?v=helios-preview-2");background-repeat:no-repeat;background-position:center;background-size:100% 100%;
+  }
   :root[data-skin="helios"] #game{
-    position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;min-width:100vw!important;min-height:100vh!important;min-height:100dvh!important;max-width:100vw!important;max-height:100vh!important;max-height:100dvh!important;aspect-ratio:auto!important;margin:0!important;overflow:hidden!important;
+    position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;
+    width:min(100vw,56.25vh)!important;width:min(100vw,56.25dvh)!important;height:min(100vh,177.7778vw)!important;height:min(100dvh,177.7778vw)!important;
+    min-width:0!important;min-height:0!important;max-width:100vw!important;max-height:100vh!important;max-height:100dvh!important;aspect-ratio:9/16!important;margin:0!important;overflow:hidden!important;background:transparent!important;z-index:1!important;
   }
-  :root[data-skin="helios"] #game picture.frame{
-    position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
-  }
-  :root[data-skin="helios"] #game picture.frame img{
-    position:absolute!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;
-  }
+  :root[data-skin="helios"] #game .frame{display:none!important;}
   :root[data-skin="helios"] #loadingScreen{
     position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;
   }
