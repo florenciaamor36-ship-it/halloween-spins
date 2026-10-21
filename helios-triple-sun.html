@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css?v=single-portrait-15">
 <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
 <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-4">
-<link rel="stylesheet" href="themes/helios-triple-sun.css?v=helios-preview-18">
+<link rel="stylesheet" href="themes/helios-triple-sun.css?v=helios-preview-20">
 <style id="helios-control-layout">
 
 /* Definitive Helios control geometry: no readout overlaps the action area. */
@@ -40,6 +40,7 @@ html[data-skin="helios"] #menu.menu{display:none!important;}
 <section id="loadingScreen" class="loading-screen" aria-live="polite"><div class="loading-canvas"><img class="loading-art" src="assets/helios-triple-sun/loading.webp?v=helios-preview-2" alt=""><div class="loading-ui"><div class="loading-track"><div id="loadingBar" class="loading-fill"></div></div><div class="loading-status"><span id="loadingMessage">Cargando Helios</span><span id="loadingDots">...</span> <b id="loadingPercent">0%</b></div></div></div></section>
 <section id="lowWinScreen" class="lowwin-screen" aria-hidden="true"><div id="lowWinParticles" class="lowwin-particles"></div><div class="lowwin-card"><img alt=""><div class="lowwin-title"></div><div class="lowwin-amount"><span id="lowWinNumber">0</span></div></div></section>
 <section id="bigWinScreen" class="bigwin-screen" aria-hidden="true"><div class="bigwin-rays"></div><div id="bigWinParticles" class="bigwin-particles"></div><div class="bigwin-lights"></div><div class="bigwin-card"><img class="bigwin-art" alt=""><div class="bigwin-number-cover"><div id="bigWinNumber" class="bigwin-number">0</div></div></div></section>
+<section id="heliosBonusScreen" class="helios-bonus-screen" role="dialog" aria-modal="true" aria-label="BONUS: giros gratis" aria-hidden="true" tabindex="-1"><div class="helios-bonus-rays" aria-hidden="true"></div><div id="heliosBonusParticles" class="helios-bonus-particles" aria-hidden="true"></div><div class="helios-bonus-card"><img id="heliosBonusEmblem" class="helios-bonus-emblem" alt=""><div class="helios-bonus-title">¡BONUS!</div><div class="helios-bonus-count"><span id="heliosBonusSpins">+5</span><span class="helios-bonus-suffix">GIROS GRATIS</span></div><div id="heliosBonusPrize" class="helios-bonus-prize" hidden></div><div class="helios-bonus-hint">¡PREPARATE PARA GIRAR!</div></div><div id="heliosBonusCountdown" class="helios-bonus-countdown" aria-live="assertive" aria-atomic="true"><span id="heliosBonusCountdownNumber" class="helios-bonus-countdown-number">3</span><span id="heliosBonusCountdownCaption" class="helios-bonus-countdown-caption">BONUS · +5 GIROS GRATIS</span></div></section>
 <main id="game" class="game"><picture class="frame"><source media="all"><img alt=""></picture>
 <img class="helios-title" src="assets/helios-triple-sun/logo.webp?v=helios-preview-1" alt="Helios Triple Sun">
 <div class="prototype-flag">PROTOTIPO · REGLAS PROVISIONALES</div>
@@ -59,5 +60,5 @@ html[data-skin="helios"] #menu.menu{display:none!important;}
 </section></main>
 <button id="autoStopOverlay" class="auto-stop-overlay" type="button">PARAR AUTO</button>
 <div id="paytableModal" class="paytable-modal" aria-hidden="true"><div class="paytable-card"><button id="closePaytable" class="paytable-close" aria-label="Cerrar">×</button><div class="paytable-brand"></div><h2></h2><p class="paytable-subtitle"></p><table><thead><tr></tr></thead><tbody id="paytableRows"></tbody></table><div class="paytable-rules"><b></b></div></div></div>
-<script src="phaser.min.js?v=4.2.1"></script><script src="themes/helios-triple-sun.js?v=helios-preview-15"></script><script src="main.js?v=helios-engine-20261021-credit-precision-1"></script>
+<script src="phaser.min.js?v=4.2.1"></script><script src="themes/helios-triple-sun.js?v=helios-preview-18"></script><script src="main.js?v=helios-engine-20261021-bonus-countdown-1"></script>
 </body></html>
