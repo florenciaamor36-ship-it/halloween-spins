@@ -7,47 +7,47 @@ window.SLOT_GAME_UI = {
   ...(window.SLOT_GAME_UI || {}),
   celebrateBonusAward({ spins = 0, remaining = 0, prizeAmount = 0, prizeText = '' } = {}) {
     return new Promise(resolve => {
-      const screen = document.getElementById('lowWinScreen');
-      const card = screen?.querySelector('.lowwin-card');
-      const image = screen?.querySelector('.lowwin-card img');
-      const title = screen?.querySelector('.lowwin-title');
-      const number = document.getElementById('lowWinNumber');
-      const particles = document.getElementById('lowWinParticles');
-      if (!screen || !card || !image || !title || !number) { resolve(); return; }
+      const screen = document.getElementById('bigWinScreen');
+      const card = screen?.querySelector('.bigwin-card');
+      const image = screen?.querySelector('.bigwin-art');
+      const cover = screen?.querySelector('.bigwin-number-cover');
+      const number = document.getElementById('bigWinNumber');
+      const particles = document.getElementById('bigWinParticles');
+      if (!screen || !card || !image || !cover || !number) { resolve(); return; }
       const awardedSpins = Math.max(0, Math.floor(Number(spins) || 0));
-      const saved = { src: image.getAttribute('src'), alt: image.getAttribute('alt'), title: title.textContent, number: number.textContent, pointerdown: screen.onpointerdown };
+      const saved = { src: image.getAttribute('src'), alt: image.getAttribute('alt'), number: number.textContent, pointerdown: screen.onpointerdown, animation: card.style.animation, transition: card.style.transition, transform: card.style.transform, opacity: card.style.opacity };
       const bonusKey = window.SLOT_GAME_CONFIG?.specialSymbols?.bonus;
       const bonusSymbol = window.SLOT_GAME_CONFIG?.symbols?.find(symbol => symbol.key === bonusKey);
       if (bonusSymbol) { image.src = bonusSymbol.asset; image.alt = bonusSymbol.label; }
-      title.replaceChildren();
-      const heading = document.createElement('span'); heading.className = 'helios-bonus-title-main'; heading.textContent = '¡BONUS!';
-      const subheading = document.createElement('span'); subheading.className = 'helios-bonus-title-sub'; subheading.textContent = `¡${awardedSpins} GIROS GRATIS!`;
-      title.append(heading, subheading);
-      screen.onpointerdown = null;
+      const heading = document.createElement('div'); heading.className = 'helios-bonus-label-main'; heading.textContent = '¡BONUS!';
+      const subheading = document.createElement('div'); subheading.className = 'helios-bonus-label-sub'; subheading.textContent = `¡${awardedSpins} GIROS GRATIS!`;
+      cover.insertBefore(heading, number); cover.insertBefore(subheading, number); screen.onpointerdown = null;
       const burstParticles = () => {
         if (!particles) return;
         particles.replaceChildren();
-        const colors = window.SLOT_GAME_CONFIG?.colors?.lowWinParticlePalette || ['#ffd34d', '#fff0a8', '#d89039', '#fff'];
-        for (let i = 0; i < 64; i++) {
-          const particle = document.createElement('span'); particle.className = 'lowwin-particle';
-          const size = 5 + Math.random() * 9;
-          particle.style.setProperty('--particle-size', `${size}px`);
-          particle.style.setProperty('--x', `${Math.random() * 100}%`); particle.style.setProperty('--y', `${Math.random() * 100}%`);
-          particle.style.setProperty('--delay', `${Math.random() * .14}s`); particle.style.background = colors[i % colors.length];
-          particles.appendChild(particle);
+        const colors = window.SLOT_GAME_CONFIG?.colors?.particlePalette || ['#ffd66b', '#ffad32', '#fff3c6', '#7ddfff', '#db77ff'];
+        for (let i = 0; i < 70; i++) {
+          const particle = document.createElement('span'); particle.className = 'bigwin-particle';
+          const color = colors[i % colors.length]; particle.style.left = '50%'; particle.style.top = '50%';
+          particle.style.color = color; particle.style.background = color;
+          particle.style.setProperty('--dx', `${(Math.random() - .5) * 120}vw`);
+          particle.style.setProperty('--dy', `${(Math.random() - .5) * 120}vh`);
+          particle.style.animationDelay = `${Math.random() * .22}s`; particles.appendChild(particle);
         }
       };
       const restore = () => {
         screen.classList.remove('open', 'is-bonus-countdown', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
-        screen.setAttribute('aria-hidden', 'true');
+        screen.setAttribute('aria-hidden', 'true'); heading.remove(); subheading.remove();
         if (saved.src === null) image.removeAttribute('src'); else image.setAttribute('src', saved.src);
         if (saved.alt === null) image.removeAttribute('alt'); else image.setAttribute('alt', saved.alt);
-        title.replaceChildren(); title.textContent = saved.title; number.textContent = saved.number;
-        screen.onpointerdown = saved.pointerdown; if (particles) particles.replaceChildren(); resolve();
+        number.textContent = saved.number; card.style.animation = saved.animation; card.style.transition = saved.transition;
+        card.style.transform = saved.transform; card.style.opacity = saved.opacity; screen.onpointerdown = saved.pointerdown;
+        if (particles) particles.replaceChildren(); resolve();
       };
       const pause = milliseconds => new Promise(done => window.setTimeout(done, milliseconds));
       (async () => {
         screen.classList.remove('open', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
+        card.style.animation = ''; card.style.transition = ''; card.style.transform = ''; card.style.opacity = '';
         screen.classList.add('is-bonus-countdown'); screen.setAttribute('aria-hidden', 'false');
         void screen.offsetWidth; screen.classList.add('open');
         for (const step of ['3', '2', '1', 'GO!']) {
@@ -61,6 +61,4 @@ window.SLOT_GAME_UI = {
     });
   }
 };
-
-
 if (typeof window.location !== 'undefined' && new URLSearchParams(window.location.search).has('bonus-preview')) window.setTimeout(() => window.SLOT_GAME_UI.celebrateBonusAward({ spins: 5, remaining: 5 }), 1200);
