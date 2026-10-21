@@ -3,7 +3,64 @@ window.SLOT_GAME_CONFIG = {"schemaVersion":1,"id":"helios-triple-sun-preview","a
 
 window.addEventListener('slot:spin-start', () => document.getElementById('game')?.classList.remove('has-prize'));
 window.addEventListener('slot:spin-result', event => { const game = document.getElementById('game'); if (game) game.classList.toggle('has-prize', Number(event.detail?.totalWin) > 0); });
-window.SLOT_GAME_UI = { ...(window.SLOT_GAME_UI || {}), celebrateBonusAward({ spins = 0, remaining = 0, prizeAmount = 0, prizeText = '' } = {}) { return new Promise(resolve => { const screen = document.getElementById('lowWinScreen'); const card = screen?.querySelector('.lowwin-card'); const image = screen?.querySelector('.lowwin-card img'); const title = screen?.querySelector('.lowwin-title'); const number = document.getElementById('lowWinNumber'); const particles = document.getElementById('lowWinParticles'); if (!screen || !card || !image || !title || !number) { resolve(); return; } const awardedSpins = Math.max(0, Math.floor(Number(spins) || 0)); const saved = { src: image.getAttribute('src'), alt: image.getAttribute('alt'), title: title.textContent, number: number.textContent, pointerdown: screen.onpointerdown }; const bonusKey = window.SLOT_GAME_CONFIG?.specialSymbols?.bonus; const bonusSymbol = window.SLOT_GAME_CONFIG?.symbols?.find(symbol => symbol.key === bonusKey); if (bonusSymbol) { image.src = bonusSymbol.asset; image.alt = bonusSymbol.label; } title.textContent = `BONUS · +${awardedSpins} GIROS GRATIS`; screen.onpointerdown = null; if (particles) { particles.replaceChildren(); const colors = window.SLOT_GAME_CONFIG?.colors?.lowWinParticlePalette || ['#ffd34d', '#fff0a8', '#d89039', '#fff']; for (let i = 0; i < 56; i++) { const particle = document.createElement('span'); particle.className = 'lowwin-particle'; particle.style.setProperty('--x', `${Math.random() * 100}%`); particle.style.setProperty('--y', `${Math.random() * 100}%`); particle.style.setProperty('--delay', `${Math.random() * .55}s`); particle.style.background = colors[i % colors.length]; particles.appendChild(particle); } } const restore = () => { screen.classList.remove('open', 'is-bonus-countdown', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting'); screen.setAttribute('aria-hidden', 'true'); if (saved.src === null) image.removeAttribute('src'); else image.setAttribute('src', saved.src); if (saved.alt === null) image.removeAttribute('alt'); else image.setAttribute('alt', saved.alt); title.textContent = saved.title; number.textContent = saved.number; screen.onpointerdown = saved.pointerdown; if (particles) particles.replaceChildren(); resolve(); }; const pause = milliseconds => new Promise(done => window.setTimeout(done, milliseconds)); (async () => { screen.classList.remove('open', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting'); screen.classList.add('is-bonus-countdown'); screen.setAttribute('aria-hidden', 'false'); void screen.offsetWidth; screen.classList.add('open'); for (const step of ['3', '2', '1', 'GO!']) { number.textContent = step; screen.classList.remove('is-bonus-tick', 'is-bonus-go'); void number.offsetWidth; if (step === 'GO!') screen.classList.add('is-bonus-go'); screen.classList.add('is-bonus-tick'); await pause(step === 'GO!' ? 850 : 750); } screen.classList.add('is-bonus-exiting'); await pause(360); restore(); })().catch(restore); }); } };
+window.SLOT_GAME_UI = {
+  ...(window.SLOT_GAME_UI || {}),
+  celebrateBonusAward({ spins = 0, remaining = 0, prizeAmount = 0, prizeText = '' } = {}) {
+    return new Promise(resolve => {
+      const screen = document.getElementById('lowWinScreen');
+      const card = screen?.querySelector('.lowwin-card');
+      const image = screen?.querySelector('.lowwin-card img');
+      const title = screen?.querySelector('.lowwin-title');
+      const number = document.getElementById('lowWinNumber');
+      const particles = document.getElementById('lowWinParticles');
+      if (!screen || !card || !image || !title || !number) { resolve(); return; }
+      const awardedSpins = Math.max(0, Math.floor(Number(spins) || 0));
+      const saved = { src: image.getAttribute('src'), alt: image.getAttribute('alt'), title: title.textContent, number: number.textContent, pointerdown: screen.onpointerdown };
+      const bonusKey = window.SLOT_GAME_CONFIG?.specialSymbols?.bonus;
+      const bonusSymbol = window.SLOT_GAME_CONFIG?.symbols?.find(symbol => symbol.key === bonusKey);
+      if (bonusSymbol) { image.src = bonusSymbol.asset; image.alt = bonusSymbol.label; }
+      title.replaceChildren();
+      const heading = document.createElement('span'); heading.className = 'helios-bonus-title-main'; heading.textContent = '¡BONUS!';
+      const subheading = document.createElement('span'); subheading.className = 'helios-bonus-title-sub'; subheading.textContent = `¡${awardedSpins} GIROS GRATIS!`;
+      title.append(heading, subheading);
+      screen.onpointerdown = null;
+      const burstParticles = () => {
+        if (!particles) return;
+        particles.replaceChildren();
+        const colors = window.SLOT_GAME_CONFIG?.colors?.lowWinParticlePalette || ['#ffd34d', '#fff0a8', '#d89039', '#fff'];
+        for (let i = 0; i < 64; i++) {
+          const particle = document.createElement('span'); particle.className = 'lowwin-particle';
+          const size = 5 + Math.random() * 9;
+          particle.style.setProperty('--particle-size', `${size}px`);
+          particle.style.setProperty('--x', `${Math.random() * 100}%`); particle.style.setProperty('--y', `${Math.random() * 100}%`);
+          particle.style.setProperty('--delay', `${Math.random() * .14}s`); particle.style.background = colors[i % colors.length];
+          particles.appendChild(particle);
+        }
+      };
+      const restore = () => {
+        screen.classList.remove('open', 'is-bonus-countdown', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
+        screen.setAttribute('aria-hidden', 'true');
+        if (saved.src === null) image.removeAttribute('src'); else image.setAttribute('src', saved.src);
+        if (saved.alt === null) image.removeAttribute('alt'); else image.setAttribute('alt', saved.alt);
+        title.replaceChildren(); title.textContent = saved.title; number.textContent = saved.number;
+        screen.onpointerdown = saved.pointerdown; if (particles) particles.replaceChildren(); resolve();
+      };
+      const pause = milliseconds => new Promise(done => window.setTimeout(done, milliseconds));
+      (async () => {
+        screen.classList.remove('open', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
+        screen.classList.add('is-bonus-countdown'); screen.setAttribute('aria-hidden', 'false');
+        void screen.offsetWidth; screen.classList.add('open');
+        for (const step of ['3', '2', '1', 'GO!']) {
+          number.textContent = step; screen.classList.remove('is-bonus-tick', 'is-bonus-go');
+          void number.offsetWidth; if (step === 'GO!') screen.classList.add('is-bonus-go');
+          screen.classList.add('is-bonus-tick'); burstParticles();
+          await pause(step === 'GO!' ? 850 : 750);
+        }
+        screen.classList.add('is-bonus-exiting'); await pause(360); restore();
+      })().catch(restore);
+    });
+  }
+};
 
 
 if (typeof window.location !== 'undefined' && new URLSearchParams(window.location.search).has('bonus-preview')) window.setTimeout(() => window.SLOT_GAME_UI.celebrateBonusAward({ spins: 5, remaining: 5 }), 1200);
