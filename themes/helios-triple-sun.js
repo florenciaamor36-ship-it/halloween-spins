@@ -54,7 +54,7 @@ window.SLOT_GAME_UI = {
           number.textContent = step; screen.classList.remove('is-bonus-tick', 'is-bonus-go');
           void number.offsetWidth; if (step === 'GO!') screen.classList.add('is-bonus-go');
           screen.classList.add('is-bonus-tick'); burstParticles();
-          await pause(step === 'GO!' ? 850 : 750);
+          await pause(step === 'GO!' ? 1300 : 1000);
         }
         screen.classList.add('is-bonus-exiting'); await pause(360); restore();
       })().catch(restore);
