@@ -302,3 +302,7 @@ html[data-skin="helios"] #menu.menu{width:8%!important;height:4.5%!important;bor
     position:absolute!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;transform:none!important;
   }
 }
+
+/* Helios: show the PREMIO box only after a positive prize result. */
+html[data-skin="helios"] #game .display.win{display:none!important;}
+html[data-skin="helios"] #game.has-prize .display.win{display:block!important;}
