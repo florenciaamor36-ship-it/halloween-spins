@@ -14,6 +14,8 @@ window.SLOT_GAME_UI = {
       const number = document.getElementById('bigWinNumber');
       const particles = document.getElementById('bigWinParticles');
       if (!screen || !card || !image || !cover || !number) { resolve(); return; }
+      if (screen.dataset.bonusRunning === 'true') { resolve(); return; }
+      screen.dataset.bonusRunning = 'true';
       const awardedSpins = Math.max(0, Math.floor(Number(spins) || 0));
       const saved = { src: image.getAttribute('src'), alt: image.getAttribute('alt'), number: number.textContent, pointerdown: screen.onpointerdown, animation: card.style.animation, transition: card.style.transition, transform: card.style.transform, opacity: card.style.opacity };
       const bonusKey = window.SLOT_GAME_CONFIG?.specialSymbols?.bonus;
@@ -42,7 +44,7 @@ window.SLOT_GAME_UI = {
         if (saved.alt === null) image.removeAttribute('alt'); else image.setAttribute('alt', saved.alt);
         number.textContent = saved.number; card.style.animation = saved.animation; card.style.transition = saved.transition;
         card.style.transform = saved.transform; card.style.opacity = saved.opacity; screen.onpointerdown = saved.pointerdown;
-        if (particles) particles.replaceChildren(); resolve();
+        if (particles) particles.replaceChildren(); delete screen.dataset.bonusRunning; resolve();
       };
       const pause = milliseconds => new Promise(done => window.setTimeout(done, milliseconds));
       (async () => {
