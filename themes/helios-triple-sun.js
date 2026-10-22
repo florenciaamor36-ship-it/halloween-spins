@@ -36,7 +36,7 @@ window.SLOT_GAME_UI = {
         }
       };
       const restore = () => {
-        screen.classList.remove('open', 'is-bonus-countdown', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
+        screen.classList.remove('open', 'is-bonus-countdown', 'is-bonus-intro', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
         screen.setAttribute('aria-hidden', 'true'); heading.remove(); subheading.remove();
         if (saved.src === null) image.removeAttribute('src'); else image.setAttribute('src', saved.src);
         if (saved.alt === null) image.removeAttribute('alt'); else image.setAttribute('alt', saved.alt);
@@ -48,8 +48,11 @@ window.SLOT_GAME_UI = {
       (async () => {
         screen.classList.remove('open', 'is-bonus-tick', 'is-bonus-go', 'is-bonus-exiting');
         card.style.animation = ''; card.style.transition = ''; card.style.transform = ''; card.style.opacity = '';
-        screen.classList.add('is-bonus-countdown'); screen.setAttribute('aria-hidden', 'false');
+        number.textContent = '';
+        screen.classList.add('is-bonus-countdown', 'is-bonus-intro'); screen.setAttribute('aria-hidden', 'false');
         void screen.offsetWidth; screen.classList.add('open');
+        await pause(780);
+        screen.classList.remove('is-bonus-intro');
         for (const step of ['3', '2', '1', 'GO!']) {
           number.textContent = step; screen.classList.remove('is-bonus-tick', 'is-bonus-go');
           void number.offsetWidth; if (step === 'GO!') screen.classList.add('is-bonus-go');
