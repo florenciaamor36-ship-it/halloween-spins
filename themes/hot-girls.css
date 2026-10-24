@@ -4,11 +4,6 @@ html[data-machine="hot-girls"]{--hg-gold:#e7c16f;--hg-pink:#c02a86;--hg-purple:#
 
 @media(prefers-reduced-motion:reduce){html[data-machine="hot-girls"] .hg-roll,html[data-machine="hot-girls"] .hg-land,html[data-machine="hot-girls"] .hg-walk{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
-/* Approximation using the full symbol artwork: the JSON drives the state and its timing. */
-@keyframes hgApproxIdle{0%,100%{transform:translateY(0) scale(1)}32%{transform:translateY(-1.2%) scale(1.012)}68%{transform:translateY(.35%) scale(.998)}}
-@keyframes hgApproxStop{0%{transform:translateY(-5%) scaleY(1.06)}42%{transform:translateY(1.8%) scaleY(.96)}72%{transform:translateY(-.7%) scaleY(1.015)}100%{transform:translateY(0) scale(1)}}
-@keyframes hgApproxWin{0%,100%{transform:translateY(0) scale(1) rotate(0)}22%{transform:translateY(-2.4%) scale(1.045) rotate(-1deg)}48%{transform:translateY(.8%) scale(.99) rotate(1deg)}74%{transform:translateY(-1.3%) scale(1.025) rotate(-.5deg)}}
-html[data-machine="hot-girls"] .hg-cell.hg-idle img{transform-origin:50% 75%;animation:hgApproxIdle var(--hg-state-duration,2400ms) ease-in-out infinite;will-change:transform}
-html[data-machine="hot-girls"] .hg-cell[data-animation="stop"] img{transform-origin:50% 75%;animation:hgApproxStop var(--hg-state-duration,700ms) cubic-bezier(.2,.75,.25,1) both}
-html[data-machine="hot-girls"] .hg-cell.hg-win img{transform-origin:50% 75%;animation:hgApproxWin var(--hg-state-duration,1200ms) ease-in-out infinite;will-change:transform}
-@media(prefers-reduced-motion:reduce){html[data-machine="hot-girls"] .hg-cell.hg-idle img,html[data-machine="hot-girls"] .hg-cell[data-animation="stop"] img,html[data-machine="hot-girls"] .hg-cell.hg-win img{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* Keep the symbol artwork still when idle and winnings are shown; animate only the reel and landing. */
+html[data-machine="hot-girls"] .hg-cell.hg-idle img,html[data-machine="hot-girls"] .hg-cell.hg-win img{animation:none!important;will-change:auto!important}
