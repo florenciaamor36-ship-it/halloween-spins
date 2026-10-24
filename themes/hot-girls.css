@@ -12,3 +12,8 @@ html[data-machine="hot-girls"] .hg-cell.hg-idle img,html[data-machine="hot-girls
 html[data-machine="hot-girls"] .hg-cell.hg-roll,html[data-machine="hot-girls"] .hg-cell[data-animation="roll"]{animation:none!important;filter:none!important;transform:none!important;will-change:auto!important}
 html[data-machine="hot-girls"] .hg-cell.hg-roll img{filter:none!important}
 html[data-machine="hot-girls"] .hg-cell.hg-land{animation:hgLand .18s ease-out}
+
+@keyframes hgReelSlide{from{transform:translateY(-18%)}to{transform:translateY(18%)}}
+html[data-machine="hot-girls"] .hg-cell.hg-roll{animation:hgReelSlide .12s linear infinite!important;filter:none!important;will-change:transform}
+html[data-machine="hot-girls"] .hg-cell.hg-roll img{filter:none!important}
+html[data-machine="hot-girls"] .hg-cell.hg-land{animation:hgLand .16s ease-out!important}
