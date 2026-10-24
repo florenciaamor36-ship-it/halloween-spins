@@ -24,7 +24,7 @@ window.HOT_GIRLS_DATA = {
     {
       "key": "high5",
       "label": "Mouse",
-      "image": "assets/hot-girls-wheel-of-passion/src/assets/symbols/high5/h_5_b.c154929bdbdc7bbeb541803fee5dc285.webp"
+      "image": "assets/symbols/mouse-symbol.svg"
     },
     {
       "key": "royal1",
@@ -49,7 +49,7 @@ window.HOT_GIRLS_DATA = {
     {
       "key": "royal6",
       "label": "Nueve",
-      "image": "assets/hot-girls-wheel-of-passion/src/assets/symbols/royal6/r_6_b.4f6440c142084b7274e740d898e6e725.webp"
+      "image": "assets/symbols/nine-symbol.svg"
     },
     {
       "key": "wild",
