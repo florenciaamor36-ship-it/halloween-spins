@@ -16,6 +16,7 @@ function stop(key){if(sounds[key]){sounds[key].pause();sounds[key].currentTime=0
 const patterns=[[1,1,1,1,1],[0,0,0,0,0],[2,2,2,2,2],[0,1,2,1,0],[2,1,0,1,2],[0,0,1,2,2],[2,2,1,0,0],[1,0,0,0,1],[1,2,2,2,1],[0,1,1,1,0],[2,1,1,1,2],[1,0,1,0,1],[1,2,1,2,1],[0,1,0,1,0],[2,1,2,1,2],[1,1,0,1,1],[1,1,2,1,1],[0,0,2,0,0],[2,2,0,2,0],[0,2,0,2,0],[0,1,2,2,2],[2,1,0,0,0],[1,0,2,0,1],[1,2,0,2,1],[0,2,2,2,0]];
 const reel=$('hgReels');
 function symbolHtml(key){const s=symMap[key]||symMap.royal1;return `<div class="hg-cell hg-${key}" data-key="${key}" title="${s.label}"><img src="${s.image}" alt="${s.label}" draggable="false"></div>`}
+function updateCellSymbol(el,key){const s=symMap[key]||symMap.royal1,img=el?.querySelector('img');if(!el||!img)return;el.dataset.key=key;el.className=`hg-cell hg-${key} hg-roll`;el.title=s.label;img.src=s.image;img.alt=s.label;}
 function drawGrid(keys){grid=keys.slice();reel.innerHTML=keys.map(symbolHtml).join('');}
 function sampleKey(){const roll=Math.random();if(roll<.018)return 'wheel';if(roll<.047)return 'bonus';if(roll<.09)return 'scatter';if(roll<.175)return 'wild';return normal[Math.floor(Math.random()*normal.length)].key}
 function randomGrid(){return Array.from({length:15},sampleKey)}
