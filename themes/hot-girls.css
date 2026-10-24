@@ -7,3 +7,8 @@ html[data-machine="hot-girls"]{--hg-gold:#e7c16f;--hg-pink:#c02a86;--hg-purple:#
 
 /* Keep the symbol artwork still when idle and winnings are shown; animate only the reel and landing. */
 html[data-machine="hot-girls"] .hg-cell.hg-idle img,html[data-machine="hot-girls"] .hg-cell.hg-win img{animation:none!important;will-change:auto!important}
+
+/* Slot reel motion is discrete symbol cycling, not a blurred CSS shake. */
+html[data-machine="hot-girls"] .hg-cell.hg-roll,html[data-machine="hot-girls"] .hg-cell[data-animation="roll"]{animation:none!important;filter:none!important;transform:none!important;will-change:auto!important}
+html[data-machine="hot-girls"] .hg-cell.hg-roll img{filter:none!important}
+html[data-machine="hot-girls"] .hg-cell.hg-land{animation:hgLand .18s ease-out}
