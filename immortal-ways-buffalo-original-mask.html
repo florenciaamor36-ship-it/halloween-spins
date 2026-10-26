@@ -85,6 +85,7 @@ window.IMMORTAL_ASSET=function(path){if(__ASSETS[path])return __ASSETS[path];con
     showRandomSymbols();
   }
   function setSymbol(cell,name,animate=false){
+    cell.cell.dataset.symbol=name;
     cell.img.onerror=()=>{cell.cell.classList.add('asset-error');cell.img.alt=name};cell.img.src=window.IMMORTAL_ASSET(`assets/images/${name}.webp`);
     cell.cell.classList.toggle('is-wild',name==='sym_wild01');
     cell.cell.classList.toggle('is-scatter',name==='sym_scatter');
@@ -93,7 +94,7 @@ window.IMMORTAL_ASSET=function(path){if(__ASSETS[path])return __ASSETS[path];con
   function showRandomSymbols(){for(const reel of reels)for(const cell of reel.cells)setSymbol(cell,imageNames[Math.floor(Math.random()*imageNames.length)]);}
   function spin(){
     if(busy||!layout)return;busy=true;spinButton.disabled=true;play('Basic_SpinClick');startMusic();root.classList.add('is-spin');status.textContent='GIRANDO · VISTA DEMO';
-    const current=reels.map(r=>r.cells.map(c=>c.img.src.split('/').pop().replace('.webp','')));
+    const current=reels.map(r=>r.cells.map(c=>c.cell.dataset.symbol || imageNames[0]));
     reels.forEach(r=>r.el.classList.add('is-spinning'));
     const start=performance.now();const durations=reels.map((_,i)=>920+i*210);
     const timer=setInterval(()=>{for(let c=0;c<reels.length;c++)if(performance.now()-start<durations[c])for(const cell of reels[c].cells)setSymbol(cell,imageNames[Math.floor(Math.random()*10)]);},75);
