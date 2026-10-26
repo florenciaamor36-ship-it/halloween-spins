@@ -43,6 +43,14 @@
 @media (orientation:landscape) and (max-height:500px){
  body{padding:4px}.cabinet{width:min(100vw,177.78svh);height:min(94svh,56.25vw);min-height:0;max-height:none;aspect-ratio:16/9;margin:auto}
 }
+
+/* Vertical 9:16 is the default on desktop too; never fall back to landscape. */
+html,body{min-height:100%;}
+body{min-height:100svh;display:grid;place-items:center;overflow:auto;padding:0;background:radial-gradient(ellipse at center,#17204b 0,#070a1c 75%);}
+.cabinet{position:relative;width:min(100vw,56.25svh,700px);height:min(100svh,177.7778vw,1244px);min-height:0;max-height:100svh;aspect-ratio:9/16;flex:none;margin:auto;border-radius:clamp(8px,1.6vw,20px);}
+@media (max-width:700px) and (orientation:portrait){
+ .cabinet{width:min(100vw,56.25svh);height:min(100svh,177.7778vw);aspect-ratio:9/16;margin:0;border-radius:clamp(8px,3vw,18px);}
+}
 </style></head><body>
   <main class="cabinet" aria-label="Máscara independiente de Immortal Ways Buffalo">
     <div class="game-bg" aria-hidden="true"></div>
