@@ -10,3 +10,8 @@ html[data-machine="hot-girls"] .hg-cell[data-animation="win"]>img{animation:hgJs
 @keyframes hgJsonStop{0%{transform:translate3d(0,calc(var(--hg-shift,3px)*-.28),0) rotate(calc(var(--hg-rotate,4deg)*-.08)) scale(.96)}68%{transform:translate3d(0,calc(var(--hg-shift,3px)*.12),0) rotate(calc(var(--hg-rotate,4deg)*.035)) scale(1.035)}100%{transform:translate3d(0,0,0) rotate(0) scale(1)}}
 @keyframes hgJsonIn{0%{opacity:.45;transform:scale(.82) translateY(8%)}70%{opacity:1;transform:scale(1.08) translateY(-2%)}100%{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes hgJsonWin{0%,100%{transform:translate3d(0,0,0) rotate(0) scale(1)}35%{transform:translate3d(0,calc(var(--hg-shift,3px)*-.16),0) rotate(calc(var(--hg-rotate,4deg)*.07)) scale(calc(1 + var(--hg-scale,.04)*.22))}70%{transform:translate3d(0,calc(var(--hg-shift,3px)*.08),0) rotate(calc(var(--hg-rotate,4deg)*-.04)) scale(1.03)}}
+/* Winning paylines are overlaid within the reel grid and do not shift symbol cells. */
+html[data-machine="hot-girls"] .hg-reels{position:absolute}
+html[data-machine="hot-girls"] .hg-payline-overlay{position:absolute;inset:0;width:100%;height:100%;z-index:8;pointer-events:none;overflow:visible}
+html[data-machine="hot-girls"] .hg-payline-overlay polyline{animation:hgPaylineGlow .9s ease-in-out infinite alternate}
+@keyframes hgPaylineGlow{from{opacity:.62}to{opacity:1;filter:drop-shadow(0 0 7px #fff)}}
