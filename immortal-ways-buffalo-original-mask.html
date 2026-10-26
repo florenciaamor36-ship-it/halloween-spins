@@ -4,43 +4,41 @@
 /* Source buttons are visible artwork, never text-only fallback controls. */
 .icon-button{display:grid;place-items:center;padding:3px}.icon-button img{max-width:100%;max-height:100%;object-fit:contain}.meter-card{min-width:100px}.bet-value{display:flex;align-items:center;justify-content:center;gap:5px}.bet-value button{background:transparent;border:0;padding:0;display:grid;place-items:center;cursor:pointer}.bet-value img{width:18px;height:24px;object-fit:contain}.spin{display:grid;place-items:center;padding:4px;position:relative}.spin .spin-art{width:100%;height:100%;object-fit:contain}.spin span{position:absolute;bottom:8%;font-size:clamp(8px,.8vw,12px);text-shadow:0 2px 4px #000;color:#fff}.image-control{position:relative;min-width:clamp(50px,6vw,80px);height:42%;border:0;background:transparent;padding:0;cursor:pointer;display:grid;place-items:center}.image-control img{width:100%;height:100%;object-fit:contain}.image-control span{position:absolute;inset:0;display:grid;place-items:center;color:#fff;text-shadow:0 1px 3px #000;font-size:clamp(7px,.72vw,11px);font-weight:bold}.image-control[aria-pressed="true"] img{filter:brightness(1.3)}@media(max-width:700px){.image-control{min-width:11vw}.bet-value img{width:12px;height:18px}.meter-card{min-width:0}}
 
-/* Mobile-first portrait cabinet: native vertical viewport, no rotation, no cropped reels. */
+/* Real 9:16 portrait cabinet on phones: no wide-game composition stretched to viewport. */
 @media (max-width:700px) and (orientation:portrait){
- body{display:block;width:100vw;height:100svh;min-height:0;padding:0;overflow:hidden}
- .cabinet{position:relative;width:100vw;height:100svh;min-height:0;max-height:none;aspect-ratio:auto;border-radius:0;border-width:3px;box-shadow:inset 0 0 30px #020515;}
- .cabinet:before{inset:6px;border-radius:9px}
- .topline{height:10%;padding:0 4%;background:linear-gradient(180deg,#090a1fee,#111532cc 75%,transparent)}
- .brand-mark{font-size:clamp(16px,5vw,24px);padding:3px 5px}
- .brand strong{font-size:clamp(11px,3.5vw,16px)}
- .brand small{font-size:clamp(6px,1.8vw,9px)}
- .right-controls{gap:6px}
- .preview-pill{max-width:112px;font-size:clamp(6px,1.7vw,9px);padding:5px 7px}
- .icon-button{width:32px;height:32px}
- .stage{top:10%;bottom:22%;left:2%;right:2%}
- .logo-art{top:1%;width:min(58vw,280px);max-height:14%}
- .reel-window{left:4%;right:4%;top:25%;bottom:24%;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:4px;border-width:2px;border-radius:9px}
- .reel{gap:2px}
- .symbol{border-radius:2px;border-width:1px}
- .side-meter{display:none}
- .status{bottom:0;max-width:92%;overflow:hidden;text-overflow:ellipsis;font-size:clamp(7px,2vw,10px);letter-spacing:.06em}
- .controls{left:2%;right:2%;bottom:3%;height:17%;gap:1vw;justify-content:space-evenly}
- .meter-card{width:20vw;min-width:0;height:52%;border-radius:5px;padding:2px}
- .meter-card small{font-size:clamp(6px,1.7vw,9px);letter-spacing:.04em}
- .meter-card strong{font-size:clamp(8px,2.2vw,12px)}
- .balance strong{font-size:clamp(6px,1.45vw,8px)}
- .bet-value{gap:1px}.bet-value button{min-width:16px}.bet-value img{width:13px;height:18px}
- .spin{width:min(19vw,76px);height:min(19vw,76px);max-width:none;max-height:none;border-width:3px;padding:3px}
- .spin span{bottom:7%;font-size:clamp(7px,1.8vw,10px)}
- .image-control{min-width:14vw;width:14vw;height:43%}
- .image-control span{font-size:clamp(6px,1.7vw,9px)}
- .cabinet footer{display:none}
+ html,body{width:100%;height:100%;min-height:100svh;}
+ body{display:grid;place-items:center;padding:0;overflow:hidden;background:radial-gradient(ellipse at center,#17204b 0,#070a1c 75%);}
+ .cabinet{position:relative;width:min(100vw,56.25svh);height:min(100svh,177.7778vw);min-height:0;max-height:100svh;aspect-ratio:9/16;flex:none;border-radius:clamp(8px,3vw,18px);border-width:3px;box-shadow:0 0 0 2px #ffd772,0 0 24px #e99c2c55,inset 0 0 28px #020515;}
+ .cabinet:before{inset:5px;border-radius:7px;}
+ .game-bg{background-size:cover;background-position:center;}
+ .topline{height:9%;padding:0 4%;background:linear-gradient(180deg,#090a1fee,#111532bb 78%,transparent);}
+ .brand{gap:4px;}.brand-mark{font-size:clamp(15px,4.5vw,22px);padding:3px 5px;}
+ .brand strong{font-size:clamp(9px,2.8vw,13px);letter-spacing:.09em;}.brand small{font-size:clamp(5px,1.4vw,7px);letter-spacing:.08em;}
+ .right-controls{gap:4px;}.preview-pill{max-width:82px;padding:4px 5px;font-size:clamp(5px,1.35vw,7px);line-height:1.15;text-align:center;}
+ .icon-button{width:26px;height:26px;padding:2px;}
+ .stage{top:9%;bottom:22%;left:2%;right:2%;}
+ .logo-art{top:1%;width:68%;max-height:13%;}
+ .reel-window{left:4%;right:4%;top:19%;bottom:12%;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:3px;border-width:2px;border-radius:7px;}
+ .reel{gap:2px;}.symbol{border-radius:2px;}
+ .side-meter{display:none;}
+ .status{bottom:1%;max-width:92%;font-size:clamp(6px,1.55vw,8px);letter-spacing:.045em;white-space:normal;text-align:center;}
+ .controls{left:2%;right:2%;bottom:4%;height:16%;gap:1px;justify-content:space-evenly;}
+ .meter-card{width:20%;min-width:0;height:53%;padding:2px;border-radius:4px;}
+ .meter-card small{font-size:clamp(5px,1.45vw,7px);letter-spacing:.02em;}
+ .meter-card strong{font-size:clamp(7px,1.9vw,9px);}.balance strong{font-size:clamp(5px,1.15vw,6px);}
+ .bet-value{gap:0;}.bet-value button{min-width:13px;}.bet-value img{width:11px;height:15px;}
+ .spin{width:19%;height:auto;aspect-ratio:1;max-width:none;max-height:none;padding:3px;border-width:2px;}
+ .spin span{bottom:7%;font-size:clamp(6px,1.45vw,8px);}
+ .image-control{width:13%;min-width:0;height:42%;}
+ .image-control span{font-size:clamp(5px,1.35vw,7px);}
+ .cabinet footer{display:none;}
 }
 @media (max-width:380px) and (orientation:portrait){
- .preview-pill{max-width:82px}
- .brand{gap:3px}.brand-mark{font-size:15px}
- .meter-card{width:19vw}
- .controls{gap:0}
- .image-control{min-width:13vw;width:13vw}
+ .cabinet{width:min(100vw,56.25svh);height:min(100svh,177.7778vw);}
+ .brand{gap:3px;}.brand-mark{font-size:14px;}
+ .preview-pill{max-width:65px;}
+ .controls{gap:0;}.meter-card{width:19%;}
+ .image-control{width:12%;}
 }
 @media (orientation:landscape) and (max-height:500px){
  body{padding:4px}.cabinet{width:min(100vw,177.78svh);height:min(94svh,56.25vw);min-height:0;max-height:none;aspect-ratio:16/9;margin:auto}
