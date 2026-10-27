@@ -1,259 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animación por Capas - Caldero Tragamonedas</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: #0b0c10;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .controles {
-      margin-bottom: 20px;
-      display: flex;
-      gap: 15px;
-      z-index: 10;
-    }
-
-    button {
-      background: #1f2833;
-      color: #66fcf1;
-      border: 2px solid #45a29e;
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: #45a29e;
-      color: #0b0c10;
-    }
-
-    button.activo {
-      background: #66fcf1;
-      color: #0b0c10;
-      border-color: #66fcf1;
-      box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
-    }
-
-    /* Contenedor del símbolo */
-    .simbolo-container {
-      position: relative;
-      width: 500px;
-      height: 500px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
-      /* Patrón de ajedrez para ver transparencia */
-      background-image: 
-        linear-gradient(45deg, #1b1e24 25%, transparent 25%), 
-        linear-gradient(-45deg, #1b1e24 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #1b1e24 75%), 
-        linear-gradient(-45deg, transparent 75%, #1b1e24 75%);
-      background-size: 20px 20px;
-      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-      background-color: #111317;
-    }
-
-    /* Capa Base: Imagen del Caldero */
-    .imagen-base {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      z-index: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    /* Capa Superior: Animación Transparente */
-    #canvas-animacion {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prueba de animación por capas - Caldero</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111}body{display:flex;justify-content:center;align-items:center;min-height:100vh;min-height:100dvh}
+#escena{position:relative;width:min(100vw,calc(100dvh * 1024 / 558));height:min(100dvh,calc(100vw * 558 / 1024));aspect-ratio:1024/558;overflow:hidden;background:#111;isolation:isolate}
+#fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:0}
+#caldero{position:absolute;left:34.18%;top:16.13%;width:31.84%;height:75.09%;z-index:1;object-fit:fill;pointer-events:none}
+#capa-animacion{position:absolute;inset:0;width:100%;height:100%;background:transparent;pointer-events:none;z-index:2}
+</style>
 </head>
 <body>
-
-  <div class="controles">
-    <button id="btn-con-img" class="activo" onclick="toggleImagen(true)">Con Imagen Original</button>
-    <button id="btn-sin-img" onclick="toggleImagen(false)">Solo Capa Transparente</button>
-  </div>
-
-  <div class="simbolo-container">
-    <!-- El enlace de imagen del código enviado responde error 500/404; uso el caldero que compartiste, recortado con transparencia. -->
-    <img id="img-caldero" class="imagen-base" src="./cauldron-cutout.png" alt="Caldero con fondo transparente">
-    
-    <canvas id="canvas-animacion" width="800" height="800"></canvas>
-  </div>
-
-  <script>
-    const canvas = document.getElementById('canvas-animacion');
-    const ctx = canvas.getContext('2d', { alpha: true });
-    const imgBase = document.getElementById('img-caldero');
-
-    function toggleImagen(mostrar) {
-      imgBase.style.opacity = mostrar ? "1" : "0";
-      document.getElementById('btn-con-img').classList.toggle('activo', mostrar);
-      document.getElementById('btn-sin-img').classList.toggle('activo', !mostrar);
-    }
-
-    // --- PRE-RENDERIZADO EN GPU DEL FUEGO 🔥 PARA MÁXIMA FLUIDEZ ---
-    const offscreenFire = document.createElement('canvas');
-    offscreenFire.width = 100;
-    offscreenFire.height = 100;
-    const offCtx = offscreenFire.getContext('2d');
-    offCtx.font = '65px serif';
-    offCtx.textAlign = 'center';
-    offCtx.textBaseline = 'middle';
-    offCtx.shadowColor = '#ff5500';
-    offCtx.shadowBlur = 18;
-    offCtx.fillText('🔥', 50, 50);
-
-    // --- CONFIGURACIÓN DE ELEMENTOS ANIMADOS ---
-    const fueguitos = [];
-    const numFueguitos = 14;
-
-    // Crear fueguitos en la base de los leños
-    for (let i = 0; i < numFueguitos; i++) {
-      fueguitos.push({
-        x: 260 + (i / (numFueguitos - 1)) * 280 + (Math.random() - 0.5) * 20,
-        y: 615 + (Math.random() - 0.5) * 15,
-        baseScale: 0.75 + Math.random() * 0.35,
-        phase: Math.random() * Math.PI * 2,
-        speed: 16 + Math.random() * 12
-      });
-    }
-
-    // Burbujas
-    const burbujas = [];
-    for (let i = 0; i < 28; i++) {
-      burbujas.push({
-        x: 400 + (Math.random() - 0.5) * 240,
-        y: 380 + Math.random() * 60,
-        radius: Math.random() * 8 + 3,
-        speedY: Math.random() * 3 + 1.5,
-        speedX: (Math.random() - 0.5) * 1,
-        alpha: Math.random() * 0.9 + 0.1,
-        color: Math.random() > 0.4 ? '#32ff7e' : '#e056fd'
-      });
-    }
-
-    // Humo
-    const humo = [];
-    for (let i = 0; i < 18; i++) {
-      humo.push({
-        x: 400 + (Math.random() - 0.5) * 200,
-        y: 360 + Math.random() * 40,
-        radius: Math.random() * 25 + 15,
-        speedY: Math.random() * 2.5 + 1.2,
-        speedX: (Math.random() - 0.5) * 1.5,
-        alpha: Math.random() * 0.35 + 0.05
-      });
-    }
-
-    // --- BUCLE DE ANIMACIÓN A 60 FPS (DELTA TIME) ---
-    let tiempoAnterior = performance.now();
-
-    function bucleAnimacion(tiempoActual) {
-      const dt = Math.min((tiempoActual - tiempoAnterior) / 1000, 0.1);
-      tiempoAnterior = tiempoActual;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // 1. DIBUJAR HUMO
-      for (let i = 0; i < humo.length; i++) {
-        const h = humo[i];
-        h.y -= h.speedY * (dt * 60);
-        h.x += h.speedX * (dt * 60);
-        h.radius += 0.4 * (dt * 60);
-        h.alpha -= 0.006 * (dt * 60);
-
-        if (h.alpha <= 0) {
-          h.x = 400 + (Math.random() - 0.5) * 200;
-          h.y = 370;
-          h.radius = Math.random() * 25 + 15;
-          h.alpha = Math.random() * 0.35 + 0.05;
-        }
-
-        ctx.beginPath();
-        const grad = ctx.createRadialGradient(h.x, h.y, 0, h.x, h.y, h.radius);
-        grad.addColorStop(0, `rgba(160, 255, 210, ${h.alpha})`);
-        grad.addColorStop(1, 'rgba(160, 255, 210, 0)');
-        ctx.fillStyle = grad;
-        ctx.arc(h.x, h.y, h.radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // 2. DIBUJAR BURBUJAS
-      for (let i = 0; i < burbujas.length; i++) {
-        const b = burbujas[i];
-        b.y -= b.speedY * (dt * 60);
-        b.x += b.speedX * (dt * 60);
-        b.alpha -= 0.01 * (dt * 60);
-
-        if (b.alpha <= 0 || b.y < 220) {
-          b.x = 400 + (Math.random() - 0.5) * 240;
-          b.y = 420;
-          b.alpha = Math.random() * 0.9 + 0.1;
-        }
-
-        ctx.beginPath();
-        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
-        ctx.fillStyle = b.color;
-        ctx.globalAlpha = b.alpha;
-        ctx.fill();
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = '#ffffff';
-        ctx.stroke();
-        ctx.globalAlpha = 1.0;
-      }
-
-      // 3. DIBUJAR FUEGO 🔥 (PARPADEO RÁPIDO)
-      for (let i = 0; i < fueguitos.length; i++) {
-        const f = fueguitos[i];
-        f.phase += f.speed * dt;
-
-        const escalaFactor = Math.sin(f.phase) * 0.22 + 0.95;
-        const escalaActual = f.baseScale * escalaFactor;
-        const opacidadActual = 0.8 + Math.cos(f.phase * 1.4) * 0.2;
-
-        ctx.save();
-        ctx.globalAlpha = opacidadActual;
-        ctx.translate(f.x, f.y);
-        ctx.scale(escalaActual, escalaActual);
-        ctx.drawImage(offscreenFire, -50, -50);
-        ctx.restore();
-      }
-
-      requestAnimationFrame(bucleAnimacion);
-    }
-
-    requestAnimationFrame(bucleAnimacion);
-  </script>
+<div id="escena" aria-label="Caldero con animación transparente de burbujas, humo y chispas">
+<img id="fondo" src="./cauldron-background.jpg" alt="">
+<img id="caldero" src="./cauldron-cutout.png" alt="">
+<canvas id="capa-animacion" width="1024" height="558"></canvas>
+</div>
+<script>
+const canvas=document.getElementById('capa-animacion');
+const ctx=canvas.getContext('2d');
+const W=canvas.width,H=canvas.height;
+const bubbles=[],smoke=[],fireSparks=[];
+// Puntos de emisión medidos respecto de la imagen original 1024×558.
+const centerX=512,liquidY=229,fireY=449;
+for(let i=0;i<25;i++)bubbles.push({x:centerX+(Math.random()-.5)*190,y:liquidY+Math.random()*25,radius:Math.random()*6+3,speedY:Math.random()*1.05+.48,speedX:(Math.random()-.5)*.42,alpha:Math.random()*.8+.2,color:Math.random()>.5?'rgba(50, 255, 120,':'rgba(230, 80, 255,'});
+for(let i=0;i<15;i++)smoke.push({x:centerX+(Math.random()-.5)*150,y:liquidY-10+Math.random()*28,radius:Math.random()*16+12,speedY:Math.random()*.7+.55,speedX:(Math.random()-.5)*.5,alpha:Math.random()*.3+.1});
+for(let i=0;i<20;i++)fireSparks.push({x:centerX+(Math.random()-.5)*200,y:fireY+Math.random()*16,radius:Math.random()*3+1,speedY:Math.random()*1.45+.75,speedX:(Math.random()-.5)*.75,alpha:1});
+function animate(){ctx.clearRect(0,0,W,H);
+// Humo detrás del caldero: la zona de salida queda en el borde interno de la boca.
+smoke.forEach(s=>{ctx.beginPath();const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.radius);g.addColorStop(0,`rgba(180,255,200,${s.alpha})`);g.addColorStop(1,'rgba(180,255,200,0)');ctx.fillStyle=g;ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);ctx.fill();s.y-=s.speedY;s.x+=s.speedX;s.radius+=.3;s.alpha-=.003;if(s.alpha<=0){s.x=centerX+(Math.random()-.5)*150;s.y=liquidY-2;s.radius=Math.random()*16+12;s.alpha=Math.random()*.3+.1}});
+// Burbujas mágicas nacen dentro del líquido y suben por la abertura.
+bubbles.forEach(b=>{ctx.beginPath();ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);ctx.fillStyle=b.color+b.alpha+')';ctx.fill();ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,255,255,.6)';ctx.stroke();b.y-=b.speedY;b.x+=b.speedX;b.alpha-=.005;if(b.alpha<=0||b.y<liquidY-100){b.x=centerX+(Math.random()-.5)*190;b.y=liquidY+16;b.alpha=Math.random()*.8+.2}});
+// Chispas suben desde el fuego visible debajo de la base de piedra.
+fireSparks.forEach(f=>{ctx.beginPath();ctx.arc(f.x,f.y,f.radius,0,Math.PI*2);ctx.fillStyle=`rgba(255,180,50,${f.alpha})`;ctx.fill();f.y-=f.speedY;f.x+=f.speedX;f.alpha-=.015;if(f.alpha<=0){f.x=centerX+(Math.random()-.5)*200;f.y=fireY+12;f.alpha=1}});
+requestAnimationFrame(animate)}
+animate();
+</script>
 </body>
 </html>
