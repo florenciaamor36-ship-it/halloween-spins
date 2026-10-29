@@ -316,7 +316,7 @@ function buildPaytable(){
   image.className='pay-symbol';image.src=symbol.asset;image.alt=symbol.label;
   label.textContent=SCATTER_INDICES.includes(index)?UI.scatterPaytableLabel.replace('{label}',symbol.label):symbol.label;
   identity.append(image,label);row.appendChild(identity);
-  PAYTABLE_COUNTS.forEach(count=>{const cell=document.createElement('td');if(index===BONUS_INDEX)cell.textContent=BONUS_FREE_SPINS[count]===undefined?'—':`${BONUS_FREE_SPINS[count]} ${UI.freeSpinsSuffix}`;else cell.textContent=paytable?.[count]===undefined?'—':`${formatMultiplier(paytable[count]*PAYOUT_SCALE)}${UI.paytableMultiplierSuffix}`;row.appendChild(cell)});
+  PAYTABLE_COUNTS.forEach(count=>{const cell=document.createElement('td');if(index===BONUS_INDEX&&DUENDE_SLOT){const linePrize=paytable?.[count]===undefined?'—':`${formatMultiplier(paytable[count]*PAYOUT_SCALE)}${UI.paytableMultiplierSuffix}`,spins=BONUS_FREE_SPINS[count]===undefined?'':` + ${BONUS_FREE_SPINS[count]} ${UI.freeSpinsSuffix}`;cell.textContent=linePrize+spins}else if(index===BONUS_INDEX)cell.textContent=BONUS_FREE_SPINS[count]===undefined?'—':`${BONUS_FREE_SPINS[count]} ${UI.freeSpinsSuffix}`;else cell.textContent=paytable?.[count]===undefined?'—':`${formatMultiplier(paytable[count]*PAYOUT_SCALE)}${UI.paytableMultiplierSuffix}`;row.appendChild(cell)});
   return row;
  }));
 }
