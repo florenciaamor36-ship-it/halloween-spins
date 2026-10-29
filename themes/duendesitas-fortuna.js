@@ -9,9 +9,9 @@ window.SLOT_GAME_CONFIG = {
   assets: {
     frame: {
       portrait: 'assets/duendesitas-fortuna/frame.jpg?v=1',
-      fallback: 'assets/frame-pc.webp'
+      fallback: 'assets/duendesitas-fortuna/frame.jpg?v=2'
     },
-    loading: 'assets/duendesitas-fortuna/loading-screen.jpg?v=1',
+    loading: 'assets/duendesitas-fortuna/frame.jpg?v=2',
     spin: {
       normal: 'assets/buttons/spin-normal.webp?v=1',
       pressed: 'assets/buttons/spin-pressed.webp?v=1'
@@ -32,13 +32,6 @@ window.SLOT_GAME_CONFIG = {
     { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=1' },
     { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/cauldron.png?v=1' },
     { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/clover.png?v=3' },
-    { key: '10', label: '10', asset: 'assets/symbols/10.webp' },
-    { key: 'J', label: 'J', asset: 'assets/symbols/J.webp' },
-    { key: 'Q', label: 'Q', asset: 'assets/symbols/Q.webp' },
-    { key: 'K', label: 'K', asset: 'assets/symbols/K.webp' },
-    { key: 'A', label: 'A', asset: 'assets/symbols/A.webp' },
-    { key: 'wild', label: 'WILD', asset: 'assets/symbols/wild.webp' },
-    { key: 'scatter', label: 'SCATTER', asset: 'assets/symbols/scatter.webp' },
     { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=1' }
   ],
   defaults: {
@@ -59,8 +52,8 @@ window.SLOT_GAME_CONFIG = {
     freeSpins: 0
   },
   specialSymbols: {
-    wild: 'wild',
-    scatter: 'scatter',
+    wild: '__none__',
+    scatter: '__none__',
     bonus: 'bonus',
     animatedWin: 'galera'
   },
@@ -76,21 +69,17 @@ window.SLOT_GAME_CONFIG = {
       [1,1,2,1,1], [0,0,2,0,0], [2,2,0,2,0], [0,2,0,2,0]
     ],
     lineColors: ['#eab308','#38bdf8','#f43f5e','#a855f7','#22c55e','#fb923c','#06b6d4','#ec4899','#84cc16','#f59e0b','#14b8a6','#6366f1','#d946ef','#e11d48','#10b981','#facc15','#38bdf8','#c084fc','#4ade80','#f472b6'],
-    symbolWeights: [70,70,70,110,110,110,110,110,70,80,90],
+    symbolWeights: [250,250,250,250],
     weightTotal: 1000,
     paytableCounts: [3, 4, 5],
     minimumMatch: 3,
     specialMinimumMatch: 3,
     paytable: {
       0:{3:25,4:90,5:300}, 1:{3:20,4:75,5:240},
-      2:{3:18,4:65,5:200}, 3:{3:12,4:30,5:80},
-      4:{3:12,4:30,5:80}, 5:{3:12,4:30,5:80},
-      6:{3:12,4:30,5:80}, 7:{3:12,4:30,5:80},
-      8:{5:100}, 9:{3:0.9,4:1.8,5:3.6},
-      10:{3:4,4:12,5:40}
+      2:{3:18,4:65,5:200}, 3:{3:4,4:12,5:40}
     },
     bonusFreeSpins: {3:3, 4:5, 5:8},
-    paytableOrder: [3,4,5,6,7,0,1,2,8,9,10]
+    paytableOrder: [0,1,2,3]
   },
   features: { allowFreeSpinRetrigger: false },
   visual: { symbolScale: 0.78, winEffects: {
@@ -133,7 +122,7 @@ window.SLOT_GAME_CONFIG = {
       '• El BET total se reparte entre las líneas activas.',
       '• El premio cuenta de izquierda a derecha.',
       '• WILD reemplaza cualquier símbolo.',
-      '• BONUS paga en línea; tres o más símbolos BONUS activan tiros gratis.',
+      '• Solo aparecen galera, caldero, trébol y BONUS. BONUS paga en línea y tres o más dan tiros gratis.',
       '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
     ]
   },
