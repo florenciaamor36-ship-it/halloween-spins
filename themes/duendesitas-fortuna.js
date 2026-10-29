@@ -88,7 +88,7 @@ window.SLOT_GAME_CONFIG = {
     paytableOrder: [0,1,2,3]
   },
   features: { allowFreeSpinRetrigger: false },
-  visual: { symbolScale: 0.68, symbolScales: {galera:0.9,cauldron:0.92,clover:0.9,bonus:0.9}, symbolFit:'cell-width', winEffects: {
+  visual: { symbolScale: 0.88, symbolScales: {galera:1,cauldron:1,clover:1,bonus:1}, symbolFit:'cell-width', winEffects: {
     galera: {type:'galera-tilt',color:'#ffd447',highlight:'#fff5b2'},
     cauldron: {type:'cauldron-bubble',color:'#66ef9a',highlight:'#d1ffe0'},
     clover: {type:'clover-spin',color:'#ffe000',highlight:'#fff8ba'},
