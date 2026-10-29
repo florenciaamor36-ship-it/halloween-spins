@@ -187,10 +187,33 @@ class SlotScene extends Phaser.Scene{
     this.tweens.add({targets:symbol,scaleX:base.x*1.18,scaleY:base.y*1.18,angle:4,duration:240,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
    }
    if(type==='cauldron-bubble'){
-    for(let k=0;k<5;k++){
-     const x=symbol.x+(Math.random()-.5)*cell*.34,y=symbol.y+cell*.18+Math.random()*cell*.08,r=cell*(.025+Math.random()*.018);
-     const bubble=this.add.circle(x,y,r,color,.88).setStrokeStyle(Math.max(1,cell*.008),shine,.9).setDepth(36);
-     this.tweens.add({targets:bubble,y:y-cell*(.22+Math.random()*.16),x:x+(Math.random()-.5)*cell*.08,scale:.35,alpha:0,duration:520+Math.random()*280,delay:k*85,ease:'Sine.easeOut',onComplete:()=>bubble.destroy()});
+    // Lift the potion bubbles to the opening of the cauldron so they read clearly.
+    const potW=symbol.displayWidth||cell,potH=symbol.displayHeight||cell;
+    for(let k=0;k<7;k++){
+     const x=symbol.x+(Math.random()-.5)*potW*.28;
+     const y=symbol.y-potH*.19+Math.random()*potH*.035;
+     const r=Math.max(2.4,Math.min(potW,potH)*(.046+Math.random()*.024));
+     const bubble=this.add.circle(x,y,r,k%2?0xe056fd:0x32ff7e,.84)
+      .setStrokeStyle(Math.max(1.4,r*.24),0xffffff,.98).setDepth(42);
+     const gleam=this.add.circle(x-r*.28,y-r*.32,Math.max(1,r*.18),0xffffff,.96).setDepth(43);
+     const drift=(Math.random()-.5)*potW*.12;
+     this.tweens.add({targets:[bubble,gleam],y:y-potH*(.30+Math.random()*.16),x:x+drift,scale:.22,alpha:0,duration:720+Math.random()*300,delay:k*95,ease:'Sine.easeOut',onComplete:()=>{bubble.destroy();gleam.destroy()}});
+    }
+    // Small tongues of fire flicker upward from the logs under the cauldron.
+    for(let k=0;k<8;k++){
+     const x=symbol.x+(Math.random()-.5)*potW*.40;
+     const baseY=symbol.y+potH*.34+Math.random()*potH*.025;
+     const fw=Math.max(2.2,potW*(.022+Math.random()*.016));
+     const fh=Math.max(6,potH*(.075+Math.random()*.055));
+     const flame=this.add.graphics().setPosition(x,baseY).setDepth(42);
+     flame.fillStyle(k%3===0?0xffdf55:0xff782c,.98);
+     flame.beginPath();flame.moveTo(-fw,0);flame.lineTo(-fw*.62,-fh*.50);
+     flame.lineTo(-fw*.20,-fh*.28);flame.lineTo(fw*.10,-fh);
+     flame.lineTo(fw*.60,-fh*.46);flame.lineTo(fw,0);flame.closePath();flame.fillPath();
+     flame.fillStyle(0xfff19b,.98);
+     flame.beginPath();flame.moveTo(-fw*.38,0);flame.lineTo(-fw*.12,-fh*.36);
+     flame.lineTo(fw*.12,-fh*.22);flame.lineTo(fw*.36,0);flame.closePath();flame.fillPath();
+     this.tweens.add({targets:flame,y:baseY-fh*.25,scaleX:.62,scaleY:.78,alpha:0,duration:420+Math.random()*180,delay:k*60,ease:'Sine.easeOut',onComplete:()=>flame.destroy()});
     }
    }else if(type==='galera-tilt'){
     for(let k=0;k<3;k++){
