@@ -18,7 +18,7 @@ const MINIMUM_MATCH=GAME_CONFIG.rules.minimumMatch;
 const SPECIAL_MINIMUM_MATCH=GAME_CONFIG.rules.specialMinimumMatch;
 const MAX_PAYTABLE_MATCH=Math.max(...PAYTABLE_COUNTS);
 const WILD_INDEX=SYMBOL_KEYS.indexOf(GAME_CONFIG.specialSymbols.wild);
-const SCATTER_KEYS=Array.isArray(GAME_CONFIG.specialSymbols.scatters)?GAME_CONFIG.specialSymbols.scatters:[GAME_CONFIG.specialSymbols.scatter];
+const SCATTER_KEYS=DUENDE_SLOT?[]:(Array.isArray(GAME_CONFIG.specialSymbols.scatters)?GAME_CONFIG.specialSymbols.scatters:[GAME_CONFIG.specialSymbols.scatter]);
 const SCATTER_INDICES=SCATTER_KEYS.map(key=>SYMBOL_KEYS.indexOf(key)).filter(index=>index>=0);
 const SCATTER_INDEX=SCATTER_INDICES[0]??-1;
 const BONUS_INDEX=SYMBOL_KEYS.indexOf(GAME_CONFIG.specialSymbols.bonus);
