@@ -8,10 +8,10 @@ window.SLOT_GAME_CONFIG = {
   id: 'duendesitas-fortuna',
   assets: {
     frame: {
-      portrait: 'assets/duendesitas-fortuna/frame.jpg?v=1',
-      fallback: 'assets/duendesitas-fortuna/frame.jpg?v=2'
+      portrait: 'assets/duendesitas-fortuna/frame.jpg?v=4',
+      fallback: 'assets/duendesitas-fortuna/frame.jpg?v=4'
     },
-    loading: 'assets/duendesitas-fortuna/frame.jpg?v=2',
+    loading: 'assets/duendesitas-fortuna/frame.jpg?v=4',
     spin: {
       normal: 'assets/buttons/spin-normal.webp?v=1',
       pressed: 'assets/buttons/spin-pressed.webp?v=1'
@@ -26,7 +26,13 @@ window.SLOT_GAME_CONFIG = {
     lowWin: 'assets/low-win-pumpkin.webp?v=1',
     paytableFrame: 'assets/paytable/frame.webp?v=1',
     symbols: 'assets/symbols',
-    winFrames: []
+    winFrames: [],
+    extraPreload: [
+      'assets/duendesitas-fortuna/symbols/galera.png?v=5',
+      'assets/duendesitas-fortuna/symbols/cauldron.png?v=5',
+      'assets/duendesitas-fortuna/symbols/clover.png?v=5',
+      'assets/duendesitas-fortuna/symbols/bonus.png?v=5'
+    ]
   },
   symbols: [
     { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=1' },
