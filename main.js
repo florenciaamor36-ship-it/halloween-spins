@@ -262,21 +262,18 @@ class SlotScene extends Phaser.Scene{
  }
 animateGoldChest(i,effect){
   const symbol=this.symbols[i],cell=Math.min(this.scale.width/COLS,this.scale.height/ROWS);
-  const base=this.baseSymbolScales[i]||{x:symbol.scaleX,y:symbol.scaleY};
-  this.tweens.killTweensOf(symbol);symbol.setScale(base.x,base.y).setAngle(0);
-  this.tweens.add({targets:symbol,scaleX:base.x*1.16,scaleY:base.y*1.16,duration:180,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
   const gold=Phaser.Display.Color.HexStringToColor(effect.color||'#f4c96b').color;
   const shine=Phaser.Display.Color.HexStringToColor(effect.highlight||'#fff1ad').color;
   const g=this.add.graphics().setDepth(30),x=symbol.x,y=symbol.y;
-  g.lineStyle(3,gold,.82);g.strokeCircle(x,y,cell*.42);
-  g.lineStyle(1.6,shine,.78);g.strokeCircle(x,y,cell*.56);
+  g.lineStyle(3,gold,.82);g.strokeCircle(x,y,cell*.76);
+  g.lineStyle(1.6,shine,.78);g.strokeCircle(x,y,cell*1.02);
   for(let n=0;n<16;n++){
-    const a=(Math.PI*2*n)/16,inner=cell*.34,outer=cell*(.52+.08*Math.sin(n*1.7));
+    const a=(Math.PI*2*n)/16,inner=cell*.48,outer=cell*(.85+.16*Math.sin(n*1.7));
     g.lineStyle(n%2?1.8:2.8,n%2?gold:shine,n%2?.68:.92);
     g.beginPath();g.moveTo(x+Math.cos(a)*inner,y+Math.sin(a)*inner);g.lineTo(x+Math.cos(a)*outer,y+Math.sin(a)*outer);g.strokePath();
-    if(n%2===0){g.fillStyle(shine,.95);g.fillCircle(x+Math.cos(a)*(outer+cell*.045),y+Math.sin(a)*(outer+cell*.045),cell*.045)}
+    if(n%2===0){g.fillStyle(shine,.95);g.fillCircle(x+Math.cos(a)*(outer+cell*.09),y+Math.sin(a)*(outer+cell*.09),cell*.075)}
   }
-  g.fillStyle(gold,.11);g.fillRect(x-cell*.25,y-cell*.25,cell*.5,cell*.5);
+  g.fillStyle(gold,.11);g.fillRect(x-cell*.36,y-cell*.36,cell*.72,cell*.72);
   this.tweens.add({targets:g,alpha:.18,duration:190,yoyo:true,repeat:4,ease:'Sine.easeInOut',onComplete:()=>g.destroy()});
 }
 animateBlueLotus(i,effect){
