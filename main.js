@@ -186,15 +186,33 @@ class SlotScene extends Phaser.Scene{
    }else{
     this.tweens.add({targets:symbol,scaleX:base.x*1.18,scaleY:base.y*1.18,angle:4,duration:240,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
    }
-   const count=type==='bonus-glow'?12:type==='cauldron-bubble'?8:type==='galera-tilt'?9:7;
-   for(let k=0;k<count;k++){
-    const a=Math.PI*2*k/count+Math.random()*.22,r=cell*(.3+Math.random()*.12),x=symbol.x+Math.cos(a)*r,y=symbol.y+Math.sin(a)*r;
-    const star=this.add.star(x,y,4,Math.max(1.2,cell*.022),Math.max(2.6,cell*.052),k%2?shine:color,.96).setDepth(35);
-    const dx=Math.cos(a)*(type==='cauldron-bubble'?cell*.09:cell*.15),dy=type==='cauldron-bubble'?-cell*(.18+Math.random()*.12):Math.sin(a)*cell*.15;
-    this.tweens.add({targets:star,x:x+dx,y:y+dy,alpha:0,scale:.12,duration:520+Math.random()*240,delay:k*24,ease:'Cubic.easeOut',onComplete:()=>star.destroy()});
+   if(type==='cauldron-bubble'){
+    for(let k=0;k<5;k++){
+     const x=symbol.x+(Math.random()-.5)*cell*.34,y=symbol.y+cell*.18+Math.random()*cell*.08,r=cell*(.025+Math.random()*.018);
+     const bubble=this.add.circle(x,y,r,color,.88).setStrokeStyle(Math.max(1,cell*.008),shine,.9).setDepth(36);
+     this.tweens.add({targets:bubble,y:y-cell*(.22+Math.random()*.16),x:x+(Math.random()-.5)*cell*.08,scale:.35,alpha:0,duration:520+Math.random()*280,delay:k*85,ease:'Sine.easeOut',onComplete:()=>bubble.destroy()});
+    }
+   }else if(type==='galera-tilt'){
+    for(let k=0;k<3;k++){
+     const x=symbol.x+(Math.random()-.5)*cell*.28,y=symbol.y-cell*.24,r=cell*.022;
+     const glint=this.add.star(x,y,4,r*.35,r,color,k===1?shine:color,.95).setDepth(36);
+     this.tweens.add({targets:glint,y:y-cell*.12,alpha:0,scale:.15,rotation:Math.PI/2,duration:420+Math.random()*140,delay:k*105,ease:'Cubic.easeOut',onComplete:()=>glint.destroy()});
+    }
+   }else if(type==='clover-spin'){
+    for(let k=0;k<4;k++){
+     const a=Math.PI*2*k/4,r=cell*.32,x=symbol.x+Math.cos(a)*r,y=symbol.y+Math.sin(a)*r;
+     const leaf=this.add.ellipse(x,y,cell*.06,cell*.035,k%2?shine:color,.92).setRotation(a).setDepth(36);
+     this.tweens.add({targets:leaf,x:symbol.x+Math.cos(a)*cell*.46,y:symbol.y+Math.sin(a)*cell*.46,alpha:0,scale:.25,duration:500,delay:k*45,ease:'Cubic.easeOut',onComplete:()=>leaf.destroy()});
+    }
+   }else{
+    for(let k=0;k<8;k++){
+     const a=Math.PI*2*k/8,r=cell*.34,x=symbol.x+Math.cos(a)*r,y=symbol.y+Math.sin(a)*r;
+     const star=this.add.star(x,y,4,Math.max(1.2,cell*.018),Math.max(2.3,cell*.04),k%2?shine:color,.94).setDepth(36);
+     this.tweens.add({targets:star,angle:star.angle+90,x:x+Math.cos(a)*cell*.12,y:y+Math.sin(a)*cell*.12,alpha:0,scale:.2,duration:500,delay:k*35,ease:'Cubic.easeOut',onComplete:()=>star.destroy()});
+    }
    }
   }
-  this.animateWinSparkles(symbol.x,symbol.y,cell,effect);
+  if(!DUENDE_SLOT)this.animateWinSparkles(symbol.x,symbol.y,cell,effect);
   if(effect?.type==='gold-chest')this.animateGoldChest(i,effect);
   if(effect?.type==='blue-lotus')this.animateBlueLotus(i,effect);
  }
