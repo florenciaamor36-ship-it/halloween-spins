@@ -65,7 +65,7 @@ window.SLOT_GAME_CONFIG = {
     animatedWin: 'galera'
   },
   rules: {
-    targetRtpPercent: 93, payoutScale: 1,
+    targetRtpPercent: 93, payoutScale: 1.162492647355474,
     cols: 5,
     rows: 3,
     paylines: [
@@ -97,7 +97,7 @@ window.SLOT_GAME_CONFIG = {
     galera: {type:'clover-hat',color:'#ffd447',highlight:'#fff5b2'},
     cauldron: {type:'cauldron-bubble',color:'#66ef9a',highlight:'#d1ffe0'},
     clover: {type:'clover-spin',color:'#ffe000',highlight:'#fff8ba'},
-    bonus: {type:'bonus-glow',color:'#ffc83d',highlight:'#fff0a1'}
+    bonus: {type:'bonus-glow',when:'line-win',color:'#ffc83d',highlight:'#fff0a1'}
   } },
 
   ui: {
