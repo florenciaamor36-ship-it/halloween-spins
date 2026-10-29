@@ -107,7 +107,7 @@ window.SLOT_GAME_CONFIG = {
     paytableOrder: [0,1,2,4,5,6,7,8,9,10,11,3]
   },
   features: { allowFreeSpinRetrigger: false },
-  visual: { symbolScale: 1.30, symbolScales: {galera:1,cauldron:1,clover:1,bonus:0.82,mushroom:0.55,potion:0.55,wand:0.55,A:0.72,K:0.72,Q:0.72,J:0.72,10:0.72}, symbolFit:'cell-width', winEffects: {
+  visual: { symbolScale: 1.30, symbolScales: {galera:0.95,cauldron:1,clover:0.92,bonus:0.78,mushroom:0.78,potion:0.78,wand:0.76,A:0.76,K:0.60,Q:0.73,J:0.60,10:0.70}, symbolFit:'cell-width', winEffects: {
     galera: {type:'galera-tilt',color:'#ffd447',highlight:'#fff5b2'},
     cauldron: {type:'cauldron-bubble',color:'#66ef9a',highlight:'#d1ffe0'},
     clover: {type:'clover-spin',color:'#ffe000',highlight:'#fff8ba'},
