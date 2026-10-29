@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-4">
 <style id="duendesitas-only-skin">
+html[data-skin="duendesitas-fortuna"] .loading-canvas{position:relative;overflow:hidden}
+html[data-skin="duendesitas-fortuna"] .loading-art{width:100%!important;height:100%!important;max-width:56.25vh!important;object-fit:cover!important}
+html[data-skin="duendesitas-fortuna"] .loading-canvas:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle at 13% 18%,#fffbd9 0 1px,transparent 3px),radial-gradient(circle at 28% 30%,#e9ff9a 0 1.5px,transparent 4px),radial-gradient(circle at 72% 20%,#ffe985 0 1px,transparent 3px),radial-gradient(circle at 85% 36%,#d6ff92 0 1.5px,transparent 4px),radial-gradient(circle at 20% 61%,#ffe985 0 1px,transparent 3px),radial-gradient(circle at 77% 68%,#e9ff9a 0 1.5px,transparent 4px),radial-gradient(circle at 52% 47%,#fffbd9 0 1px,transparent 3px);animation:duendeFireflies 1.8s ease-in-out infinite alternate}
+@keyframes duendeFireflies{0%{opacity:.25;filter:brightness(.9)}50%{opacity:.92;filter:brightness(1.6)}100%{opacity:.42;filter:brightness(1.15)}}
 html[data-skin="duendesitas-fortuna"] #game .bet-bar,html[data-skin="duendesitas-fortuna"] #game .balance-bar,html[data-skin="duendesitas-fortuna"] #game .lines-bar,html[data-skin="duendesitas-fortuna"] #game .display.jackpot{display:none!important}
 html[data-skin="duendesitas-fortuna"] #game .reels{left:7.5%!important;top:32%!important;width:85%!important;height:30%!important;border:0!important;border-radius:6px!important;background:rgba(16,27,22,.70)!important;box-shadow:inset 0 0 16px #0009!important;overflow:hidden!important}
 html[data-skin="duendesitas-fortuna"] #game .reels:after{background:linear-gradient(transparent 32%,#fff2 33%,transparent 35%,transparent 65%,#fff2 66%,transparent 68%)}
@@ -88,7 +92,7 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
     </div>
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
-  <script src="themes/duendesitas-fortuna.js?v=23"></script>
+  <script src="themes/duendesitas-fortuna.js?v=24"></script>
   <script src="main.js?v=duende-artfix-17"></script>
 
 </body>
