@@ -183,6 +183,8 @@ class SlotScene extends Phaser.Scene{
     this.tweens.add({targets:symbol,scaleX:base.x*1.11,scaleY:base.y*1.11,duration:230,ease:'Back.Out',yoyo:true,repeat:1,onComplete:()=>symbol.setScale(base.x,base.y)});
    }else if(type==='cauldron-bubble'){
     this.tweens.add({targets:symbol,y:symbol.y-cell*.07,scaleX:base.x*1.05,scaleY:base.y*1.08,duration:260,ease:'Sine.easeOut',yoyo:true,repeat:2,onComplete:()=>symbol.setPosition(this.lastLayout.w/COLS*((i%COLS)+.5),this.lastLayout.h/ROWS*(Math.floor(i/COLS)+.5)).setScale(base.x,base.y)});
+   }else if(type==='bonus-glow'){
+    this.tweens.add({targets:symbol,scaleX:base.x*1.16,scaleY:base.y*1.16,duration:180,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
    }else{
     this.tweens.add({targets:symbol,scaleX:base.x*1.18,scaleY:base.y*1.18,angle:4,duration:240,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
    }
