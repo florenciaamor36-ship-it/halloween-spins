@@ -59,7 +59,7 @@ window.SLOT_GAME_CONFIG = {
   },
   specialSymbols: {
     wild: '__none__',
-    scatter: '__none__',
+    scatters: [],
     bonus: 'bonus',
     animatedWin: 'galera'
   },
