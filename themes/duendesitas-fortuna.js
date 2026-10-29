@@ -31,14 +31,20 @@ window.SLOT_GAME_CONFIG = {
       'assets/duendesitas-fortuna/symbols/galera.png?v=3',
       'assets/duendesitas-fortuna/symbols/cauldron.png?v=3',
       'assets/duendesitas-fortuna/symbols/clover.png?v=5',
-      'assets/duendesitas-fortuna/symbols/bonus.png?v=4'
+      'assets/duendesitas-fortuna/symbols/bonus.png?v=4',
+      'assets/duendesitas-fortuna/symbols/mushroom.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/potion.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/wand.webp?v=20261029'
     ]
   },
   symbols: [
     { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=3' },
     { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/cauldron.png?v=3' },
     { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/clover.png?v=5' },
-    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=4' }
+    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=4' },
+    { key: 'mushroom', label: 'Hongo mágico', asset: 'assets/duendesitas-fortuna/symbols/mushroom.webp?v=20261029' },
+    { key: 'potion', label: 'Poción mágica', asset: 'assets/duendesitas-fortuna/symbols/potion.webp?v=20261029' },
+    { key: 'wand', label: 'Varita de trébol', asset: 'assets/duendesitas-fortuna/symbols/wand.webp?v=20261029' }
   ],
   defaults: {
     balance: 10000,
@@ -75,24 +81,28 @@ window.SLOT_GAME_CONFIG = {
       [1,1,2,1,1], [0,0,2,0,0], [2,2,0,2,0], [0,2,0,2,0]
     ],
     lineColors: ['#eab308','#38bdf8','#f43f5e','#a855f7','#22c55e','#fb923c','#06b6d4','#ec4899','#84cc16','#f59e0b','#14b8a6','#6366f1','#d946ef','#e11d48','#10b981','#facc15','#38bdf8','#c084fc','#4ade80','#f472b6'],
-    symbolWeights: [250,250,250,250],
+    symbolWeights: [160,160,160,40,160,160,160],
     weightTotal: 1000,
     paytableCounts: [3, 4, 5],
     minimumMatch: 3,
     specialMinimumMatch: 3,
     paytable: {
       0:{3:25,4:90,5:300}, 1:{3:20,4:75,5:240},
-      2:{3:18,4:65,5:200}, 3:{3:4,4:12,5:40}
+      2:{3:18,4:65,5:200}, 3:{3:12,4:40,5:125},
+      4:{3:10,4:34,5:105}, 5:{3:8,4:28,5:88}, 6:{3:6,4:18,5:55}
     },
     bonusFreeSpins: {3:3, 4:5, 5:8},
-    paytableOrder: [0,1,2,3]
+    paytableOrder: [0,1,2,4,5,6,3]
   },
   features: { allowFreeSpinRetrigger: false },
-  visual: { symbolScale: 1.30, symbolScales: {galera:1,cauldron:1,clover:1,bonus:1}, symbolFit:'cell-width', winEffects: {
+  visual: { symbolScale: 1.30, symbolScales: {galera:1,cauldron:1,clover:1,bonus:0.82,mushroom:1,potion:1,wand:1}, symbolFit:'cell-width', winEffects: {
     galera: {type:'galera-tilt',color:'#ffd447',highlight:'#fff5b2'},
     cauldron: {type:'cauldron-bubble',color:'#66ef9a',highlight:'#d1ffe0'},
     clover: {type:'clover-spin',color:'#ffe000',highlight:'#fff8ba'},
-    bonus: {type:'bonus-glow',when:'line-win',color:'#ffc83d',highlight:'#fff0a1'}
+    bonus: {type:'bonus-glow',when:'line-win',color:'#ffc83d',highlight:'#fff0a1'},
+    mushroom: {type:'mushroom-bounce',color:'#ff5964',highlight:'#fff0a1'},
+    potion: {type:'potion-glow',color:'#cc72ff',highlight:'#f6ddff'},
+    wand: {type:'wand-tilt',color:'#52e5a4',highlight:'#d8ff9d'}
   } },
 
   ui: {
@@ -128,7 +138,7 @@ window.SLOT_GAME_CONFIG = {
       '• El BET total se reparte entre las líneas activas.',
       '• El premio cuenta de izquierda a derecha.',
       '• WILD reemplaza cualquier símbolo.',
-      '• Solo aparecen galera, caldero, trébol y BONUS. BONUS paga en línea y tres o más dan tiros gratis.',
+      '• Aparecen galera, caldero, trébol, hongo, poción, varita y BONUS. BONUS paga en línea y tres o más dan tiros gratis.',
       '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
     ]
   },
