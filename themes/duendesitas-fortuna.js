@@ -31,14 +31,14 @@ window.SLOT_GAME_CONFIG = {
       'assets/duendesitas-fortuna/symbols/galera.png?v=3',
       'assets/duendesitas-fortuna/symbols/cauldron.png?v=3',
       'assets/duendesitas-fortuna/symbols/clover.png?v=5',
-      'assets/duendesitas-fortuna/symbols/bonus.png?v=3'
+      'assets/duendesitas-fortuna/symbols/bonus.png?v=4'
     ]
   },
   symbols: [
     { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=3' },
     { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/cauldron.png?v=3' },
     { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/clover.png?v=5' },
-    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=3' }
+    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=4' }
   ],
   defaults: {
     balance: 10000,
