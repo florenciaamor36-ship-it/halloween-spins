@@ -11,7 +11,7 @@ window.SLOT_GAME_CONFIG = {
       portrait: 'assets/duendesitas-fortuna/frame.jpg?v=4',
       fallback: 'assets/duendesitas-fortuna/frame.jpg?v=4'
     },
-    loading: 'assets/duendesitas-fortuna/frame.jpg?v=4',
+    loading: 'assets/duendesitas-fortuna/loading-screen.jpg?v=2',
     spin: {
       normal: 'assets/buttons/spin-normal.webp?v=1',
       pressed: 'assets/buttons/spin-pressed.webp?v=1'
@@ -28,17 +28,17 @@ window.SLOT_GAME_CONFIG = {
     symbols: 'assets/symbols',
     winFrames: [],
     extraPreload: [
-      'assets/duendesitas-fortuna/symbols/galera.png?v=5',
-      'assets/duendesitas-fortuna/symbols/cauldron.png?v=5',
-      'assets/duendesitas-fortuna/symbols/clover.png?v=5',
-      'assets/duendesitas-fortuna/symbols/bonus.png?v=5'
+      'assets/duendesitas-fortuna/symbols/galera.png?v=2',
+      'assets/duendesitas-fortuna/symbols/cauldron.png?v=2',
+      'assets/duendesitas-fortuna/symbols/clover.png?v=4',
+      'assets/duendesitas-fortuna/symbols/bonus.png?v=2'
     ]
   },
   symbols: [
-    { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=1' },
-    { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/cauldron.png?v=1' },
-    { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/clover.png?v=3' },
-    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=1' }
+    { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=2' },
+    { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/cauldron.png?v=2' },
+    { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/clover.png?v=4' },
+    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=2' }
   ],
   defaults: {
     balance: 10000,
@@ -89,7 +89,7 @@ window.SLOT_GAME_CONFIG = {
   },
   features: { allowFreeSpinRetrigger: false },
   visual: { symbolScale: 0.78, winEffects: {
-    galera: {type:'clover-hat',color:'#ffd447',highlight:'#fff5b2'},
+    galera: {type:'galera-tilt',color:'#ffd447',highlight:'#fff5b2'},
     cauldron: {type:'cauldron-bubble',color:'#66ef9a',highlight:'#d1ffe0'},
     clover: {type:'clover-spin',color:'#ffe000',highlight:'#fff8ba'},
     bonus: {type:'bonus-glow',when:'line-win',color:'#ffc83d',highlight:'#fff0a1'}
