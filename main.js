@@ -173,7 +173,27 @@ class SlotScene extends Phaser.Scene{
   glow.strokeCircle(0,0,cell*.45);
   glow.setVisible(true).setAlpha(0).setScale(.78);
   this.tweens.add({targets:glow,alpha:.92,scale:1.12,duration:260,yoyo:true,ease:'Sine.easeOut',onComplete:()=>{glow.setVisible(false);glow.setAlpha(0)}});
-  if(DUENDE_SLOT){const base=this.baseSymbolScales[i]||{x:symbol.scaleX,y:symbol.scaleY},rotate=effect?.type==='clover-spin';this.tweens.add({targets:symbol,scaleX:base.x*1.24,scaleY:base.y*1.24,angle:rotate?360:0,duration:620,ease:'Back.Out',yoyo:true,repeat:1,hold:70,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});const n=effect?.type==='bonus-glow'?14:effect?.type==='cauldron-bubble'?10:9;for(let k=0;k<n;k++){const a=Math.PI*2*k/n+Math.random()*.3,r=cell*(.27+Math.random()*.11),star=this.add.star(symbol.x+Math.cos(a)*r,symbol.y+Math.sin(a)*r,4,Math.max(1.5,cell*.035),Math.max(3,cell*.075),k%2?shine:color,.98).setDepth(35);this.tweens.add({targets:star,x:star.x+Math.cos(a)*cell*.18,y:star.y+Math.sin(a)*cell*.18,alpha:0,scale:.15,duration:480+Math.random()*260,ease:'Cubic.easeOut',onComplete:()=>star.destroy()})}}
+  if(DUENDE_SLOT){
+   const base=this.baseSymbolScales[i]||{x:symbol.scaleX,y:symbol.scaleY};
+   const type=effect?.type||'';
+   if(type==='clover-spin'){
+    this.tweens.add({targets:symbol,scaleX:base.x*1.16,scaleY:base.y*1.16,angle:360,duration:760,ease:'Cubic.easeOut',yoyo:true,hold:90,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
+   }else if(type==='galera-tilt'){
+    this.tweens.add({targets:symbol,angle:-13,duration:150,ease:'Sine.easeOut',yoyo:true,repeat:3,onComplete:()=>symbol.setAngle(0)});
+    this.tweens.add({targets:symbol,scaleX:base.x*1.11,scaleY:base.y*1.11,duration:230,ease:'Back.Out',yoyo:true,repeat:1,onComplete:()=>symbol.setScale(base.x,base.y)});
+   }else if(type==='cauldron-bubble'){
+    this.tweens.add({targets:symbol,y:symbol.y-cell*.07,scaleX:base.x*1.05,scaleY:base.y*1.08,duration:260,ease:'Sine.easeOut',yoyo:true,repeat:2,onComplete:()=>symbol.setPosition(this.lastLayout.w/COLS*((i%COLS)+.5),this.lastLayout.h/ROWS*(Math.floor(i/COLS)+.5)).setScale(base.x,base.y)});
+   }else{
+    this.tweens.add({targets:symbol,scaleX:base.x*1.18,scaleY:base.y*1.18,angle:4,duration:240,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
+   }
+   const count=type==='bonus-glow'?12:type==='cauldron-bubble'?8:type==='galera-tilt'?9:7;
+   for(let k=0;k<count;k++){
+    const a=Math.PI*2*k/count+Math.random()*.22,r=cell*(.3+Math.random()*.12),x=symbol.x+Math.cos(a)*r,y=symbol.y+Math.sin(a)*r;
+    const star=this.add.star(x,y,4,Math.max(1.2,cell*.022),Math.max(2.6,cell*.052),k%2?shine:color,.96).setDepth(35);
+    const dx=Math.cos(a)*(type==='cauldron-bubble'?cell*.09:cell*.15),dy=type==='cauldron-bubble'?-cell*(.18+Math.random()*.12):Math.sin(a)*cell*.15;
+    this.tweens.add({targets:star,x:x+dx,y:y+dy,alpha:0,scale:.12,duration:520+Math.random()*240,delay:k*24,ease:'Cubic.easeOut',onComplete:()=>star.destroy()});
+   }
+  }
   this.animateWinSparkles(symbol.x,symbol.y,cell,effect);
   if(effect?.type==='gold-chest')this.animateGoldChest(i,effect);
   if(effect?.type==='blue-lotus')this.animateBlueLotus(i,effect);
