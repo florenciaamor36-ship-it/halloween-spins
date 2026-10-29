@@ -24,6 +24,9 @@ window.SLOT_GAME_CONFIG = {
     { key: 'anchor', label: 'Ancla', asset: 'assets/pirate/symbols/anchor.webp' },
     { key: 'treasure-map', label: 'Mapa del tesoro', asset: 'assets/pirate/symbols/treasure-map.webp' },
     { key: 'compass', label: 'Brújula', asset: 'assets/pirate/symbols/compass.webp' },
+    { key: 'cannonball', label: 'Bala de cañón', asset: 'assets/pirate/symbols/cannonball.webp?v=20261029-1' },
+    { key: 'cutlass', label: 'Sable pirata', asset: 'assets/pirate/symbols/cutlass.webp?v=20261029-1' },
+    { key: 'rum-barrel', label: 'Barril de ron', asset: 'assets/pirate/symbols/rum-barrel.webp?v=20261029-1' },
     { key: 'A', label: 'A', asset: 'assets/pirate/symbols/A.svg' },
     { key: 'K', label: 'K', asset: 'assets/pirate/symbols/K.svg' },
     { key: 'Q', label: 'Q', asset: 'assets/pirate/symbols/Q.svg' },
@@ -52,8 +55,8 @@ window.SLOT_GAME_CONFIG = {
       [1,1,2,1,1], [0,0,2,0,0], [2,2,0,2,0], [0,2,0,2,0]
     ],
     lineColors: ['#eab308','#38bdf8','#f43f5e','#a855f7','#22c55e','#fb923c','#06b6d4','#ec4899','#84cc16','#f59e0b','#14b8a6','#6366f1','#d946ef','#e11d48','#10b981','#facc15','#38bdf8','#c084fc','#4ade80','#f472b6'],
-    symbolWeights: [91,91,91,91,91,91,91,91,91,91,40,25,25],
-    weightTotal: 1000,
+    symbolWeights: [60,60,60,60,60,60,60,60,60,60,60,60,60,40,25,15],
+    weightTotal: 860,
     paytableCounts: [3,4,5], minimumMatch: 3, specialMinimumMatch: 3,
     paytable: {
       0:{3:82.53,4:150,5:300}, 1:{3:33.01,4:82.53,5:165.07},
@@ -61,16 +64,17 @@ window.SLOT_GAME_CONFIG = {
       4:{3:33.01,4:82.53,5:165.07}, 5:{3:16.50,4:33.01,5:82.53},
       6:{3:16.50,4:33.01,5:82.53}, 7:{3:16.50,4:33.01,5:82.53},
       8:{3:16.50,4:33.01,5:82.53}, 9:{3:16.50,4:33.01,5:82.53},
-      10:{5:300}, 11:{3:0.90,4:1.80,5:3.60},
-      12:{3:0,4:0,5:0}
+      10:{3:16.50,4:33.01,5:82.53}, 11:{3:16.50,4:33.01,5:82.53}, 12:{3:16.50,4:33.01,5:82.53},
+      13:{5:300}, 14:{3:0.90,4:1.80,5:3.60},
+      15:{3:0.90,4:1.80,5:3.60}
     },
     bonusFreeSpins: {3:3,4:5,5:8},
-    paytableOrder: [5,6,7,8,9,1,2,3,4,0,10,11,12]
+    paytableOrder: [5,6,7,8,9,10,11,12,1,2,3,4,0,13,14,15]
   },
   features: { allowFreeSpinRetrigger: false },
   visual: {
-    symbolFit: 'cell-width', symbolScale: 0.90, symbolScaleY: 1,
-    winEffects: { 'bonus': { type: 'gold-chest', color: '#f5ca62', highlight: '#fff1b4', when: 'bonus-awarded' } }
+    symbolFit: 'cell-width', symbolScale: 0.90, symbolScaleY: 1, symbolScales:{bonus:0.78},
+    winEffects: { 'bonus': { type: 'gold-chest', color: '#f5ca62', highlight: '#fff1b4', when: 'line-win' } }
   },
   ui: {
     name: "Pirate's Treasure Spins", numberLocale: 'de-DE',
@@ -91,6 +95,7 @@ window.SLOT_GAME_CONFIG = {
     paytableRules: [
       '• El BET total se reparte entre las líneas activas.',
       '• Los premios cuentan de izquierda a derecha.',
+      '• Se agregaron bala de cañón, sable y barril de ron como símbolos comunes. El cofre paga en línea; tres o más activan tiros gratis.',
       '• WILD reemplaza cualquier símbolo.',
       '• BONUS: 3, 4 o 5 cofres dan 3, 5 o 8 tiros gratis.',
       '• RTP teórico: 93% a largo plazo; no garantiza resultados en una sesión.'
