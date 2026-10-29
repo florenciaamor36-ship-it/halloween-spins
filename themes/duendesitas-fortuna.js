@@ -28,33 +28,33 @@ window.SLOT_GAME_CONFIG = {
     symbols: 'assets/symbols',
     winFrames: [],
     extraPreload: [
-      'assets/duendesitas-fortuna/symbols/galera.png?v=3',
-      'assets/duendesitas-fortuna/symbols/cauldron.png?v=3',
-      'assets/duendesitas-fortuna/symbols/clover.png?v=5',
-      'assets/duendesitas-fortuna/symbols/bonus.png?v=4',
-      'assets/duendesitas-fortuna/symbols/mushroom.webp?v=20261029',
-      'assets/duendesitas-fortuna/symbols/potion.webp?v=20261029',
-      'assets/duendesitas-fortuna/symbols/wand.webp?v=20261029',
-      'assets/symbols/A.webp?v=1',
-      'assets/symbols/K.webp?v=1',
-      'assets/symbols/Q.webp?v=1',
-      'assets/symbols/J.webp?v=1',
-      'assets/symbols/10.webp?v=1'
+      'assets/duendesitas-fortuna/symbols/fitted/galera.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/cauldron.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/clover.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/bonus.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/mushroom.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/potion.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/wand.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/A.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/K.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/Q.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/J.webp?v=20261029',
+      'assets/duendesitas-fortuna/symbols/fitted/10.webp?v=20261029'
     ]
   },
   symbols: [
-    { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/galera.png?v=3' },
-    { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/cauldron.png?v=3' },
-    { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/clover.png?v=5' },
-    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/bonus.png?v=4' },
-    { key: 'mushroom', label: 'Hongo mágico', asset: 'assets/duendesitas-fortuna/symbols/mushroom.webp?v=20261029' },
-    { key: 'potion', label: 'Poción mágica', asset: 'assets/duendesitas-fortuna/symbols/potion.webp?v=20261029' },
-    { key: 'wand', label: 'Varita de trébol', asset: 'assets/duendesitas-fortuna/symbols/wand.webp?v=20261029' },
-    { key: 'A', label: 'A', asset: 'assets/symbols/A.webp?v=1' },
-    { key: 'K', label: 'K', asset: 'assets/symbols/K.webp?v=1' },
-    { key: 'Q', label: 'Q', asset: 'assets/symbols/Q.webp?v=1' },
-    { key: 'J', label: 'J', asset: 'assets/symbols/J.webp?v=1' },
-    { key: '10', label: '10', asset: 'assets/symbols/10.webp?v=1' }
+    { key: 'galera', label: 'Galera de la suerte', asset: 'assets/duendesitas-fortuna/symbols/fitted/galera.webp?v=20261029' },
+    { key: 'cauldron', label: 'Caldero mágico', asset: 'assets/duendesitas-fortuna/symbols/fitted/cauldron.webp?v=20261029' },
+    { key: 'clover', label: 'Trébol Mágico', asset: 'assets/duendesitas-fortuna/symbols/fitted/clover.webp?v=20261029' },
+    { key: 'bonus', label: 'BONUS', asset: 'assets/duendesitas-fortuna/symbols/fitted/bonus.webp?v=20261029' },
+    { key: 'mushroom', label: 'Hongo mágico', asset: 'assets/duendesitas-fortuna/symbols/fitted/mushroom.webp?v=20261029' },
+    { key: 'potion', label: 'Poción mágica', asset: 'assets/duendesitas-fortuna/symbols/fitted/potion.webp?v=20261029' },
+    { key: 'wand', label: 'Varita de trébol', asset: 'assets/duendesitas-fortuna/symbols/fitted/wand.webp?v=20261029' },
+    { key: 'A', label: 'A', asset: 'assets/duendesitas-fortuna/symbols/fitted/A.webp?v=20261029' },
+    { key: 'K', label: 'K', asset: 'assets/duendesitas-fortuna/symbols/fitted/K.webp?v=20261029' },
+    { key: 'Q', label: 'Q', asset: 'assets/duendesitas-fortuna/symbols/fitted/Q.webp?v=20261029' },
+    { key: 'J', label: 'J', asset: 'assets/duendesitas-fortuna/symbols/fitted/J.webp?v=20261029' },
+    { key: '10', label: '10', asset: 'assets/duendesitas-fortuna/symbols/fitted/10.webp?v=20261029' }
   ],
   defaults: {
     balance: 10000,
@@ -107,7 +107,7 @@ window.SLOT_GAME_CONFIG = {
     paytableOrder: [0,1,2,4,5,6,7,8,9,10,11,3]
   },
   features: { allowFreeSpinRetrigger: false },
-  visual: { symbolScale: 1.30, symbolScales: {galera:0.95,cauldron:1,clover:0.95,bonus:0.72,mushroom:0.76,potion:0.76,wand:1.12,A:1.05,K:0.96,Q:1.0,J:1.08,10:0.93}, symbolFit:'cell-width', winEffects: {
+  visual: { symbolScale: 1.30, symbolScales: {galera:1,cauldron:1,clover:1,bonus:0.90,mushroom:1,potion:1,wand:1,A:1,K:1,Q:1,J:1,10:1}, symbolFit:'cell-width', winEffects: {
     galera: {type:'galera-tilt',color:'#ffd447',highlight:'#fff5b2'},
     cauldron: {type:'cauldron-bubble',color:'#66ef9a',highlight:'#d1ffe0'},
     clover: {type:'clover-spin',color:'#ffe000',highlight:'#fff8ba'},
