@@ -1,0 +1,5 @@
+<!doctype html><html><body><pre id="out">probe</pre><script>
+window.SLOT_GAME_CONFIG={id:'duendesitas-fortuna',schemaVersion:1,assets:{winFrames:[]},symbols:[{key:'galera',asset:'assets/duendesitas-fortuna/symbols/galera.png?v=1'},{key:'cauldron',asset:'assets/duendesitas-fortuna/symbols/cauldron.png?v=1'},{key:'clover',asset:'assets/duendesitas-fortuna/symbols/clover.png?v=3'},{key:'bonus',asset:'assets/duendesitas-fortuna/symbols/bonus.png?v=1'}],rules:{cols:5,rows:3},defaults:{},specialSymbols:{},visual:{}};
+</script><script src="phaser.min.js"></script><script src="themes/duendesitas-fortuna.js?v=3"></script><script>
+const out=document.getElementById('out');const checks=[...window.SLOT_GAME_CONFIG.symbols.map(s=>[s.key,s.asset]),['frame','assets/duendesitas-fortuna/frame.jpg?v=2'],['old loading asset','assets/duendesitas-fortuna/loading-screen.jpg?v=1']];Promise.all(checks.map(([n,u])=>new Promise(r=>{let x=new XMLHttpRequest();x.open('GET',u);x.responseType='blob';x.onload=()=>r([n,x.status,x.response?.size]);x.onerror=()=>r([n,'ERR',0]);x.send()}))).then(x=>out.textContent=JSON.stringify(x));
+</script></body></html>
