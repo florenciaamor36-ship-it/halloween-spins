@@ -11,7 +11,7 @@ window.SLOT_GAME_CONFIG = {
       portrait: 'assets/duendesitas-fortuna/frame.jpg?v=4',
       fallback: 'assets/duendesitas-fortuna/frame.jpg?v=4'
     },
-    loading: 'assets/duendesitas-fortuna/loading-screen.jpg?v=3',
+    loading: 'assets/duendesitas-fortuna/frame.jpg?v=4',
     spin: {
       normal: 'assets/buttons/spin-normal.webp?v=1',
       pressed: 'assets/buttons/spin-pressed.webp?v=1'
