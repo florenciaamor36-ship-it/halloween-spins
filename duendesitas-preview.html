@@ -10,6 +10,39 @@
   <link rel="stylesheet" href="style.css?v=single-portrait-15">
   <link rel="stylesheet" href="themes/skin-tokens.css?v=skin-refactor-1">
   <link rel="stylesheet" href="shared-portrait.css?v=single-canvas-4">
+<style id="duendesitas-only-skin">
+html[data-skin="duendesitas-fortuna"] #game .bet-bar,
+html[data-skin="duendesitas-fortuna"] #game .balance-bar,
+html[data-skin="duendesitas-fortuna"] #game .lines-bar,
+html[data-skin="duendesitas-fortuna"] #game .display.jackpot{display:none!important}
+html[data-skin="duendesitas-fortuna"] #game .frame{z-index:4}
+html[data-skin="duendesitas-fortuna"] #game .reels{left:12%!important;top:31.8%!important;width:76%!important;height:29%!important;border:1px solid #b6e77b!important;border-radius:8px!important;background:rgba(16,27,22,.74)!important;box-shadow:inset 0 0 18px #000b!important;overflow:hidden}
+html[data-skin="duendesitas-fortuna"] #game .reels:after{background:linear-gradient(transparent 32%,#fff3 33%,transparent 35%,transparent 65%,#fff3 66%,transparent 68%)}
+html[data-skin="duendesitas-fortuna"] #game .display{z-index:8!important;display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 10px!important;border:1px solid #d6bd65!important;border-radius:12px!important;background:rgba(20,36,24,.88)!important;color:#ffe98c!important;font-size:clamp(11px,2.7vw,17px)!important;font-weight:800;pointer-events:auto;text-shadow:0 1px 3px #000}
+html[data-skin="duendesitas-fortuna"] #game .display .label{color:#d9ef9a!important;font-size:.72em!important}
+html[data-skin="duendesitas-fortuna"] #game .display b.value{padding:0!important;color:#fff1aa!important;font-size:1.05em!important;text-shadow:0 1px 4px #000!important}
+html[data-skin="duendesitas-fortuna"] #game .display.balance{left:6%!important;right:auto!important;top:5%!important;width:auto!important;height:auto!important}
+html[data-skin="duendesitas-fortuna"] #game .display.bet{left:12%!important;top:78%!important;width:31%!important}
+html[data-skin="duendesitas-fortuna"] #game .display.lines{left:auto!important;right:12%!important;top:78%!important;width:31%!important}
+html[data-skin="duendesitas-fortuna"] #game .display.win{left:35%!important;top:70%!important;width:30%!important}
+html[data-skin="duendesitas-fortuna"] #game .ui button{z-index:9!important;opacity:1!important;border:1px solid #e6d37e!important;border-radius:14px!important;background:linear-gradient(#356d37,#173a29)!important;color:#fff1a5!important;text-shadow:0 1px 4px #000!important;box-shadow:0 3px 9px #0009!important;font-size:clamp(11px,2.8vw,17px)!important}
+html[data-skin="duendesitas-fortuna"] #game .spin{left:38%!important;top:86%!important;width:24%!important;height:9%!important;background:linear-gradient(#83c940,#28662b)!important}
+html[data-skin="duendesitas-fortuna"] #game .spin-art{display:none!important}
+html[data-skin="duendesitas-fortuna"] #game .spin:after{content:"GIRAR";font-weight:900}
+html[data-skin="duendesitas-fortuna"] #game .auto-spin{left:7%!important;top:91%!important;width:25%!important;height:6%!important}
+html[data-skin="duendesitas-fortuna"] #game .menu{left:auto!important;right:7%!important;top:91%!important;width:25%!important;height:6%!important}
+html[data-skin="duendesitas-fortuna"] #game .betminus{left:7%!important;top:78%!important;width:5%!important;height:6%!important}
+html[data-skin="duendesitas-fortuna"] #game .betplus{left:43%!important;top:78%!important;width:5%!important;height:6%!important}
+html[data-skin="duendesitas-fortuna"] #game .lineDown{display:none!important}
+html[data-skin="duendesitas-fortuna"] #game .lineup{left:auto!important;right:7%!important;top:78%!important;width:5%!important;height:6%!important}
+html[data-skin="duendesitas-fortuna"] #game .linedown{left:89%!important;top:78%!important;width:5%!important;height:6%!important}
+
+html[data-skin="duendesitas-fortuna"] .announcement-panel img{display:none!important}
+html[data-skin="duendesitas-fortuna"] .announcement-panel{background:rgba(20,36,24,.88)!important;border:1px solid #d6bd65!important;border-radius:12px!important;box-shadow:0 2px 8px #0008!important}
+html[data-skin="duendesitas-fortuna"] .bigwin-art,html[data-skin="duendesitas-fortuna"] .lowwin-card img{display:none!important}
+html[data-skin="duendesitas-fortuna"] .bigwin-card,html[data-skin="duendesitas-fortuna"] .lowwin-card{background:linear-gradient(145deg,#173a29,#243e25)!important;border:2px solid #e6d37e!important;border-radius:24px!important}
+html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!important;background:linear-gradient(145deg,#142a1e,#241d32)!important;border:2px solid #d6bd65!important}
+</style>
 </head>
 <body>
   <div class="orientation-warning" role="status" aria-live="polite">Poné el teléfono en vertical para jugar.</div>
@@ -61,7 +94,7 @@
   </div>
   <script src="phaser.min.js?v=4.2.1"></script>
   <script src="themes/duendesitas-fortuna.js?v=1"></script>
-  <script src="main.js?v=duende-win-only-5"></script>
+  <script src="main.js?v=duende-four-symbols-2"></script>
 
 <a href="hot-girls.html" style="position:fixed;z-index:9999;right:12px;top:12px;padding:10px 14px;border:1px solid #d9a85c;border-radius:10px;background:#1a0d18;color:#ffe2a2;font:700 13px sans-serif;text-decoration:none;box-shadow:0 2px 12px #0008">HOT GIRLS</a>
 </body>
