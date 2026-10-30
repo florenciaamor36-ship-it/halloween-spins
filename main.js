@@ -167,12 +167,16 @@ class SlotScene extends Phaser.Scene{
   this.tweens.killTweensOf(glow);this.tweens.killTweensOf(symbol);
   symbol.clearTint();symbol.setAlpha(1);
   glow.clear();
-  glow.lineStyle(Math.max(1.25,cell*.022),color,.84);
-  glow.strokeCircle(0,0,cell*.35);
-  glow.lineStyle(Math.max(1,cell*.012),shine,.9);
-  glow.strokeCircle(0,0,cell*.45);
-  glow.setVisible(true).setAlpha(0).setScale(.78);
-  this.tweens.add({targets:glow,alpha:.92,scale:1.12,duration:260,yoyo:true,ease:'Sine.easeOut',onComplete:()=>{glow.setVisible(false);glow.setAlpha(0)}});
+  if(!DUENDE_SLOT){
+   glow.lineStyle(Math.max(1.25,cell*.022),color,.84);
+   glow.strokeCircle(0,0,cell*.35);
+   glow.lineStyle(Math.max(1,cell*.012),shine,.9);
+   glow.strokeCircle(0,0,cell*.45);
+   glow.setVisible(true).setAlpha(0).setScale(.78);
+   this.tweens.add({targets:glow,alpha:.92,scale:1.12,duration:260,yoyo:true,ease:'Sine.easeOut',onComplete:()=>{glow.setVisible(false);glow.setAlpha(0)}});
+  }else{
+   glow.clear().setVisible(false).setAlpha(0);
+  }
   if(DUENDE_SLOT){
    const base=this.baseSymbolScales[i]||{x:symbol.scaleX,y:symbol.scaleY};
    const type=effect?.type||'';
