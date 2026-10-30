@@ -256,6 +256,14 @@ class SlotScene extends Phaser.Scene{
   }
  }
  previewWinFx(){
+  if(DUENDE_SLOT){
+   const samples=[{index:COLS+1,key:'galera'},{index:COLS+2,key:'cauldron'}];
+   samples.forEach(({index,key})=>{const symbolIndex=GAME_CONFIG.symbols.findIndex(symbol=>symbol.key===key);if(symbolIndex<0)return;this.grid[index]=symbolIndex;this.symbols[index].setTexture(key);this.applySymbolScale(index,symbolIndex);this.updateHtmlSymbol(index,symbolIndex)});
+   const play=()=>samples.forEach(({index,key},order)=>this.time.delayedCall(order*950,()=>{const config=WIN_EFFECTS[key];this.animateWinSymbol(index,config||null)}));
+   this.time.delayedCall(320,play);
+   this.time.addEvent({delay:3300,loop:true,callback:play});
+   return;
+  }
   const samples=[COLS+1,COLS+2,COLS+3].filter(index=>index<COLS*ROWS);
   if(!samples.length)return;
   const play=()=>samples.forEach((index,order)=>this.time.delayedCall(order*170,()=>this.animateWinSymbol(index,null)));
