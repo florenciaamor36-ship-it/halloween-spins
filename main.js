@@ -179,10 +179,10 @@ class SlotScene extends Phaser.Scene{
    if(type==='clover-spin'){
     this.tweens.add({targets:symbol,scaleX:base.x*1.16,scaleY:base.y*1.16,angle:360,duration:760,ease:'Cubic.easeOut',yoyo:true,hold:90,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
    }else if(type==='galera-tilt'){
-    this.tweens.add({targets:symbol,angle:-13,duration:150,ease:'Sine.easeOut',yoyo:true,repeat:3,onComplete:()=>symbol.setAngle(0)});
-    this.tweens.add({targets:symbol,scaleX:base.x*1.11,scaleY:base.y*1.11,duration:230,ease:'Back.Out',yoyo:true,repeat:1,onComplete:()=>symbol.setScale(base.x,base.y)});
+    this.tweens.add({targets:symbol,angle:-22,duration:210,ease:'Sine.easeOut',yoyo:true,repeat:3,onComplete:()=>symbol.setAngle(0)});
+    this.tweens.add({targets:symbol,scaleX:base.x*1.20,scaleY:base.y*1.20,duration:260,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y)});
    }else if(type==='cauldron-bubble'){
-    this.tweens.add({targets:symbol,y:symbol.y-cell*.07,scaleX:base.x*1.05,scaleY:base.y*1.08,duration:260,ease:'Sine.easeOut',yoyo:true,repeat:2,onComplete:()=>symbol.setPosition(this.lastLayout.w/COLS*((i%COLS)+.5),this.lastLayout.h/ROWS*(Math.floor(i/COLS)+.5)).setScale(base.x,base.y)});
+    this.tweens.add({targets:symbol,y:symbol.y-cell*.12,scaleX:base.x*1.18,scaleY:base.y*1.20,duration:330,ease:'Sine.easeOut',yoyo:true,repeat:2,onComplete:()=>symbol.setPosition(this.lastLayout.w/COLS*((i%COLS)+.5),this.lastLayout.h/ROWS*(Math.floor(i/COLS)+.5)).setScale(base.x,base.y)});
    }else if(type==='bonus-glow'){
     this.tweens.add({targets:symbol,scaleX:base.x*1.16,scaleY:base.y*1.16,duration:180,ease:'Back.Out',yoyo:true,repeat:2,onComplete:()=>symbol.setScale(base.x,base.y).setAngle(0)});
    }else{
@@ -199,14 +199,14 @@ class SlotScene extends Phaser.Scene{
       .setStrokeStyle(Math.max(1.4,r*.24),0xffffff,.98).setDepth(42);
      const gleam=this.add.circle(x-r*.28,y-r*.32,Math.max(1,r*.18),0xffffff,.96).setDepth(43);
      const drift=(Math.random()-.5)*potW*.12;
-     this.tweens.add({targets:[bubble,gleam],y:y-potH*(.30+Math.random()*.16),x:x+drift,scale:.22,alpha:0,duration:720+Math.random()*300,delay:k*95,ease:'Sine.easeOut',onComplete:()=>{bubble.destroy();gleam.destroy()}});
+     this.tweens.add({targets:[bubble,gleam],y:y-potH*(.42+Math.random()*.18),x:x+drift,scale:.22,alpha:0,duration:900+Math.random()*380,delay:k*120,ease:'Sine.easeOut',onComplete:()=>{bubble.destroy();gleam.destroy()}});
     }
     // Small tongues of fire flicker upward from the logs under the cauldron.
     for(let k=0;k<8;k++){
      const x=symbol.x+(Math.random()-.5)*potW*.40;
      const baseY=symbol.y+potH*.34+Math.random()*potH*.025;
      const fw=Math.max(2.2,potW*(.022+Math.random()*.016));
-     const fh=Math.max(6,potH*(.075+Math.random()*.055));
+     const fh=Math.max(6,potH*(.11+Math.random()*.075));
      const flame=this.add.graphics().setPosition(x,baseY).setDepth(42);
      flame.fillStyle(k%3===0?0xffdf55:0xff782c,.98);
      flame.beginPath();flame.moveTo(-fw,0);flame.lineTo(-fw*.62,-fh*.50);
@@ -215,7 +215,7 @@ class SlotScene extends Phaser.Scene{
      flame.fillStyle(0xfff19b,.98);
      flame.beginPath();flame.moveTo(-fw*.38,0);flame.lineTo(-fw*.12,-fh*.36);
      flame.lineTo(fw*.12,-fh*.22);flame.lineTo(fw*.36,0);flame.closePath();flame.fillPath();
-     this.tweens.add({targets:flame,y:baseY-fh*.25,scaleX:.62,scaleY:.78,alpha:0,duration:420+Math.random()*180,delay:k*60,ease:'Sine.easeOut',onComplete:()=>flame.destroy()});
+     this.tweens.add({targets:flame,y:baseY-fh*.25,scaleX:.62,scaleY:.78,alpha:0,duration:650+Math.random()*230,delay:k*80,ease:'Sine.easeOut',onComplete:()=>flame.destroy()});
     }
    }else if(type==='galera-tilt'){
     for(let k=0;k<3;k++){
@@ -256,14 +256,6 @@ class SlotScene extends Phaser.Scene{
   }
  }
  previewWinFx(){
-  if(DUENDE_SLOT){
-   const samples=[{index:COLS+1,key:'galera'},{index:COLS+2,key:'cauldron'}];
-   samples.forEach(({index,key})=>{const symbolIndex=GAME_CONFIG.symbols.findIndex(symbol=>symbol.key===key);if(symbolIndex<0)return;this.grid[index]=symbolIndex;this.symbols[index].setTexture(key);this.applySymbolScale(index,symbolIndex);this.updateHtmlSymbol(index,symbolIndex)});
-   const play=()=>samples.forEach(({index,key},order)=>this.time.delayedCall(order*850,()=>{const config=WIN_EFFECTS[key];this.animateWinSymbol(index,config||null)}));
-   this.time.delayedCall(260,play);
-   this.time.addEvent({delay:2800,loop:true,callback:play});
-   return;
-  }
   const samples=[COLS+1,COLS+2,COLS+3].filter(index=>index<COLS*ROWS);
   if(!samples.length)return;
   const play=()=>samples.forEach((index,order)=>this.time.delayedCall(order*170,()=>this.animateWinSymbol(index,null)));
