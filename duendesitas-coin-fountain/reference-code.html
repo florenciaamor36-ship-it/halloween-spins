@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuente de Monedas Transparente</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* Fondo de prueba oscuro para distinguir la transparencia */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Canvas totalmente transparente superponible */
+        #coinCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Permite hacer clic a través del canvas */
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="coinCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('coinCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Ajustar canvas al tamaño de pantalla
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Arreglo de monedas activas
+        const coins = [];
+        const maxCoins = 150; // Cantidad máxima simultánea
+
+        // Cargar imagen de la secuencia o sprite (Podés usar una imagen individual o recortar la plantilla)
+        // En este ejemplo dibujamos monedas doradas procedimentales con perspectiva variable para simular el giro 3D
+        class Coin {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                // Origen: centro inferior (estilo fuente)
+                this.x = canvas.width / 2 + (Math.random() * 40 - 20);
+                this.y = canvas.height * 0.7;
+
+                // Velocidades de disparo hacia arriba en abanico
+                this.vx = (Math.random() - 0.5) * 12; // Dispersión horizontal
+                this.vy = -(Math.random() * 10 + 14); // Fuerza de impulso hacia arriba
+
+                this.gravity = 0.5; // Gravedad que las atrae hacia abajo
+                this.size = Math.random() * 12 + 16; // Tamaño variado
+
+                // Rotación 3D simulada
+                this.angle = Math.random() * Math.PI * 2;
+                this.rotationSpeed = Math.random() * 0.2 + 0.1;
+                this.scaleY = 1; // Para la escala vertical al girar
+
+                // Opacidad para desaparecer gradualmente al caer
+                this.alpha = 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += this.gravity; // Aplica gravedad
+
+                // Animación de giro (modifica la escala en Y para simular la rotación de la moneda)
+                this.angle += this.rotationSpeed;
+                this.scaleY = Math.cos(this.angle);
+
+                // Si la moneda cae fuera del límite inferior, se reinicia la fuente
+                if (this.y > canvas.height + 50) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.scale(1, Math.abs(this.scaleY)); // Efecto de achatamiento por rotación 3D
+
+                // Sombra/Borde dorado
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(218, 165, 32, ${this.alpha})`;
+                ctx.fill();
+
+                // Cara frontal dorada con brillo
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size * 0.85, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.alpha})`;
+                ctx.fill();
+
+                // Detalle central
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size * 0.5, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(184, 134, 11, ${this.alpha})`;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.restore();
+            }
+        }
+
+        // Crear grupo de monedas
+        for (let i = 0; i < maxCoins; i++) {
+            // Desfasar la salida inicial para efecto continuo de chorro
+            setTimeout(() => {
+                coins.push(new Coin());
+            }, i * 35);
+        }
+
+        // Bucle de animación transparente
+        function animate() {
+            // IMPORTANTE: clearRect borra el cuadro previo dejando transparencia total
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            coins.forEach(coin => {
+                coin.update();
+                coin.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
