@@ -200,19 +200,19 @@ class SlotScene extends Phaser.Scene{
     for(let k=0;k<7;k++){
      const x=symbol.x+(Math.random()-.5)*potW*.28;
      const y=symbol.y-potH*.19+Math.random()*potH*.035;
-     const r=Math.max(2.4,Math.min(potW,potH)*(.046+Math.random()*.024));
+     const r=Math.max(2.4,Math.min(potW*.62,potH*.62)*(.046+Math.random()*.024));
      const bubble=this.add.circle(x,y,r,k%2?0xe056fd:0x32ff7e,.84)
       .setStrokeStyle(Math.max(1.4,r*.24),0xffffff,.98).setDepth(42);
      const gleam=this.add.circle(x-r*.28,y-r*.32,Math.max(1,r*.18),0xffffff,.96).setDepth(43);
      const drift=(Math.random()-.5)*potW*.12;
-     this.tweens.add({targets:[bubble,gleam],y:y-potH*(.42+Math.random()*.18),x:x+drift,scale:.22,alpha:0,duration:900+Math.random()*380,delay:k*120,ease:'Sine.easeOut',onComplete:()=>{bubble.destroy();gleam.destroy()}});
+     this.tweens.add({targets:[bubble,gleam],y:y-potH*(.10+Math.random()*.045),x:x+drift,scale:.22,alpha:0,duration:900+Math.random()*380,delay:k*120,ease:'Sine.easeOut',onComplete:()=>{bubble.destroy();gleam.destroy()}});
     }
     // Small tongues of fire flicker upward from the logs under the cauldron.
     for(let k=0;k<8;k++){
-     const x=symbol.x+(Math.random()-.5)*potW*.40;
-     const baseY=symbol.y+potH*.34+Math.random()*potH*.025;
+     const x=symbol.x+(Math.random()-.5)*potW*.36;
+     const baseY=symbol.y+potH*.265+Math.random()*potH*.025;
      const fw=Math.max(2.2,potW*(.022+Math.random()*.016));
-     const fh=Math.max(6,potH*(.11+Math.random()*.075));
+     const fh=Math.max(6,potH*(.075+Math.random()*.035));
      const flame=this.add.graphics().setPosition(x,baseY).setDepth(42);
      flame.fillStyle(k%3===0?0xffdf55:0xff782c,.98);
      flame.beginPath();flame.moveTo(-fw,0);flame.lineTo(-fw*.62,-fh*.50);
