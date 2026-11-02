@@ -130,7 +130,7 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
       if(!live||!screen.classList.contains('open')){stop();return}
       const r=screen.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);
       if(spawned<maxCoins&&now-lastFrame>22){coins.push(reset());spawned++;lastFrame=now}
-      for(let i=coins.length-1;i>=0;i--){const c=coins[i];c.x+=c.vx;c.y+=c.vy;c.vy+=c.g;c.angle+=c.spin;if(c.y>r.height+35){coins.splice(i,1);continue}
+      for(let i=coins.length-1;i>=0;i--){const c=coins[i];c.x+=c.vx;c.y+=c.vy;c.vy+=c.g;c.angle+=c.spin;if(c.y>r.height+35){Object.assign(c,reset())}
         const frame=coinImages[Math.floor(Math.abs(Math.sin(c.angle))*coinImages.length)%coinImages.length];
         if(!frame.complete||!frame.naturalWidth)continue;
         const h=c.size*2,w=h*frame.naturalWidth/frame.naturalHeight,flip=Math.max(.09,Math.abs(Math.cos(c.angle)));
