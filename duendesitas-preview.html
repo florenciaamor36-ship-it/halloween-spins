@@ -41,9 +41,9 @@ html[data-skin="duendesitas-fortuna"] #game .announcement-panel img{display:none
 html[data-skin="duendesitas-fortuna"] .bigwin-art,html[data-skin="duendesitas-fortuna"] .lowwin-card img{display:none!important}
 /* Celebration overlays: win art below, centered gold fountain above it, fairy on top. */
 html[data-skin="duendesitas-fortuna"] .award-coin-fountain{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;pointer-events:none;background:transparent}
-html[data-skin="duendesitas-fortuna"] .award-fairy-stage{position:absolute;left:50%;top:50%;z-index:5;transform:translate(-50%,-50%);pointer-events:none;animation:duendeFloat .72s ease-in-out infinite}
-html[data-skin="duendesitas-fortuna"] .award-fairy-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 6px #0008);transition:opacity .045s linear}
-@keyframes duendeFloat{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -4px;rotate:1deg}}
+html[data-skin="duendesitas-fortuna"] .award-fairy-stage{position:absolute;left:50%;top:50%;z-index:5;transform:translate(-50%,-50%);pointer-events:none;animation:duendeFloat .38s cubic-bezier(.2,.85,.25,1) infinite}
+html[data-skin="duendesitas-fortuna"] .award-fairy-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 6px #0008);transition:opacity .028s linear}
+@keyframes duendeFloat{0%{translate:0 1px;rotate:-2deg;scale:.98}35%{translate:0 -8px;rotate:2deg;scale:1.04}70%{translate:0 -2px;rotate:-1deg;scale:1.01}100%{translate:0 1px;rotate:-2deg;scale:.98}}
 /* Layout shared by the two Duendesitas prize presentations: title, dance, amount. */
 html[data-skin="duendesitas-fortuna"] .bigwin-card,html[data-skin="duendesitas-fortuna"] .lowwin-card{width:min(84vw,360px,65vh)!important;aspect-ratio:0.82!important;background:linear-gradient(160deg,#193d29,#10271d 58%,#183320)!important;border:2px solid #e6d37e!important;border-radius:24px!important;box-shadow:0 12px 40px #0009,inset 0 0 32px #07180d!important}
 html[data-skin="duendesitas-fortuna"] .bigwin-card::before{content:"BIG WIN";position:absolute;left:8%;top:7%;width:84%;text-align:center;color:#ffe798;font:900 clamp(22px,6vw,36px)/1 system-ui,sans-serif;letter-spacing:.05em;text-shadow:0 2px 2px #392600,0 0 12px #d6ad4a}
@@ -128,17 +128,17 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
     const ctx=canvas.getContext('2d',{alpha:true});
     const dpr=Math.min(window.devicePixelRatio||1,2);
     let raf=0,spawned=0,lastFrame=0,live=true;
-    const coins=[];const maxCoins=100;
+    const coins=[];const maxCoins=150;
     const resize=()=>{const card=screen.querySelector('.lowwin-card,.bigwin-card');if(!card)return;const w=card.offsetWidth,h=card.offsetHeight;canvas.style.width=w+'px';canvas.style.height=h+'px';canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);const fh=Math.round(h*.30);fairyStage.style.height=fh+'px';fairyStage.style.width=Math.round(fh*.48)+'px';fairyStage.style.top=`calc(50% - ${Math.round(h*.09)}px)`;ctx.setTransform(dpr,0,0,dpr,0,0)};
     resize();window.addEventListener('resize',resize);
     fairyA.src=fairyUrls[0];fairyB.src=fairyUrls[1];fairyA.style.opacity='1';fairyB.style.opacity='0';
     let fairyIndex=0,front=fairyA,back=fairyB;
-    const dance=window.setInterval(()=>{if(!live){clearInterval(dance);return}fairyIndex=(fairyIndex+1)%fairyUrls.length;back.src=fairyUrls[fairyIndex];back.style.opacity='1';front.style.opacity='0';const old=front;front=back;back=old},82);
-    const reset=()=>{const w=canvas.width/dpr,h=canvas.height/dpr,k=Math.max(.35,h/350);return{x:w/2+(Math.random()*12-6)*k,y:h*.72,vx:(Math.random()-.5)*8*k,vy:-(Math.random()*5+10)*k,g:.26*k,size:(Math.random()*6+8)*k,angle:Math.random()*Math.PI*2,spin:(Math.random()*.12+.045)*(Math.random()<.5?-1:1),alpha:1,life:0,lifeMax:95+Math.random()*55}};
+    const dance=window.setInterval(()=>{if(!live){clearInterval(dance);return}fairyIndex=(fairyIndex+1)%fairyUrls.length;back.src=fairyUrls[fairyIndex];back.style.opacity='1';front.style.opacity='0';const old=front;front=back;back=old},48);
+    const reset=()=>{const w=canvas.width/dpr,h=canvas.height/dpr,k=Math.max(.35,h/350);return{x:w/2+(Math.random()*12-6)*k,y:h*.78,vx:(Math.random()-.5)*13*k,vy:-(Math.random()*7+15)*k,g:.32*k,size:(Math.random()*7+9)*k,angle:Math.random()*Math.PI*2,spin:(Math.random()*.12+.045)*(Math.random()<.5?-1:1),alpha:1,life:0,lifeMax:75+Math.random()*50}};
     function tick(now){
       if(!live||!screen.classList.contains('open')){stop();return}
       const r={width:canvas.width/dpr,height:canvas.height/dpr};ctx.clearRect(0,0,r.width,r.height);
-      if(spawned<maxCoins&&now-lastFrame>10){coins.push(reset());spawned++;lastFrame=now}
+      if(spawned<maxCoins&&now-lastFrame>5){coins.push(reset());spawned++;lastFrame=now}
       for(let i=coins.length-1;i>=0;i--){const c=coins[i];c.vx+=Math.sin(c.life*.12+c.angle)*.045;c.x+=c.vx;c.y+=c.vy;c.vy+=c.g;c.angle+=c.spin;c.life++;if(c.x<c.size||c.x>r.width-c.size)c.vx*=-.88;if(c.y>r.height+10||c.life>c.lifeMax)Object.assign(c,reset());c.alpha=Math.min(1,c.life/5,Math.max(.12,(c.lifeMax-c.life)/18));
         const phase=((c.angle%(Math.PI*2))+Math.PI*2)%(Math.PI*2);const frame=coinImages[Math.floor(phase/(Math.PI*2)*coinImages.length)%coinImages.length];
         if(!frame.complete||!frame.naturalWidth)continue;
