@@ -144,6 +144,9 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
   function restart(id){const screen=document.getElementById(id);if(!screen)return;active.get(screen)?.();start(screen)}
   window.addEventListener('slot:low-win-start',()=>restart('lowWinScreen'));
   window.addEventListener('slot:big-win-start',()=>restart('bigWinScreen'));
+  // Preview only; does not spin, change credits, or modify game math.
+  const preview=new URLSearchParams(location.search).get('duende-award-preview');
+  if(preview==='nice'||preview==='big')window.addEventListener('load',()=>setTimeout(()=>{if(preview==='big')showBigWin(500);else showLowWin(250)},1800),{once:true});
   for(const id of ['lowWinScreen','bigWinScreen']){const screen=document.getElementById(id);if(screen)new MutationObserver(()=>{if(!screen.classList.contains('open'))active.get(screen)?.()}).observe(screen,{attributes:true,attributeFilter:['class']})}
 })();
 </script>
