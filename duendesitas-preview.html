@@ -42,7 +42,12 @@ html[data-skin="duendesitas-fortuna"] .bigwin-art,html[data-skin="duendesitas-fo
 /* Celebration overlays: win art below, centered gold fountain above it, fairy on top. */
 html[data-skin="duendesitas-fortuna"] .award-coin-fountain{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;pointer-events:none;background:transparent}
 html[data-skin="duendesitas-fortuna"] .award-fairy{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;max-width:24vw;object-fit:contain;pointer-events:none;filter:drop-shadow(0 3px 6px #0008)}
-html[data-skin="duendesitas-fortuna"] .bigwin-card,html[data-skin="duendesitas-fortuna"] .lowwin-card{background:linear-gradient(145deg,#173a29,#243e25)!important;border:2px solid #e6d37e!important;border-radius:24px!important}
+/* Layout shared by the two Duendesitas prize presentations: title, dance, amount. */
+html[data-skin="duendesitas-fortuna"] .bigwin-card,html[data-skin="duendesitas-fortuna"] .lowwin-card{width:min(84vw,360px,65vh)!important;aspect-ratio:0.82!important;background:linear-gradient(160deg,#193d29,#10271d 58%,#183320)!important;border:2px solid #e6d37e!important;border-radius:24px!important;box-shadow:0 12px 40px #0009,inset 0 0 32px #07180d!important}
+html[data-skin="duendesitas-fortuna"] .bigwin-card::before{content:"BIG WIN";position:absolute;left:8%;top:7%;width:84%;text-align:center;color:#ffe798;font:900 clamp(22px,6vw,36px)/1 system-ui,sans-serif;letter-spacing:.05em;text-shadow:0 2px 2px #392600,0 0 12px #d6ad4a}
+html[data-skin="duendesitas-fortuna"] .lowwin-title{left:8%!important;top:7%!important;width:84%!important;font-size:clamp(22px,6vw,36px)!important;line-height:1!important;letter-spacing:.05em!important;color:#ffe798!important}
+html[data-skin="duendesitas-fortuna"] .bigwin-number-cover,html[data-skin="duendesitas-fortuna"] .lowwin-amount{position:absolute!important;left:17%!important;top:76%!important;width:66%!important;height:14%!important;display:grid!important;place-items:center!important;border:2px solid #d9bd6b!important;border-radius:12px!important;background:linear-gradient(#0d2116,#07120c)!important;box-shadow:0 3px 12px #0008,inset 0 0 10px #0008!important;overflow:hidden!important}
+html[data-skin="duendesitas-fortuna"] .bigwin-number,html[data-skin="duendesitas-fortuna"] .lowwin-amount span{color:#fff0ab!important;font-size:clamp(26px,8vw,46px)!important;font-weight:900!important;line-height:1!important;text-shadow:0 2px 3px #000,0 0 9px #c99a25!important}
 html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!important;background:linear-gradient(145deg,#142a1e,#241d32)!important;border:2px solid #d6bd65!important}
 </style>
 </head>
@@ -120,7 +125,7 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
     const dpr=Math.min(window.devicePixelRatio||1,2);
     let raf=0,spawned=0,lastFrame=0,live=true;
     const coins=[];const maxCoins=55;
-    const resize=()=>{const card=screen.querySelector('.lowwin-card,.bigwin-card');if(!card)return;const w=card.offsetWidth,h=card.offsetHeight;canvas.style.width=w+'px';canvas.style.height=h+'px';canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);fairy.style.height=Math.round(h*.34)+'px';fairy.style.top=`calc(50% - ${Math.round(h*.07)}px)`;ctx.setTransform(dpr,0,0,dpr,0,0)};
+    const resize=()=>{const card=screen.querySelector('.lowwin-card,.bigwin-card');if(!card)return;const w=card.offsetWidth,h=card.offsetHeight;canvas.style.width=w+'px';canvas.style.height=h+'px';canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);fairy.style.height=Math.round(h*.32)+'px';fairy.style.top=`calc(50% - ${Math.round(h*.09)}px)`;ctx.setTransform(dpr,0,0,dpr,0,0)};
     resize();window.addEventListener('resize',resize);
     fairy.src=fairyUrls[0];fairy.style.display='block';
     let fairyIndex=0;const dance=window.setInterval(()=>{if(!live){clearInterval(dance);return}fairyIndex=(fairyIndex+1)%fairyUrls.length;fairy.src=fairyUrls[fairyIndex]},150);
@@ -133,7 +138,7 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
         const frame=coinImages[Math.floor(Math.abs(Math.sin(c.angle))*coinImages.length)%coinImages.length];
         if(!frame.complete||!frame.naturalWidth)continue;
         const h=c.size*2,w=h*frame.naturalWidth/frame.naturalHeight,flip=Math.max(.09,Math.abs(Math.cos(c.angle)));
-        ctx.save();ctx.globalAlpha=c.alpha;ctx.translate(c.x,c.y);ctx.scale(flip,1);ctx.drawImage(frame,-w/2,-h/2,w,h);ctx.restore();
+        ctx.save();ctx.beginPath();ctx.rect(0,r.height*.20,r.width,r.height*.52);ctx.clip();ctx.globalAlpha=c.alpha;ctx.translate(c.x,c.y);ctx.scale(flip,1);ctx.drawImage(frame,-w/2,-h/2,w,h);ctx.restore();
       }
       raf=requestAnimationFrame(tick)
     }
