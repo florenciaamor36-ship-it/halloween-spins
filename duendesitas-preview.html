@@ -120,12 +120,12 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
     const ctx=canvas.getContext('2d',{alpha:true});
     const dpr=Math.min(window.devicePixelRatio||1,2);
     let raf=0,spawned=0,lastFrame=0,live=true;
-    const coins=[];const maxCoins=150;
+    const coins=[];const maxCoins=55;
     const resize=()=>{const r=screen.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
     resize();window.addEventListener('resize',resize);
     fairy.src=fairyUrls[0];fairy.style.display='block';
     let fairyIndex=0;const dance=window.setInterval(()=>{if(!live){clearInterval(dance);return}fairyIndex=(fairyIndex+1)%fairyUrls.length;fairy.src=fairyUrls[fairyIndex]},150);
-    const reset=()=>{const r=screen.getBoundingClientRect();return{x:r.width/2+(Math.random()*42-21),y:r.height*.73,vx:(Math.random()-.5)*9,vy:-(Math.random()*7+11),g:.38,size:Math.random()*9+13,angle:Math.random()*Math.PI*2,spin:Math.random()*.16+.07,alpha:1}};
+    const reset=()=>{const r=screen.getBoundingClientRect();return{x:r.width/2+(Math.random()*42-21),y:r.height*.73,vx:(Math.random()-.5)*9,vy:-(Math.random()*7+11),g:.38,size:Math.random()*8+10,angle:Math.random()*Math.PI*2,spin:Math.random()*.16+.07,alpha:1}};
     function tick(now){
       if(!live||!screen.classList.contains('open')){stop();return}
       const r=screen.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);
