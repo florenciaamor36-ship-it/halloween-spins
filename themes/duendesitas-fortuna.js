@@ -80,7 +80,7 @@ window.SLOT_GAME_CONFIG = {
     animatedWin: 'galera'
   },
   rules: {
-    targetRtpPercent: 93, payoutScale: 1.162492647355474,
+    targetRtpPercent: 93, payoutScale: 5.193753331402799,
     cols: 5,
     rows: 3,
     paylines: [
