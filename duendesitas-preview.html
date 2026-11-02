@@ -39,6 +39,10 @@ html[data-skin="duendesitas-fortuna"] #game .announcement-panel{display:none!imp
 html[data-skin="duendesitas-fortuna"] #game .announcement-panel.rk-message-active{display:block!important;left:18%!important;right:auto!important;top:8%!important;bottom:auto!important;width:64%!important;height:auto!important;min-height:0!important;padding:5px 8px!important;z-index:10!important;background:rgba(12,28,19,.94)!important;border:1px solid #d6bd65!important;border-radius:9px!important;box-shadow:0 2px 8px #0009!important;font-size:clamp(9px,2vw,13px)!important;line-height:1.15!important;transform:none!important;grid-template-columns:1fr!important}
 html[data-skin="duendesitas-fortuna"] #game .announcement-panel img{display:none!important}
 html[data-skin="duendesitas-fortuna"] .bigwin-art,html[data-skin="duendesitas-fortuna"] .lowwin-card img{display:none!important}
+/* Celebration overlays: win art below, centered gold fountain above it, fairy on top. */
+html[data-skin="duendesitas-fortuna"] .award-coin-fountain{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none;background:transparent}
+html[data-skin="duendesitas-fortuna"] .award-fairy{position:absolute;z-index:5;left:50%;bottom:10vh;transform:translateX(-50%);width:auto;height:clamp(120px,22vh,210px);max-width:24vw;object-fit:contain;pointer-events:none;filter:drop-shadow(0 3px 6px #0008)}
+@media(max-height:560px){html[data-skin="duendesitas-fortuna"] .award-fairy{height:28vh;bottom:7vh}}
 html[data-skin="duendesitas-fortuna"] .bigwin-card,html[data-skin="duendesitas-fortuna"] .lowwin-card{background:linear-gradient(145deg,#173a29,#243e25)!important;border:2px solid #e6d37e!important;border-radius:24px!important}
 html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!important;background:linear-gradient(145deg,#142a1e,#241d32)!important;border:2px solid #d6bd65!important}
 </style>
@@ -58,10 +62,14 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
     <div id="lowWinParticles" class="lowwin-particles"></div>
     <div class="lowwin-flames" aria-hidden="true">🔥 🔥 🔥</div>
     <div class="lowwin-card"><img alt=""><div class="lowwin-title"></div><div class="lowwin-amount"><span id="lowWinNumber">0</span></div></div>
+    <canvas class="award-coin-fountain" aria-hidden="true"></canvas>
+    <img class="award-fairy" alt="" aria-hidden="true">
   </section>
   <section id="bigWinScreen" class="bigwin-screen" aria-hidden="true">
     <div class="bigwin-rays"></div><div id="bigWinParticles" class="bigwin-particles"></div><div class="bigwin-lights"></div>
     <div class="bigwin-card"><img class="bigwin-art" alt=""><div class="bigwin-number-cover"><div id="bigWinNumber" class="bigwin-number">0</div></div></div>
+    <canvas class="award-coin-fountain" aria-hidden="true"></canvas>
+    <img class="award-fairy" alt="" aria-hidden="true">
   </section>
   <a href="index.html" style="position:fixed;z-index:9999;left:12px;top:12px;padding:8px 12px;border:1px solid #ffe18e;border-radius:10px;background:#171027;color:#fff0b2;font:700 12px system-ui;text-decoration:none">← Menú de máquinas</a>
 <main id="game" class="game">
@@ -94,6 +102,52 @@ html[data-skin="duendesitas-fortuna"] .paytable-card{background-image:none!impor
   <script src="phaser.min.js?v=4.2.1"></script>
   <script src="themes/duendesitas-fortuna.js?v=150-silhouette-effects-final"></script>
   <script src="main.js?v=cauldron-in-silhouette-final"></script>
+<script>
+/* Duendesitas-only prize celebration overlays. Fairy frames sourced from
+   florenciaamor36-ship-it/animacion-por-capas-demo, animaciones-demo/duendesita/frames. */
+(()=>{
+  'use strict';
+  const coinRoot='assets/duendesitas-fortuna/coins/';
+  const coinUrls=['gold-rotation-01.png','gold-rotation-02.png','gold-rotation-03.png','gold-rotation-04.png','gold-rotation-05.png','gold-rotation-07.png','gold-idle-angled.png'].map(x=>coinRoot+x);
+  const coinImages=coinUrls.map(src=>{const im=new Image();im.src=src;return im});
+  const fairyUrls=Array.from({length:7},(_,i)=>`assets/duendesitas-fortuna/fairy/frames/frame_${String(i+1).padStart(2,'0')}.png`);
+  const fairyImages=fairyUrls.map(src=>{const im=new Image();im.src=src;return im});
+  const active=new Map();
+  function start(screen){
+    const canvas=screen.querySelector('.award-coin-fountain');
+    const fairy=screen.querySelector('.award-fairy');
+    if(!canvas||!fairy)return;
+    const ctx=canvas.getContext('2d',{alpha:true});
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    let raf=0,spawned=0,lastFrame=0,live=true;
+    const coins=[];const maxCoins=150;
+    const resize=()=>{const r=screen.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
+    resize();window.addEventListener('resize',resize);
+    fairy.src=fairyUrls[0];fairy.style.display='block';
+    let fairyIndex=0;const dance=window.setInterval(()=>{if(!live){clearInterval(dance);return}if(fairyIndex<fairyUrls.length-1){fairyIndex++;fairy.src=fairyUrls[fairyIndex]}else clearInterval(dance)},150);
+    const reset=()=>{const r=screen.getBoundingClientRect();return{x:r.width/2+(Math.random()*42-21),y:r.height*.73,vx:(Math.random()-.5)*9,vy:-(Math.random()*7+11),g:.38,size:Math.random()*9+13,angle:Math.random()*Math.PI*2,spin:Math.random()*.16+.07,alpha:1}};
+    function tick(now){
+      if(!live||!screen.classList.contains('open')){stop();return}
+      const r=screen.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);
+      if(spawned<maxCoins&&now-lastFrame>22){coins.push(reset());spawned++;lastFrame=now}
+      for(let i=coins.length-1;i>=0;i--){const c=coins[i];c.x+=c.vx;c.y+=c.vy;c.vy+=c.g;c.angle+=c.spin;if(c.y>r.height+35){coins.splice(i,1);continue}
+        const frame=coinImages[Math.floor(Math.abs(Math.sin(c.angle))*coinImages.length)%coinImages.length];
+        if(!frame.complete||!frame.naturalWidth)continue;
+        const h=c.size*2,w=h*frame.naturalWidth/frame.naturalHeight,flip=Math.max(.09,Math.abs(Math.cos(c.angle)));
+        ctx.save();ctx.globalAlpha=c.alpha;ctx.translate(c.x,c.y);ctx.scale(flip,1);ctx.drawImage(frame,-w/2,-h/2,w,h);ctx.restore();
+      }
+      raf=requestAnimationFrame(tick)
+    }
+    function stop(){if(!live)return;live=false;cancelAnimationFrame(raf);clearInterval(dance);window.removeEventListener('resize',resize);ctx.clearRect(0,0,canvas.width/dpr,canvas.height/dpr);fairy.removeAttribute('src');fairy.style.display='none';active.delete(screen)}
+    active.set(screen,stop);raf=requestAnimationFrame(tick)
+  }
+  function restart(id){const screen=document.getElementById(id);if(!screen)return;active.get(screen)?.();start(screen)}
+  window.addEventListener('slot:low-win-start',()=>restart('lowWinScreen'));
+  window.addEventListener('slot:big-win-start',()=>restart('bigWinScreen'));
+  for(const id of ['lowWinScreen','bigWinScreen']){const screen=document.getElementById(id);if(screen)new MutationObserver(()=>{if(!screen.classList.contains('open'))active.get(screen)?.()}).observe(screen,{attributes:true,attributeFilter:['class']})}
+})();
+</script>
+
 
 </body>
 </html>
