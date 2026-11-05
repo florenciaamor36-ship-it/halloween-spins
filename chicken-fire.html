@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#170905">
+<title>Chicken Fire · tragamonedas demo</title>
+<link rel="stylesheet" href="chicken-fire.css">
+</head>
+<body>
+<main class="machine">
+  <header class="top"><div class="brand"><img src="assets/chicken-fire/logo.png" alt="Chicken Fire"><span>DEMO</span></div><div class="jackpots"><div><small>MINI</small><b>25.00</b></div><div><small>MINOR</small><b>75.00</b></div><div><small>MAJOR</small><b>500.00</b></div><div><small>GRAND</small><b>2,500.00</b></div></div></header>
+  <section class="playfield" aria-label="Tragamonedas Chicken Fire">
+    <div class="marquee"><span>🔥</span> ¡QUE EMPIECE EL FUEGO! <span>🔥</span></div>
+    <div id="reels" class="reels" aria-live="polite"></div>
+    <div id="winline" class="winline" aria-live="polite">CINCO RODILLOS · TRES FILAS</div>
+    <div class="controls">
+      <button id="betDown" class="small-btn" aria-label="Bajar apuesta">−</button>
+      <div class="meter"><small>APUESTA</small><b id="bet">1.00</b></div>
+      <button id="betUp" class="small-btn" aria-label="Subir apuesta">+</button>
+      <button id="spin" class="spin">GIRAR</button>
+      <button id="sound" class="small-btn sound" aria-label="Silenciar sonido">♫</button>
+    </div>
+    <footer><div class="meter balance"><small>SALDO</small><b id="balance">1,000.00</b></div><button id="paytable" class="paytable">PREMIOS</button><span class="lines">10 LÍNEAS</span></footer>
+  </section>
+  <p class="disclaimer">Simulación recreativa · sin dinero real · pagos provisionales no oficiales</p>
+</main>
+<dialog id="help"><button id="closeHelp" class="close" aria-label="Cerrar">×</button><h2>Premios de demostración</h2><p>Los símbolos iguales en línea de izquierda a derecha pagan según su valor. WILD sustituye a los símbolos normales.</p><ul><li>777: x20</li><li>BAR: x12 · Campana: x10 · Moneda: x8</li><li>Letras y números: x2–x5</li><li>3, 4 o 5 símbolos: x1, x2 o x5 del premio por línea</li></ul><p>Valores provisionales, no corresponden a la matemática oficial de Chicken Fire.</p></dialog>
+<script src="chicken-fire.js"></script>
+</body></html>
