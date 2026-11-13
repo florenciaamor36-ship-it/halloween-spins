@@ -143,15 +143,15 @@ async function spinColumn(c,finalSymbols,duration,options={}){
   window.appendChild(strip);cell.appendChild(window);cell.classList.add('reeling');
   moving.push({cell,window,strip,entries,row:r,animation:null});
  }
- for(const m of moving)m.animation=m.strip.animate([{transform:'translateY(0)'},{transform:'translateY(-50%)'}],{duration:680,iterations:Infinity,easing:'linear'});
+ for(const m of moving)m.animation=m.strip.animate([{transform:'translateY(0)'},{transform:'translateY(-50%)'}],{duration:380,iterations:Infinity,easing:'linear'});
  await sleep(duration);
  await Promise.all(moving.map(async m=>{
-  const phase=((Number(m.animation.currentTime)||0)%680)/680*4;
+  const phase=((Number(m.animation.currentTime)||0)%380)/380*4;
   const index=Math.floor(phase),fraction=phase-index;
   const visible=m.entries[index],next=finalSymbols[m.row];
   m.animation.cancel();m.strip.replaceChildren();m.strip.className='reel-strip reel-final';
   for(const symbol of [visible,next]){const img=document.createElement('img');if(symbol)img.src=srcOf(symbol);else img.style.visibility='hidden';img.alt='';m.strip.appendChild(img)}
-  const animation=m.strip.animate([{transform:`translateY(${-fraction*50}%)`},{transform:'translateY(-50%)'}],{duration:370,easing:'cubic-bezier(.19,.75,.26,1)',fill:'forwards'});
+  const animation=m.strip.animate([{transform:`translateY(${-fraction*50}%)`},{transform:'translateY(-50%)'}],{duration:220,easing:'cubic-bezier(.12,.78,.22,1)',fill:'forwards'});
   try{await animation.finished}catch(_){}
  }));
  if(options.commit)options.commit();
@@ -160,7 +160,7 @@ async function spinColumn(c,finalSymbols,duration,options={}){
 }
 async function animate(g){
  play(AUDIO_URLS['reel_spin_loop.wav']);
- await Promise.all([0,1,2].map(c=>spinColumn(c,g.map(row=>row[c]),[2200,3000,3800][c],{
+ await Promise.all([0,1,2].map(c=>spinColumn(c,g.map(row=>row[c]),[1050,1550,2350][c],{
   commit:()=>{for(let r=0;r<3;r++)grid[r][c]=g[r][c];draw(grid)},
   onStop:()=>{play(AUDIO_URLS['reel_stop.wav']);for(let r=0;r<3;r++){const symbol=g[r][c];if(symbol?.type==='coin')play(AUDIO_URLS['coin_land.wav']);else if(symbol?.type==='collect')play(AUDIO_URLS['collect_land.wav'])}}
  })));
@@ -177,7 +177,7 @@ const BONUS_REEL_LOOP='data:audio/ogg;base64,T2dnUwACAAAAAAAAAAC25eZyAAAAAIemaqE
 async function showBonusRespin(prior,result,mults){
  const shown=Array.from({length:3},(_,r)=>Array.from({length:3},(_,c)=>c===1&&prior.collectors[r]?{type:'collect',value:prior.collectors[r].value}:null));
  draw(shown,prior.multipliers);play(BONUS_REEL_LOOP);
- await Promise.all([0,1,2].map(c=>spinColumn(c,result.map(row=>row[c]),[1600,2100,2700][c],{
+ await Promise.all([0,1,2].map(c=>spinColumn(c,result.map(row=>row[c]),[750,1050,1550][c],{
   locked:c===1?prior.collectors.flatMap((x,r)=>x?[r]:[]):[],
   commit:()=>{for(let r=0;r<3;r++)shown[r][c]=result[r][c];draw(shown,mults)},
   onStop:()=>play(BONUS_REEL_STOP)
