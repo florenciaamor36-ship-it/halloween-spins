@@ -1,0 +1,812 @@
+bigwin-character-port-page0.png
+size: 254, 217
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+
+bigwin-character-port-page1.png
+size: 175, 205
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+
+bigwin-character-port-page2.png
+size: 183, 106
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+
+bigwin-character-port-page3.png
+size: 80, 105
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+
+bigwin-character-port-page4.png
+size: 893, 888
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+
+bigwin-character-port-page5.png
+size: 567, 573
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+s_blue/particles
+  rotate: false
+  xy: 0, 0
+  size: 254, 217
+  orig: 254, 217
+  offset: 0, 0
+  index: -1
+s_cyan/head_fer
+  rotate: true
+  xy: 0, 1
+  size: 70, 37
+  orig: 70, 37
+  offset: 0, 0
+  index: -1
+s_cyan/head_fer_01
+  rotate: false
+  xy: 111, 32
+  size: 55, 31
+  orig: 55, 31
+  offset: 0, 0
+  index: -1
+s_cyan/head_fer_3
+  rotate: false
+  xy: 92, 64
+  size: 83, 39
+  orig: 83, 39
+  offset: 0, 0
+  index: -1
+s_cyan/head_fer_5
+  rotate: true
+  xy: 71, 6
+  size: 39, 57
+  orig: 39, 57
+  offset: 0, 0
+  index: -1
+s_cyan/head_fer_8
+  rotate: true
+  xy: 0, 39
+  size: 51, 53
+  orig: 51, 53
+  offset: 0, 0
+  index: -1
+s_cyan/lw_cloth_4
+  rotate: true
+  xy: 92, 104
+  size: 66, 101
+  orig: 66, 101
+  offset: 0, 0
+  index: -1
+s_cyan/lw_cloth_5
+  rotate: true
+  xy: 0, 93
+  size: 91, 112
+  orig: 91, 112
+  offset: 0, 0
+  index: -1
+s_green/jewls_4
+  rotate: true
+  xy: 151, 74
+  size: 24, 32
+  orig: 24, 32
+  offset: 0, 0
+  index: -1
+s_green/jewls_5
+  rotate: false
+  xy: 134, 2
+  size: 28, 14
+  orig: 28, 14
+  offset: 0, 0
+  index: -1
+s_green/lw_cloth_3
+  rotate: true
+  xy: 0, 35
+  size: 150, 71
+  orig: 150, 71
+  offset: 0, 0
+  index: -1
+s_green/lw_cloth_jewls
+  rotate: false
+  xy: 163, 2
+  size: 8, 14
+  orig: 8, 14
+  offset: 0, 0
+  index: -1
+s_green/lw_cloth_jewls_3
+  rotate: false
+  xy: 172, 2
+  size: 7, 14
+  orig: 7, 14
+  offset: 0, 0
+  index: -1
+s_green/lw_cloth_jewls_4
+  rotate: false
+  xy: 176, 92
+  size: 7, 14
+  orig: 7, 14
+  offset: 0, 0
+  index: -1
+s_green/lw_cloth_shade_1
+  rotate: true
+  xy: 0, 0
+  size: 86, 34
+  orig: 86, 34
+  offset: 0, 0
+  index: -1
+s_green/wapen_fur_3
+  rotate: false
+  xy: 87, 2
+  size: 46, 32
+  orig: 46, 32
+  offset: 0, 0
+  index: -1
+s_green/wapen_fur_4
+  rotate: true
+  xy: 134, 17
+  size: 49, 17
+  orig: 49, 17
+  offset: 0, 0
+  index: -1
+s_magenta/chest_cloth
+  rotate: false
+  xy: 0, 53
+  size: 80, 52
+  orig: 80, 52
+  offset: 0, 0
+  index: -1
+s_magenta/jewls_1
+  rotate: true
+  xy: 0, 0
+  size: 56, 52
+  orig: 56, 52
+  offset: 0, 0
+  index: -1
+s_red/back_hair
+  rotate: false
+  xy: 846, 238
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+s_red/back_hair_2
+  rotate: false
+  xy: 846, 514
+  size: 35, 54
+  orig: 35, 54
+  offset: 0, 0
+  index: -1
+s_red/back_mouth
+  rotate: true
+  xy: 846, 282
+  size: 27, 37
+  orig: 27, 37
+  offset: 0, 0
+  index: -1
+s_red/body_fem
+  rotate: true
+  xy: 0, 80
+  size: 151, 116
+  orig: 151, 116
+  offset: 0, 0
+  index: -1
+s_red/ear_l
+  rotate: true
+  xy: 425, 123
+  size: 26, 17
+  orig: 26, 17
+  offset: 0, 0
+  index: -1
+s_red/ear_r
+  rotate: false
+  xy: 873, 242
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+s_red/eye_ball
+  rotate: false
+  xy: 881, 322
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+s_red/eye_ball_2
+  rotate: false
+  xy: 281, 97
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+s_red/eye_bass
+  rotate: true
+  xy: 828, 551
+  size: 15, 17
+  orig: 15, 17
+  offset: 0, 0
+  index: -1
+s_red/eye_bass_1
+  rotate: true
+  xy: 106, 2
+  size: 14, 17
+  orig: 14, 17
+  offset: 0, 0
+  index: -1
+s_red/eye_bro
+  rotate: true
+  xy: 881, 331
+  size: 11, 20
+  orig: 11, 20
+  offset: 0, 0
+  index: -1
+s_red/eye_bro_1
+  rotate: false
+  xy: 868, 233
+  size: 21, 8
+  orig: 21, 8
+  offset: 0, 0
+  index: -1
+s_red/face
+  rotate: false
+  xy: 817, 134
+  size: 74, 92
+  orig: 74, 92
+  offset: 0, 0
+  index: -1
+s_red/fin_1
+  rotate: true
+  xy: 874, 275
+  size: 17, 44
+  orig: 17, 44
+  offset: 0, 0
+  index: -1
+s_red/fin_2
+  rotate: true
+  xy: 524, 83
+  size: 26, 46
+  orig: 26, 46
+  offset: 0, 0
+  index: -1
+s_red/fin_3
+  rotate: true
+  xy: 343, 85
+  size: 30, 37
+  orig: 30, 37
+  offset: 0, 0
+  index: -1
+s_red/fin_4
+  rotate: true
+  xy: 567, 6
+  size: 32, 21
+  orig: 32, 21
+  offset: 0, 0
+  index: -1
+s_red/fin_5
+  rotate: true
+  xy: 500, 1
+  size: 33, 30
+  orig: 33, 30
+  offset: 0, 0
+  index: -1
+s_red/hair
+  rotate: false
+  xy: 383, 56
+  size: 71, 66
+  orig: 71, 66
+  offset: 0, 0
+  index: -1
+s_red/hair_1
+  rotate: true
+  xy: 828, 792
+  size: 61, 96
+  orig: 61, 96
+  offset: 0, 0
+  index: -1
+s_red/hair_2
+  rotate: false
+  xy: 0, 2
+  size: 105, 77
+  orig: 105, 77
+  offset: 0, 0
+  index: -1
+s_red/hand_jewl_2_renamed
+  rotate: false
+  xy: 290, 73
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+s_red/hand_jewl_renamed
+  rotate: true
+  xy: 846, 352
+  size: 44, 38
+  orig: 44, 38
+  offset: 0, 0
+  index: -1
+s_red/head_fer_02
+  rotate: false
+  xy: 581, 28
+  size: 47, 42
+  orig: 47, 42
+  offset: 0, 0
+  index: -1
+s_red/head_fer_2
+  rotate: false
+  xy: 828, 569
+  size: 64, 57
+  orig: 64, 57
+  offset: 0, 0
+  index: -1
+s_red/head_fer_6
+  rotate: true
+  xy: 846, 473
+  size: 47, 40
+  orig: 47, 40
+  offset: 0, 0
+  index: -1
+s_red/head_fer_7
+  rotate: true
+  xy: 432, 21
+  size: 67, 30
+  orig: 67, 30
+  offset: 0, 0
+  index: -1
+s_red/jewls_4_shadow
+  rotate: false
+  xy: 534, 8
+  size: 32, 23
+  orig: 32, 23
+  offset: 0, 0
+  index: -1
+s_red/jewls_5_shadow
+  rotate: false
+  xy: 151, 8
+  size: 27, 15
+  orig: 27, 15
+  offset: 0, 0
+  index: -1
+s_red/jewls_shade
+  rotate: true
+  xy: 290, 2
+  size: 92, 68
+  orig: 92, 68
+  offset: 0, 0
+  index: -1
+s_red/jwls_leaf_shdw
+  rotate: false
+  xy: 678, 91
+  size: 138, 135
+  orig: 138, 135
+  offset: 0, 0
+  index: -1
+s_red/law_jaw
+  rotate: false
+  xy: 629, 5
+  size: 40, 25
+  orig: 40, 25
+  offset: 0, 0
+  index: -1
+s_red/law_lip
+  rotate: false
+  xy: 432, 1
+  size: 30, 19
+  orig: 30, 19
+  offset: 0, 0
+  index: -1
+s_red/left_hand_fin_2
+  rotate: false
+  xy: 846, 260
+  size: 26, 21
+  orig: 26, 21
+  offset: 0, 0
+  index: -1
+s_red/left_hand_fin_3
+  rotate: false
+  xy: 600, 3
+  size: 26, 24
+  orig: 26, 24
+  offset: 0, 0
+  index: -1
+s_red/left_leg_2
+  rotate: false
+  xy: 152, 95
+  size: 128, 101
+  orig: 128, 101
+  offset: 0, 0
+  index: -1
+s_red/left_thai
+  rotate: false
+  xy: 552, 71
+  size: 125, 155
+  orig: 125, 155
+  offset: 0, 0
+  index: -1
+s_red/lower_teeth
+  rotate: true
+  xy: 281, 106
+  size: 8, 19
+  orig: 8, 19
+  offset: 0, 0
+  index: -1
+s_red/lt_foot
+  rotate: true
+  xy: 355, 123
+  size: 69, 73
+  orig: 69, 73
+  offset: 0, 0
+  index: -1
+s_red/lw_cloth
+  rotate: false
+  xy: 455, 52
+  size: 29, 88
+  orig: 29, 88
+  offset: 0, 0
+  index: -1
+s_red/lw_cloth_2
+  rotate: true
+  xy: 828, 703
+  size: 57, 88
+  orig: 57, 88
+  offset: 0, 0
+  index: -1
+s_red/lw_cloth_desin
+  rotate: true
+  xy: 500, 36
+  size: 17, 32
+  orig: 17, 32
+  offset: 0, 0
+  index: -1
+s_red/lw_cloth_shade
+  rotate: true
+  xy: 534, 2
+  size: 21, 5
+  orig: 21, 5
+  offset: 0, 0
+  index: -1
+s_red/neck
+  rotate: true
+  xy: 629, 31
+  size: 49, 39
+  orig: 49, 39
+  offset: 0, 0
+  index: -1
+s_red/nose
+  rotate: false
+  xy: 869, 110
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: -1
+s_red/pam
+  rotate: false
+  xy: 828, 627
+  size: 65, 75
+  orig: 65, 75
+  offset: 0, 0
+  index: -1
+s_red/right_hand
+  rotate: true
+  xy: 487, 130
+  size: 47, 66
+  orig: 47, 66
+  offset: 0, 0
+  index: -1
+s_red/right_hand_1
+  rotate: true
+  xy: 383, 2
+  size: 48, 53
+  orig: 48, 53
+  offset: 0, 0
+  index: -1
+s_red/right_leg_2
+  rotate: true
+  xy: 678, 8
+  size: 128, 82
+  orig: 128, 82
+  offset: 0, 0
+  index: -1
+s_red/right_thai
+  rotate: false
+  xy: 152, 24
+  size: 137, 70
+  orig: 137, 70
+  offset: 0, 0
+  index: -1
+s_red/rt_foot
+  rotate: false
+  xy: 281, 126
+  size: 73, 70
+  orig: 73, 70
+  offset: 0, 0
+  index: -1
+s_red/rt_hand
+  rotate: true
+  xy: 817, 11
+  size: 51, 122
+  orig: 51, 122
+  offset: 0, 0
+  index: -1
+s_red/rt_hand_2
+  rotate: false
+  xy: 425, 141
+  size: 61, 55
+  orig: 61, 55
+  offset: 0, 0
+  index: -1
+s_red/rt_hand_jewls
+  rotate: false
+  xy: 524, 32
+  size: 56, 38
+  orig: 56, 38
+  offset: 0, 0
+  index: -1
+s_red/rt_hand_jewls_2
+  rotate: true
+  xy: 846, 320
+  size: 34, 31
+  orig: 34, 31
+  offset: 0, 0
+  index: -1
+s_red/rt_lg_jewl
+  rotate: false
+  xy: 846, 391
+  size: 41, 41
+  orig: 41, 41
+  offset: 0, 0
+  index: -1
+s_red/rt_lg_jewl_1
+  rotate: true
+  xy: 106, 20
+  size: 44, 59
+  orig: 44, 59
+  offset: 0, 0
+  index: -1
+s_red/upper_lip
+  rotate: false
+  xy: 463, 4
+  size: 30, 16
+  orig: 30, 16
+  offset: 0, 0
+  index: -1
+s_red/upper_teeth
+  rotate: false
+  xy: 524, 72
+  size: 22, 10
+  orig: 22, 10
+  offset: 0, 0
+  index: -1
+s_red/wapen_fer
+  rotate: false
+  xy: 485, 69
+  size: 38, 60
+  orig: 38, 60
+  offset: 0, 0
+  index: -1
+s_red/wapen_fur_2
+  rotate: false
+  xy: 846, 433
+  size: 46, 39
+  orig: 46, 39
+  offset: 0, 0
+  index: -1
+s_red/weapon
+  rotate: false
+  xy: 552, 227
+  size: 293, 315
+  orig: 293, 315
+  offset: 0, 0
+  index: -1
+s_red/wom_006
+  rotate: false
+  xy: 276, 543
+  size: 275, 345
+  orig: 275, 345
+  offset: 0, 0
+  index: -1
+s_red/wom_007
+  rotate: false
+  xy: 552, 543
+  size: 275, 345
+  orig: 275, 345
+  offset: 0, 0
+  index: -1
+s_red/wom_008
+  rotate: false
+  xy: 0, 543
+  size: 275, 345
+  orig: 275, 345
+  offset: 0, 0
+  index: -1
+s_red/wom_009
+  rotate: false
+  xy: 0, 197
+  size: 275, 345
+  orig: 275, 345
+  offset: 0, 0
+  index: -1
+s_red/wom_010
+  rotate: false
+  xy: 276, 197
+  size: 275, 345
+  orig: 275, 345
+  offset: 0, 0
+  index: -1
+s_yellow/back_dress
+  rotate: false
+  xy: 162, 27
+  size: 169, 94
+  orig: 169, 94
+  offset: 0, 0
+  index: -1
+s_yellow/back_hair_1
+  rotate: true
+  xy: 474, 198
+  size: 71, 92
+  orig: 71, 92
+  offset: 0, 0
+  index: -1
+s_yellow/ear_ring_l
+  rotate: false
+  xy: 546, 258
+  size: 15, 32
+  orig: 15, 32
+  offset: 0, 0
+  index: -1
+s_yellow/ear_ring_r
+  rotate: true
+  xy: 0, 23
+  size: 32, 15
+  orig: 32, 15
+  offset: 0, 0
+  index: -1
+s_yellow/effect
+  rotate: false
+  xy: 162, 122
+  size: 177, 168
+  orig: 177, 168
+  offset: 0, 0
+  index: -1
+s_yellow/glow_1
+  rotate: true
+  xy: 0, 117
+  size: 161, 196
+  orig: 161, 196
+  offset: 0, 0
+  index: -1
+s_yellow/head_fer_03
+  rotate: false
+  xy: 535, 6
+  size: 19, 54
+  orig: 19, 54
+  offset: 0, 0
+  index: -1
+s_yellow/head_fer_4
+  rotate: true
+  xy: 130, 48
+  size: 29, 68
+  orig: 29, 68
+  offset: 0, 0
+  index: -1
+s_yellow/head_fer_9
+  rotate: false
+  xy: 64, 11
+  size: 63, 33
+  orig: 63, 33
+  offset: 0, 0
+  index: -1
+s_yellow/head_jews
+  rotate: false
+  xy: 555, 31
+  size: 12, 29
+  orig: 12, 29
+  offset: 0, 0
+  index: -1
+s_yellow/head_jews_2
+  rotate: true
+  xy: 33, 25
+  size: 28, 13
+  orig: 28, 13
+  offset: 0, 0
+  index: -1
+s_yellow/head_jews_3
+  rotate: true
+  xy: 0, 39
+  size: 63, 77
+  orig: 63, 77
+  offset: 0, 0
+  index: -1
+s_yellow/jewls
+  rotate: true
+  xy: 522, 151
+  size: 43, 46
+  orig: 43, 46
+  offset: 0, 0
+  index: -1
+s_yellow/jewls_2
+  rotate: false
+  xy: 128, 16
+  size: 24, 28
+  orig: 24, 28
+  offset: 0, 0
+  index: -1
+s_yellow/jewls_3
+  rotate: true
+  xy: 468, 61
+  size: 93, 82
+  orig: 93, 82
+  offset: 0, 0
+  index: -1
+s_yellow/jewls_leaf
+  rotate: true
+  xy: 340, 144
+  size: 133, 146
+  orig: 133, 146
+  offset: 0, 0
+  index: -1
+s_yellow/lt_lg_jewl
+  rotate: true
+  xy: 474, 151
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
+s_yellow/lt_lg_jewl_1
+  rotate: true
+  xy: 468, 1
+  size: 66, 59
+  orig: 66, 59
+  offset: 0, 0
+  index: -1
+s_yellow/lw_cloth_jewls_1
+  rotate: false
+  xy: 153, 33
+  size: 8, 14
+  orig: 8, 14
+  offset: 0, 0
+  index: -1
+s_yellow/lw_cloth_jewls_2
+  rotate: false
+  xy: 153, 18
+  size: 7, 14
+  orig: 7, 14
+  offset: 0, 0
+  index: -1
+s_yellow/lw_cloth_jewls_5
+  rotate: false
+  xy: 555, 16
+  size: 7, 14
+  orig: 7, 14
+  offset: 0, 0
+  index: -1
+s_yellow/rays
+  rotate: true
+  xy: 320, 291
+  size: 237, 282
+  orig: 237, 282
+  offset: 0, 0
+  index: -1
+s_yellow/sparkle_1
+  rotate: false
+  xy: 340, 12
+  size: 127, 131
+  orig: 127, 131
+  offset: 0, 0
+  index: -1
+s_yellow/spraks
+  rotate: false
+  xy: 0, 314
+  size: 319, 259
+  orig: 319, 259
+  offset: 0, 0
+  index: -1
+s_yellow/weapon_2
+  rotate: false
+  xy: 64, 45
+  size: 65, 71
+  orig: 65, 71
+  offset: 0, 0
+  index: -1
