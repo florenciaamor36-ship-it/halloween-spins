@@ -21,357 +21,357 @@ size: 1091, 1100
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-s_cyan/meter_frame_bg
+cyan/meter_frame_bg
   rotate: false
   xy: 0, 0
   size: 305, 63
   orig: 305, 63
   offset: 0, 0
   index: -1
-s_green/meter_6
+green/meter_6
   rotate: false
   xy: 0, 1
   size: 43, 38
   orig: 43, 38
   offset: 0, 0
   index: -1
-s_green/meter_8
+green/meter_8
   rotate: true
   xy: 44, 17
   size: 17, 22
   orig: 17, 22
   offset: 0, 0
   index: -1
-s_red/mega_depth
+red/mega_depth
   rotate: false
   xy: 0, 47
   size: 228, 64
   orig: 228, 64
   offset: 0, 0
   index: -1
-s_red/mega_plank
+red/mega_plank
   rotate: false
   xy: 380, 159
   size: 296, 114
   orig: 296, 114
   offset: 0, 0
   index: -1
-s_red/mega_plank_shadow
+red/mega_plank_shadow
   rotate: false
   xy: 418, 66
   size: 268, 19
   orig: 268, 19
   offset: 0, 0
   index: -1
-s_red/mega_sun_shadow
+red/mega_sun_shadow
   rotate: true
   xy: 340, 1
   size: 77, 84
   orig: 77, 84
   offset: 0, 0
   index: -1
-s_red/mega_sun_shadow_1
+red/mega_sun_shadow_1
   rotate: true
   xy: 687, 17
   size: 27, 68
   orig: 27, 68
   offset: 0, 0
   index: -1
-s_red/meter_5
+red/meter_5
   rotate: false
   xy: 689, 101
   size: 22, 46
   orig: 22, 46
   offset: 0, 0
   index: -1
-s_red/nice_depth_shadow
+red/nice_depth_shadow
   rotate: false
   xy: 539, 302
   size: 179, 66
   orig: 179, 66
   offset: 0, 0
   index: -1
-s_red/nice_plank
+red/nice_plank
   rotate: true
   xy: 605, 499
   size: 111, 254
   orig: 111, 254
   offset: 0, 0
   index: -1
-s_red/nice_sun_shadow
+red/nice_sun_shadow
   rotate: true
   xy: 678, 414
   size: 77, 84
   orig: 77, 84
   offset: 0, 0
   index: -1
-s_red/nice_sun_shadow_1
+red/nice_sun_shadow_1
   rotate: true
   xy: 715, 79
   size: 27, 68
   orig: 27, 68
   offset: 0, 0
   index: -1
-s_red/nice_sun_shadow_2
+red/nice_sun_shadow_2
   rotate: true
   xy: 717, 508
   size: 19, 245
   orig: 19, 245
   offset: 0, 0
   index: -1
-s_red/overlay_fx_22
+red/overlay_fx_22
   rotate: false
   xy: 0, 511
   size: 604, 242
   orig: 604, 242
   offset: 0, 0
   index: -1
-s_red/sensationa_sun_shadow
+red/sensationa_sun_shadow
   rotate: true
   xy: 677, 217
   size: 77, 84
   orig: 77, 84
   offset: 0, 0
   index: -1
-s_red/sensational_depth_shadow
+red/sensational_depth_shadow
   rotate: false
   xy: 0, 274
   size: 538, 94
   orig: 538, 94
   offset: 0, 0
   index: -1
-s_red/sensational_plank_rim_shado
+red/sensational_plank_rim_shado
   rotate: false
   xy: 0, 369
   size: 599, 141
   orig: 599, 141
   offset: 0, 0
   index: -1
-s_red/sensational_plank_rim_shadow
+red/sensational_plank_rim_shadow
   rotate: false
   xy: 0, 112
   size: 377, 41
   orig: 377, 41
   offset: 0, 0
   index: -1
-s_red/sensational_sun_shadow
+red/sensational_sun_shadow
   rotate: true
   xy: 689, 148
   size: 27, 68
   orig: 27, 68
   offset: 0, 0
   index: -1
-s_red/super_depth_shadow
+red/super_depth_shadow
   rotate: false
   xy: 380, 86
   size: 308, 72
   orig: 308, 72
   offset: 0, 0
   index: -1
-s_red/super_plank
+red/super_plank
   rotate: false
   xy: 0, 154
   size: 379, 119
   orig: 379, 119
   offset: 0, 0
   index: -1
-s_red/super_shadow
+red/super_shadow
   rotate: false
   xy: 0, 9
   size: 339, 37
   orig: 339, 37
   offset: 0, 0
   index: -1
-s_red/super_sun_shadow
+red/super_sun_shadow
   rotate: true
   xy: 719, 345
   size: 27, 68
   orig: 27, 68
   offset: 0, 0
   index: -1
-s_red/super_sun_shadow2
+red/super_sun_shadow2
   rotate: true
   xy: 600, 414
   size: 77, 84
   orig: 77, 84
   offset: 0, 0
   index: -1
-s_yellow/all_rays
+yellow/all_rays
   rotate: true
   xy: 0, 511
   size: 231, 589
   orig: 231, 589
   offset: 0, 0
   index: -1
-s_yellow/mega
+yellow/mega
   rotate: true
   xy: 1029, 1
   size: 62, 226
   orig: 62, 226
   offset: 0, 0
   index: -1
-s_yellow/meter_7
+yellow/meter_7
   rotate: true
   xy: 817, 243
   size: 25, 17
   orig: 25, 17
   offset: 0, 0
   index: -1
-s_yellow/meter_f_shine
+yellow/meter_f_shine
   rotate: false
   xy: 844, 321
   size: 106, 10
   orig: 106, 10
   offset: 0, 0
   index: -1
-s_yellow/meter_frame
+yellow/meter_frame
   rotate: true
   xy: 972, 228
   size: 83, 334
   orig: 83, 334
   offset: 0, 0
   index: -1
-s_yellow/nice
+yellow/nice
   rotate: true
   xy: 729, 232
   size: 63, 178
   orig: 63, 178
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_01
+yellow/overlay_fx_01
   rotate: true
   xy: 729, 495
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_02
+yellow/overlay_fx_02
   rotate: true
   xy: 486, 192
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_04
+yellow/overlay_fx_04
   rotate: true
   xy: 243, 495
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_06
+yellow/overlay_fx_06
   rotate: true
   xy: 232, 798
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_08
+yellow/overlay_fx_08
   rotate: true
   xy: 0, 208
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_12
+yellow/overlay_fx_12
   rotate: true
   xy: 475, 798
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_16
+yellow/overlay_fx_16
   rotate: true
   xy: 486, 495
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_18
+yellow/overlay_fx_18
   rotate: true
   xy: 243, 192
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/overlay_fx_20
+yellow/overlay_fx_20
   rotate: true
   xy: 718, 798
   size: 242, 302
   orig: 242, 302
   offset: 0, 0
   index: -1
-s_yellow/sensational
+yellow/sensational
   rotate: true
   xy: 972, 563
   size: 92, 537
   orig: 92, 537
   offset: 0, 0
   index: -1
-s_yellow/sensational_frame_g
+yellow/sensational_frame_g
   rotate: true
   xy: 793, 261
   size: 72, 28
   orig: 72, 28
   offset: 0, 0
   index: -1
-s_yellow/sensational_leaf_1
+yellow/sensational_leaf_1
   rotate: true
   xy: 844, 298
   size: 23, 22
   orig: 23, 22
   offset: 0, 0
   index: -1
-s_yellow/sensational_leaf_2
+yellow/sensational_leaf_2
   rotate: false
   xy: 951, 395
   size: 20, 15
   orig: 20, 15
   offset: 0, 0
   index: -1
-s_yellow/sensational_leaf_3
+yellow/sensational_leaf_3
   rotate: true
   xy: 793, 238
   size: 23, 22
   orig: 23, 22
   offset: 0, 0
   index: -1
-s_yellow/sensational_leaf_4
+yellow/sensational_leaf_4
   rotate: false
   xy: 951, 379
   size: 20, 15
   orig: 20, 15
   offset: 0, 0
   index: -1
-s_yellow/sensational_particle
+yellow/sensational_particle
   rotate: false
   xy: 729, 411
   size: 222, 83
   orig: 222, 83
   offset: 0, 0
   index: -1
-s_yellow/sensational_particle_1
+yellow/sensational_particle_1
   rotate: false
   xy: 0, 124
   size: 222, 83
   orig: 222, 83
   offset: 0, 0
   index: -1
-s_yellow/sensational_sparke
+yellow/sensational_sparke
   rotate: false
   xy: 793, 290
   size: 50, 41
   orig: 50, 41
   offset: 0, 0
   index: -1
-s_yellow/sensational_sun
+yellow/sensational_sun
   rotate: true
   xy: 793, 332
   size: 72, 78
   orig: 72, 78
   offset: 0, 0
   index: -1
-s_yellow/super
+yellow/super
   rotate: false
   xy: 729, 159
   size: 299, 68

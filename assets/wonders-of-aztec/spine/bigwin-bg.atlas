@@ -21,1162 +21,1162 @@ size: 1264, 802
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-s_cyan/lake
+cyan/lake
   rotate: false
   xy: 0, 60
   size: 888, 175
   orig: 888, 175
   offset: 0, 0
   index: -1
-s_cyan/sp_0000
+cyan/sp_0000
   rotate: false
   xy: 476, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0001
+cyan/sp_0001
   rotate: false
   xy: 526, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0002
+cyan/sp_0002
   rotate: false
   xy: 576, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0003
+cyan/sp_0003
   rotate: false
   xy: 326, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0004
+cyan/sp_0004
   rotate: false
   xy: 376, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0005
+cyan/sp_0005
   rotate: false
   xy: 426, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0006
+cyan/sp_0006
   rotate: false
   xy: 752, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0007
+cyan/sp_0007
   rotate: false
   xy: 802, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0008
+cyan/sp_0008
   rotate: false
   xy: 852, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0009
+cyan/sp_0009
   rotate: false
   xy: 626, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0010
+cyan/sp_0010
   rotate: false
   xy: 676, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0011
+cyan/sp_0011
   rotate: true
   xy: 726, 10
   size: 25, 49
   orig: 25, 49
   offset: 0, 0
   index: -1
-s_cyan/sp_0012
+cyan/sp_0012
   rotate: true
   xy: 300, 10
   size: 25, 49
   orig: 25, 49
   offset: 0, 0
   index: -1
-s_cyan/sp_0013
+cyan/sp_0013
   rotate: false
   xy: 0, 8
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0014
+cyan/sp_0014
   rotate: false
   xy: 50, 34
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0015
+cyan/sp_0015
   rotate: false
   xy: 50, 8
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0016
+cyan/sp_0016
   rotate: false
   xy: 0, 34
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0017
+cyan/sp_0017
   rotate: true
   xy: 889, 186
   size: 25, 49
   orig: 25, 49
   offset: 0, 0
   index: -1
-s_cyan/sp_0018
+cyan/sp_0018
   rotate: true
   xy: 889, 136
   size: 25, 49
   orig: 25, 49
   offset: 0, 0
   index: -1
-s_cyan/sp_0019
+cyan/sp_0019
   rotate: false
   xy: 150, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0020
+cyan/sp_0020
   rotate: false
   xy: 200, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0021
+cyan/sp_0021
   rotate: false
   xy: 250, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sp_0022
+cyan/sp_0022
   rotate: true
   xy: 889, 86
   size: 25, 49
   orig: 25, 49
   offset: 0, 0
   index: -1
-s_cyan/sp_0023
+cyan/sp_0023
   rotate: true
   xy: 889, 36
   size: 25, 49
   orig: 25, 49
   offset: 0, 0
   index: -1
-s_cyan/sp_0024
+cyan/sp_0024
   rotate: false
   xy: 100, 10
   size: 49, 25
   orig: 49, 25
   offset: 0, 0
   index: -1
-s_cyan/sparks
+cyan/sparks
   rotate: false
   xy: 902, 1
   size: 33, 34
   orig: 33, 34
   offset: 0, 0
   index: -1
-s_green/fall_r_0000
+green/fall_r_0000
   rotate: true
   xy: 0, 159
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0001
+green/fall_r_0001
   rotate: true
   xy: 107, 160
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0002
+green/fall_r_0002
   rotate: true
   xy: 321, 160
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0003
+green/fall_r_0003
   rotate: true
   xy: 214, 160
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0004
+green/fall_r_0004
   rotate: true
   xy: 0, 212
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0005
+green/fall_r_0005
   rotate: true
   xy: 107, 213
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0006
+green/fall_r_0006
   rotate: true
   xy: 321, 213
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0007
+green/fall_r_0007
   rotate: true
   xy: 214, 213
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0008
+green/fall_r_0008
   rotate: true
   xy: 214, 107
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0009
+green/fall_r_0009
   rotate: true
   xy: 107, 1
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0010
+green/fall_r_0010
   rotate: true
   xy: 214, 54
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0011
+green/fall_r_0011
   rotate: true
   xy: 321, 107
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0012
+green/fall_r_0012
   rotate: true
   xy: 0, 106
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0013
+green/fall_r_0013
   rotate: true
   xy: 107, 107
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0014
+green/fall_r_0014
   rotate: true
   xy: 0, 53
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0015
+green/fall_r_0015
   rotate: true
   xy: 107, 54
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0016
+green/fall_r_0016
   rotate: true
   xy: 142, 372
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0017
+green/fall_r_0017
   rotate: true
   xy: 249, 372
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0018
+green/fall_r_0018
   rotate: true
   xy: 356, 372
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0019
+green/fall_r_0019
   rotate: true
   xy: 356, 425
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0020
+green/fall_r_0020
   rotate: false
   xy: 89, 371
   size: 52, 106
   orig: 52, 106
   offset: 0, 0
   index: -1
-s_green/fall_r_0021
+green/fall_r_0021
   rotate: true
   xy: 142, 425
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0022
+green/fall_r_0022
   rotate: true
   xy: 249, 425
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0023
+green/fall_r_0023
   rotate: true
   xy: 142, 319
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0024
+green/fall_r_0024
   rotate: true
   xy: 0, 265
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0025
+green/fall_r_0025
   rotate: true
   xy: 214, 266
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0026
+green/fall_r_0026
   rotate: true
   xy: 321, 266
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0027
+green/fall_r_0027
   rotate: true
   xy: 107, 266
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0028
+green/fall_r_0028
   rotate: true
   xy: 0, 318
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0029
+green/fall_r_0029
   rotate: true
   xy: 249, 319
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/fall_r_0030
+green/fall_r_0030
   rotate: true
   xy: 356, 319
   size: 106, 52
   orig: 106, 52
   offset: 0, 0
   index: -1
-s_green/folliage_10
+green/folliage_10
   rotate: false
   xy: 107, 333
   size: 30, 37
   orig: 30, 37
   offset: 0, 0
   index: -1
-s_green/folliage_21
+green/folliage_21
   rotate: true
   xy: 463, 454
   size: 16, 23
   orig: 16, 23
   offset: 0, 0
   index: -1
-s_green/folliage_24
+green/folliage_24
   rotate: false
   xy: 0, 28
   size: 20, 24
   orig: 20, 24
   offset: 0, 0
   index: -1
-s_green/folliage_25
+green/folliage_25
   rotate: true
   xy: 107, 320
   size: 32, 12
   orig: 32, 12
   offset: 0, 0
   index: -1
-s_green/folliage_29
+green/folliage_29
   rotate: false
   xy: 0, 394
   size: 88, 83
   orig: 88, 83
   offset: 0, 0
   index: -1
-s_green/folliage_32
+green/folliage_32
   rotate: true
   xy: 395, 27
   size: 45, 79
   orig: 45, 79
   offset: 0, 0
   index: -1
-s_green/stage_folliage_1
+green/stage_folliage_1
   rotate: true
   xy: 428, 245
   size: 43, 73
   orig: 43, 73
   offset: 0, 0
   index: -1
-s_green/stage_folliage_6
+green/stage_folliage_6
   rotate: false
   xy: 321, 38
   size: 73, 68
   orig: 73, 68
   offset: 0, 0
   index: -1
-s_red/fire_glow
+red/fire_glow
   rotate: true
   xy: 0, 55
   size: 70, 57
   orig: 70, 57
   offset: 0, 0
   index: -1
-s_red/flower_04
+red/flower_04
   rotate: true
   xy: 0, 24
   size: 34, 30
   orig: 34, 30
   offset: 0, 0
   index: -1
-s_red/flower_08
+red/flower_08
   rotate: true
   xy: 44, 1
   size: 20, 10
   orig: 20, 10
   offset: 0, 0
   index: -1
-s_red/flower_1
+red/flower_1
   rotate: true
   xy: 44, 12
   size: 26, 17
   orig: 26, 17
   offset: 0, 0
   index: -1
-s_red/flower_2
+red/flower_2
   rotate: true
   xy: 0, 0
   size: 43, 23
   orig: 43, 23
   offset: 0, 0
   index: -1
-s_red/flower_3
+red/flower_3
   rotate: false
   xy: 71, 18
   size: 35, 43
   orig: 35, 43
   offset: 0, 0
   index: -1
-s_red/flower_5
+red/flower_5
   rotate: false
   xy: 71, 62
   size: 39, 50
   orig: 39, 50
   offset: 0, 0
   index: -1
-s_red/flower_6
+red/flower_6
   rotate: false
   xy: 35, 30
   size: 23, 24
   orig: 23, 24
   offset: 0, 0
   index: -1
-s_red/flower_7
+red/flower_7
   rotate: true
   xy: 71, 2
   size: 21, 15
   orig: 21, 15
   offset: 0, 0
   index: -1
-s_red/flower_8
+red/flower_8
   rotate: true
   xy: 93, 5
   size: 15, 12
   orig: 15, 12
   offset: 0, 0
   index: -1
-s_yellow/bg
+yellow/bg
   rotate: false
   xy: 0, 320
   size: 1208, 482
   orig: 1208, 482
   offset: 0, 0
   index: -1
-s_yellow/bg_l1
+yellow/bg_l1
   rotate: false
   xy: 1246, 56
   size: 17, 26
   orig: 17, 26
   offset: 0, 0
   index: -1
-s_yellow/bg_l2
+yellow/bg_l2
   rotate: true
   xy: 318, 83
   size: 27, 17
   orig: 27, 17
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_00
+yellow/fire_animation_00
   rotate: false
   xy: 1209, 407
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_01
+yellow/fire_animation_01
   rotate: false
   xy: 1098, 81
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_02
+yellow/fire_animation_02
   rotate: false
   xy: 1160, 73
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_03
+yellow/fire_animation_03
   rotate: false
   xy: 1129, 81
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_04
+yellow/fire_animation_04
   rotate: false
   xy: 1091, 25
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_05
+yellow/fire_animation_05
   rotate: true
   xy: 1029, 15
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_06
+yellow/fire_animation_06
   rotate: false
   xy: 1215, 56
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_07
+yellow/fire_animation_07
   rotate: false
   xy: 1184, 17
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_08
+yellow/fire_animation_08
   rotate: false
   xy: 1122, 25
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_09
+yellow/fire_animation_09
   rotate: false
   xy: 1153, 17
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_10
+yellow/fire_animation_10
   rotate: false
   xy: 1209, 581
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_11
+yellow/fire_animation_11
   rotate: true
   xy: 1209, 463
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_12
+yellow/fire_animation_12
   rotate: false
   xy: 1209, 525
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_13
+yellow/fire_animation_13
   rotate: true
   xy: 1209, 494
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_14
+yellow/fire_animation_14
   rotate: true
   xy: 618, 5
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_15
+yellow/fire_animation_15
   rotate: false
   xy: 1029, 46
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_16
+yellow/fire_animation_16
   rotate: false
   xy: 1060, 46
   size: 30, 55
   orig: 30, 55
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_17
+yellow/fire_animation_17
   rotate: true
   xy: 1204, 112
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_18
+yellow/fire_animation_18
   rotate: true
   xy: 674, 5
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_animation_19
+yellow/fire_animation_19
   rotate: true
   xy: 1204, 143
   size: 55, 30
   orig: 55, 30
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00000
+yellow/fire_bowl_00000
   rotate: true
   xy: 439, 131
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00001
+yellow/fire_bowl_00001
   rotate: true
   xy: 439, 60
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00002
+yellow/fire_bowl_00002
   rotate: true
   xy: 621, 127
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00003
+yellow/fire_bowl_00003
   rotate: true
   xy: 712, 127
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00004
+yellow/fire_bowl_00004
   rotate: true
   xy: 530, 127
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00005
+yellow/fire_bowl_00005
   rotate: true
   xy: 829, 249
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00006
+yellow/fire_bowl_00006
   rotate: true
   xy: 829, 178
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00007
+yellow/fire_bowl_00007
   rotate: true
   xy: 348, 131
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00008
+yellow/fire_bowl_00008
   rotate: true
   xy: 348, 60
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00009
+yellow/fire_bowl_00009
   rotate: false
   xy: 53, 41
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00010
+yellow/fire_bowl_00010
   rotate: true
   xy: 227, 59
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00011
+yellow/fire_bowl_00011
   rotate: false
   xy: 945, 138
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00012
+yellow/fire_bowl_00012
   rotate: false
   xy: 920, 229
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00013
+yellow/fire_bowl_00013
   rotate: true
   xy: 763, 16
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00014
+yellow/fire_bowl_00014
   rotate: true
   xy: 991, 249
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00015
+yellow/fire_bowl_00015
   rotate: false
   xy: 874, 87
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00016
+yellow/fire_bowl_00016
   rotate: true
   xy: 530, 56
   size: 90, 70
   orig: 90, 70
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00017
+yellow/fire_bowl_00017
   rotate: false
   xy: 803, 87
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00018
+yellow/fire_bowl_00018
   rotate: false
   xy: 692, 36
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_bowl_00019
+yellow/fire_bowl_00019
   rotate: false
   xy: 621, 36
   size: 70, 90
   orig: 70, 90
   offset: 0, 0
   index: -1
-s_yellow/fire_pot
+yellow/fire_pot
   rotate: false
   xy: 53, 5
   size: 70, 35
   orig: 70, 35
   offset: 0, 0
   index: -1
-s_yellow/folliage
+yellow/folliage
   rotate: true
   xy: 124, 1
   size: 92, 61
   orig: 92, 61
   offset: 0, 0
   index: -1
-s_yellow/folliage_08
+yellow/folliage_08
   rotate: false
   xy: 1016, 190
   size: 67, 58
   orig: 67, 58
   offset: 0, 0
   index: -1
-s_yellow/folliage_1
+yellow/folliage_1
   rotate: false
   xy: 1246, 83
   size: 17, 28
   orig: 17, 28
   offset: 0, 0
   index: -1
-s_yellow/folliage_1_7
+yellow/folliage_1_7
   rotate: false
   xy: 131, 133
   size: 115, 68
   orig: 115, 68
   offset: 0, 0
   index: -1
-s_yellow/folliage_11
+yellow/folliage_11
   rotate: true
   xy: 974, 3
   size: 39, 23
   orig: 39, 23
   offset: 0, 0
   index: -1
-s_yellow/folliage_12
+yellow/folliage_12
   rotate: false
   xy: 1016, 144
   size: 63, 45
   orig: 63, 45
   offset: 0, 0
   index: -1
-s_yellow/folliage_13
+yellow/folliage_13
   rotate: false
   xy: 1147, 217
   size: 57, 49
   orig: 57, 49
   offset: 0, 0
   index: -1
-s_yellow/folliage_14
+yellow/folliage_14
   rotate: true
   xy: 507, 6
   size: 72, 49
   orig: 72, 49
   offset: 0, 0
   index: -1
-s_yellow/folliage_15
+yellow/folliage_15
   rotate: true
   xy: 1132, 12
   size: 20, 12
   orig: 20, 12
   offset: 0, 0
   index: -1
-s_yellow/folliage_16
+yellow/folliage_16
   rotate: true
   xy: 803, 184
   size: 22, 13
   orig: 22, 13
   offset: 0, 0
   index: -1
-s_yellow/folliage_17
+yellow/folliage_17
   rotate: true
   xy: 318, 101
   size: 25, 28
   orig: 25, 28
   offset: 0, 0
   index: -1
-s_yellow/folliage_18
+yellow/folliage_18
   rotate: false
   xy: 1014, 6
   size: 14, 20
   orig: 14, 20
   offset: 0, 0
   index: -1
-s_yellow/folliage_19
+yellow/folliage_19
   rotate: false
   xy: 1215, 7
   size: 31, 48
   orig: 31, 48
   offset: 0, 0
   index: -1
-s_yellow/folliage_2
+yellow/folliage_2
   rotate: false
   xy: 1205, 174
   size: 42, 43
   orig: 42, 43
   offset: 0, 0
   index: -1
-s_yellow/folliage_20
+yellow/folliage_20
   rotate: false
   xy: 1191, 79
   size: 23, 32
   orig: 23, 32
   offset: 0, 0
   index: -1
-s_yellow/folliage_22
+yellow/folliage_22
   rotate: true
   xy: 763, 93
   size: 39, 33
   orig: 39, 33
   offset: 0, 0
   index: -1
-s_yellow/folliage_23
+yellow/folliage_23
   rotate: true
   xy: 1147, 267
   size: 66, 52
   orig: 66, 52
   offset: 0, 0
   index: -1
-s_yellow/folliage_26
+yellow/folliage_26
   rotate: true
   xy: 217, 5
   size: 83, 53
   orig: 83, 53
   offset: 0, 0
   index: -1
-s_yellow/folliage_27
+yellow/folliage_27
   rotate: false
   xy: 991, 229
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
-s_yellow/folliage_28
+yellow/folliage_28
   rotate: true
   xy: 131, 63
   size: 95, 69
   orig: 95, 69
   offset: 0, 0
   index: -1
-s_yellow/folliage_3
+yellow/folliage_3
   rotate: false
   xy: 925, 1
   size: 48, 35
   orig: 48, 35
   offset: 0, 0
   index: -1
-s_yellow/folliage_30
+yellow/folliage_30
   rotate: false
   xy: 318, 3
   size: 106, 56
   orig: 106, 56
   offset: 0, 0
   index: -1
-s_yellow/folliage_31
+yellow/folliage_31
   rotate: false
   xy: 1209, 378
   size: 51, 28
   orig: 51, 28
   offset: 0, 0
   index: -1
-s_yellow/folliage_33
+yellow/folliage_33
   rotate: false
   xy: 854, 24
   size: 70, 62
   orig: 70, 62
   offset: 0, 0
   index: -1
-s_yellow/folliage_4
+yellow/folliage_4
   rotate: false
   xy: 945, 37
   size: 44, 100
   orig: 44, 100
   offset: 0, 0
   index: -1
-s_yellow/folliage_5
+yellow/folliage_5
   rotate: true
   xy: 730, 5
   size: 27, 30
   orig: 27, 30
   offset: 0, 0
   index: -1
-s_yellow/folliage_6
+yellow/folliage_6
   rotate: false
   xy: 1136, 175
   size: 43, 41
   orig: 43, 41
   offset: 0, 0
   index: -1
-s_yellow/folliage_9
+yellow/folliage_9
   rotate: false
   xy: 580, 2
   size: 37, 53
   orig: 37, 53
   offset: 0, 0
   index: -1
-s_yellow/leaf_1
+yellow/leaf_1
   rotate: false
   xy: 0, 6
   size: 52, 125
   orig: 52, 125
   offset: 0, 0
   index: -1
-s_yellow/leaf_2
+yellow/leaf_2
   rotate: true
   xy: 1209, 719
   size: 36, 83
   orig: 36, 83
   offset: 0, 0
   index: -1
-s_yellow/leaf_3
+yellow/leaf_3
   rotate: false
   xy: 1085, 5
   size: 46, 19
   orig: 46, 19
   offset: 0, 0
   index: -1
-s_yellow/leaf_4
+yellow/leaf_4
   rotate: true
   xy: 1209, 637
   size: 36, 81
   orig: 36, 81
   offset: 0, 0
   index: -1
-s_yellow/leaf_5
+yellow/leaf_5
   rotate: true
   xy: 1082, 264
   size: 64, 55
   orig: 64, 55
   offset: 0, 0
   index: -1
-s_yellow/leaf_6
+yellow/leaf_6
   rotate: false
   xy: 247, 130
   size: 100, 71
   orig: 100, 71
   offset: 0, 0
   index: -1
-s_yellow/leaf_7
+yellow/leaf_7
   rotate: false
   xy: 990, 27
   size: 38, 110
   orig: 38, 110
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage
+yellow/stage_folliage
   rotate: false
   xy: 0, 202
   size: 604, 117
   orig: 604, 117
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_10
+yellow/stage_folliage_10
   rotate: false
   xy: 425, 11
   size: 81, 48
   orig: 81, 48
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_2
+yellow/stage_folliage_2
   rotate: true
   xy: 1084, 149
   size: 35, 59
   orig: 35, 59
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_3
+yellow/stage_folliage_3
   rotate: false
   xy: 1120, 137
   size: 45, 37
   orig: 45, 37
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_4
+yellow/stage_folliage_4
   rotate: false
   xy: 1029, 102
   size: 68, 41
   orig: 68, 41
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_5
+yellow/stage_folliage_5
   rotate: true
   xy: 1205, 218
   size: 38, 48
   orig: 38, 48
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_7
+yellow/stage_folliage_7
   rotate: false
   xy: 605, 198
   size: 223, 121
   orig: 223, 121
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_8
+yellow/stage_folliage_8
   rotate: true
   xy: 1166, 129
   size: 37, 45
   orig: 37, 45
   offset: 0, 0
   index: -1
-s_yellow/stage_folliage_9
+yellow/stage_folliage_9
   rotate: true
   xy: 1084, 209
   size: 51, 54
   orig: 51, 54
   offset: 0, 0
   index: -1
-s_yellow/stone_pach
+yellow/stone_pach
   rotate: false
   xy: 0, 132
   size: 130, 69
   orig: 130, 69
   offset: 0, 0
   index: -1
-s_yellow/waterfall_5
+yellow/waterfall_5
   rotate: false
   xy: 925, 56
   size: 17, 30
