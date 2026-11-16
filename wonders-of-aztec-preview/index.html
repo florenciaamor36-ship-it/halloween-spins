@@ -67,7 +67,7 @@ async function spin(){
   let total=0,cascadeCount=0;while(cascadeCount<50){const wins=score(g);if(!wins.length)break;cascadeCount++;total+=await tumble(g,wins)}if(cascadeCount>=50)setMessage('FIN DE CADENA · PREMIO ACREDITADO')
   if(total>=bet*5){const tier=total>=bet*50?'sensational':total>=bet*25?'superb':total>=bet*15?'mega':'nice';showCelebration(total,tier);node('celebrateValue').textContent=tier.toUpperCase()+' · '+fmt(total);await waitForCelebration(3000)}
   if(scatterCount>=4){free=Math.min(99,free+(isFree?5:scatterCount>=6?30:scatterCount===5?20:10));setMessage('¡TIRADAS GRATIS! '+free)}if(!total&&scatterCount<4)setMessage('BUENA SUERTE');
-  if(free>0){await sleep(600);busy=false;update();void spin();return}
+  if(free>0){setTimeout(()=>{if(!busy&&free>0)void spin()},600);return}
   busy=false;update();if(autoN>0)setTimeout(()=>{if(!busy&&autoN>0)void spin()},250)
  }catch(error){console.error('Error durante el giro Wonders of Aztec',error);setMessage('ERROR DE GIRO · VOLVÉ A INTENTAR');autoN=0}
  finally{cells.forEach(cell=>cell.classList.remove('rolling'));node('winBanner')?.classList.remove('show');busy=false;update()}
