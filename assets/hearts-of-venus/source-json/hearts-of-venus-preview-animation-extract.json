@@ -1,0 +1,507 @@
+{
+  "source": "Pragmatic Play vs20sugarrusha captured Unity JSON chunks; partial resource capture, not complete provider bundle.",
+  "originalFiles": [
+    "0025_game009.json",
+    "0014_GUI006.json"
+  ],
+  "clips": {
+    "start0": {
+      "lengthSeconds": 0.7333333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.2666667,
+            0.3833333,
+            0.7333333
+          ],
+          "values": [
+            296,
+            296,
+            185,
+            -592
+          ]
+        }
+      ]
+    },
+    "start1": {
+      "lengthSeconds": 0.6,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.2,
+            0.3166667,
+            0.6
+          ],
+          "values": [
+            148,
+            148,
+            37,
+            -592
+          ]
+        }
+      ]
+    },
+    "start2": {
+      "lengthSeconds": 0.4666667,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.1333333,
+            0.25,
+            0.4666667
+          ],
+          "values": [
+            0,
+            0,
+            -111,
+            -592
+          ]
+        }
+      ]
+    },
+    "start3": {
+      "lengthSeconds": 0.3333333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.06666667,
+            0.1833333,
+            0.3333333
+          ],
+          "values": [
+            -148,
+            -148,
+            -259,
+            -592
+          ]
+        }
+      ]
+    },
+    "start4": {
+      "lengthSeconds": 0.2,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            4.967053e-10,
+            0.1166667,
+            0.2
+          ],
+          "values": [
+            -296,
+            -407,
+            -592
+          ]
+        }
+      ]
+    },
+    "stop0": {
+      "lengthSeconds": 0.9333333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.5333334,
+            0.6,
+            0.65,
+            0.7333333,
+            0.9333333
+          ],
+          "values": [
+            800,
+            456,
+            295.8,
+            275.8,
+            295.8
+          ]
+        }
+      ]
+    },
+    "stop1": {
+      "lengthSeconds": 0.8666667,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.4,
+            0.5333334,
+            0.5833333,
+            0.6666667,
+            0.8666667
+          ],
+          "values": [
+            800,
+            456,
+            147.9,
+            127.9,
+            147.9
+          ]
+        }
+      ]
+    },
+    "stop2": {
+      "lengthSeconds": 0.8,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.2666667,
+            0.4666667,
+            0.5166667,
+            0.6,
+            0.8
+          ],
+          "values": [
+            800,
+            456,
+            0,
+            -20,
+            0
+          ]
+        }
+      ]
+    },
+    "stop3": {
+      "lengthSeconds": 0.7333333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.1333333,
+            0.4,
+            0.45,
+            0.5333334,
+            0.7333333
+          ],
+          "values": [
+            800,
+            456,
+            -147.9,
+            -167.9,
+            -147.9
+          ]
+        }
+      ]
+    },
+    "stop4": {
+      "lengthSeconds": 0.6666667,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.3333333,
+            0.3833333,
+            0.4666667,
+            0.6666667
+          ],
+          "values": [
+            456,
+            -295.8,
+            -315.8,
+            -295.8
+          ]
+        }
+      ]
+    },
+    "start0_fast": {
+      "lengthSeconds": 0.4,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.4
+          ],
+          "values": [
+            296,
+            -592
+          ]
+        }
+      ]
+    },
+    "start1_fast": {
+      "lengthSeconds": 0.3333333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.3333333
+          ],
+          "values": [
+            147.9,
+            -592
+          ]
+        }
+      ]
+    },
+    "start2_fast": {
+      "lengthSeconds": 0.2666667,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.2666667
+          ],
+          "values": [
+            0,
+            -592
+          ]
+        }
+      ]
+    },
+    "start3_fast": {
+      "lengthSeconds": 0.2,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.2
+          ],
+          "values": [
+            -147.9,
+            -592
+          ]
+        }
+      ]
+    },
+    "start4_fast": {
+      "lengthSeconds": 0.1333333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.1333333
+          ],
+          "values": [
+            -295.8,
+            -592
+          ]
+        }
+      ]
+    },
+    "stop0_fast": {
+      "lengthSeconds": 0.5833333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.2,
+            0.25,
+            0.3,
+            0.3833333,
+            0.5833333
+          ],
+          "values": [
+            800,
+            456,
+            295.8,
+            275.8,
+            295.8
+          ]
+        }
+      ]
+    },
+    "stop1_fast": {
+      "lengthSeconds": 0.5833333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.15,
+            0.25,
+            0.3,
+            0.3833333,
+            0.5833333
+          ],
+          "values": [
+            800,
+            456,
+            147.9,
+            127.9,
+            147.9
+          ]
+        }
+      ]
+    },
+    "stop2_fast": {
+      "lengthSeconds": 0.5833333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.1,
+            0.25,
+            0.3,
+            0.3833333,
+            0.5833333
+          ],
+          "values": [
+            800,
+            456,
+            0,
+            -20,
+            0
+          ]
+        }
+      ]
+    },
+    "stop3_fast": {
+      "lengthSeconds": 0.5833333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.05,
+            0.25,
+            0.3,
+            0.3833333,
+            0.5833333
+          ],
+          "values": [
+            800,
+            456,
+            -147.9,
+            -167.9,
+            -147.9
+          ]
+        }
+      ]
+    },
+    "stop4_fast": {
+      "lengthSeconds": 0.5833333,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.25,
+            0.3,
+            0.3833333,
+            0.5833333
+          ],
+          "values": [
+            456,
+            -295.8,
+            -315.8,
+            -295.8
+          ]
+        }
+      ]
+    },
+    "MarioShowLineWinMultiplied": {
+      "lengthSeconds": 2.966667,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0.1166667,
+            0.6666667,
+            2.966667
+          ],
+          "values": [
+            0,
+            40,
+            120
+          ]
+        }
+      ]
+    },
+    "MarioShowLineWin": {
+      "lengthSeconds": 1.25,
+      "curves": [
+        {
+          "path": "",
+          "type": "Transform",
+          "property": "m_LocalPosition.y",
+          "times": [
+            0,
+            0.1666667,
+            1.25
+          ],
+          "values": [
+            0,
+            40,
+            120
+          ]
+        }
+      ]
+    }
+  },
+  "uiClips": {
+    "PulseValue": {
+      "lengthSeconds": 0.1666667,
+      "curves": []
+    },
+    "SpinButtonIdle": {
+      "lengthSeconds": 5.5,
+      "curves": []
+    }
+  },
+  "previewAdaptation": {
+    "5x4ReelStop": "Uses source stop0–stop4 clip rebound amplitude ratio from source curve positions and source cell pitch; procedural HTML/Phaser tween adaptation, not Unity/Spine runtime playback.",
+    "otherClips": "Preserved in raw source JSON for further evaluation; not asserted as reproduced in preview."
+  }
+}
