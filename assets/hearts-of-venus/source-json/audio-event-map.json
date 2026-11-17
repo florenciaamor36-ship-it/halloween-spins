@@ -1,0 +1,55 @@
+{
+  "source": "Extracted from original Hearts of Venus capture ZIP; event assignment uses Unity JSON IDs, not duration pools or random cycling.",
+  "sources": {
+    "game": "0089_sounds.ogg.json",
+    "gui": "0085_GUI_sounds.ogg.json",
+    "gameConfig": "0028_game007.json",
+    "guiConfig": "0015_GUI000.json"
+  },
+  "events": {
+    "uiSpinPressed": {
+      "id": "0864ff107a030e5489388b8012f6af94",
+      "source": "gui",
+      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Spin / SoundPlayer whenToPlay 0"
+    },
+    "uiSpinDefault": {
+      "id": "fb679d7b77b4ef140ae6e89892ab6bdc",
+      "source": "gui",
+      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Spin / SoundPlayer whenToPlay 1"
+    },
+    "uiStopPressed": {
+      "id": "c068e2e309132ee42b30f6b7f1f8d550",
+      "source": "gui",
+      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Stop / SoundPlayer whenToPlay 0"
+    },
+    "uiStopDefault": {
+      "id": "fb679d7b77b4ef140ae6e89892ab6bdc",
+      "source": "gui",
+      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Stop / SoundPlayer whenToPlay 1"
+    },
+    "reelStart": {
+      "id": "785fcb57b7c57f94f831aa76b4fd7a28",
+      "source": "game",
+      "configuredIn": "0028_game007.json / SoundLogic / clipsReelSpin and clipsReelStart"
+    },
+    "spinWin": {
+      "id": "785fcb57b7c57f94f831aa76b4fd7a28",
+      "source": "game",
+      "configuredIn": "0028_game007.json / SoundLogic / clipSpinWin"
+    },
+    "bonusWonBeforeResult": {
+      "id": "03b336f8b4464d3459726fb1d5376756",
+      "source": "game",
+      "configuredIn": "0028_game007.json / SoundLogic / clipBonusWonBeforeResult"
+    },
+    "music": {
+      "id": "8f89a6bf762dfd94ca4af48db13aaba6",
+      "source": "game",
+      "configuredIn": "0028_game007.json / SoundLogic / clipMusic; not triggered by spin events"
+    }
+  },
+  "notes": [
+    "No-win result has no audio GUID assigned in the captured clipSpinNoWin config.",
+    "Captured Unity/Spine animation clips remain source data; the browser preview does not run Unity/Spine."
+  ]
+}
