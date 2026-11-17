@@ -1,0 +1,28 @@
+/* Layout for Hearts of Venus on the shared 9:16 portrait SlotEngine. */
+:root[data-skin="hearts-of-venus-5x4"] body{background:#160719!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .frame img{object-fit:fill!important;filter:saturate(1.12) brightness(.78)}
+:root[data-skin="hearts-of-venus-5x4"] #game .reels{left:7.5%!important;top:26%!important;width:85%!important;height:38%!important;border:3px solid #f6d88e!important;border-radius:15px!important;background:rgba(40,8,40,.35)!important;box-shadow:0 0 0 3px #a42481,inset 0 0 20px #e955b955,0 0 22px #ff70d455!important;overflow:hidden!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .reels:after{background:linear-gradient(transparent 19.4%,#fff2 20%,transparent 20.6%,transparent 39.4%,#fff2 40%,transparent 40.6%,transparent 59.4%,#fff2 60%,transparent 60.6%,transparent 79.4%,#fff2 80%,transparent 80.6%)!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .display{color:#ffe6aa!important;text-shadow:0 1px 5px #160417!important;background:rgba(44,8,42,.8)!important;border:1px solid #efcb7d!important;border-radius:11px!important;padding:5px 3px!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .display .label{color:#ffbde8!important;font-weight:800!important;font-size:clamp(8px,2vw,14px)!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .display b.value{color:#fff1c7!important;text-shadow:0 0 8px #ff59c7!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .balance{left:4%!important;top:73%!important;width:29%!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .bet{left:4%!important;top:82%!important;width:25%!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .win{left:67%!important;top:73%!important;width:29%!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .lines{left:71%!important;top:82%!important;width:25%!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .jackpot{left:30%!important;top:14%!important;width:40%!important;background:rgba(53,9,50,.88)!important;border:2px solid #f6d88e!important;border-radius:14px!important;color:#ffe3a1!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .spin{left:37%!important;top:88%!important;width:26%!important;height:9%!important;filter:drop-shadow(0 5px 8px #170516)!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .betminus{left:30%!important;top:82%!important;width:9%!important;height:5%!important;opacity:1!important;border:2px solid #f6d88e!important;border-radius:10px!important;background:linear-gradient(#c4379e,#651651)!important;text-shadow:none!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .betplus{left:60%!important;top:82%!important;width:9%!important;height:5%!important;opacity:1!important;border:2px solid #f6d88e!important;border-radius:10px!important;background:linear-gradient(#c4379e,#651651)!important;text-shadow:none!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .lineup{left:55%!important;top:76%!important;width:8%!important;height:5%!important;opacity:1!important;border:1px solid #f6d88e!important;border-radius:8px!important;background:#651651!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .linedown{left:55%!important;top:82%!important;width:8%!important;height:5%!important;opacity:1!important;border:1px solid #f6d88e!important;border-radius:8px!important;background:#651651!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .auto-spin{left:5%!important;bottom:1%!important;width:26%!important;background:linear-gradient(#c4379e,#651651)!important;border-color:#f6d88e!important;color:#fff2cc!important;text-shadow:none!important}
+:root[data-skin="hearts-of-venus-5x4"] #game .menu{left:69%!important;top:94%!important;width:26%!important;opacity:1!important;border:2px solid #f6d88e!important;background:linear-gradient(#c4379e,#651651)!important;color:#fff2cc!important;text-shadow:none!important}
+:root[data-skin="hearts-of-venus-5x4"] .loading-screen .loading-art{object-fit:cover!important;filter:brightness(.75)!important}
+:root[data-skin="hearts-of-venus-5x4"] .loading-message{color:#ffe6aa}
+:root[data-skin="hearts-of-venus-5x4"] .announcement-panel{top:69%!important;left:9%!important;width:82%!important;height:7%!important;background:rgba(40,8,40,.7)!important;border:1px solid #f6d88e!important;border-radius:10px!important}
+:root[data-skin="hearts-of-venus-5x4"] .announcement-panel img{display:none!important}
+:root[data-skin="hearts-of-venus-5x4"] .announcement-text{color:#fff1cf!important;text-shadow:0 1px 5px #100!important;font-size:clamp(9px,2.3vw,14px)!important}
+
+/* 5×4 demo: slightly larger cells with four centered rows. */
+:root[data-skin="hearts-of-venus-5x4"] #game .reels{background:rgba(40,8,40,.42)!important}
