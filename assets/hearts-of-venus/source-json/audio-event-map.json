@@ -45,8 +45,15 @@
     "spinWinConfigured": "clipSpinWin is 0 in the captured configuration; no mapped win sound is played."
   },
   "notes": [
-    "clipSpinWin is zero in the captured game config; no arbitrary clip is substituted for a win.",
+    "clipSpinWin is 0 in the captured game config; no substitute clip is used for wins.",
     "clipSpinNoWin entries have no audio GUID assigned in the captured config.",
-    "Captured Unity/Spine animation clips remain source data; the browser preview does not run Unity/Spine."
-  ]
+    "The browser preview does not execute Unity/Spine; captured animation clips remain source references.",
+    "Only the source-configured GUI spin-button press sound is active; other sounds stay untriggered until their exact runtime event is verified."
+  ],
+  "previewPlayback": {
+    "currentlyPlayed": [
+      "uiSpinPressed"
+    ],
+    "rule": "Only the GUI SoundPlayer directly attached to Evt_DataToCode_Pressed_Spin (whenToPlay 0) plays on the preview spin-start event. Game clips are documented from original config but not fired by guessed browser events."
+  }
 }

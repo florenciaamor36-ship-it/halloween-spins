@@ -8,6 +8,6 @@
  function audioFor(event){if(!ready)return null;const spec=cfg.events[event];if(!spec)return null;const key=spec.source+':'+spec.id;if(cache.has(key))return cache.get(key);const encoded=sources[spec.source]?.get(spec.id);if(!encoded){console.warn('Configured Venus sound ID missing from source JSON',event,spec.id);return null;}const raw=atob(encoded),bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);const url=URL.createObjectURL(new Blob([bytes],{type:'audio/ogg'}));cache.set(key,url);return url;}
  function play(event,volume=.5){const url=audioFor(event);if(!url)return;try{const player=new Audio(url);player.volume=volume;active.add(player);player.addEventListener('ended',()=>active.delete(player),{once:true});player.play().catch(()=>active.delete(player));}catch(e){console.warn('Venus source sound playback failed',event,e);}}
  load().catch(e=>console.warn('Original Venus audio JSON/config unavailable',e));
- window.addEventListener('slot:spin-start',()=>{play('uiSpinPressed',.48);setTimeout(()=>play('reelStart',.35),120)});
+ window.addEventListener('slot:spin-start',()=>play('uiSpinPressed',.48));
  window.addEventListener('pagehide',()=>{for(const player of active)player.pause();active.clear();for(const url of cache.values())URL.revokeObjectURL(url);cache.clear()});
 })();
