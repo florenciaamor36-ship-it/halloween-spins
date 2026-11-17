@@ -12,20 +12,10 @@
       "source": "gui",
       "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Spin / SoundPlayer whenToPlay 0"
     },
-    "uiSpinDefault": {
-      "id": "fb679d7b77b4ef140ae6e89892ab6bdc",
-      "source": "gui",
-      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Spin / SoundPlayer whenToPlay 1"
-    },
     "uiStopPressed": {
       "id": "c068e2e309132ee42b30f6b7f1f8d550",
       "source": "gui",
       "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Stop / SoundPlayer whenToPlay 0"
-    },
-    "uiStopDefault": {
-      "id": "fb679d7b77b4ef140ae6e89892ab6bdc",
-      "source": "gui",
-      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Stop / SoundPlayer whenToPlay 1"
     },
     "reelStart": {
       "id": "785fcb57b7c57f94f831aa76b4fd7a28",
@@ -42,7 +32,17 @@
       "source": "game",
       "configuredIn": "0028_game007.json / SoundLogic / clipMusic; not triggered by spin events"
     },
-    "spinWinConfigured": "clipSpinWin is 0 in the captured configuration; no mapped win sound is played."
+    "spinWinConfigured": "clipSpinWin is 0 in the captured configuration; no mapped win sound is played.",
+    "uiSpinHover": {
+      "id": "fb679d7b77b4ef140ae6e89892ab6bdc",
+      "source": "gui",
+      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Spin / SoundPlayer whenToPlay 1, which is OnHover per 0009_build.js"
+    },
+    "uiStopHover": {
+      "id": "fb679d7b77b4ef140ae6e89892ab6bdc",
+      "source": "gui",
+      "configuredIn": "0015_GUI000.json / Evt_DataToCode_Pressed_Stop / SoundPlayer whenToPlay 1, which is OnHover per 0009_build.js"
+    }
   },
   "notes": [
     "clipSpinWin is 0 in the captured game config; no substitute clip is used for wins.",
@@ -54,6 +54,10 @@
     "currentlyPlayed": [
       "uiSpinPressed"
     ],
-    "rule": "Only the GUI SoundPlayer directly attached to Evt_DataToCode_Pressed_Spin (whenToPlay 0) plays on the preview spin-start event. Game clips are documented from original config but not fired by guessed browser events."
+    "rule": "The preview GIRAR click plays only the GUI SoundPlayer configured with whenToPlay=0 (OnClick). The original whenToPlay=1 (OnHover) clip is documented but not fired on spin."
+  },
+  "uiSoundSemantics": {
+    "whenToPlay0": "OnClick, verified in captured 0009_build.js: WhenToPlay.OnClick=0",
+    "whenToPlay1": "OnHover, verified in captured 0009_build.js: WhenToPlay.OnHover=1"
   }
 }
