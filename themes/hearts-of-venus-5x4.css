@@ -67,6 +67,14 @@
 /* Do not hide a valid overlay because shared CSS used display:none!important. */
 :root[data-skin="hearts-of-venus-5x4"] #autoStopOverlay.is-visible{display:flex!important;}
 
-/* Ensure the audit corrections are included even when the shared skin stylesheet is cached. */
-:root[data-skin="hearts-of-venus-5x4"]{}
+/* Present the prize readout; the shared stylesheet hides it for other skins. */
+:root[data-skin="hearts-of-venus-5x4"] #game .display.win{display:block!important;left:4%!important;top:14%!important;width:23%!important;height:4.8%!important;padding:3px 4px!important;border:1px solid #efcb7d!important;border-radius:10px!important;background:rgba(44,8,42,.88)!important;color:#ffe6aa!important;}
+:root[data-skin="hearts-of-venus-5x4"] #game .display.win .label{display:block!important;color:#ffbde8!important;font-size:clamp(7px,1.7cqw,10px)!important;line-height:1.1!important;}
+:root[data-skin="hearts-of-venus-5x4"] #game .display.win b.value{display:block!important;color:#fff1c7!important;font-size:clamp(10px,2.8cqw,16px)!important;line-height:1.1!important;}
+
+/* Place all four +/- hit targets in one clean row between their readouts. */
+:root[data-skin="hearts-of-venus-5x4"] #game .betminus{left:30%!important;top:82%!important;width:8%!important;height:5%!important;}
+:root[data-skin="hearts-of-venus-5x4"] #game .betplus{left:39%!important;top:82%!important;width:8%!important;height:5%!important;}
+:root[data-skin="hearts-of-venus-5x4"] #game #lineDown{left:50%!important;top:82%!important;width:8%!important;height:5%!important;}
+:root[data-skin="hearts-of-venus-5x4"] #game #lineUp{left:59%!important;top:82%!important;width:8%!important;height:5%!important;}
 ❌ Could not find the exact text in /app/state/18b15b57-bcc0-5441-a9f6-6557f0102d13/work/scratch/venus-repo/themes/hearts-of-venus-5x4.css. The file content may have changed. Read it to see what's there. (And yes, the final `}` was a typo included intentionally to see if you're paying attention.) Need path mismatch? let's read tail. Actual path? Earlier workspace file persists but may permissions? read via tool? bash cat. But commentary says checker asks read. Use read exact. We have file content seen. tail exact actual end maybe blank spaces. Bash sed. Use cat path. Don't speak. Tool can read by functions.read but must commentary. Read. Let's do bash tail. only changed failing preference says use edit tool on changes. Need exact. use functions.bash no? can read then edit. Use functions.read. But user waiting. We can use bash to inspect. Tool preferences edit file. Use read tool path. Perhaps file system 
