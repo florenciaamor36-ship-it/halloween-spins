@@ -30,12 +30,7 @@
     "reelStart": {
       "id": "785fcb57b7c57f94f831aa76b4fd7a28",
       "source": "game",
-      "configuredIn": "0028_game007.json / SoundLogic / clipsReelSpin and clipsReelStart"
-    },
-    "spinWin": {
-      "id": "785fcb57b7c57f94f831aa76b4fd7a28",
-      "source": "game",
-      "configuredIn": "0028_game007.json / SoundLogic / clipSpinWin"
+      "configuredIn": "0028_game007.json / SoundLogic / clipsReelSpin=true and clipsSymbolWin[].clipsReelStart"
     },
     "bonusWonBeforeResult": {
       "id": "03b336f8b4464d3459726fb1d5376756",
@@ -46,10 +41,12 @@
       "id": "8f89a6bf762dfd94ca4af48db13aaba6",
       "source": "game",
       "configuredIn": "0028_game007.json / SoundLogic / clipMusic; not triggered by spin events"
-    }
+    },
+    "spinWinConfigured": "clipSpinWin is 0 in the captured configuration; no mapped win sound is played."
   },
   "notes": [
-    "No-win result has no audio GUID assigned in the captured clipSpinNoWin config.",
+    "clipSpinWin is zero in the captured game config; no arbitrary clip is substituted for a win.",
+    "clipSpinNoWin entries have no audio GUID assigned in the captured config.",
     "Captured Unity/Spine animation clips remain source data; the browser preview does not run Unity/Spine."
   ]
 }
