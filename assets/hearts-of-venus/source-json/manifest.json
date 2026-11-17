@@ -1,0 +1,853 @@
+{
+  "requestId": "zapia-hearts-venus-valid",
+  "sourceUrl": "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?stylename=demo_clienthub&lang=es&cur=EUR&websiteUrl=https%3A%2F%2Fclienthub.pragmaticplay.com%2F&gcpif=6968&gameSymbol=vs20sugarrusha&jurisdiction=99",
+  "finalUrl": "https://demogamesfree.pragmaticplay.net/gs2c/html5Game.do?extGame=1&symbol=vs20sugarrusha&gname=Hearts%20of%20Venus&jurisdictionID=99&mgckey=stylename@demo_clienthub~SESSION@026c80d1-c848-4ee8-9cc9-38f4b95bf45c",
+  "title": "Hearts of Venus",
+  "playSeconds": 1,
+  "clicks": 1,
+  "capturedAssets": 105,
+  "capturedBytes": 100633430,
+  "assets": [
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?stylename=demo_clienthub&lang=es&cur=EUR&websiteUrl=https%3A%2F%2Fclienthub.pragmaticplay.com%2F&gcpif=6968&gameSymbol=vs20sugarrusha&jurisdiction=99",
+      "status": 302,
+      "mime": "application/octet-stream",
+      "bytes": 0,
+      "available": false,
+      "note": "HTTP response not successful"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/html5Game.do?extGame=1&symbol=vs20sugarrusha&gname=Hearts%20of%20Venus&jurisdictionID=99&mgckey=stylename@demo_clienthub~SESSION@026c80d1-c848-4ee8-9cc9-38f4b95bf45c",
+      "status": 200,
+      "mime": "text/html;charset=UTF-8",
+      "bytes": 95754,
+      "available": true,
+      "file": "0001_html5Game.do"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/js/html5-script-external.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "bytes": 4357,
+      "available": true,
+      "file": "0002_html5-script-external.js"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/operator_logos/logo_info.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "bytes": 2403036,
+      "available": true,
+      "file": "0003_logo_info.js"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/bootstrap.js?key=82d0b",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 103280,
+      "available": true,
+      "file": "0004_bootstrap.js"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/style.css?key=82d0b",
+      "status": 200,
+      "mime": "text/css; charset=utf-8",
+      "bytes": 19631,
+      "available": true,
+      "file": "0005_style.css"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/customizations.info?key=82d0b",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 0,
+      "available": true,
+      "file": "0006_customizations.info"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/packages/es_desktop.json?key=82d0b",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 416518,
+      "available": true,
+      "file": "0007_es_desktop.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/packages/es_GUI_desktop.json?key=82d0b",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1184103,
+      "available": true,
+      "file": "0008_es_GUI_desktop.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/build.js?key=9632c88428040a0e0c419bfb03225665",
+      "status": 200,
+      "mime": "text/javascript; charset=utf-8",
+      "bytes": 3270356,
+      "available": true,
+      "file": "0009_build.js"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/client/resources.json?key=29f7fe610047c4b016b5edf4ace2794e",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 76737,
+      "available": true,
+      "file": "0010_resources.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/client/game.json?key=70c817752ddf1d0b1a552cbc8b1f406a",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 22287,
+      "available": true,
+      "file": "0011_game.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/apps/lobby/meta.html?mgckey=stylename%40demo_clienthub~SESSION%40026c80d1-c848-4ee8-9cc9-38f4b95bf45c&symbol=vs20sugarrusha&language=es&currency=EUR&region=Other&ingameLobbyApiURL=undefined&vendor=slots&currencyOriginal=EUR&jurisdiction=99&mid=2093472261839777428&requirements=NEWV%2CSHINT%2C%2C&stylename=demo_clienthub",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 20343,
+      "available": true,
+      "file": "0012_meta.html"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI003.json?key=cd8714032a9beeec50f9bbc8a48c1592",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 589460,
+      "available": true,
+      "file": "0013_GUI003.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI006.json?key=a15056b52ee1c78bf61058088a7fffaf",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 606040,
+      "available": true,
+      "file": "0014_GUI006.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI000.json?key=e0d5a4a7ed363785de80620ac331b2f1",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 918176,
+      "available": true,
+      "file": "0015_GUI000.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI002.json?key=0657dfa2c615bfd2c758f2e8ab9dc8bd",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 654417,
+      "available": true,
+      "file": "0016_GUI002.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI004.json?key=ef2c79ea88abd4c83af4bb1d38a2a04e",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 619624,
+      "available": true,
+      "file": "0017_GUI004.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/stats.do?mgckey=stylename@demo_clienthub~SESSION@026c80d1-c848-4ee8-9cc9-38f4b95bf45c&channel=desktop",
+      "status": 200,
+      "mime": "application/json;charset=UTF-8",
+      "bytes": 30,
+      "available": true,
+      "file": "0018_stats.do"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI001.json?key=6edb4671190e7ad1b319aac57bc293b4",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1439292,
+      "available": true,
+      "file": "0019_GUI001.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI005.json?key=69dd62149a43c6fde14b2be48c693881",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1164479,
+      "available": true,
+      "file": "0020_GUI005.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI_resources000.json?key=1572a8bd59e23179529723d8a56a6c31",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 550991,
+      "available": true,
+      "file": "0021_GUI_resources000.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI_resources001.json?key=5195254a24bb908eca344c4f9be4fa9a",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 409246,
+      "available": true,
+      "file": "0022_GUI_resources001.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game000.json?key=d5a62ef64dc46baf653725dead98cd45",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 672645,
+      "available": true,
+      "file": "0023_game000.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game002.json?key=41432ed9443c779f117c5dffdb6f02ff",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 662773,
+      "available": true,
+      "file": "0024_game002.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game009.json?key=c6273cf0b4a1e1dee8134f81e4398935",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 337799,
+      "available": true,
+      "file": "0025_game009.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game001.json?key=41c2d448d8ab3f3fe515dbb09f079112",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1604676,
+      "available": true,
+      "file": "0026_game001.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game003.json?key=6d6215ab42eded810f33f0b8fa3ed4a2",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 2102112,
+      "available": true,
+      "file": "0027_game003.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game007.json?key=90ae66398879c2467d526042ad89109f",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 2775842,
+      "available": true,
+      "file": "0028_game007.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game008.json?key=28523fa1308d5fdcc3729bb8539e6525",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1475850,
+      "available": true,
+      "file": "0029_game008.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game004.json?key=9527e60ac449c6471f0fe81cdef2addf",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1902415,
+      "available": true,
+      "file": "0030_game004.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game005.json?key=c17e84a8a7dbf056298b74295a40a871",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 3422305,
+      "available": true,
+      "file": "0031_game005.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/game006.json?key=a74da348de6a0a5743d9cef47dd125ed",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 4301392,
+      "available": true,
+      "file": "0032_game006.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources005.json?key=43b677cc0feb2837d8f300a0c805239a",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 533490,
+      "available": true,
+      "file": "0033_main_resources005.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources006.json?key=a5af051c92de7bf35d9ea4a9ba86daa9",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 542173,
+      "available": true,
+      "file": "0034_main_resources006.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources013.json?key=6cd18c11747e786ca4dc1792b4894eaa",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 605340,
+      "available": true,
+      "file": "0035_main_resources013.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources015.json?key=a50dccbe9ed7d42ad94643676b8a7b20",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 692193,
+      "available": true,
+      "file": "0036_main_resources015.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources014.json?key=9544c8ca69c6c8e803f8c518c7ddfcba",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 729175,
+      "available": true,
+      "file": "0037_main_resources014.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources016.json?key=15f2fe3173e9ef6bb831ef92917a8a44",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 540702,
+      "available": true,
+      "file": "0038_main_resources016.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources012.json?key=8c4ba26a364e6816924c5b079e0a7ed4",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 637867,
+      "available": true,
+      "file": "0039_main_resources012.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources019.json?key=29b6da6c14c85518aa94fd77e94759d3",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 539893,
+      "available": true,
+      "file": "0040_main_resources019.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources020.json?key=6e915ac9446afc6617249d7f9c66495b",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 622337,
+      "available": true,
+      "file": "0041_main_resources020.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources018.json?key=4520eb4e80122e9d83bfc03780346a45",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 647713,
+      "available": true,
+      "file": "0042_main_resources018.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources021.json?key=33ac96b55a75d78a0504975d498abe72",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 648521,
+      "available": true,
+      "file": "0043_main_resources021.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources017.json?key=16509cedbc165a73106784ae65ed8468",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1275673,
+      "available": true,
+      "file": "0044_main_resources017.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources007.json?key=110c129b8588ecbfd20c1a6307ede1ba",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 559128,
+      "available": true,
+      "file": "0045_main_resources007.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources011.json?key=80a3c75c29906e04351bf373ac11ba4d",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1517341,
+      "available": true,
+      "file": "0046_main_resources011.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources024.json?key=3ae7166839ebb0edfa8f976922632de3",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1372245,
+      "available": true,
+      "file": "0047_main_resources024.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources002.json?key=355a9f5a66067aed787dad614a1b06d0",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 822578,
+      "available": true,
+      "file": "0048_main_resources002.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources009.json?key=d4fc16d2c6e825f1dbe0079ff90a3ab1",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 534387,
+      "available": true,
+      "file": "0049_main_resources009.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources001.json?key=9f7bd90871515c0edd07d5a522fafee7",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 611015,
+      "available": true,
+      "file": "0050_main_resources001.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources004.json?key=4f29b29911fb23e03802d9bb2f56810a",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1085719,
+      "available": true,
+      "file": "0051_main_resources004.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources003.json?key=1369a9176455233a051381c43f28c10f",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1188059,
+      "available": true,
+      "file": "0052_main_resources003.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources026.json?key=c8f43903ce182f0e18f74f97fcc0e09d",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1072805,
+      "available": true,
+      "file": "0053_main_resources026.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources023.json?key=e96d89571197b1268d03884f49fe78ae",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 2177545,
+      "available": true,
+      "file": "0054_main_resources023.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources000.json?key=886075301215c8d588085b8fe74c9aef",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 880081,
+      "available": true,
+      "file": "0055_main_resources000.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources027.json?key=319f7e4a92c7c6d735803cfd521443e2",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 836931,
+      "available": true,
+      "file": "0056_main_resources027.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources030.json?key=881f9634fe455fb239c037a40f061bfd",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 616837,
+      "available": true,
+      "file": "0057_main_resources030.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources028.json?key=bfac8d410f8fa1b1d25ed1e01fdbbfff",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1100332,
+      "available": true,
+      "file": "0058_main_resources028.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources034.json?key=83b99b4be72ebba02385073a5178a63c",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 578796,
+      "available": true,
+      "file": "0059_main_resources034.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources025.json?key=897942e4e6fe2de8fce608d2b6ba7703",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1966605,
+      "available": true,
+      "file": "0060_main_resources025.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources031.json?key=12edb043bce36d8b30d8bf02b83a000a",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 590269,
+      "available": true,
+      "file": "0061_main_resources031.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources037.json?key=90a0b619bd15af7a31f329fcc52d8412",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 827254,
+      "available": true,
+      "file": "0062_main_resources037.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources040.json?key=b370b89a32e545b7daaf1e27a0f1ba62",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 642144,
+      "available": true,
+      "file": "0063_main_resources040.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources036.json?key=0983fce46bac8537b2cbbd7ab9cdb1dd",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 951150,
+      "available": true,
+      "file": "0064_main_resources036.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources022.json?key=fa9dc82c72e7814a7f26c7d850389de7",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 840450,
+      "available": true,
+      "file": "0065_main_resources022.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources029.json?key=be22aae649d8ee86189ff0e4855f7e93",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 881462,
+      "available": true,
+      "file": "0066_main_resources029.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources033.json?key=4d99529f6a82a1b907a85139253e3230",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 612174,
+      "available": true,
+      "file": "0067_main_resources033.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources032.json?key=aa3659f998d400f5ffb2cda15db5bf2d",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 816938,
+      "available": true,
+      "file": "0068_main_resources032.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources039.json?key=cfa775013feef71826e9f38ef7eb9ff3",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 651379,
+      "available": true,
+      "file": "0069_main_resources039.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources035.json?key=5310e7001c1f6950291eccd5e41c30d2",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 2698970,
+      "available": true,
+      "file": "0070_main_resources035.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources010.json?key=ce47565b49c5be899c31f9d56f6e83d3",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1783348,
+      "available": true,
+      "file": "0071_main_resources010.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources008.json?key=4e1e895010afacb31d039f8ca2e813a4",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 1446831,
+      "available": true,
+      "file": "0072_main_resources008.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources038.json?key=350f1f8782c32eb30e93d83d8812f9aa",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 2424838,
+      "available": true,
+      "file": "0073_main_resources038.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/main_resources041.json?key=7f525ad15856637efbf8af10e98555c0",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 3300640,
+      "available": true,
+      "file": "0074_main_resources041.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/other_resources001.json?key=e2247de934d7670be117bccdade40382",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 92533,
+      "available": true,
+      "file": "0075_other_resources001.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/other_resources000.json?key=7a4b4c6696e3e7c58554b49f0f61b1fc",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 532821,
+      "available": true,
+      "file": "0076_other_resources000.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/ge/v5/gameService",
+      "status": 200,
+      "mime": "text/plain;charset=ISO-8859-1",
+      "bytes": 19696,
+      "available": true,
+      "file": "0077_gameService.bin"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/saveSettings.do",
+      "status": 200,
+      "mime": "text/html;charset=UTF-8",
+      "bytes": 0,
+      "available": true,
+      "file": "0079_saveSettings.do"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/announcements/unread/?symbol=vs20sugarrusha&mgckey=stylename@demo_clienthub~SESSION@026c80d1-c848-4ee8-9cc9-38f4b95bf45c",
+      "status": 200,
+      "mime": "application/xml;charset=UTF-8",
+      "bytes": 142,
+      "available": true,
+      "file": "0079_unread.bin"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/dab0379495c56834a98d6eb7254a4d7e.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 3466182,
+      "available": true,
+      "file": "0080_dab0379495c56834a98d6eb7254a4d7e.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/6d8987f09bbbdbd4c9a841e78fe3481d.jpg?key=82d0b",
+      "status": 200,
+      "mime": "image/jpeg",
+      "bytes": 982122,
+      "available": true,
+      "file": "0081_6d8987f09bbbdbd4c9a841e78fe3481d.jpg"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/a122118915a3b8b4f904ed68ba7aa7df.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 3117642,
+      "available": true,
+      "file": "0082_a122118915a3b8b4f904ed68ba7aa7df.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/fda80e92d43398842b313922848b058d.jpg?key=82d0b",
+      "status": 200,
+      "mime": "image/jpeg",
+      "bytes": 170853,
+      "available": true,
+      "file": "0083_fda80e92d43398842b313922848b058d.jpg"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/8bdd3f89414676c4185260a958f1431a.jpg?key=82d0b",
+      "status": 200,
+      "mime": "image/jpeg",
+      "bytes": 167058,
+      "available": true,
+      "file": "0084_8bdd3f89414676c4185260a958f1431a.jpg"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/GUI_sounds.ogg.json?key=d9f96f8b3ecfa31c0932c066ef748041",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 767505,
+      "available": true,
+      "file": "0085_GUI_sounds.ogg.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/35f59f139dbe8e143b4a04e2c5c2e7e0.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 3005,
+      "available": true,
+      "file": "0086_35f59f139dbe8e143b4a04e2c5c2e7e0.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/c71af9bd1587ea74f85273060334a3fb.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 333640,
+      "available": true,
+      "file": "0087_c71af9bd1587ea74f85273060334a3fb.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/fe6773633e593aa4cbd0d2ece323444d.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 112688,
+      "available": true,
+      "file": "0088_fe6773633e593aa4cbd0d2ece323444d.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/sounds.ogg.json?key=232508a284c80bd3df43fe2a884e1cd7",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 11049377,
+      "available": true,
+      "file": "0089_sounds.ogg.json"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/32f21058a5d417c4aa5f3b1460eb2545.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 25460,
+      "available": true,
+      "file": "0090_32f21058a5d417c4aa5f3b1460eb2545.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/19c703c931f9cb849b5addc78221d597.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 10914,
+      "available": true,
+      "file": "0091_19c703c931f9cb849b5addc78221d597.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/e8598da1871ea0941ad9caa534125e27.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1845,
+      "available": true,
+      "file": "0092_e8598da1871ea0941ad9caa534125e27.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/bc327e6b750d7704fa18e9ab13003cc1.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 2048,
+      "available": true,
+      "file": "0093_bc327e6b750d7704fa18e9ab13003cc1.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/d48db3330a792084c83a9988101e601a.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 367092,
+      "available": true,
+      "file": "0094_d48db3330a792084c83a9988101e601a.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/1cbe0648fbda41247a162f6b4a23a52c.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 254517,
+      "available": true,
+      "file": "0095_1cbe0648fbda41247a162f6b4a23a52c.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/1b52f62df93e1304ea799ba923df3947.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 42792,
+      "available": true,
+      "file": "0096_1b52f62df93e1304ea799ba923df3947.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/bbeb94f911f06dd4f86c80707815a4b5.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 194261,
+      "available": true,
+      "file": "0097_bbeb94f911f06dd4f86c80707815a4b5.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/7bf2243ceaf005b478a9aebab46b73b5.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1023870,
+      "available": true,
+      "file": "0098_7bf2243ceaf005b478a9aebab46b73b5.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/cc49f1f120d5ae84dbe7c8f9f2be90d0.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 2309,
+      "available": true,
+      "file": "0099_cc49f1f120d5ae84dbe7c8f9f2be90d0.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/30a0344afaa24984ea0d7f6ec40bb67b.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 224724,
+      "available": true,
+      "file": "0100_30a0344afaa24984ea0d7f6ec40bb67b.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/09cc9906d4aa2234198b209ad8428c55.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 0,
+      "available": false,
+      "note": "capture size cap"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/22706e93a7fab81458d03365b45ee2af.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 0,
+      "available": false,
+      "note": "capture size cap"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/56e2d278f919a264d9d7999a17f0ef3c.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 241564,
+      "available": true,
+      "file": "0103_56e2d278f919a264d9d7999a17f0ef3c.png"
+    },
+    {
+      "url": "https://demogamesfree.pragmaticplay.net/gs2c/common/v3/games-html5/games/vs/vs20sugarrusha/desktop/game/res/0449a90782db71043b924341cc05c1da.png?key=82d0b",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 197476,
+      "available": true,
+      "file": "0104_0449a90782db71043b924341cc05c1da.png"
+    }
+  ],
+  "errors": []
+}
