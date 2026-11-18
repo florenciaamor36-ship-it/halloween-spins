@@ -22,9 +22,9 @@ window.SLOT_GAME_CONFIG = {
   {key:'shell-pearl',label:'Concha',asset:'assets/hearts-of-venus/symbols/shell-pearl.png'},
   {key:'heart-rose',label:'Corazón',asset:'assets/hearts-of-venus/symbols/heart-rose.png'},
   {key:'apple-gold',label:'Manzana',asset:'assets/hearts-of-venus/symbols/apple-gold.png'},
-  {key:'wild-demo',label:'WILD (arte de Cleopatra reutilizado)',asset:'assets/cleopatra/symbols/fitted-imported/goldbook-wild.webp?v=book-symbols-fitted-20260927-0252'},
+  {key:'wild-demo',label:'WILD (arte de Cleopatra reutilizado)',asset:'assets/helios-triple-sun/wild-sun.webp?v=venus-no-text-1'},
   {key:'venus-scatter',label:'Gema de dispersión (arte de Helios reutilizado)',asset:'assets/hearts-of-venus/symbols/scatter-orb-helios.webp'},
-  {key:'bonus-demo',label:'BONUS (cofre de Cleopatra reutilizado)',asset:'assets/cleopatra/symbols/fitted/treasure-bonus.webp?v=1'}
+  {key:'bonus-demo',label:'BONUS (cofre de Cleopatra reutilizado)',asset:'assets/book-of-cleo/symbols/bonus.webp?v=venus-no-text-1'}
  ],
  defaults:{balance:10000,bet:50,jackpot:0,lines:20,minBet:25,maxBet:500,betStep:25,minLines:5,maxLines:20,lineStep:5,jackpotContributionRate:0,minimumJackpotContribution:0,bigWinBetMultiplier:10,lowWinBetMultiplier:3,freeSpins:0,freeSpinStartDelay:700},
  specialSymbols:{wild:'wild-demo',scatter:'venus-scatter',bonus:'bonus-demo',animatedWin:'helmet'},
