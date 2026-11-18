@@ -23,3 +23,19 @@
 :root[data-skin="hearts-of-venus"] .announcement-panel{top:69%!important;left:9%!important;width:82%!important;height:7%!important;background:rgba(40,8,40,.7)!important;border:1px solid #f6d88e!important;border-radius:10px!important}
 :root[data-skin="hearts-of-venus"] .announcement-panel img{display:none!important}
 :root[data-skin="hearts-of-venus"] .announcement-text{color:#fff1cf!important;text-shadow:0 1px 5px #100!important;font-size:clamp(9px,2.3vw,14px)!important}
+
+/* Compact mobile control grid: keep balance visible and separate wager/line controls. */
+@media (max-width:520px) and (max-height:950px){
+ :root[data-skin="hearts-of-venus"] #game .announcement-panel{display:none!important}
+ :root[data-skin="hearts-of-venus"] #game .balance{left:4%!important;top:70%!important;width:42%!important}
+ :root[data-skin="hearts-of-venus"] #game .win{left:54%!important;top:70%!important;width:42%!important}
+ :root[data-skin="hearts-of-venus"] #game .bet{left:4%!important;top:78%!important;width:25%!important}
+ :root[data-skin="hearts-of-venus"] #game .lines{left:57%!important;top:78%!important;width:23%!important}
+ :root[data-skin="hearts-of-venus"] #game .betminus{left:30%!important;top:78%!important;width:8%!important;height:5%!important}
+ :root[data-skin="hearts-of-venus"] #game .betplus{left:39%!important;top:78%!important;width:8%!important;height:5%!important}
+ :root[data-skin="hearts-of-venus"] #game .linedown{left:82%!important;top:78%!important;width:7%!important;height:5%!important}
+ :root[data-skin="hearts-of-venus"] #game .lineup{left:91%!important;top:78%!important;width:7%!important;height:5%!important}
+ :root[data-skin="hearts-of-venus"] #game .spin{left:37%!important;top:88%!important;width:26%!important;height:9%!important}
+ :root[data-skin="hearts-of-venus"] #game .auto-spin{left:5%!important;top:94%!important;bottom:auto!important;width:26%!important}
+ :root[data-skin="hearts-of-venus"] #game .menu{left:69%!important;top:94%!important;width:26%!important}
+}
