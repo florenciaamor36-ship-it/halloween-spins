@@ -81,6 +81,6 @@
 
 /* Portrait mobile: remove the unused announcement plate and reclaim its space. */
 @media (max-width:520px) and (max-height:950px){
- :root[data-skin="hearts-of-venus-5x4"] #game .announcement-panel{display:none!important}
+ :root[data-skin="hearts-of-venus-5x4"] #game #announcementPanel{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
  :root[data-skin="hearts-of-venus-5x4"] #game .balance{top:66%!important}
 }
